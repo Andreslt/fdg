@@ -15,10 +15,9 @@ var LocalStoreSchema = mongoose.Schema({
         ref: 'Company',
         required: true
     },
-    city_id: {
-        type: ObjectId,
-        ref: 'City',
-        required: true
+    city: {
+        name: String,
+        image: String
     },    
     address:{
         type: String

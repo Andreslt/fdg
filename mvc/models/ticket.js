@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.ObjectId;
 var Store = require('./store');
-var User = require('./user').user;
 
 var TicketSchema = mongoose.Schema({
     ticketNumber: {
@@ -25,11 +24,6 @@ var TicketSchema = mongoose.Schema({
     store_id: {
         type: ObjectId,
         ref: "Store"
-    },
-    storeEmployee_id: {
-        type: ObjectId,
-        ref: "User",
-        required: true
     },
     openningDate: {
         type: Date,

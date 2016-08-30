@@ -61,9 +61,16 @@ router.get('/admin/customers/cities', ensureAuthenticated,function(req, res){
 
 // Customers->Companies
 router.get('/admin/customers/companies', ensureAuthenticated,function(req, res){
-	company.find({}, (err, companies)=>{
-		console.log(companies)
-		res.render('admin_customers_companies', {layout: 'layout', userTypeAdmin: true, companies});
+	company.find({companyName: {$ne: "Default company"}}, (err, companies)=>{
+		res.render('admin_customers_companies', {layout: 'layout', userTypeAdmin: true, companies});		
+	});	
+});
+
+// Customers->Companies specific
+router.get('/admin/customers/companies/:company', ensureAuthenticated,function(req, res){
+	let lacompany = req.params.company;
+	company.find({companyName: lacompany}, (err, companies)=>{
+		res.render('admin_tickets', {layout: 'layout', userTypeAdmin: true, companies});		
 	});	
 });
 

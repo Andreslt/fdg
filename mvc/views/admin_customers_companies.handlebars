@@ -32,12 +32,11 @@
 
 			<!-- row -->
 			<div class="row">
-
 				<!-- SuperBox -->
 				<div class="superbox col-sm-12">
 					{{#each companies}}
-						<div class="superbox-list">							
-							<img src="#" data-img="{{image}}" alt="My first photoshop layer mask on a high end PSD template theme" title="My new car!" class="superbox-img">
+						<div class="superbox-list">														
+							<a href="/admin/customers/companies/{{companyName}}"><img src="{{image}}" data-img="#" alt="{{companyName}}" title="{{companyName}}" class="superbox-img"></a>
 						</div>
 					{{/each}}
 
