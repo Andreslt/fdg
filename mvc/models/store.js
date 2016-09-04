@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
-var City = require('./city');
 var Company = require('./company');
 
 var LocalStoreSchema = mongoose.Schema({

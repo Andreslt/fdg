@@ -4,7 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-const session = require('express-session');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const exphbs = require('express-handlebars');
@@ -14,6 +13,7 @@ var moment = require('moment');
 const routes = require('./mvc/controllers/index');
 const users = require('./mvc/controllers/users');
 // const routes = require('./mvc/controllers/routes');
+
 // Models
 const User = require('./mvc/models/user');
 
@@ -22,6 +22,10 @@ const db = require('./db/setdb');
 
 // Initializing App
 const app = express();
+
+// Session
+// const session = require('./config/session');
+const session = require('express-session');
 
 // Handlebars Helpers
 const viewsPath = path.join(__dirname, 'mvc', 'views');
@@ -50,6 +54,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
+// app.use(session);
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
@@ -61,6 +66,7 @@ app.use(session({
     ephemeral: true,
     resave: true
 }));
+
 
 // Passport init
 app.use(passport.initialize());

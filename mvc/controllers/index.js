@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/user").user;
 const tickets = require("../models/ticket");
-const userType = require('../models/userType');
 const stores = require('../models/store');
 const company = require('../models/company');
 
@@ -15,19 +14,16 @@ router.get('/', ensureAuthenticated, function(req, res){
 
 // General Dashboard
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	userType.findOne({ userTitle: "systemAdmin"}, function(err, usert) {
-	if (usert._id.toString() == req.user.userType_id)
+	if (req.user.userType === "systemAdmin")
 	    res.redirect('/admin/dashboard');
 	else
 	    res.redirect('/users/dashboard');
-	});
 });
 
 // Admin Dashboard
 router.get('/admin/dashboard', ensureAuthenticated, function(req, res){
 	 stores.find({}, function(err, store){
-		userType.findOne({ userTitle: "systemAdmin"}, function(err, usert) {
-			if (usert._id.toString() == req.user.userType_id){
+			if (req.user.userType === "systemAdmin"){
 				tickets.find({}).populate('store_id').populate('storeEmployee_id').exec(function(err, tkts){
 					console.log(store);
 					res.render('admin_tickets', {userTypeAdmin: true, tkts, store});
@@ -35,7 +31,6 @@ router.get('/admin/dashboard', ensureAuthenticated, function(req, res){
 			}else
 				res.render('custom_dashboard', {userTypeAdmin: false});
 			});
-	 });
 });
 
 // Admin Manage Users
@@ -87,9 +82,4 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-
 module.exports = router;
-
-/*module.exports = {
-	router = require('./routes')();
-}*/

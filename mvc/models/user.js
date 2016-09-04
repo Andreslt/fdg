@@ -31,9 +31,8 @@ var UserSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	userType_id:{
-		type: ObjectId,
-		ref: 'UserType',
+	userType:{
+		type: String,
 		required: true
 	},
 	createdOn: {

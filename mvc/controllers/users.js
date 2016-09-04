@@ -11,21 +11,18 @@ var mongoose = require('mongoose');
 
 //Models
 var User = require('../models/user');
-var userType = require('../models/userType');
 var company = require("../models/company");
 var store = require("../models/store");
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	 userType.findOne({ userTitle: "systemAdmin"}, function(err, usert) {
-	   if (usert._id.toString() == req.user.userType_id)
+	   if (req.user.userType === "systemAdmin")
 	            res.redirect('/admin/dashboard');
      else
     	    if (usert.userApproval)
     	        res.render('dashboard', {userTypeAdmin: false});
     	    else
     	        res.render('unauthorized', {layout: 'accessDenied'});
-	    });
 });
 
 // Register
@@ -55,55 +52,55 @@ router.get('/resetpassword/:token', function(req, res) {
   });
 });
 
-router.post('/forgotpassword', function(req, res, next) {
-  async.waterfall([
-    function(done) {
-      crypto.randomBytes(20, function(err, buf) {
-        var token = buf.toString('hex');
-        done(err, token);
-      });
-    },	
-    function(token, done) {
-      User.findOne({ email: req.body.email }, function(err, user) {
+// router.post('/forgotpassword', function(req, res, next) {
+//   async.waterfall([
+//     function(done) {
+//       crypto.randomBytes(20, function(err, buf) {
+//         var token = buf.toString('hex');
+//         done(err, token);
+//       });
+//     },	
+//     function(token, done) {
+//       User.findOne({ email: req.body.email }, function(err, user) {
 		  
-        if (!user) {
-          req.flash('error', 'No existe esta cuenta. Por favor verificar nuevamente.');
-          return res.redirect('/users/forgotpassword');
-        }
-        user.resetPasswordToken = token
-        user.resetPasswordExpires = Date.now() + 60 * 60 * 1000; // 1 hour
-        user.save(function(err) {
-          done(err, token, user);
-        });
-      });
-    },
-    function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport('SMTP', {
-        service: 'SendGrid',
-        auth: {
-          user: 'andreslt90',
-          pass: 'fdgingenieria2016'
-        }
-      });
-      var mailOptions = {
-        to: user.email,
-        from: 'passwordreset@demo.com',
-        subject: 'Recuperar Contraseña - FDG Ingeniería Ltda.',
-        text: 'Esta recibiendo este correo porque usted, u otra persona, ha solicitado restaurar la contraseña de su cuenta en FDG Ingeniería.\n\n' +
-          'Por favor abra el siguiente enlance para completar el proceso:\n\n' +
-          'http://' + req.headers.host + '/resetpassword/' + token + '\n\n' +
-          'Si usted no ha solicitado esto, por favor ignore este correo. Su cuenta permanecerá sin cambios.\n'
-      };
-      smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('info', 'Se ha enviado un correo electrónico a ' + user.email + ' con las instrucciones a seguir.');
-        done(err, 'done');
-      });
-    }
-  ], function(err) {
-    if (err) return next(err);
-    res.redirect('/forgotpassword');
-  });
-});
+//         if (!user) {
+//           req.flash('error', 'No existe esta cuenta. Por favor verificar nuevamente.');
+//           return res.redirect('/users/forgotpassword');
+//         }
+//         user.resetPasswordToken = token
+//         user.resetPasswordExpires = Date.now() + 60 * 60 * 1000; // 1 hour
+//         user.save(function(err) {
+//           done(err, token, user);
+//         });
+//       });
+//     },
+//     function(token, user, done) {
+//       var smtpTransport = nodemailer.createTransport('SMTP', {
+//         service: 'SendGrid',
+//         auth: {
+//           user: 'andreslt90',
+//           pass: 'fdgingenieria2016'
+//         }
+//       });
+//       var mailOptions = {
+//         to: user.email,
+//         from: 'passwordreset@demo.com',
+//         subject: 'Recuperar Contraseña - FDG Ingeniería Ltda.',
+//         text: 'Esta recibiendo este correo porque usted, u otra persona, ha solicitado restaurar la contraseña de su cuenta en FDG Ingeniería.\n\n' +
+//           'Por favor abra el siguiente enlance para completar el proceso:\n\n' +
+//           'http://' + req.headers.host + '/resetpassword/' + token + '\n\n' +
+//           'Si usted no ha solicitado esto, por favor ignore este correo. Su cuenta permanecerá sin cambios.\n'
+//       };
+//       smtpTransport.sendMail(mailOptions, function(err) {
+//         req.flash('info', 'Se ha enviado un correo electrónico a ' + user.email + ' con las instrucciones a seguir.');
+//         done(err, 'done');
+//       });
+//     }
+//   ], function(err) {
+//     if (err) return next(err);
+//     res.redirect('/forgotpassword');
+//   });
+// });
 
 
 // Register User

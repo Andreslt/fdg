@@ -191,4 +191,63 @@ store.find({}, function(err, stores) {
     console.log(ticket);
   });*/
   
-  
+  // using SendGrid's Node.js Library - https://github.com/sendgrid/sendgrid-nodejs
+// var sendgrid = require("sendgrid")("YOUR_SENDGRID_API_KEY");
+// var email = new sendgrid.Email();
+
+// email.addTo("test@sendgrid.com");
+// email.setFrom("you@youremail.com");
+// email.setSubject("Sending with SendGrid is Fun");
+// email.setHtml("and easy to do anywhere, even with Node.js");
+
+// sendgrid.send(email);
+
+// var nodemailer = require('nodemailer');
+// var transporter;
+// var text = 'Hello world from yourself';
+
+// var mailOptions = {
+//     to: 'andreslastrat@gmail.com', // sender address
+//     from: 'andres_late1008@hotmail.com', // list of receivers
+//     subject: 'TEST EMAIL', // Subject line
+//     text: text //, // plaintext body
+//     // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+// };
+
+// handleSayHello();
+
+// function handleSayHello() {
+//     // Not the movie transporter!
+//     transporter = nodemailer.createTransport({
+//         service: 'hotmail',
+//         auth: {
+//             user: '', // Your email id
+//             pass: '' // Your password
+//         },
+//         tls: { rejectUnauthorized: false }
+//     });
+
+//   transporter.sendMail(mailOptions, function(error, info){a
+//       if(error){
+//           console.log(error);
+//           // res.json({yo: 'error'});
+//       }else{
+//           console.log('Message sent: ' + info.response);
+//           // res.json({yo: info.response});
+//       };
+//   });      
+// };
+
+// const mailOptions = {
+//     to: 'andreslastrat@gmail.com', // sender address
+//     from: 'andres_late1008@hotmail.com', // list of receivers
+//     subject: 'TEST EMAIL', // Subject line
+//     text: "Esta es una gran prueba" //, // plaintext body
+//     // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+// };
+// const auth= {
+//   user: "",
+//   pass: ""
+// }
+// const service = "hotmail";
+// const mailer = require('./config/mailer')(service,auth,mailOptions);
