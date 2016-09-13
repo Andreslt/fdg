@@ -22,17 +22,54 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 // Admin Dashboard
 router.get('/admin/dashboard', ensureAuthenticated, function(req, res){
-	 stores.find({}, function(err, store){
-			if (req.user.userType === "systemAdmin"){
-				tickets.find({}).populate('store_id').populate('storeEmployee_id').exec(function(err, tkts){
-					console.log(store);
-					res.render('admin_tickets', {userTypeAdmin: true, tkts, store});
-				});
-			}else
-				res.render('custom_dashboard', {userTypeAdmin: false});
-			});
+	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
+		res.render('admin_dashboard', {userTypeAdmin: true, customers});
+	});
+	
+	//  stores.find({}, function(err, store){
+	// 		if (req.user.userType === "systemAdmin"){
+	// 			tickets.find({}).populate('store_id').populate('storeEmployee_id').exec(function(err, tkts){
+	// 				console.log(store);
+	// 				res.render('admin_tickets', {userTypeAdmin: true, tkts, store});
+	// 			});
+	// 		}else
+	// 			res.render('custom_dashboard', {userTypeAdmin: false});
+	// 		});
 });
 
+router.get('/admin/customers/:customer/tickets', (req, res) => {
+	let customer = req.params.customer;
+	 company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
+		company.findOne({companyName: customer},(err, cny)=>{
+			// tickets.find({}, (err, tkts) =>{
+			// 	stores.populate(tkts, {path: 'store_id', where: {'company_id': cny.id}}, (err, st) => {
+			// 		console.log(st);
+			// 	});
+			stores.find({company_id: cny.id}, (err, st) => {
+				let n = st.length;
+				let stres = new Array();
+				for (let i=0; i<n; i++){
+					stres.push(st[i].id);
+				}
+				tickets.find({store_id: {$in: stres}}, (err, tkts) => {
+					res.render('admin_customers_tickets', {userTypeAdmin: true, customer, customers, tkts});
+				});
+			});
+	 });
+		// tickets.find({}, (err, tkts) => {
+		// 	stores.findOne({'company_id': '57b5e6118fc445a60fbdd8d5'})
+		// 	.populate({path: "store_id"}, (err, salida) =>{
+		// 		console.log(salida);
+		// 	});
+		// });	
+		// tickets.find({}).populate('store_id').exec((err, tkt)=>{
+		// 	console.log(tkt);			
+		// });
+	// store.find({}, (err, stores) => {
+	// 	store.populate(companies, {path :""})			
+	// });			
+});
+});
 // Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
 	if (!req.user)

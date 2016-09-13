@@ -123,42 +123,47 @@
 				<!-- end user info -->
 
 				<!-- NAVIGATION : This navigation is also responsive-->
-				<nav>
-					<!--
-					NOTE: Notice the gaps after each icon usage <i></i>..
-					Please note that these links work a bit different than
-					traditional href="" links. See documentation for details.
-					-->
-
+		<nav>
+			<ul>
+				<li>
+					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ver Clientes</span></a>
 					<ul>
-						{{#if userTypeAdmin}}
-						<li class="active">
-							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Administrador</span></a>
-							<ul>
-								<li class="active">									
-									<a href="/admin/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent">Ver Tickets</span></a>
-								</li>
-								<li class="">
-									<a href="/admin/manage_users" title="Users"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Ver Usuarios</span></a>
-								</li>								
-								<!--<li class="">
-									<a href="/admin/appointments" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">Agenda</span></a>
-								</li>-->
-							</ul>
+						{{#each customers}}
+						<li>							
+								<a href="#" title="Dashboard">{{companyName}}</a>
+								<ul>
+									<li>
+										<a href="/admin/customers/{{companyName}}/tickets" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i>Ver Tickets</a>
+									</li>
+									<li>
+										<a href="/admin/dashboard" title="Dashboard"><i class= "fa fa-lg fa-fw fa-building"></i> Ver Activos</a>
+									</li>
+								</ul>																										
 						</li>
-						{{/if}}
-						<li class="top-menu-invisible">
-							<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">Clientes</span></a>
-							<ul>
-								<li class="">
-									<a href="/admin/customers/cities" title="Clientes por Ciudad"><i class="fa fa-lg fa-fw fa-building"></i> <span class="menu-item-parent">Clientes por Ciudad</span></a>
-								</li>
-								<li class="">
-									<a href="/admin/customers/companies" title="Clientes por Marca"><i class="fa fa-lg fa-fw fa-maxcdn"></i> <span class="menu-item-parent">Clientes por Marca</span></a>
-								</li>
-							</ul>
+						{{/each}}
+						<!--<li class="active">									
+							<a href="/admin/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent">Ver Tickets</span></a>
+						</li>
+						<li class="">
+							<a href="/admin/manage_users" title="Users"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Ver Usuarios</span></a>
+						</li>								-->
+						<!--<li class="">
+							<a href="/admin/appointments" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">Agenda</span></a>
+						</li>-->
 					</ul>
-				</nav>
+				</li>
+				<li class="top-menu-invisible">
+					<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">Gestionar usuarios</span></a>
+					<ul>
+						<li class="">
+							<a href="/admin/customers/cities" title="Clientes por Ciudad"><i class="fa fa-lg fa-fw fa-building"></i> <span class="menu-item-parent">Clientes por Ciudad</span></a>
+						</li>
+						<li class="">
+							<a href="/admin/customers/companies" title="Clientes por Marca"><i class="fa fa-lg fa-fw fa-maxcdn"></i> <span class="menu-item-parent">Clientes por Marca</span></a>
+						</li>
+					</ul>
+			</ul>
+		</nav>
 
 
 				<span class="minifyme" data-action="minifyMenu">
