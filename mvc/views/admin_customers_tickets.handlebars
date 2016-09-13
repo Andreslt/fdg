@@ -104,12 +104,12 @@
 													<td align="center">{{formatDate openningDate "YYYY/MM/DD"}}</td>
 													<td><button class="btn btn-info center-block padding-5 label view-ticket" data-toggle="modal" 
 														data-target="#TicketInfoModal"
-														data-id ="1"
+														data-id ="{{id}}"
 														data-number = "{{ticketNumber}}"
 														data-title = "{{title}}"
 														data-description = "{{description}}"
-														data-store = "5"
-														data-city = "6"
+														data-store = "{{store_id.storeName}}"
+														data-city = "{{store_id.city}}"
 													>
 														{{status}}
 													</button></td>
@@ -207,113 +207,116 @@
 </div>
 <!-- END MAIN CONTENT -->
 				<!-- Ticket Info Modal -->
+				<form method ="post" action="/admin/customers/ticket/edit">
 				<div class="modal fade" id="TicketInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<form method ="post" action="admin/tickets/edit"></form>
-							<input type="hidden" id="edit-ticket-id" name="id">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-									&times;
-								</button>
-								<h4 class="modal-title" id="myModalLabel">Detalle de Ticket</h4>
-							</div>
-							<div class="modal-body">
-								<!--Ticket No. ---<o>--- Titulo del Ticket-->
-								<div class="row">
-									<div class = "col-md-4">
-										<div class="form-group">
-											<label for="edit-ticket-number"><small><b>Ticket No.:</b></small></label>
-											<input type="text" class="form-control" placeholder="Ticket No." required name="ticketNum" id="edit-ticket-number" disabled align="center"/>
-										</div>
-									</div>
-									<div class = "col-md-8">
-										<div class="form-group">
-											<label for="edit-ticket-title"><small><b>Título:</b></small></label>
-											<input type="text" class="form-control" placeholder="Titulo del Ticket" required name="ticketTitle" id="edit-ticket-title"/>
-										</div>
-									</div>	
+							
+								<input type="hidden" id="edit-ticket-id" name="ticketId">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+										&times;
+									</button>
+									<h4 class="modal-title" id="myModalLabel">Detalle de Ticket</h4>
 								</div>
-								<!--Descripción-->
-								<div class = "row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="edit-ticket-description"><small><b>Descripción:</b></small></label>
-											<textarea class="form-control" placeholder="Descripción" rows="2" name="ticketDesc" id="edit-ticket-description"></textarea>
+								<div class="modal-body">
+									<!--Ticket No. ---<o>--- Titulo del Ticket-->
+									<div class="row">
+										<div class = "col-md-4">
+											<div class="form-group">
+												<label for="edit-ticket-number"><small><b>Ticket No.:</b></small></label>
+												<input type="text" class="form-control" placeholder="Ticket No." required name="ticketNum" id="edit-ticket-number" disabled align="center"/>
+											</div>
 										</div>
+										<div class = "col-md-8">
+											<div class="form-group">
+												<label for="edit-ticket-title"><small><b>Título:</b></small></label>
+												<input type="text" class="form-control" placeholder="Titulo del Ticket" required name="ticketTitle" id="edit-ticket-title"/>
+											</div>
+										</div>	
 									</div>
-								</div>
-								<!--Tienda ---<o>--- Ciudad-->
-								<div class="row">
-									<div class = "col-md-6">
-										<div class="form-group">
-											<label for="edit-ticket-store"><small><b>Tienda:</b></small></label>
-											<input type="text" class="form-control" placeholder="Tienda" required name="ticketStore" id="edit-ticket-store" disabled/>
-										</div>
-										<!--<label for="store"> Tienda</label>
-											<select class="form-control" id="store">
-												{{#each store}}
-													<option>{{store.storeName}}</option>
-												{{/each}}
-											</select>										-->
-									</div>
-									<div class = "col-md-6">
-										<div class="form-group">
-											<label for="edit-ticket-city"><small><b>Ciudad:</b></small></label>
-											<input type="text" class="form-control" placeholder="Ciudad" required name="ticketCity" id="edit-ticket-city" disabled/>
+									<!--Tienda ---<o>--- Ciudad-->
+									<div class="row">
+										<div class = "col-md-6">
+											<div class="form-group">
+												<label for="edit-ticket-city"><small><b>Ciudad:</b></small></label>
+												<input type="text" class="form-control" placeholder="Ciudad" required name="ticketCity" id="edit-ticket-city" disabled/>
+											</div>										
 										</div>										
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="well well-sm well-primary">
-											<form class="form form-inline " role="form">
-												<div class="form-group">
-													<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" data-dateformat="yy/mm/dd" align="center">
-													<!--<input type="text" class="form-control" value="" placeholder="Fecha" required />-->
-												</div>
-												<div class="form-group">
-													<select class="form-control">
-														<optgroup label="Estado">
-															<option disabled selected value>Seleccionar</option>
-															<option>Pendiente</option>
-															<option>Asignado</option>
-															<option>Finalizado</option>
-														</optgroup>
-													</select>
-												</div>
-												<div class="form-group">
-													<select class="form-control">
-														<optgroup label="Asignado a:">
-															<option disabled selected value>Seleccionar</option>
-															<option>Pedro</option>
-															<option>Pablo</option>
-															<option>Paco</option>
-															<option>Tito</option>
-														</optgroup>
-													</select>
-												</div>											
-												<div class="form-group">
-													<button type="button" class="btn btn-default btn-sm">
-														<span class="glyphicon glyphicon-eye-open"></span> Historial
-													</button>
-												</div>
-											</form>
+										<div class = "col-md-6">
+											<div class="form-group">
+												<label for="edit-ticket-store"><small><b>Tienda:</b></small></label>
+												<input type="text" class="form-control" placeholder="Tienda" required name="ticketStore" id="edit-ticket-store" disabled/>
+											</div>
+											<!--<label for="store"> Tienda</label>
+												<select class="form-control" id="store">
+													{{#each store}}
+														<option>{{store.storeName}}</option>
+													{{/each}}
+												</select>										-->
 										</div>
 									</div>
+									<!--Descripción-->
+									<div class = "row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="edit-ticket-description"><small><b>Descripción:</b></small></label>
+												<textarea class="form-control" placeholder="Descripción" rows="2" name="ticketDesc" id="edit-ticket-description"></textarea>
+											</div>
+										</div>
+									</div>									
+									<div class="row">
+										<div class="col-md-12">
+											<div class="well well-sm well-primary">
+												<form class="form form-inline " role="form">
+													<div class="form-group">
+														<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" data-dateformat="yy/mm/dd" align="center">
+														<!--<input type="text" class="form-control" value="" placeholder="Fecha" required />-->
+													</div>
+													<div class="form-group">
+														<select class="form-control">
+															<optgroup label="Estado">
+																<option disabled selected value>Seleccionar</option>
+																<option>Pendiente</option>
+																<option>Asignado</option>
+																<option>Finalizado</option>
+															</optgroup>
+														</select>
+													</div>
+													<div class="form-group">
+														<select class="form-control">
+															<optgroup label="Asignado a:">
+																<option disabled selected value>Seleccionar</option>
+																<option>Pedro</option>
+																<option>Pablo</option>
+																<option>Paco</option>
+																<option>Tito</option>
+															</optgroup>
+														</select>
+													</div>											
+													<div class="form-group">
+														<button type="button" class="btn btn-default btn-sm">
+															<span class="glyphicon glyphicon-eye-open"></span> Historial
+														</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+					
 								</div>
-				
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">
-									Cancelar
-								</button>
-								<button type="button" class="btn btn-primary">
-									Guardar Ticket
-								</button>
-							</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										Cancelar
+									</button>
+									<button id= "submitModal" type="submit" class="btn btn-primary">
+										Guardar Ticket
+									</button>
+								</div>
+								
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
+				</form>
 </div>
 <!-- END MAIN PANEL -->

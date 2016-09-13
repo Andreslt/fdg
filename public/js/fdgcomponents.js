@@ -7,4 +7,7 @@ $(document).ready(function(){
             $('#edit-ticket-store').val($(this).data('store'));
             $('#edit-ticket-city').val($(this).data('city'));
    });
+    $('#submitModal').on('click', ()=>{
+        console.log("Se cerró");
+    });
 });

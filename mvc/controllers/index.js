@@ -51,8 +51,10 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 				for (let i=0; i<n; i++){
 					stres.push(st[i].id);
 				}
-				tickets.find({store_id: {$in: stres}}, (err, tkts) => {
-					res.render('admin_customers_tickets', {userTypeAdmin: true, customer, customers, tkts});
+				tickets.find({store_id: {$in: stres}}, (err, tks) => {
+					stores.populate(tks, {path: "store_id"}, (err, tkts)=>{
+						res.render('admin_customers_tickets', {userTypeAdmin: true, customer, customers, tkts});
+					});										
 				});
 			});
 	 });
@@ -103,12 +105,17 @@ router.get('/admin/customers/companies/:company', ensureAuthenticated,function(r
 	let lacompany = req.params.company;
 	company.find({companyName: lacompany}, (err, companies)=>{
 		res.render('admin_tickets', {layout: 'layout', userTypeAdmin: true, companies});		
-	});	
+	});
 });
 
 // Admin Edit tickets
-router.post('/admin/tickets/edit', function(req, res){
-
+router.post('/admin/customers/ticket/edit', function(req, res){
+	let ticketId = req.body.ticketId;
+	let ticketDesc = req.body.ticketDesc;
+	tickets.update({_id: ticketId},{$set:{description: ticketDesc}}, (err, result)=>{
+		if (err)
+		console.log("There was an error");
+	});
 });
 
 function ensureAuthenticated(req, res, next){
