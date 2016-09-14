@@ -6,8 +6,6 @@ $(document).ready(function(){
             $('#edit-ticket-description').val($(this).data('description'));
             $('#edit-ticket-store').val($(this).data('store'));
             $('#edit-ticket-city').val($(this).data('city'));
+            $('#edit-ticket-status').val($(this).data('status'));
    });
-    $('#submitModal').on('click', ()=>{
-        console.log("Se cerró");
-    });
 });

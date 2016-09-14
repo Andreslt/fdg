@@ -72,7 +72,7 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 	// });			
 });
 });
-// Admin Manage Users
+/*// Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
 	if (!req.user)
 		res.redirect('/');
@@ -106,15 +106,20 @@ router.get('/admin/customers/companies/:company', ensureAuthenticated,function(r
 	company.find({companyName: lacompany}, (err, companies)=>{
 		res.render('admin_tickets', {layout: 'layout', userTypeAdmin: true, companies});		
 	});
-});
+});*/
 
 // Admin Edit tickets
 router.post('/admin/customers/ticket/edit', function(req, res){
-	let ticketId = req.body.ticketId;
-	let ticketDesc = req.body.ticketDesc;
-	tickets.update({_id: ticketId},{$set:{description: ticketDesc}}, (err, result)=>{
+	let str = req.rawHeaders[19];
+	let st1 = str.search("/customers")+"/customers".length+1;
+	let st2 = str.search("/tickets");
+	let company = str.substring(st1,st2);
+	tickets.update({_id: req.body.ticketId},{$set:{description: req.body.ticketDesc, 
+		title: req.body.ticketTitle, lastUpdate: req.body.ticketLastUpdate, 
+		status: req.body.ticketStatus}}, (err, result)=>{
 		if (err)
 		console.log("There was an error");
+		res.redirect("/admin/customers/"+company+"/tickets");
 	});
 });
 

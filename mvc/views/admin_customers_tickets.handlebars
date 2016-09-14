@@ -88,7 +88,7 @@
 								                    <th >Cliente</th>
 								                    <th data-hide="phone,tablet">Ciudad</th>
 								                    <th data-hide="phone,tablet">Tienda</th>								                    
-								                    <th >Fecha</th>
+								                    <th >Last Update</th>
 								                    <th >Estado</th>
 									            </tr>
 									        </thead>
@@ -98,8 +98,8 @@
 												<tr>
 													<td align="center">{{ticketNumber}}</td>
 													<td align="center">{{title}}</td>
-													<td align="center">{{store_id.storeName}}</td>
-													<td align="center">{{storeEmployee_id.username}}</td>
+													<td align="center">{{../customer}}</td>
+													<td align="center">{{store_id.city}}</td>
 													<td align="center">{{store_id.storeName}}</td>
 													<td align="center">{{formatDate openningDate "YYYY/MM/DD"}}</td>
 													<td><button class="btn btn-info center-block padding-5 label view-ticket" data-toggle="modal" 
@@ -110,24 +110,16 @@
 														data-description = "{{description}}"
 														data-store = "{{store_id.storeName}}"
 														data-city = "{{store_id.city}}"
+														data-status = "{{status}}"
 													>
 														{{status}}
 													</button></td>
 												</tr>
 												{{/each}}
 											<tr>
-												<td>101</td>
-												<td>990-667-7807</td>
-												<td>2015/03/06</td>
-												<td>2015/10/04</td>
-												<td>$27.86</td>
-												<td>5246TN</td>
-												<td><span class="center-block padding-5 label label-warning">Pending</span></td>
-											</tr>
-											<tr>
 												<td>102</td>
 												<td>311-911-1205</td>
-												<td>2015/07/29</td>
+												<td align="center">EPK</td>
 												<td>2016/12/15</td>
 												<td>$4.56</td>
 												<td>65221</td>
@@ -136,34 +128,16 @@
 											<tr>
 												<td>196</td>
 												<td>107-584-3630</td>
-												<td>2016/03/24</td>
+												<td align="center">EPK</td>
 												<td>2015/12/22</td>
 												<td>$34.84</td>
 												<td>35418</td>
 												<td><span class="center-block padding-5 label label-success">Complete</span></td>
 											</tr>
 											<tr>
-												<td>197</td>
-												<td>579-525-3847</td>
-												<td>2015/07/08</td>
-												<td>2015/08/29</td>
-												<td>$77.18</td>
-												<td>9622</td>
-												<td><span class="center-block padding-5 label label-warning">Pending</span></td>
-											</tr>
-											<tr>
-												<td>198</td>
-												<td>695-251-5944</td>
-												<td>2015/06/09</td>
-												<td>2015/03/05</td>
-												<td>$80.51</td>
-												<td>26198</td>
-												<td><span class="center-block padding-5 label label-warning">Pending</span></td>
-											</tr>
-											<tr>
 												<td>199</td>
 												<td>463-986-3891</td>
-												<td>2015/01/05</td>
+												<td align="center">EPK</td>
 												<td>2015/07/16</td>
 												<td>$39.52</td>
 												<td>KP08 4DX</td>
@@ -270,11 +244,11 @@
 											<div class="well well-sm well-primary">
 												<form class="form form-inline " role="form">
 													<div class="form-group">
-														<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" data-dateformat="yy/mm/dd" align="center">
+														<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" name= "ticketLastUpdate" data-dateformat="yy/mm/dd" align="center">
 														<!--<input type="text" class="form-control" value="" placeholder="Fecha" required />-->
 													</div>
 													<div class="form-group">
-														<select class="form-control">
+														<select class="form-control" id= "edit-ticket-status" name="ticketStatus">
 															<optgroup label="Estado">
 																<option disabled selected value>Seleccionar</option>
 																<option>Pendiente</option>
@@ -283,7 +257,7 @@
 															</optgroup>
 														</select>
 													</div>
-													<div class="form-group">
+<!--													<div class="form-group">
 														<select class="form-control">
 															<optgroup label="Asignado a:">
 																<option disabled selected value>Seleccionar</option>
@@ -293,7 +267,7 @@
 																<option>Tito</option>
 															</optgroup>
 														</select>
-													</div>											
+													</div>	-->										
 													<div class="form-group">
 														<button type="button" class="btn btn-default btn-sm">
 															<span class="glyphicon glyphicon-eye-open"></span> Historial
