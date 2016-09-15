@@ -7,5 +7,7 @@ $(document).ready(function(){
             $('#edit-ticket-store').val($(this).data('store'));
             $('#edit-ticket-city').val($(this).data('city'));
             $('#edit-ticket-status').val($(this).data('status'));
+            $('#openningDate').val($(this).data('openning'));
+            $('#lastUpdate').val($(this).data('lastupdate'));
    });
 });

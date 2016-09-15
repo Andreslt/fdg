@@ -102,7 +102,7 @@
 													<td align="center">{{store_id.city}}</td>
 													<td align="center">{{store_id.storeName}}</td>
 													<td align="center">{{formatDate openningDate "YYYY/MM/DD"}}</td>
-													<td><button class="btn btn-info center-block padding-5 label view-ticket" data-toggle="modal" 
+													<td><button class="btn {{statusTag status}} center-block padding-5 label view-ticket" data-toggle="modal" 
 														data-target="#TicketInfoModal"
 														data-id ="{{id}}"
 														data-number = "{{ticketNumber}}"
@@ -111,6 +111,8 @@
 														data-store = "{{store_id.storeName}}"
 														data-city = "{{store_id.city}}"
 														data-status = "{{status}}"
+														data-openning = "{{formatDate openningDate "DD/MM/YYYY hh:mm"}}"
+														data-lastupdate = "{{formatDate lastUpdate "DD/MM/YYYY hh:mm"}}"
 													>
 														{{status}}
 													</button></td>
@@ -209,6 +211,21 @@
 											</div>
 										</div>	
 									</div>
+									<!--Fecha Inicio ---<o>--- Last Update-->
+									<div class="row">
+										<div class = "col-md-6">
+											<div class="form-group">
+												<label for="openningDate"><small><b>Fecha Creación:</b></small></label>
+												<input type="text" class="form-control" placeholder="Fecha de Creación" required name="openningDate" id="openningDate" disabled/>
+											</div>										
+										</div>										
+										<div class = "col-md-6">
+											<div class="form-group">
+												<label for="lastUpdate"><small><b>Ultima Modificación:</b></small></label>
+												<input type="text" class="form-control" placeholder="Ultima Modificación" required name="lastUpdate" id="lastUpdate" disabled/>
+											</div>
+										</div>
+									</div>
 									<!--Tienda ---<o>--- Ciudad-->
 									<div class="row">
 										<div class = "col-md-6">
@@ -244,7 +261,7 @@
 											<div class="well well-sm well-primary">
 												<form class="form form-inline " role="form">
 													<div class="form-group">
-														<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" name= "ticketLastUpdate" data-dateformat="yy/mm/dd" align="center">
+														<input id="dateselect_filter2" type="text" placeholder="Fecha" class="form-control datepicker" name= "ticketLastUpdate" data-dateformat="dd/mm/yy" align="center">
 														<!--<input type="text" class="form-control" value="" placeholder="Fecha" required />-->
 													</div>
 													<div class="form-group">

@@ -35,6 +35,15 @@ var hbsEngine = exphbs.create({
     helpers: {
         formatDate: function (date, format) {
             return moment(date).format(format);
+        },
+        statusTag: (status) =>{
+          if (status==="Pendiente"){
+            return "btn-info"
+          }else if (status ==="Asignado"){
+            return "btn-warning"
+          }else{
+            return "btn-success"
+          }
         }
     }
 });
