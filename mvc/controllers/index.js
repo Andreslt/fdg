@@ -25,16 +25,6 @@ router.get('/admin/dashboard', ensureAuthenticated, function(req, res){
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		res.render('admin_dashboard', {userTypeAdmin: true, customers});
 	});
-	
-	//  stores.find({}, function(err, store){
-	// 		if (req.user.userType === "systemAdmin"){
-	// 			tickets.find({}).populate('store_id').populate('storeEmployee_id').exec(function(err, tkts){
-	// 				console.log(store);
-	// 				res.render('admin_tickets', {userTypeAdmin: true, tkts, store});
-	// 			});
-	// 		}else
-	// 			res.render('custom_dashboard', {userTypeAdmin: false});
-	// 		});
 });
 
 router.get('/admin/customers/:customer/tickets', (req, res) => {
@@ -71,6 +61,11 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 	// 	store.populate(companies, {path :""})			
 	// });			
 });
+});
+
+// Admin Users
+router.get('/admin/usersAuth', (req, res)=>{
+	res.render('admin_users');
 });
 /*// Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
