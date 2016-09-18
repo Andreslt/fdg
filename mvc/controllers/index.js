@@ -65,7 +65,12 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 
 // Admin Users
 router.get('/admin/usersAuth', (req, res)=>{
-	res.render('admin_users');
+	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
+		User.find({userApproval: false}, (err, usrs) =>{
+			console.log(usrs)
+			res.render('admin_users', {customers, usrs});
+		});		
+	});
 });
 /*// Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
