@@ -415,7 +415,7 @@
 					sortorder : "asc",
 					gridComplete : function() {
 						var ids = jQuery("#jqgrid").jqGrid('getDataIDs');
-						for (var i = 0; i < ids.length; i++) {
+						for (var i = 0; i < ids.length; i++) {							
 							var cl = ids[i];
 							be = "<button class='btn btn-xs btn-default' data-original-title='Edit Row' onclick=\"jQuery('#jqgrid').editRow('" + cl + "');\"><i class='fa fa-pencil'></i></button>";
 							se = "<button class='btn btn-xs btn-default' data-original-title='Save Row' onclick=\"jQuery('#jqgrid').saveRow('" + cl + "');\"><i class='fa fa-save'></i></button>";
@@ -427,7 +427,8 @@
 							});
 						}
 					},
-					editurl : "dummy.html",
+					e = this,
+					editurl : "approveUser/EPK_Empleado",
 					caption : "Autorizar Usuarios",
 					multiselect : true,
 					autowidth : true,

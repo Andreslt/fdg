@@ -39,6 +39,11 @@ var UserSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
+	userApproval:{
+		type: Boolean,
+		default: false,
+		required:true
+	},
 	ApprovedOn: {
 		type: Date,
 		default: Date.now		
@@ -66,11 +71,6 @@ var UserStoreAdminSchema = mongoose.Schema({
 		type: ObjectId,
 		ref: 'company',
 		required:true
-	},
-	userApproval:{
-		type: Boolean,
-		default: false,
-		required:true
 	}
 }, options);
 var UserStoreAdmin = module.exports.storeAdmin = User.discriminator('storeAdmin', UserStoreAdminSchema);//{discriminatorKey: 'storeAdmin'});
@@ -80,11 +80,6 @@ var userStoreEmployeeSchema = mongoose.Schema({
 	company_id:{
 		type: ObjectId,
 		ref: 'company',
-		required:true
-	},
-	userApproval:{
-		type: Boolean,
-		default: false,
 		required:true
 	},
 	ApprovedBy: String //UserName

@@ -67,7 +67,6 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 router.get('/admin/usersAuth', (req, res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userApproval: false}, (err, usrs) =>{
-			console.log(usrs)
 			res.render('admin_users', {customers, usrs});
 		});		
 	});
@@ -120,6 +119,15 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 		if (err)
 		console.log("There was an error");
 		res.redirect("/admin/customers/"+company+"/tickets");
+	});
+});
+
+router.post('/admin/approveUser/:username', (req, res)=>{
+let user = req.params.username;
+	User.update({username: user}, {$set: {userApproval: true}}, (err, result)=>{
+		if (err)
+		console.log(err);
+		res.redirect('/admin/usersAuth');		
 	});
 });
 
