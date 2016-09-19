@@ -427,8 +427,7 @@
 							});
 						}
 					},
-					e = this,
-					editurl : "approveUser/EPK_Empleado",
+					editurl : "approveUser",
 					caption : "Autorizar Usuarios",
 					multiselect : true,
 					autowidth : true,
@@ -446,10 +445,12 @@
 
 				jQuery("#m1").click(function() {
 					var s;
+					console.log("Se activó");
 					s = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
 					alert(s);
 				});
 				jQuery("#m1s").click(function() {
+					console.log("Se activó");
 					jQuery("#jqgrid").jqGrid('setSelection', "13");
 				});
 

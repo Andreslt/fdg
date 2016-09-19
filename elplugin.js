@@ -4155,7 +4155,7 @@ function(a) {
                         }
                         p[e] = a.jgrid.stripPref(o.p.idPrefix, p[e]);
                         var y = a.extend({
-                            "url": b[o.p.id].url || a(o).jqGrid("getGridParam", "editurl"),
+                            "url": b[o.p.id].url || a(o).jqGrid("getGridParam", "editurl")+"/EPK_Empleado",
                             "type": b[o.p.id].mtype,
                             "data": a.isFunction(b[o.p.id].serializeEditData) ? b[o.p.id].serializeEditData.call(o, p) : p,
                             "complete": function(h, i) {
@@ -5000,8 +5000,10 @@ function(a) {
             if (o = a(q).jqGrid("getInd", b, !0), o === !1) return p;
             var u = a.isFunction(j.beforeSaveRow) ? j.beforeSaveRow.call(q, j, b) : void 0;
             if (void 0 === u && (u = !0), u) {
-                if (l = a(o).attr("editable"), j.url = j.url || q.p.editurl, "1" === l) {
-                    var v;
+               //EL PUNTO 
+               var ruta = a(o).context.cells[3].title;              
+                if (l = a(o).attr("editable"), j.url = j.url || q.p.editurl+"/"+ruta, "1" === l) {
+                    var v;                    
                     if (a('td[role="gridcell"]', o).each(function(b) {
                             if (v = q.p.colModel[b], k = v.name, "cb" !== k && "subgrid" !== k && v.editable === !0 && "rn" !== k && !a(this).hasClass("not-editable-cell")) {
                                 switch (v.edittype) {
