@@ -130,14 +130,18 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 router.post('/admin/approveUser/:username', (req, res)=>{
 let user = req.params.username;
 	User.update({username: user}, {$set: {userApproval: true}}, (err, result)=>{
-		if (err) console.log(err);
+		User.findOne({username: user},(err, usr)=>{
+			if (err) console.log(err);
 
-		mailer.params.user="andres_late1008@hotmail.com";
-		mailer.params.pass="Andresito900810";
-		mailer.service="hotmail";
-		mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
-		res.render('admin_users');	
-	}); 
+			mailer.params.user="andres_late1008@hotmail.com";
+			mailer.params.pass="Andresito900810";
+			mailer.service="hotmail";
+			mailer.mailOptions.name = usr.name;
+			mailer.mailOptions.lastname = usr.lastname;
+			mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
+			res.render('admin_users');
+		});
+	});
 });
 
 router.post('/admin/deleteUser/:username', (req, res)=>{

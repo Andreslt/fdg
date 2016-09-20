@@ -1,5 +1,6 @@
 'use strict';
 const nodemailer = require('nodemailer');
+const EmailTemplate = require('email-templates').EmailTemplate
 
 var mailer = {
 //var service; // gmail-hotmail-yahoo
@@ -10,13 +11,28 @@ params: {
 	pass : ""
 },
 service: "",
+mailParams:{},
 mailOptions: {
-	to: 'andreslastrat@gmail.com', // sender address
-	from: 'andres_late1008@hotmail.com', // list of receivers
-	subject: 'TEST EMAIL', // Subject line
-	text: "Esta es una gran prueba" //, // plaintext body
+    from: 'andres_late1008@hotmail.com',
+    to: 'andreslastrat@gmail.com', // sender address
+    name: "",
+    lastname: "",
+	subject: 'Bienvenido a FDG', // Subject line
+	template: "register" //, // plaintext body
 },
  sendEmail : function (params,service,mailOptions){
+    const hbs = require('nodemailer-express-handlebars'),
+    layoutsDir = process.cwd()+'/mvc/views/emails/',
+    options = {
+            viewEngine: {
+                extname: '.handlebars',
+                layoutsDir: layoutsDir,
+                defaultLayout : 'register'
+            },
+            viewPath: layoutsDir,
+            extName: '.handlebars'
+        };
+        //var sgTransport = require('nodemailer-sendgrid-transport');
         var transporter,
         transporter = nodemailer.createTransport({
         service: service,
@@ -26,7 +42,29 @@ mailOptions: {
         },
             tls: { rejectUnauthorized: false }
         });
-        transporter.sendMail(mailOptions, function(error, info){
+
+        transporter.use('compile', hbs(options));
+        transporter.sendMail({
+            from: mailOptions.from,
+            to: mailOptions.to,
+            subject: mailOptions.subject,
+            template: mailOptions.template,
+            context: {
+                name: mailOptions.name,
+                lastname: mailOptions.lastname
+            }            
+        }, (err, info)=>{
+            if (err) console.log(err);
+            console.log('Message sent: ' + info);
+            transporter.close();
+        });
+/*            send({
+            }, (err, res) =>{
+                if (err) console.log(err)
+
+                console.log('mail sent to ',res);
+            });*/
+/*        transporter.sendMail(mailOptions, function(error, info){
             if(error){
                 console.log(error);
                 // res.json({yo: 'error'});
@@ -34,7 +72,7 @@ mailOptions: {
                 console.log('Message sent: ' + info.response);
                 // res.json({yo: info.response});
             };
-        });
+        });*/
     }
 }
 module.exports = mailer;
