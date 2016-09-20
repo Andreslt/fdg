@@ -1612,6 +1612,7 @@ function tableToGrid(a, b) {
         "delRowData": function(a) {
             var b, c, d = !1;
             return this.each(function() {
+                console.log("Entró");
                 var e = this;
                 if (b = $(e).jqGrid("getGridRowById", a), !b) return !1;
                 if ($(b).remove(), e.p.records--, e.p.reccount--, e.updatepager(!0, !1), d = !0, e.p.multiselect && (c = $.inArray(a, e.p.selarrrow), -1 !== c && e.p.selarrrow.splice(c, 1)), e.p.multiselect && e.p.selarrrow.length > 0 ? e.p.selrow = e.p.selarrrow[e.p.selarrrow.length - 1] : e.p.selrow = null, "local" === e.p.datatype) {
@@ -4155,7 +4156,7 @@ function(a) {
                         }
                         p[e] = a.jgrid.stripPref(o.p.idPrefix, p[e]);
                         var y = a.extend({
-                            "url": b[o.p.id].url || a(o).jqGrid("getGridParam", "editurl")+"/EPK_Empleado",
+                            "url": b[o.p.id].url || a(o).jqGrid("getGridParam", "editurl"),
                             "type": b[o.p.id].mtype,
                             "data": a.isFunction(b[o.p.id].serializeEditData) ? b[o.p.id].serializeEditData.call(o, p) : p,
                             "complete": function(h, i) {
@@ -4650,8 +4651,11 @@ function(a) {
                                     if (b[e.p.id].processing = !0, h = e.p.prmNames, f = a.extend({}, b[e.p.id].delData, n), i = h.oper, f[i] = h.deloper, g = h.id, k = String(k).split(","), !k.length) return !1;
                                     for (c in k) k.hasOwnProperty(c) && (k[c] = a.jgrid.stripPref(e.p.idPrefix, k[c]));
                                     f[g] = k.join(), a(this).addClass("ui-state-active");
+                                    ruta = a(e).context.outerText.split('\t');
+                                    var ruta = a(e).jqGrid("getGridRowById", e.p.selrow);
+                                    //EL PUNTO
                                     var l = a.extend({
-                                        "url": b[e.p.id].url || a(e).jqGrid("getGridParam", "editurl"),
+                                        "url": b[e.p.id].url || a(e).jqGrid("getGridParam", "deleteurl")+ruta,
                                         "type": b[e.p.id].mtype,
                                         "data": a.isFunction(b[e.p.id].serializeDelData) ? b[e.p.id].serializeDelData.call(e, f) : f,
                                         "complete": function(c, g) {

@@ -6,6 +6,7 @@ const User = require("../models/user").user;
 const tickets = require("../models/ticket");
 const stores = require('../models/store');
 const company = require('../models/company');
+const mailer = require('../../config/mailer');
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
@@ -71,6 +72,10 @@ router.get('/admin/usersAuth', (req, res)=>{
 		});		
 	});
 });
+
+router.get('/emails/register', (req,res)=>{
+	res.render('emails/register')
+});
 /*// Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
 	if (!req.user)
@@ -125,10 +130,20 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 router.post('/admin/approveUser/:username', (req, res)=>{
 let user = req.params.username;
 	User.update({username: user}, {$set: {userApproval: true}}, (err, result)=>{
-		if (err)
-		console.log(err);
-		res.redirect('/admin/usersAuth');		
-	});
+		if (err) console.log(err);
+
+		mailer.params.user="andres_late1008@hotmail.com";
+		mailer.params.pass="Andresito900810";
+		mailer.service="hotmail";
+		mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
+		res.render('admin_users');	
+	}); 
+});
+
+router.post('/admin/deleteUser/:username', (req, res)=>{
+let user = req.params.username;
+	User.find({ username:user }).remove().exec();
+	res.render('admin_users');
 });
 
 function ensureAuthenticated(req, res, next){
