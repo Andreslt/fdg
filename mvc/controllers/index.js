@@ -65,17 +65,32 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 });
 
 // Admin Users
+router.get('/admin/usersInfo', (req,res)=>{
+	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
+		User.find({}, (err, users)=>{
+			if (err) throw err;
+			res.render('admin_users_list', {users, customers});
+		});	
+	});
+});
+
+router.get('/admin/edituser/:userId', (req,res)=>{
+	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
+		User.findOne({id: req.params.userId}, (err, usr)=>{
+			if (err) throw err;
+			res.render('admin_users_edit', {usr, customers});
+		});
+	});
+});
+
 router.get('/admin/usersAuth', (req, res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userApproval: false}, (err, usrs) =>{
-			res.render('admin_users', {customers, usrs});
+			res.render('admin_users_approval', {customers, usrs});
 		});		
 	});
 });
 
-router.get('/emails/register', (req,res)=>{
-	res.render('emails/register')
-});
 /*// Admin Manage Users
 router.get('/admin/manage_users', function(req, res){
 	if (!req.user)

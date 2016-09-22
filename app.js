@@ -44,7 +44,15 @@ var hbsEngine = exphbs.create({
           }else{
             return "btn-success"
           }
-        }
+        },
+        times: (until) =>{
+          var day=0;
+          for (var i=1;until;i++)
+          {
+            days=days+1;
+            return day;
+          }
+        } 
     }
 });
 
