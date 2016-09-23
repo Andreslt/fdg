@@ -45,13 +45,14 @@ var hbsEngine = exphbs.create({
             return "btn-success"
           }
         },
-        times: (until) =>{
-          var day=0;
-          for (var i=1;until;i++)
+        times: () =>{
+          var day=new Array();
+          for (var i=1;i<=30;i++)
           {
-            days=days+1;
-            return day;
+            day.push(i);                                              
           }
+          console.log(day);
+          return day; 
         } 
     }
 });
