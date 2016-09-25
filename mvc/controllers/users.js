@@ -13,16 +13,23 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 var company = require("../models/company");
 var store = require("../models/store");
-
+var userType = require("../models/userType");
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	   if (req.user.userType === "systemAdmin")
-	            res.redirect('/admin/dashboard');
-     else
-    	    if (usert.userApproval)
-    	        res.render('dashboard', {userTypeAdmin: false});
-    	    else
-    	        res.render('unauthorized', {layout: 'accessDenied'});
+	let user = req.user;
+/*	console.log("id: "+user._id);
+	console.log("userType: "+user.userType);
+	console.log("username: "+user.username);
+	console.log("email: "+user.email);
+	console.log("name: "+user.name);
+	console.log("lastname: "+user.lastname);
+	console.log("password: "+user.password);
+	console.log("pin: "+user.pin);
+	console.log(user);*/
+    if (user.userApproval)
+    	  res.render('dashboard', {userTypeAdmin: false});
+    else
+    	  res.render('unauthorized', {layout: 'accessDenied'});
 });
 
 // Register
@@ -129,7 +136,8 @@ router.post('/register', function(req, res){
 			email:email,
 			password: password,
       name: name,
-      lastname: lastname
+      lastname: lastname,
+			userType: userTypebody
     };
     
 	if(errors){
@@ -137,7 +145,7 @@ router.post('/register', function(req, res){
 			errors:errors
 		});
 	} else {
-    userType.findOne({userTitle: userTypebody}, function(err, usrt){
+/*   userType.findOne({userTitle: userTypebody}, function(err, usrt){
       
       //Assigning User Type
     	if (err) throw err;
@@ -146,7 +154,7 @@ router.post('/register', function(req, res){
     	 //Assigning User Params
     	if (userTypebody === "systemAdmin"){
           usrParams.pin = 9999;
-          
+
           newUser = new User.systemAdmin(usrParams);
           User.createUser(newUser, function(err, user){
         		if(err) throw err;
@@ -161,19 +169,39 @@ router.post('/register', function(req, res){
         		});
           });
         }else{
-          store.findOne({storeName: "Default store"}, function(err, st) {
+          company.findOne({companyName: "Default company"}, function(err, cny) {
             if (err) throw err;
-            usrParams.store_id = st._id;
+            usrParams.company_id = cny._id;
             newUser = new User.storeEmployee(usrParams);
+						console.log(newUser);
             User.createUser(newUser, function(err, user){
         			if(err) throw err;
         		});
           });
         }
     });
-		
+
 		req.flash('success_msg', 'Has sido registrado satisfactoriamente. Te llegará un correo de confirmación una vez el administrador autorice tu cuenta');
-		res.redirect('/');
+		res.redirect('/');*/
+
+		if(userTypebody === "systemAdmin"){
+				usrParams.pin = 9999;
+				newUser = new User.systemAdmin(usrParams);
+		}else{
+				usrParams.company_id = "57b5e6118fc445a60fbdd8d4";
+				if (userTypebody === "storeAdmin"){
+					newUser = new User.storeAdmin(usrParams);
+				}else {
+						newUser = new User.storeEmployee(usrParams);
+				}
+		}
+		console.log(newUser);
+		User.createUser(newUser, function(err, user){
+
+			if(err) throw err;
+						req.flash('success_msg', 'Has sido registrado satisfactoriamente. Te llegará un correo de confirmación una vez el administrador autorice tu cuenta');
+						res.redirect('/');
+			 });
 	}
 });
 

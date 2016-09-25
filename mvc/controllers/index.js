@@ -15,10 +15,11 @@ router.get('/', ensureAuthenticated, function(req, res){
 
 // General Dashboard
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	if (req.user.userType === "systemAdmin")
+	if (req.user.userType === 'systemAdmin'){
 	    res.redirect('/admin/dashboard');
-	else
+	}else{
 	    res.redirect('/users/dashboard');
+	}
 });
 
 // Admin Dashboard
@@ -65,9 +66,9 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 });
 
 // Admin Users
-router.get('/admin/usersInfo', (req,res)=>{
+router.get('/admin/listUsers', (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		User.find({}, (err, users)=>{
+		User.find({userType:{$ne: "systemAdmin"}}).populate('company_id').exec((err, users)=>{
 			if (err) throw err;
 			res.render('admin_users_list', {users, customers});
 		});	
@@ -76,8 +77,9 @@ router.get('/admin/usersInfo', (req,res)=>{
 
 router.get('/admin/edituser/:userId', (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		User.findOne({id: req.params.userId}, (err, usr)=>{
+		User.findOne({_id: req.params.userId}, (err, usr)=>{
 			if (err) throw err;
+			console.log(usr);
 			res.render('admin_users_edit', {usr, customers});
 		});
 	});
@@ -144,7 +146,7 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 
 router.post('/admin/approveUser/:username', (req, res)=>{
 let user = req.params.username;
-	User.update({username: user}, {$set: {userApproval: true}}, (err, result)=>{
+	User.update({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, result)=>{
 		User.findOne({username: user},(err, usr)=>{
 			if (err) console.log(err);
 
@@ -154,7 +156,8 @@ let user = req.params.username;
 			mailer.mailOptions.name = usr.name;
 			mailer.mailOptions.lastname = usr.lastname;
 			mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
-			res.render('admin_users');
+			console.log(usr);
+			res.render('admin_users_approval');
 		});
 	});
 });
@@ -162,7 +165,7 @@ let user = req.params.username;
 router.post('/admin/deleteUser/:username', (req, res)=>{
 let user = req.params.username;
 	User.find({ username:user }).remove().exec();
-	res.render('admin_users');
+	res.render('admin_users_approval');
 });
 
 function ensureAuthenticated(req, res, next){

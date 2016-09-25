@@ -16,6 +16,7 @@ const users = require('./mvc/controllers/users');
 
 // Models
 const User = require('./mvc/models/user');
+require('./mvc/models/company');
 
 // Database
 const db = require('./db/setdb');

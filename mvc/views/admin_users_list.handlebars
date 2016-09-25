@@ -54,7 +54,7 @@
 										<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
 											<header>
 												<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-												<h2>Column Filters </h2>
+												<h2>Todos los usuarios </h2>
 
 											</header>
 
@@ -99,39 +99,29 @@
 																</th>													
 															</tr>
 															<tr>
-																<th data-class="expand">Ticket No.</th>
-																<th data-hide="phone,tablet">Titulo</th>
-																<th >Cliente</th>
-																<th data-hide="phone,tablet">Ciudad</th>
-																<th data-hide="phone,tablet">Tienda</th>								                    
-																<th >Last Update</th>
-																<th >Estado</th>
+																<th data-class="expand">Empresa</th>
+																<th >Username</th>
+																<th data-hide="phone,tablet">Nombre</th>
+																<th data-hide="phone,tablet">Apellido</th>
+																<th data-hide="phone,tablet">Aprobado?</th>								                    
+																<th data-hide="phone,tablet">Fecha Creación</th>
+																<th >Editar</th>
 															</tr>
 														</thead>
 
 														<tbody>
-															{{#each tkts}}
+															{{#each users}}
 															<tr>
-																<td align="center">{{ticketNumber}}</td>
-																<td align="center">{{title}}</td>
-																<td align="center">{{../customer}}</td>
-																<td align="center">{{store_id.city}}</td>
-																<td align="center">{{store_id.storeName}}</td>
-																<td align="center">{{formatDate lastUpdate "YYYY/MM/DD"}}</td>
-																<td><button class="btn {{statusTag status}} center-block padding-5 label view-ticket" data-toggle="modal" 
-																	data-target="#TicketInfoModal"
-																	data-id ="{{id}}"
-																	data-number = "{{ticketNumber}}"
-																	data-title = "{{title}}"
-																	data-description = "{{description}}"
-																	data-store = "{{store_id.storeName}}"
-																	data-city = "{{store_id.city}}"
-																	data-status = "{{status}}"
-																	data-openning = "{{formatDate openningDate "DD/MM/YYYY hh:mm"}}"
-																	data-lastupdate = "{{formatDate lastUpdate "DD/MM/YYYY hh:mm"}}"
+																<td align="center">{{company_id.companyName}}</td>
+																<td align="center">{{userType}}</td>
+																<td align="center">{{name}}</td>
+																<td align="center">{{lastname}}</td>
+																<td align="center">{{userApproval}}</td>
+																<td align="center">{{formatDate createdOn "YYYY/MM/DD"}}</td>
+																<td><a style="text-decoration: none" href="/admin/edituser/{{id}}"><button class="btn btn-info center-block padding-5 label view-ticket"
 																>
-																	{{status}}
-																</button></td>
+																	Seleccionar
+																</button></a></td>
 															</tr>
 															{{/each}}
 														</tbody>
@@ -173,7 +163,7 @@
 			<!-- END MAIN CONTENT -->
 							<!-- Ticket Info Modal -->
 							<form method ="post" action="/admin/customers/ticket/edit">
-							<div class="modal fade" id="TicketInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal fade" id="EditUserInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										

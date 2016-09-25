@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 // Discriminator Key
-var options = {discriminatorKey: 'userType'};
+var options = {discriminatorKey: 'userRole'};
 
 // User Schema
 var UserSchema = new mongoose.Schema({
@@ -31,10 +31,7 @@ var UserSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	userType:{
-		type: String,
-		required: true
-	},
+	userType: String,
 	createdOn: {
 		type: Date,
 		default: Date.now
@@ -44,10 +41,7 @@ var UserSchema = new mongoose.Schema({
 		default: false,
 		required:true
 	},
-	ApprovedOn: {
-		type: Date,
-		default: Date.now		
-	},
+	approvedOn: Date,
 	resetPasswordToken: String,
 	resetPasswordExpires: Date
 }, options);
@@ -71,18 +65,15 @@ var UserStoreAdminSchema = mongoose.Schema({
 		type: ObjectId,
 		ref: 'company',
 		required:true
-	}
+	},
+	adminComments: String,	
 }, options);
 var UserStoreAdmin = module.exports.storeAdmin = User.discriminator('storeAdmin', UserStoreAdminSchema);//{discriminatorKey: 'storeAdmin'});
 
 //Employee
 var userStoreEmployeeSchema = mongoose.Schema({
-	company_id:{
-		type: ObjectId,
-		ref: 'company',
-		required:true
-	},
-	ApprovedBy: String //UserName
+	ApprovedBy: String, //UserName
+	adminComments: String,
 }, options);
 var userStoreEmployee = module.exports.storeEmployee = User.discriminator('storeEmployee', userStoreEmployeeSchema); //{discriminatorKey: 'storeEmployee'});
 
