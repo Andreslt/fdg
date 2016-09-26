@@ -62,7 +62,13 @@
                 <label class="input"> <i class="icon-append fa fa-user"></i>
                   <input type="text" name="lastname" placeholder="Apellido">
                   <b class="tooltip tooltip-bottom-right">Cual es tu apellido?</b> </label>
-              </section>                            
+              </section>
+              <!--DocumentoID-->
+              <section>
+                <label class="input"> <i class="icon-append fa fa-indent"></i>
+                  <input type="number" name="localId" placeholder="Documento de Identidad">
+                  <b class="tooltip tooltip-bottom-right">Cual es tu identificación?</b> </label>
+              </section>                                             
               <!--Password-->
               <section>
                 <label class="input"> <i class="icon-append fa fa-lock"></i>
@@ -83,10 +89,29 @@
                     <label>Tipo de Usuario</label>
                       <select name="userType" style="width:100%" class="select2">
                         <optgroup label="Seleccionar tipo de usuario">
-                            <option value="systemAdmin">Administrador del sistema</option>
+                           <!-- <option value="systemAdmin">Administrador del sistema</option>-->
                             <option value="storeAdmin">Administrador de Tienda</option>
                             <option value="storeEmployee">Empleado de Tienda</option>
                         </optgroup>
+                        <div class="note">
+                            <strong>Usage:</strong> &lt;select style=&quot;width:100%&quot; class=&quot;select2&quot; &quot;&gt;...&lt;/select&gt;
+                        </div></select> <i></i>
+                      
+                  </section>
+                </div>
+
+                <div class="form-group">
+                  <section>
+                    <label>Empresa</label>
+                      <select name="companyId" style="width:100%" class="select2">
+                        {{#each companies}}
+                            <option value="{{id}}">{{companyName}}</option>
+                        {{/each}}
+ <!--                       <optgroup label="Seleccionar tipo de usuario">
+                            <option value="systemAdmin">Administrador del sistema</option>
+                            <option value="storeAdmin">Administrador de Tienda</option>
+                            <option value="storeEmployee">Empleado de Tienda</option>
+                        </optgroup>-->
                         <div class="note">
                             <strong>Usage:</strong> &lt;select style=&quot;width:100%&quot; class=&quot;select2&quot; &quot;&gt;...&lt;/select&gt;
                         </div></select> <i></i>

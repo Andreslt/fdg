@@ -68,7 +68,7 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 // Admin Users
 router.get('/admin/listUsers', (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		User.find({userType:{$ne: "systemAdmin"}}).populate('company_id').exec((err, users)=>{
+		User.find({userType:{$ne: "systemAdmin"}},(err, users)=>{
 			if (err) throw err;
 			res.render('admin_users_list', {users, customers});
 		});	
@@ -76,8 +76,8 @@ router.get('/admin/listUsers', (req,res)=>{
 });
 
 router.get('/admin/edituser/:userId', (req,res)=>{
-	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		User.findOne({_id: req.params.userId}, (err, usr)=>{
+	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
+		User.findOne({_id: req.params.userId},(err, usr)=>{
 			if (err) throw err;
 			console.log(usr);
 			res.render('admin_users_edit', {usr, customers});

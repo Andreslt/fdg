@@ -128,10 +128,10 @@
 												<div class="form-group">
 													<label class="col-md-2 control-label">Nombre Completo</label>
 													<div class="col-md-5">
-														<input class="form-control" placeholder="Nombre(s)" id="name" type="text">
+														<input class="form-control" placeholder="Nombre(s)" id="name" type="text" value="{{user.name}}">
 													</div>
 													<div class="col-md-5">
-														<input class="form-control" placeholder="Apellido(s)" id="lastname" type="text">
+														<input class="form-control" placeholder="Apellido(s)" id="lastname" type="text" value="{{user.lastname}}">
 													</div>													
 												</div>
 
@@ -142,7 +142,7 @@
 															<div class="col-sm-12">
 																<div class="input-group">
 																	<span class="input-group-addon">@</span>
-																	<input class="form-control" id="prepend" placeholder="Username" type="text">
+																	<input class="form-control" id="prepend" placeholder="Username" type="text" value="{{user.username}}">
 																</div>
 															</div>
 														</div>														
@@ -152,7 +152,7 @@
 															<div class="col-sm-12">
 																<div class="input-group">
 																	<span class="input-group-addon fa-chevron-right"></span>
-																	<input class="form-control" id="idDocument" placeholder="Documento de Identidad (sin comas ni puntos)" type="text">
+																	<input class="form-control" id="idDocument" placeholder="Documento de Identidad (sin comas ni puntos)" type="text" value="{{user.localId}}">
 																</div>
 															</div>
 														</div>														
@@ -168,22 +168,15 @@
 																	<div class="col-sm-12">
 																		<div class="input-group">
 																			<span class="input-group-addon"> ✉</span>
-																			<input class="form-control" id="email" placeholder="Correo Electrónico" type="text">
+																			<input class="form-control" id="email" placeholder="Correo Electrónico" type="text" value="{{user.email}}">
 																		</div>
 																	</div>
 																</div>														
 															</div>
-															
-															<div class="col-md-2">
-																<div class="row">
-																	<div class="col-md-10">
-																		<input class="form-control" placeholder="Password field" type="password" value="mypassword">
-																	</div>																	
-																</div>														
-															</div>																														
+																												
 															<div class="col-sm-5">
 																<div class="input-group">
-																	<input disabled class="form-control" placeholder="Re-establecer Contraseña" type="text">
+																	<input class="form-control" placeholder="Reestablecer Contraseña" type="password" value="mypassword">
 																	<span class="input-group-addon">
 																		<span class="onoffswitch">
 																			<input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="st3">

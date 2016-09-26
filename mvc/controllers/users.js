@@ -17,15 +17,6 @@ var userType = require("../models/userType");
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, function(req, res){
 	let user = req.user;
-/*	console.log("id: "+user._id);
-	console.log("userType: "+user.userType);
-	console.log("username: "+user.username);
-	console.log("email: "+user.email);
-	console.log("name: "+user.name);
-	console.log("lastname: "+user.lastname);
-	console.log("password: "+user.password);
-	console.log("pin: "+user.pin);
-	console.log(user);*/
     if (user.userApproval)
     	  res.render('dashboard', {userTypeAdmin: false});
     else
@@ -34,7 +25,9 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 
 // Register
 router.get('/register', function(req, res){
-	res.render('register', {layout: 'auth', login: true});
+	company.find({companyName: {$ne: 'Default company'}},(err, companies)=>{
+		res.render('register', {layout: 'auth', login: true, companies});
+	});
 });
 
 // Login
@@ -119,7 +112,9 @@ router.post('/register', function(req, res){
 	var name = req.body.name;
   var lastname = req.body.lastname;
   var userTypebody = req.body.userType;
-  
+	var localId = req.body.localId;
+  var companyId = req.body.companyId;
+
 	// Validation
 	req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('lastname', 'Lastname is required').notEmpty();
@@ -128,6 +123,8 @@ router.post('/register', function(req, res){
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	req.checkBody('localId', 'Document is required').notEmpty();
+	req.checkBody('companyId', 'Company is required').notEmpty();
 
 	var errors = req.validationErrors();
 	var newUser;
@@ -137,7 +134,9 @@ router.post('/register', function(req, res){
 			password: password,
       name: name,
       lastname: lastname,
-			userType: userTypebody
+			userType: userTypebody,
+			localId: localId,
+			companyId: companyId
     };
     
 	if(errors){

@@ -42,6 +42,17 @@ var UserSchema = new mongoose.Schema({
 		required:true
 	},
 	approvedOn: Date,
+	localId: {
+		type: Number,
+		unique: true,
+		required: true
+	},
+	company_id:{
+		type: ObjectId,
+		ref: 'company',
+		default: "57b5e6118fc445a60fbdd8d4",
+		required:true
+	},	
 	resetPasswordToken: String,
 	resetPasswordExpires: Date
 }, options);
@@ -61,11 +72,6 @@ var UserSystemAdmin = module.exports.systemAdmin = User.discriminator('systemAdm
 
 //Store Administrator
 var UserStoreAdminSchema = mongoose.Schema({
-	company_id:{
-		type: ObjectId,
-		ref: 'company',
-		required:true
-	},
 	adminComments: String,	
 }, options);
 var UserStoreAdmin = module.exports.storeAdmin = User.discriminator('storeAdmin', UserStoreAdminSchema);//{discriminatorKey: 'storeAdmin'});
