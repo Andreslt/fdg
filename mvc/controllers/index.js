@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require("../models/user").user;
 const tickets = require("../models/ticket");
 const stores = require('../models/store');
+const cities = require('../models/city');
 const company = require('../models/company');
 const mailer = require('../../config/mailer');
 
@@ -77,10 +78,13 @@ router.get('/admin/listUsers', (req,res)=>{
 
 router.get('/admin/edituser/:userId', (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
-		User.findOne({_id: req.params.userId},(err, usr)=>{
-			if (err) throw err;
-			console.log(usr);
-			res.render('admin_users_edit', {usr, customers});
+		cities.find({},(err, cits) => {
+			stores.find({storeName: {$ne: "Default store"}},(err, strs) => {
+				User.findOne({_id: req.params.userId}).populate("company_id"). exec((err, userEdit)=>{
+					if (err) throw err;
+					res.render('admin_users_edit', {userEdit, customers, cits, strs});
+				});
+			});
 		});
 	});
 });

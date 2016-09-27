@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
+/*var Company = require('./company');*/
 
 // Discriminator Key
 var options = {discriminatorKey: 'userRole'};
@@ -49,7 +50,7 @@ var UserSchema = new mongoose.Schema({
 	},
 	company_id:{
 		type: ObjectId,
-		ref: 'company',
+		ref: 'Company',
 		default: "57b5e6118fc445a60fbdd8d4",
 		required:true
 	},	
