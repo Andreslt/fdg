@@ -10,4 +10,22 @@ $(document).ready(function(){
             $('#openningDate').val($(this).data('openning'));
             $('#lastUpdate').val($(this).data('lastupdate'));
    });
+
+/*   $('selectCompany').on('click',function(){
+       console.log("Entró");
+       return $(this).text() == "EPK";       
+   }).prop('selected', true);*/
+
+    $("select#selectCompany option").each(function() { 
+        this.selected = (this.text == userCompany); 
+    });
+
+    $("select#selectStore option").each(function() { 
+        this.selected = (this.text == userStore); 
+    });
+
+    $("select#selectCity option").each(function() { 
+        this.selected = (this.text == userCity); 
+    });
+
 });

@@ -81,7 +81,7 @@ router.get('/admin/edituser/:userId', (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
 		cities.find({},(err, cits) => {
 			stores.find({storeName: {$ne: "Default store"}},(err, strs) => {
-				User.findOne({_id: req.params.userId}).populate("company_id"). exec((err, userEdit)=>{
+				User.findOne({_id: req.params.userId}).populate("company_id").populate("store_id").populate("city_id").exec((err, userEdit)=>{
 					if (err) throw err;
 					var userDates ={
 						//Creation Date
@@ -100,6 +100,7 @@ router.get('/admin/edituser/:userId', (req,res)=>{
 						userDates.aprobMonth = userEdit.approvedOn.getMonth()+1
 						userDates.aprobDay = userEdit.approvedOn.getDate()
 					}
+					console.log(userEdit);
 					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates});
 				});
 			});

@@ -50,8 +50,15 @@ var UserSchema = new mongoose.Schema({
 	},
 	company_id:{
 		type: ObjectId,
-		ref: 'Company',
-		required:true
+		ref: 'Company'
+	},
+	store_id:{
+		type: ObjectId,
+		ref: 'Store'
+	},
+	city_id:{
+		type: ObjectId,
+		ref: 'City'
 	},	
 	resetPasswordToken: String,
 	resetPasswordExpires: Date

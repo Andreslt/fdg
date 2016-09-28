@@ -200,27 +200,27 @@
 													<div class="form-group">
 														<label class="col-md-2 control-label">Compañía<br>Ciudad<br>Tienda </label>
 														<div class="col-md-3">
-                 <select name="selectCompany" style="width:100%" class="select2" value="Hola">
-					                {{#each customers}}
-                          <option selected= "" value="{{id}}">{{companyName}}</option>
-                     {{/each}}                                          
-                 </select>
+															<select id="selectCompany" name="selectCompany" style="width:100%" class="select2">
+																{{#each customers}}
+																	<option value="{{id}}">{{companyName}}</option>
+																{{/each}}
+															</select>
 															<p class="note"><strong>Compañía:</strong> Escoger compañía.</p>
 														</div>
 														<div class="col-md-3">
-                 <select name="selectCity" style="width:100%" class="select2">
-                     {{#each cits}}
-                          <option value="{{id}}">{{city}}</option>
-                     {{/each}}                                                
-                 </select>
+															<select id="selectCity" name="selectCity" style="width:100%" class="select2">
+																{{#each cits}}
+																	<option value="{{id}}">{{city}}</option>
+																{{/each}}                                                
+															</select>
 															<p class="note"><strong>Ciudad:</strong> Escoger ciudad.</p>
 														</div>
 														<div class="col-md-4">
-                 <select name="selectStore" style="width:100%" class="select2">
-                     {{#each strs}}
-                          <option value="{{id}}">{{storeName}}</option>
-                     {{/each}}                                                
-                 </select>
+															<select id="selectStore" name="selectStore" style="width:100%" class="select2">
+																{{#each strs}}
+																	<option value="{{id}}">{{storeName}}</option>
+																{{/each}}                                                
+															</select>
 															<p class="note"><strong>Tienda:</strong> Escoger tienda.</p>
 														</div>																										
 													</div>	
@@ -256,7 +256,7 @@
 																{{#select userDates.creatYear}}
 																<option value="2015">2015</option>
 																<option value="2016">2016</option>
-                <option value="2017">2017</option>
+                												<option value="2017">2017</option>
 																<option value="2018">2018</option>
 																<option value="2019">2019</option>
 																<option value="2020">2020</option>
