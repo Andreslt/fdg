@@ -54,7 +54,24 @@ var hbsEngine = exphbs.create({
           }
           console.log(day);
           return day; 
-        } 
+        },
+        select: (value, options) =>{
+        return options.fn(this)
+          .split('\n')
+          .map(function(v) {
+            var t = 'value="' + value + '"'
+            return ! RegExp(t).test(v) ? v : v.replace(t, t + ' selected="selected"')
+          })
+          .join('\n')
+        },
+        approbDateNull: (userEdit)=>{
+					try {
+								let s= userEdit.approvedOn.getFullYear();
+								return ""
+							} catch (error) {
+								return "disabled"
+							}
+        }
     }
 });
 

@@ -77,12 +77,30 @@ router.get('/admin/listUsers', (req,res)=>{
 });
 
 router.get('/admin/edituser/:userId', (req,res)=>{
+	var user = req.user;
 	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
 		cities.find({},(err, cits) => {
 			stores.find({storeName: {$ne: "Default store"}},(err, strs) => {
 				User.findOne({_id: req.params.userId}).populate("company_id"). exec((err, userEdit)=>{
 					if (err) throw err;
-					res.render('admin_users_edit', {userEdit, customers, cits, strs});
+					var userDates ={
+						//Creation Date
+						creatYear: userEdit.createdOn.getFullYear(),
+						creatMonth: userEdit.createdOn.getMonth()+1,
+						creatDay: userEdit.createdOn.getDate(),
+
+						//Aprobation Date
+						aprobYear: "",
+						aprobMonth: "",
+						aprobDay: ""					
+					}
+
+					if (userEdit.approvedOn != null){
+						userDates.aprobYear = userEdit.approvedOn.getFullYear();
+						userDates.aprobMonth = userEdit.approvedOn.getMonth()+1
+						userDates.aprobDay = userEdit.approvedOn.getDate()
+					}
+					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates});
 				});
 			});
 		});

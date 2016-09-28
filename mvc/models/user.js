@@ -51,7 +51,6 @@ var UserSchema = new mongoose.Schema({
 	company_id:{
 		type: ObjectId,
 		ref: 'Company',
-		default: "57b5e6118fc445a60fbdd8d4",
 		required:true
 	},	
 	resetPasswordToken: String,

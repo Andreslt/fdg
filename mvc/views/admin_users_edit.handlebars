@@ -201,9 +201,9 @@
 														<label class="col-md-2 control-label">Compañía<br>Ciudad<br>Tienda </label>
 														<div class="col-md-3">
                  <select name="selectCompany" style="width:100%" class="select2" value="Hola">
-                     {{#each customers}}
+					                {{#each customers}}
                           <option selected= "" value="{{id}}">{{companyName}}</option>
-                     {{/each}}                                                
+                     {{/each}}                                          
                  </select>
 															<p class="note"><strong>Compañía:</strong> Escoger compañía.</p>
 														</div>
@@ -253,16 +253,20 @@
 														<label class="control-label col-md-1">Año</label>
 														<div class="col-md-2">
 															<select class="form-control input-sm">
-																<option>2016</option>
-																<option>2017</option>
-																<option>2018</option>
-																<option>2019</option>
-																<option>2020</option>
+																{{#select userDates.creatYear}}
+																<option value="2015">2015</option>
+																<option value="2016">2016</option>
+                <option value="2017">2017</option>
+																<option value="2018">2018</option>
+																<option value="2019">2019</option>
+																<option value="2020">2020</option>
+																{{/select}}
 															</select>
 														</div>
 														<label class="control-label col-md-1">Mes</label>
 														<div class="col-md-2">
 															<select class="form-control input-sm">
+																{{#select userDates.creatMonth}}
 																<option value="1">Enero</option>
 																<option value="2">Febrero</option>
 																<option value="3">Marzo</option>
@@ -275,42 +279,45 @@
 																<option value="10">Octubre</option>
 																<option value="11">Noviembre</option>
 																<option value="12">Diciembre</option>
-															</select>
+															{{/select}}
+															</select>															
 														</div>
 														<label class="control-label col-md-1">Dia</label>
 														<div class="col-md-2">
 															<select class="form-control input-sm">
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
-																<option>6</option>
-																<option>7</option>
-																<option>8</option>
-																<option>9</option>
-																<option>10</option>
-																<option>11</option>
-																<option>12</option>
-																<option>13</option>
-																<option>14</option>
-																<option>15</option>
-																<option>16</option>
-																<option>17</option>
-																<option>18</option>
-																<option>19</option>
-																<option>20</option>
-																<option>21</option>
-																<option>22</option>
-																<option>23</option>
-																<option>24</option>
-																<option>25</option>
-																<option>26</option>
-																<option>27</option>
-																<option>28</option>
-																<option>29</option>
-																<option>30</option>
-																<option>31</option>
+																{{#select userDates.creatDay}}
+                <option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+																<option value="24">24</option>
+																<option value="25">25</option>
+																<option value="26">26</option>
+																<option value="27">27</option>
+																<option value="28">28</option>
+																<option value="29">29</option>
+																<option value="30">30</option>
+																<option value="31">31</option>
+															{{/select}}
 															</select>
 														</div>																										
 													</div>
@@ -319,17 +326,20 @@
 														<label class="control-label col-md-2">Fecha de Aprobación</label>
 														<label class="control-label col-md-1">Año</label>
 														<div class="col-md-2">
-															<select class="form-control input-sm">
-																<option>2016</option>
-																<option>2017</option>
-																<option>2018</option>
-																<option>2019</option>
-																<option>2020</option>
+															<select class="form-control input-sm" {{approbDateNull userEdit}}>
+																{{#select userDates.aprobYear}}
+																	<option value="2016">2016</option>
+																	<option value="2017">2017</option>
+																	<option value="2018">2018</option>
+																	<option value="2019">2019</option>
+																	<option value="2020">2020</option>
+																{{/select}}
 															</select>
 														</div>
 														<label class="control-label col-md-1">Mes</label>
 														<div class="col-md-2">
-															<select class="form-control input-sm">
+															<select class="form-control input-sm" {{approbDateNull userEdit}}>
+																{{#select userDates.aprobMonth}}
 																<option value="1">Enero</option>
 																<option value="2">Febrero</option>
 																<option value="3">Marzo</option>
@@ -342,42 +352,45 @@
 																<option value="10">Octubre</option>
 																<option value="11">Noviembre</option>
 																<option value="12">Diciembre</option>
+																{{/select}}
 															</select>
 														</div>
 														<label class="control-label col-md-1">Dia</label>
 														<div class="col-md-2">
-															<select class="form-control input-sm">
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
-																<option>6</option>
-																<option>7</option>
-																<option>8</option>
-																<option>9</option>
-																<option>10</option>
-																<option>11</option>
-																<option>12</option>
-																<option>13</option>
-																<option>14</option>
-																<option>15</option>
-																<option>16</option>
-																<option>17</option>
-																<option>18</option>
-																<option>19</option>
-																<option>20</option>
-																<option>21</option>
-																<option>22</option>
-																<option>23</option>
-																<option>24</option>
-																<option>25</option>
-																<option>26</option>
-																<option>27</option>
-																<option>28</option>
-																<option>29</option>
-																<option>30</option>
-																<option>31</option>
+															<select class="form-control input-sm" {{approbDateNull userEdit}}>
+																{{#select userDates.aprobDay}}
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+																<option value="24">24</option>
+																<option value="25">25</option>
+																<option value="26">26</option>
+																<option value="27">27</option>
+																<option value="28">28</option>
+																<option value="29">29</option>
+																<option value="30">30</option>
+																<option value="31">31</option>
+																{{/select}}
 															</select>
 														</div>																										
 													</div>
