@@ -100,8 +100,17 @@ router.get('/admin/edituser/:userId', (req,res)=>{
 						userDates.aprobMonth = userEdit.approvedOn.getMonth()+1
 						userDates.aprobDay = userEdit.approvedOn.getDate()
 					}
-					console.log(userEdit);
-					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates});
+					const selectedUserType={
+						storeAdmin: true,
+						storeEmp: false
+					};
+					if(userEdit.userType==="storeEmployee"){
+						selectedUserType.storeAdmin=false;
+						selectedUserType.storeEmp=true;
+					}
+					console.log("storeAdmin: "+ selectedUserType.storeAdmin);
+					console.log("storeEmp: "+ selectedUserType.storeEmp);
+					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates, selectedUserType});
 				});
 			});
 		});
@@ -183,6 +192,15 @@ let user = req.params.username;
 			res.render('admin_users_approval');
 		});
 	});
+});
+
+router.post('/hola', (req,res)=>{
+/*	User.update({id: req.params.userId}, (err, usr)=>{
+		if (err) throw error;
+		console.log(usr);
+	});*/
+	console.log("YESS");
+	res.send(JSON.stringify({ a: 1 }));
 });
 
 router.post('/admin/deleteUser/:username', (req, res)=>{

@@ -28,4 +28,19 @@ $(document).ready(function(){
         this.selected = (this.text == userCity); 
     });
 
+/*    $('#storetypes div label input').each(function() { 
+        $("#storeEmp").prop('checked',false);
+        $("#storeAdmin").prop('checked',false);    
+             if (this.id === "storeAdmin" && storeAdmin) {
+                 console.log(this.id);  
+                 this.checked = true;
+             }else if (this.id === "storeEmp" && storeEmp){
+                 console.log(this.id);  
+                 this.checked = true
+             } 
+       // this.selected = (this.text == userCity); 
+    });*/
+
+    $("#storeEmp").prop('checked',storeEmp);
+    $("#storeAdmin").prop('checked',storeAdmin);
 });
