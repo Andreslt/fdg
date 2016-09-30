@@ -121,28 +121,28 @@
 										<!-- widget content -->
 										<div class="widget-body">
 					
-											<form method= "post" action="/hola" class="form-horizontal">
+											<form method= "post" action="/admin/edituser/{{userEdit.id}}" class="form-horizontal">
 												
 												<fieldset>
 													<legend>Información personal</legend>
 													<div class="form-group">
 														<label class="col-md-2 control-label">Nombre Completo</label>
 														<div class="col-md-5">
-															<input class="form-control" placeholder="Nombre(s)" id="name" type="text" value="{{userEdit.name}}">
+															<input class="form-control" placeholder="Nombre(s)" name ="name" id="name" type="text" value="{{userEdit.name}}">
 														</div>
 														<div class="col-md-5">
-															<input class="form-control" placeholder="Apellido(s)" id="lastname" type="text" value="{{userEdit.lastname}}">
+															<input class="form-control" placeholder="Apellido(s)" name="lastname" id="lastname" type="text" value="{{userEdit.lastname}}">
 														</div>													
 													</div>
 
 													<div class="form-group">
-														<label class="control-label col-md-2" for="prepend">Identificación</label>
+														<label class="control-label col-md-2" for="username">Identificación</label>
 														<div class="col-md-5">
 															<div class="row">
 																<div class="col-sm-12">
 																	<div class="input-group">
 																		<span class="input-group-addon">@</span>
-																		<input class="form-control" id="prepend" placeholder="Username" type="text" value="{{userEdit.username}}">
+																		<input class="form-control" name="username" id="username" placeholder="Username" type="text" value="{{userEdit.username}}">
 																	</div>
 																</div>
 															</div>														
@@ -152,7 +152,7 @@
 																<div class="col-sm-12">
 																	<div class="input-group">
 																		<span class="input-group-addon fa-chevron-right"></span>
-																		<input class="form-control" id="idDocument" placeholder="Documento de Identidad (sin comas ni puntos)" type="text" value="{{userEdit.localId}}">
+																		<input class="form-control" name="localId" id="localId" placeholder="Documento de Identidad (sin comas ni puntos)" type="text" value="{{userEdit.localId}}">
 																	</div>
 																</div>
 															</div>														
@@ -168,7 +168,7 @@
 																		<div class="col-sm-12">
 																			<div class="input-group">
 																				<span class="input-group-addon"> ✉</span>
-																				<input class="form-control" id="email" placeholder="Correo Electrónico" type="text" value="{{userEdit.email}}">
+																				<input class="form-control" name="email" id="email" placeholder="Correo Electrónico" type="text" value="{{userEdit.email}}">
 																			</div>
 																		</div>
 																	</div>														
@@ -176,7 +176,7 @@
 																													
 																<div class="col-sm-5">
 																	<div class="input-group">
-																		<input class="form-control" placeholder="Reestablecer Contraseña" type="password" value="mypassword">
+																		<input class="form-control" placeholder="Reestablecer Contraseña" id="password" name="password" type="password" value="mypassword">
 																		<span class="input-group-addon">
 																			<span class="onoffswitch">
 																				<input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="st3">
@@ -200,7 +200,7 @@
 													<div class="form-group">
 														<label class="col-md-2 control-label">Compañía<br>Ciudad<br>Tienda </label>
 														<div class="col-md-3">
-															<select id="selectCompany" name="selectCompany" style="width:100%" class="select2">
+															<select id="company_id" name="company_id" style="width:100%" class="select2">
 																{{#each customers}}
 																	<option value="{{id}}">{{companyName}}</option>
 																{{/each}}
@@ -208,7 +208,7 @@
 															<p class="note"><strong>Compañía:</strong> Escoger compañía.</p>
 														</div>
 														<div class="col-md-3">
-															<select id="selectCity" name="selectCity" style="width:100%" class="select2">
+															<select id="city_id" name="city_id" style="width:100%" class="select2">
 																{{#each cits}}
 																	<option value="{{id}}">{{city}}</option>
 																{{/each}}                                                
@@ -216,7 +216,7 @@
 															<p class="note"><strong>Ciudad:</strong> Escoger ciudad.</p>
 														</div>
 														<div class="col-md-4">
-															<select id="selectStore" name="selectStore" style="width:100%" class="select2">
+															<select id="store_id" name="store_id" style="width:100%" class="select2">
 																{{#each strs}}
 																	<option value="{{id}}">{{storeName}}</option>
 																{{/each}}                                                
@@ -400,12 +400,12 @@
 														<div class="col-md-10">
 															<label class="radio radio-inline">
 																
-																<input type="radio" class="radiobox" name="style-0a">
+																<input type="radio" class="radiobox" name="userApproval" value="true">
 																<span>Sí</span> 
 																
 															</label>
 															<label class="radio radio-inline">
-																<input type="radio" class="radiobox" name="style-0a">
+																<input type="radio" class="radiobox" name="userApproval" value="false">
 																<span>No</span>  
 															</label>
 														</div>

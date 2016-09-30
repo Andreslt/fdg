@@ -76,12 +76,12 @@ router.get('/admin/listUsers', (req,res)=>{
 	});
 });
 
-router.get('/admin/edituser/:userId', (req,res)=>{
+router.get('/admin/listUsers/editUser', (req,res)=>{
 	var user = req.user;
 	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
 		cities.find({},(err, cits) => {
 			stores.find({storeName: {$ne: "Default store"}},(err, strs) => {
-				User.findOne({_id: req.params.userId}).populate("company_id").populate("store_id").populate("city_id").exec((err, userEdit)=>{
+				User.findOne({_id: req.query.userId/*req.params.userId*/}).populate("company_id").populate("store_id").populate("city_id").exec((err, userEdit)=>{
 					if (err) throw err;
 					var userDates ={
 						//Creation Date
@@ -104,12 +104,10 @@ router.get('/admin/edituser/:userId', (req,res)=>{
 						storeAdmin: true,
 						storeEmp: false
 					};
-					if(userEdit.userType==="storeEmployee"){
+/*					if(userEdit.userType==="storeEmployee"){
 						selectedUserType.storeAdmin=false;
 						selectedUserType.storeEmp=true;
-					}
-					console.log("storeAdmin: "+ selectedUserType.storeAdmin);
-					console.log("storeEmp: "+ selectedUserType.storeEmp);
+					}*/
 					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates, selectedUserType});
 				});
 			});
@@ -178,8 +176,8 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 
 router.post('/admin/approveUser/:username', (req, res)=>{
 let user = req.params.username;
-	User.update({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, result)=>{
-		User.findOne({username: user},(err, usr)=>{
+	User.findOneAndUpdate({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, usr)=>{
+		//User.findOne({username: user},(err, usr)=>{
 			if (err) console.log(err);
 
 			mailer.params.user="andres_late1008@hotmail.com";
@@ -188,19 +186,26 @@ let user = req.params.username;
 			mailer.mailOptions.name = usr.name;
 			mailer.mailOptions.lastname = usr.lastname;
 			mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
-			console.log(usr);
+			/*console.log(usr);*/
 			res.render('admin_users_approval');
-		});
+		//});
 	});
 });
 
-router.post('/hola', (req,res)=>{
-/*	User.update({id: req.params.userId}, (err, usr)=>{
+router.post('/admin/edituser/:userId', (req,res)=>{
+	let body = req.body
+	delete body["style-0"];
+	var approve;
+	//delete body["userApproval"];
+	if(body.userApproval==="true") approve=true
+	else approve=false
+	console.log(approve);
+	User.findOneAndUpdate({_id: req.params.userId}, {$set: {body, userApproval: approve}}, {new:true}, (err, usr)=>{
 		if (err) throw error;
-		console.log(usr);
-	});*/
-	console.log("YESS");
-	res.send(JSON.stringify({ a: 1 }));
+		req.flash('success_msg', 'El usuario '+usr.username+' ha sido actualizado exitosamente.');
+		res.redirect('/admin/listUsers');
+		//res.send("Todo bien como el Pibe");
+	});
 });
 
 router.post('/admin/deleteUser/:username', (req, res)=>{
