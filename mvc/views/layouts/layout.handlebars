@@ -124,12 +124,13 @@
 
 				<!-- NAVIGATION : This navigation is also responsive-->
 		<nav>
+			{{#if userTypeAdmin}}
 			<ul>
 				<li>
 					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ver Clientes</span></a>
 					<ul>
 						{{#each customers}}
-						<li>							
+						<li>
 								<a href="#" title="Dashboard">{{companyName}}</a>
 								<ul>
 									<li>
@@ -138,8 +139,8 @@
 									<li>
 										<a href="/admin/dashboard" title="Dashboard"><i class= "fa fa-lg fa-fw fa-building"></i> Ver Activos</a>
 									</li>
-								</ul>																										
-						</li>
+								</ul>
+							</li>
 						{{/each}}
 						<!--<li class="active">									
 							<a href="/admin/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent">Ver Tickets</span></a>
@@ -163,6 +164,25 @@
 						</li>
 					</ul>
 			</ul>
+			{{/if}}
+
+			{{#unless userTypeAdmin}}
+				{{#if storeAdminSW}}
+					<ul>
+						<li class="active">
+							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ver Tickets</span></a>
+							<ul>
+								<li>
+									<a href="/users/storeAdmin/{{companyName}}/tickets/cities" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-ticket"></i>Ciudades</a>
+								</li>
+								<li>
+									<a href="/users/storeAdmin/{{companyName}}/tickets/all" title="All Tickets"><i class="fa fa-lg fa-fw fa-ticket"></i>Todos</a>
+								</li>						
+							</ul>
+						</li>
+					</ul>
+				{{/if}}
+			{{/unless}}
 		</nav>
 
 

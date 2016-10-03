@@ -11,17 +11,10 @@ var mongoose = require('mongoose');
 
 //Models
 var User = require('../models/user');
+var UserModule = require('../models/user').user;
 var company = require("../models/company");
 var store = require("../models/store");
 var userType = require("../models/userType");
-// Dashboard
-router.get('/dashboard', ensureAuthenticated, function(req, res){
-	let user = req.user;
-    if (user.userApproval)
-    	  res.render('dashboard', {userTypeAdmin: false});
-    else
-    	  res.render('unauthorized', {layout: 'accessDenied'});
-});
 
 // Register
 router.get('/register', function(req, res){
@@ -102,6 +95,34 @@ router.get('/resetpassword/:token', function(req, res) {
 //   });
 // });
 
+// Dashboard
+router.get('/dashboard', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+	let user = req.user, storeAdminSW;
+	user.userType === "storeAdmin"? storeAdminSW = true : storeAdminSW = false;
+	let companyName = "EPK";
+    if (user.userApproval){
+    	  res.render('users_dashboard', {userTypeAdmin: false, storeAdminSW, companyName});
+		}else
+    	  res.render('unauthorized', {layout: 'accessDenied'});
+});
+
+// storeAdmin User
+router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+	let user = req.user;
+	UserModule.find({_id: user.id}).populate('company_id').exec((err, usr)=>{
+			console.log(usr);
+		res.render('2-storeAdmin/cities_by_tickets');
+//		res.status(200).send(usr);
+	});
+});
+
+router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+/*	let user = req.user;
+    if (user.userApproval){
+    	  res.render('users_dashboard', {userTypeAdmin: false});
+		}else
+    	  res.render('unauthorized', {layout: 'accessDenied'});*/
+});
 
 // Register User
 router.post('/register', function(req, res){
@@ -255,5 +276,14 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
+function ApprovedUserFunction (req, res,next){
+	if(req.user.userApproval){
+		return next();
+	}else{
+		res.render('unauthorized',{layout: 'accessDenied'});
+		console.log("WAIT YOUR TURN!");
+	}
+	return next();
+}
 
 module.exports = router;

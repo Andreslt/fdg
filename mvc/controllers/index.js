@@ -24,13 +24,13 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 });
 
 // Admin Dashboard
-router.get('/admin/dashboard', ensureAuthenticated, function(req, res){
+router.get('/admin/dashboard', ensureAuthenticated, AdminUserFunction, function(req, res){
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		res.render('admin_dashboard', {userTypeAdmin: true, customers});
 	});
 });
 
-router.get('/admin/customers/:customer/tickets', (req, res) => {
+router.get('/admin/customers/:customer/tickets', ensureAuthenticated, AdminUserFunction, (req, res) => {
 	let customer = req.params.customer;
 	 company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		company.findOne({companyName: customer},(err, cny)=>{
@@ -67,7 +67,7 @@ router.get('/admin/customers/:customer/tickets', (req, res) => {
 });
 
 // Admin Users
-router.get('/admin/listUsers', (req,res)=>{
+router.get('/admin/listUsers', ensureAuthenticated, AdminUserFunction, (req,res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userType:{$ne: "systemAdmin"}},(err, users)=>{
 			if (err) throw err;
@@ -76,7 +76,7 @@ router.get('/admin/listUsers', (req,res)=>{
 	});
 });
 
-router.get('/admin/listUsers/editUser', (req,res)=>{
+router.get('/admin/listUsers/editUser', ensureAuthenticated, AdminUserFunction, (req,res)=>{
 	var user = req.user;
 	company.find({companyName: {$ne: "Default company"}},(err, customers) => {
 		cities.find({},(err, cits) => {
@@ -115,7 +115,7 @@ router.get('/admin/listUsers/editUser', (req,res)=>{
 	});
 });
 
-router.get('/admin/usersAuth', (req, res)=>{
+router.get('/admin/usersAuth', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userApproval: false}, (err, usrs) =>{
 			res.render('admin_users_approval', {customers, usrs});
@@ -123,44 +123,8 @@ router.get('/admin/usersAuth', (req, res)=>{
 	});
 });
 
-/*// Admin Manage Users
-router.get('/admin/manage_users', function(req, res){
-	if (!req.user)
-		res.redirect('/');
-	else
-		res.render('admin_users', {layout: 'layout', userTypeAdmin: true});
-});
-
-// Admin Appointments
-router.get('/admin/appointments', function(req, res){
-	if (!req.user)
-		res.redirect('/');
-	else	
-		res.render('appointments', {layout: 'layout', userTypeAdmin: true});
-});
-
-// Customers->Cities
-router.get('/admin/customers/cities', ensureAuthenticated,function(req, res){
-	res.render('admin_customers_cities', {layout: 'layout', userTypeAdmin: true});
-});
-
-// Customers->Companies
-router.get('/admin/customers/companies', ensureAuthenticated,function(req, res){
-	company.find({companyName: {$ne: "Default company"}}, (err, companies)=>{
-		res.render('admin_customers_companies', {layout: 'layout', userTypeAdmin: true, companies});		
-	});	
-});
-
-// Customers->Companies specific
-router.get('/admin/customers/companies/:company', ensureAuthenticated,function(req, res){
-	let lacompany = req.params.company;
-	company.find({companyName: lacompany}, (err, companies)=>{
-		res.render('admin_tickets', {layout: 'layout', userTypeAdmin: true, companies});		
-	});
-});*/
-
 // Admin Edit tickets
-router.post('/admin/customers/ticket/edit', function(req, res){
+router.post('/admin/customers/ticket/edit', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 	let str = req.rawHeaders[19];
 	let st1 = str.search("/customers")+"/customers".length+1;
 	let st2 = str.search("/tickets");
@@ -174,7 +138,7 @@ router.post('/admin/customers/ticket/edit', function(req, res){
 	});
 });
 
-router.post('/admin/approveUser/:username', (req, res)=>{
+router.post('/admin/approveUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 let user = req.params.username;
 	User.findOneAndUpdate({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, usr)=>{
 		//User.findOne({username: user},(err, usr)=>{
@@ -192,7 +156,7 @@ let user = req.params.username;
 	});
 });
 
-router.post('/admin/edituser/:userId', (req,res)=>{
+router.post('/admin/edituser/:userId', ensureAuthenticated, AdminUserFunction, (req,res)=>{
 	let body = req.body
 	delete body["style-0"];
 	var approve;
@@ -208,7 +172,7 @@ router.post('/admin/edituser/:userId', (req,res)=>{
 	});
 });
 
-router.post('/admin/deleteUser/:username', (req, res)=>{
+router.post('/admin/deleteUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 let user = req.params.username;
 	User.find({ username:user }).remove().exec();
 	res.render('admin_users_approval');
@@ -220,6 +184,17 @@ function ensureAuthenticated(req, res, next){
 	} else {
 		res.render('login', {layout: 'auth', login: false});
 	}
+}
+
+function AdminUserFunction (req, res,next){
+	if(req.user.userType==='systemAdmin'){
+		console.log("HELLO ADMIN!");
+		return next();
+	}else{
+		res.render('adminAccess_only',{layout: 'accessDenied'});
+		console.log("GO AWAY IMPOSTOR!");
+	}
+	return next();
 }
 
 module.exports = router;
