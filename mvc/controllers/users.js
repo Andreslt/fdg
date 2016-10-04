@@ -15,6 +15,8 @@ var UserModule = require('../models/user').user;
 var company = require("../models/company");
 var store = require("../models/store");
 var userType = require("../models/userType");
+const tickets = require("../models/ticket");
+const city = require('../models/city');
 
 // Register
 router.get('/register', function(req, res){
@@ -108,20 +110,44 @@ router.get('/dashboard', ensureAuthenticated, ApprovedUserFunction, function(req
 
 // storeAdmin User
 router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, ApprovedUserFunction, function(req, res){
-	let user = req.user;
-	UserModule.find({_id: user.id}).populate('company_id').exec((err, usr)=>{
-			console.log(usr);
-		res.render('2-storeAdmin/cities_by_tickets');
-//		res.status(200).send(usr);
+	let currentCompany = req.params.company;
+	let lacompany = company.findOne({companyName: currentCompany});
+	let storeAdminSW = true, companyName="EPK";
+	let cityHash = {};
+
+	gettingFullStores(currentCompany,companyName)
+	.then(stores => {
+		let item;
+		stores.forEach(str => {
+			item = str.city_id;
+			item in cityHash ? false : (cityHash[item.city] = item);
+		});
+		res.render('2-storeAdmin/cities_by_tickets', {cityHash, storeAdminSW, companyName});
 	});
 });
 
 router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUserFunction, function(req, res){
-/*	let user = req.user;
-    if (user.userApproval){
-    	  res.render('users_dashboard', {userTypeAdmin: false});
-		}else
-    	  res.render('unauthorized', {layout: 'accessDenied'});*/
+		let storeAdminSW = true, companyName="EPK";
+
+		tickets.find({})
+		.then(tks1 => store.populate(tks1, {path: "store_id"}))
+		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
+		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}, (err, tkts)=>{
+				console.log(tkts);
+				res.sendStatus(200);
+			//res.render('2-storeAdmin/tickets_by_city', {storeAdminSW, companyName, tkts});
+		}));
+/*	tickets.find({}, (err, tks) => {
+			store
+			.populate(tks, {path: "store_id"}, (err, tks2)=>{
+				company
+				.populate(tks2, {path: "store_id.company_id"}, (err, tks3)=>{
+					city
+					.populate(tks3, {path: "store_id.city_id"}, (err, tks4)=>{
+					});
+				});
+			});
+	});*/
 });
 
 // Register User
@@ -286,4 +312,20 @@ function ApprovedUserFunction (req, res,next){
 	return next();
 }
 
+function gettingFullStores(currentCompany,companyName){
+//	let currentCompany = req.params.company;
+	let lacompany = company.findOne({companyName: currentCompany});
+	let storeAdminSW = true;
+	let cityHash = {};
+
+	return new Promise((resolve, reject)=>{
+		lacompany.then(cny => 
+			store.find({company_id: cny.id}).populate('city_id').populate('company_id')
+			//.select('city_id')
+			.exec((err, stores)=>{
+				if (err) return reject(err)
+				resolve(stores);
+			})
+		)});
+}
 module.exports = router;
