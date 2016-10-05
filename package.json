@@ -42,6 +42,7 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "sendgrid": "^4.0.2"
+    "sendgrid": "^4.0.2",
+    "underscore": "^1.8.3"
   }
 }

@@ -7,6 +7,7 @@ var nodemailer = require('nodemailer');
 var async = require('async');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var _ = require('underscore');
 //var schedule = require('node-schedule');
 
 //Models
@@ -132,11 +133,19 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 		tickets.find({})
 		.then(tks1 => store.populate(tks1, {path: "store_id"}))
 		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
-		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}, (err, tkts)=>{
-				console.log(tkts);
-				res.sendStatus(200);
-			//res.render('2-storeAdmin/tickets_by_city', {storeAdminSW, companyName, tkts});
-		}));
+		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}))
+		.then(result=>{
+		var tkts = new Array();
+			for(let item in result){
+				let lacompany = result[item].store_id.company_id.companyName;
+				
+				if (lacompany === companyName)
+					tkts.push(result[item]);
+			}
+			res.render('2-storeAdmin/tickets_by_city', {storeAdminSW, companyName, tkts});
+		});
+/*			var eltk = tkts.filter((tk)=>{
+/*		var result =	_.where(tkts, {'store_id': ObjectId('57b5e98f0a940f3010662764')});
 /*	tickets.find({}, (err, tks) => {
 			store
 			.populate(tks, {path: "store_id"}, (err, tks2)=>{
