@@ -104,19 +104,17 @@ router.get('/dashboard', ensureAuthenticated, ApprovedUserFunction, function(req
 	user.userType === "storeAdmin"? storeAdminSW = true : storeAdminSW = false;
 	let companyName = "EPK";
     if (user.userApproval){
-    	  res.render('users_dashboard', {userTypeAdmin: false, storeAdminSW, companyName});
+    	  res.render('2-storeAdmin/dashboard', {userTypeAdmin: false, storeAdminSW, companyName});
 		}else
     	  res.render('unauthorized', {layout: 'accessDenied'});
 });
 
 // storeAdmin User
 router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, ApprovedUserFunction, function(req, res){
-	let currentCompany = req.params.company;
-	let lacompany = company.findOne({companyName: currentCompany});
-	let storeAdminSW = true, companyName="EPK";
+	var companyName = req.params.company;
+	let storeAdminSW = true;
 	let cityHash = {};
-
-	gettingFullStores(currentCompany,companyName)
+	gettingFullStores(companyName)
 	.then(stores => {
 		let item;
 		stores.forEach(str => {
@@ -128,8 +126,7 @@ router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, ApprovedU
 });
 
 router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUserFunction, function(req, res){
-		let storeAdminSW = true, companyName="EPK";
-
+		let storeAdminSW = true, companyName=req.params.company;
 		tickets.find({})
 		.then(tks1 => store.populate(tks1, {path: "store_id"}))
 		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
@@ -142,7 +139,7 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 				if (lacompany === companyName)
 					tkts.push(result[item]);
 			}
-			res.render('2-storeAdmin/tickets_by_city', {storeAdminSW, companyName, tkts});
+			res.render('2-storeAdmin/tickets_all', {storeAdminSW, companyName, tkts});
 		});
 /*			var eltk = tkts.filter((tk)=>{
 /*		var result =	_.where(tkts, {'store_id': ObjectId('57b5e98f0a940f3010662764')});
@@ -157,6 +154,28 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 				});
 			});
 	});*/
+});
+
+router.get('/storeAdmin/:company/:city/tickets', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+	let storeAdminSW = true, companyName = req.params.company, cityName = req.params.city;
+		console.log(cityName);
+		tickets.find({})
+		.then(tks1 => store.populate(tks1, {path: "store_id"}))
+		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
+		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}))
+		.then(result=>{
+		var tkts = new Array();
+			for(let item in result){
+				let validations = result[item].store_id;
+				//let lacity = result[item].store_id.city_id.city;
+				if (validations.company_id.companyName === companyName && validations.city_id.city  === cityName)
+					tkts.push(result[item]);
+			}
+			console.log(tkts);
+			res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, cityName, tkts});
+		});
+/*		console.log(city);
+	res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, city});*/
 });
 
 // Register User
@@ -200,45 +219,6 @@ router.post('/register', function(req, res){
 			errors:errors
 		});
 	} else {
-/*   userType.findOne({userTitle: userTypebody}, function(err, usrt){
-      
-      //Assigning User Type
-    	if (err) throw err;
-    	    usrParams.userType_id = usrt._id;
-
-    	 //Assigning User Params
-    	if (userTypebody === "systemAdmin"){
-          usrParams.pin = 9999;
-
-          newUser = new User.systemAdmin(usrParams);
-          User.createUser(newUser, function(err, user){
-        		if(err) throw err;
-        	});          
-        }else if (userTypebody === "storeAdmin"){
-          company.findOne({companyName: "Default company"}, function(err, cny) {
-            if (err) throw err;
-            usrParams.company_id = cny._id;
-            newUser = new User.storeAdmin(usrParams);
-            User.createUser(newUser, function(err, user){
-        			if(err) throw err;
-        		});
-          });
-        }else{
-          company.findOne({companyName: "Default company"}, function(err, cny) {
-            if (err) throw err;
-            usrParams.company_id = cny._id;
-            newUser = new User.storeEmployee(usrParams);
-						console.log(newUser);
-            User.createUser(newUser, function(err, user){
-        			if(err) throw err;
-        		});
-          });
-        }
-    });
-
-		req.flash('success_msg', 'Has sido registrado satisfactoriamente. Te llegará un correo de confirmación una vez el administrador autorice tu cuenta');
-		res.redirect('/');*/
-
 		if(userTypebody === "systemAdmin"){
 				usrParams.pin = 9999;
 				newUser = new User.systemAdmin(usrParams);
@@ -258,6 +238,15 @@ router.post('/register', function(req, res){
 						res.redirect('/');
 			 });
 	}
+});
+
+router.post('/storeAdmin/EditTicket', (req, res)=>{
+	let user = req.user, ticket = req.body.ticketId, 
+				title = req.body.ticketTitle, description = req.body.ticketDesc;
+	tickets.findOneAndUpdate({_id: ticket}, {$set: {title: title, description: description}}, (err, tkts)=>{
+		if(err) console.log(err);
+		res.redirect('/users/dashboard');
+	});
 });
 
 passport.use(new LocalStrategy(
@@ -321,7 +310,18 @@ function ApprovedUserFunction (req, res,next){
 	return next();
 }
 
-function gettingFullStores(currentCompany,companyName){
+function validUserAdmin (req, res,next){
+	if(req.user.userType==='systemAdmin'){
+		console.log("HELLO ADMIN!");
+		return next();
+	}else{
+		res.render('adminAccess_only',{layout: 'accessDenied'});
+		console.log("GO AWAY IMPOSTOR!");
+	}
+	return next();
+}
+
+function gettingFullStores(currentCompany){
 //	let currentCompany = req.params.company;
 	let lacompany = company.findOne({companyName: currentCompany});
 	let storeAdminSW = true;

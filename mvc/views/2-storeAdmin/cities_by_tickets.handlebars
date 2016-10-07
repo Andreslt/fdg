@@ -3,17 +3,19 @@
 
 			<!-- RIBBON -->
 			<div id="ribbon">
-
-				<span class="ribbon-button-alignment"> 
-					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-						<i class="fa fa-refresh"></i>
-					</span> 
-				</span>
-
-				<!-- breadcrumb -->
-				<ol class="breadcrumb">
-					<li>Home</li><li>App Views</li><li>Gallery</li>
-				</ol>
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					<ol class="breadcrumb">
+						<li><a href="/users/dashboard">Dashboard</a></li>
+						<li>Tickets por Ciudad</li>
+					</ol>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<ul class = "header-dropdown-list hidden-xs">
+						<li><button>button 1</button></li>
+						<li><button>button 2</button></li>
+						<li><button>button 3</button></li>
+					</ul>
+				</div>
 				<!-- end breadcrumb -->
 
 				<!-- You can also add more buttons to the
@@ -34,17 +36,16 @@
 			<div id="content">
 
 <div class="row hidden-mobile">
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 		<h1 class="page-title txt-color-blueDark">
 			<i class="fa-fw fa fa-puzzle-piece"></i> 
-			App Views <span>>
-			Gallery </span></h1>
+			Tickets <span>>
+			{{companyName}} </span></h1>
 	</div>
 
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-align-right">
+	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-align-right">
 		<div class="page-title">
-			<a href="javascript:void(0);" class="btn btn-default">Upload</a>
-			<a href="javascript:void(0);" class="btn btn-default">Load Library</a>
+			<a href="javascript:void(0);" class="btn btn-default">Crear Ticket</a>
 		</div>
 	</div>
 </div>
@@ -56,7 +57,7 @@
 	<div class="superbox col-sm-12">
 		{{#each cityHash}}
 			<div class="superbox-list">														
-				<a href="/admin/customers/companies/{{city}}"><img src="{{image}}" data-img="#" alt="{{city}}" title="{{city}}" class="superbox-img"></a>
+				<a href="/users/storeAdmin/{{../companyName}}/{{city}}/tickets"><img src="{{image}}" data-img="#" alt="{{city}}" title="{{city}}" class="superbox-img"></a>
 			</div>
 		{{/each}}
 		<div class="superbox-float"></div>

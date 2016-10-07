@@ -46,62 +46,101 @@
 
 
 </head>
-<body class="smart-style-6">
+<body class="smart-style-1">
 	<header id="header">
-				<div id="logo-group">
+			<div id="logo-group">
+				<!-- PLACE YOUR LOGO HERE -->
+				<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
+				<!-- END LOGO PLACEHOLDER -->
+			</div>
 
-					<!-- PLACE YOUR LOGO HERE -->
-					<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
-					<!-- END LOGO PLACEHOLDER -->
+			<!-- projects dropdown -->
+			<div class="project-context hidden-xs">
 
-				</div>
+				<span class="label">Projects:</span>
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+
+				<!-- Suggestion: populate this list with fetch and push technique -->
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/users">Online e-merchant management system - attaching integration with the iOS</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">Notes on pipeline upgradee</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">Assesment Report for merchant account</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
+					</li>
+				</ul>
+				<!-- end dropdown-menu-->
+
+			</div>
+			<!-- end projects dropdown -->
+
 			<!-- pulled right: nav area -->
-				<div class="pull-right">
-
-					<!-- collapse menu button -->
-					<div id="hide-menu" class="btn-header pull-right">
-						<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-					</div>
-					<!-- end collapse menu -->
-
-					<!-- #MOBILE -->
-					<!-- Top menu profile link : this shows only when top menu is active -->
-					<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
-						<li class="">
-							<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-								<img src="/img/avatars/sunny.png" alt="John Doe" class="online" />
-							</a>
-							<ul class="dropdown-menu pull-right">
-								<li>
-									<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-
-					<!-- logout button -->
-					<div id="logout" class="btn-header transparent pull-right">
-						<span> <a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-sign-out"></i></a> </span>
-					</div>
-					<!-- end logout button -->
+			<div class="pull-right">
+				
+				<!-- collapse menu button -->
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Colapsar Menu"><i class="fa fa-reorder"></i></a> </span>
 				</div>
-				<!-- end pulled right: nav area -->
+				<!-- end collapse menu -->
+
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="/users/logout" title="Salida Segura" data-action="userLogout" data-logout-msg="¿Confirma que desea salir? Seleccione 'Yes' para salir. Seleccione 'No' para permanecer activo."><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+				<!-- end logout button -->
+
+				<!-- search mobile button (this is hidden till mobile view port) -->
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+				</div>
+				<!-- end search mobile button -->
+
+				<!-- input: search field -->
+				<form action="search.html" class="header-search pull-right">
+					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+				</form>
+				<!-- end input: search field -->
+
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Expandir Pantalla"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+			</div>
+			<!-- end pulled right: nav area -->
 			</header>
 			<!-- END HEADER -->
 			<!-- Left panel : Navigation area -->
@@ -142,15 +181,6 @@
 								</ul>
 							</li>
 						{{/each}}
-						<!--<li class="active">									
-							<a href="/admin/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i> <span class="menu-item-parent">Ver Tickets</span></a>
-						</li>
-						<li class="">
-							<a href="/admin/manage_users" title="Users"><i class="fa fa-lg fa-fw fa-user"></i><span class="menu-item-parent">Ver Usuarios</span></a>
-						</li>								-->
-						<!--<li class="">
-							<a href="/admin/appointments" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">Agenda</span></a>
-						</li>-->
 					</ul>
 				</li>
 				<li class="top-menu-invisible">
@@ -170,16 +200,74 @@
 				{{#if storeAdminSW}}
 					<ul>
 						<li class="active">
-							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ver Tickets</span></a>
+							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Inicio</span></a>
+							<ul>
+								<li class="active">
+									<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
+								</li>
+								<li class="">
+									<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
+								</li>						
+							</ul>
+						</li>						
+						<li class="">
+							<a href="#" title="Ordenes"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Ordenes</span></a>
 							<ul>
 								<li>
-									<a href="/users/storeAdmin/{{companyName}}/tickets/cities" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-ticket"></i>Ciudades</a>
-								</li>
+									<a href="/newTicket" title="Nuevo Ticket"><i class="fa fa-lg fa-fw fa-ticket"></i>Crear Ticket</a>
+								</li>								
 								<li>
-									<a href="/users/storeAdmin/{{companyName}}/tickets/all" title="All Tickets"><i class="fa fa-lg fa-fw fa-ticket"></i>Todos</a>
+									<a href="/listTickets" title="Ver Ordenes de Trabajo"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
 								</li>						
 							</ul>
 						</li>
+						<li class="">
+							<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
+							<ul>
+								<li>
+									<a href="/newStore" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
+								</li>
+								<li>
+									<a href="/listStores" title="Ver Tiendas"><i class="fa fa-lg fa-fw fa-align-justify"></i>Ver Tiendas</a>
+								</li>						
+							</ul>
+						</li>						
+						<li class="">
+							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
+							<ul>
+								<li>
+									<a href="/newAsset" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-keyboard-o"></i>Crear Activo</a>
+								</li>								
+								<li>
+									<a href="/listAsset" title="All Tickets"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
+								</li>						
+							</ul>
+						</li>						
+						<li class="">
+							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Empleados</span></a>
+							<ul>
+								<li>
+									<a href="/newEmployee" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-male"></i>Crear Empleado</a>
+								</li>								
+								<li>
+									<a href="/listEmployee" title="All Tickets"><i class="fa fa-lg fa-fw fa-group"></i>Ver Empleados</a>
+								</li>						
+							</ul>
+						</li>
+						<li class="">
+							<a href="#" title="Dashboard"><i class="fa fa-lg fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
+							<ul>
+								<li>
+									<a href="/newReport" title="Tickets by Cities"><i class="fa fa-lg fa-plus-square-o"></i>Crear Reporte</a>
+								</li>								
+								<li>
+									<a href="/listReports" title="All Tickets"><i class="fa fa-lg fa-file-text-o"></i>Ver Reportes</a>
+								</li>						
+							</ul>
+						</li>								
+						<li class="">
+							<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
+						</li>													
 					</ul>
 				{{/if}}
 			{{/unless}}
@@ -311,6 +399,7 @@
 				var userCity = "{{userEdit.city_id.city}}"
 				var storeAdmin = "{{selectedUserType.storeAdmin}}"
 				var storeEmp = "{{selectedUserType.storeEmp}}"
+				var companyName = "{{companyName}}"		
 			</script>
 			<script src="/js/fdgcomponents.js"></script>
 
@@ -404,11 +493,54 @@
 			<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 			<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
 			<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
+
+			<!-- CHARTS PLUGIN(S) 
+			<script src="..."></script>-->
+			<script src="/js/plugin/moment/moment.min.js"></script>
+			<script src="/js/plugin/chartjs/chart.min.js"></script>			
 			<script>
 				$(document).ready(function() {		
 
-					// DO NOT REMOVE : GLOBAL FUNCTIONS!
-					pageSetUp();
+				// DO NOT REMOVE : GLOBAL FUNCTIONS!
+				pageSetUp();
+
+				var randomScalingFactor = function() {
+		            return Math.round(Math.random() * 100);
+		            //return 0;
+		        };
+		        var barChartData = {
+		            labels: ["January", "February", "March", "April", "May", "June", "July"],
+		            datasets: [{
+		                label: 'Dataset 1',
+		                backgroundColor: "rgba(220,220,220,0.5)",
+		                data: [100, randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+		            }, {
+		                label: 'Dataset 2',
+		                backgroundColor: "rgba(151,187,205,0.5)",
+		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+		            }, {
+		                label: 'Dataset 3',
+		                backgroundColor: "rgba(151,187,205,0.5)",
+		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+		            }]
+
+		        };
+
+				window.onload = function() {
+		            //window.myLine = new Chart(document.getElementById("lineChart"), LineConfig);
+		            window.myBar = new Chart(document.getElementById("barChart"), {
+		                type: 'bar',
+		                data: barChartData,
+		                options: {
+		                    responsive: true,
+		                }
+		            });
+		            /*window.myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
+        			window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
+        			window.myPolarArea = Chart.PolarArea(document.getElementById("polarChart"), PolarConfig);
+        			window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);*/
+		        };								
+
 				var jqgrid_data = [];
 				{{#each usrs}}
 					jqgrid_data.push({
@@ -503,7 +635,7 @@
 				jQuery("#m1s").click(function() {
 					console.log("Se activó");
 					jQuery("#jqgrid").jqGrid('setSelection', "13");
-				});
+				});			
 
 				// remove classes
 				$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");

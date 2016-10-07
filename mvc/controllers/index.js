@@ -26,7 +26,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res){
 // Admin Dashboard
 router.get('/admin/dashboard', ensureAuthenticated, AdminUserFunction, function(req, res){
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		res.render('admin_dashboard', {userTypeAdmin: true, customers});
+		res.render('1-admin/dashboard', {userTypeAdmin: true, customers});
 	});
 });
 
@@ -71,7 +71,7 @@ router.get('/admin/listUsers', ensureAuthenticated, AdminUserFunction, (req,res)
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userType:{$ne: "systemAdmin"}},(err, users)=>{
 			if (err) throw err;
-			res.render('admin_users_list', {users, customers});
+			res.render('1-admin/users_list', {userTypeAdmin: true, users, customers});
 		});	
 	});
 });
@@ -108,7 +108,7 @@ router.get('/admin/listUsers/editUser', ensureAuthenticated, AdminUserFunction, 
 						selectedUserType.storeAdmin=false;
 						selectedUserType.storeEmp=true;
 					}*/
-					res.render('admin_users_edit', {userEdit, customers, cits, strs, userDates, selectedUserType});
+					res.render('admin_users_edit', {userTypeAdmin: true, userEdit, customers, cits, strs, userDates, selectedUserType});
 				});
 			});
 		});
@@ -118,7 +118,7 @@ router.get('/admin/listUsers/editUser', ensureAuthenticated, AdminUserFunction, 
 router.get('/admin/usersAuth', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 		User.find({userApproval: false}, (err, usrs) =>{
-			res.render('admin_users_approval', {customers, usrs});
+			res.render('admin_users_approval', {userTypeAdmin: true, customers, usrs});
 		});		
 	});
 });
@@ -141,18 +141,15 @@ router.post('/admin/customers/ticket/edit', ensureAuthenticated, AdminUserFuncti
 router.post('/admin/approveUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 let user = req.params.username;
 	User.findOneAndUpdate({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, usr)=>{
-		//User.findOne({username: user},(err, usr)=>{
 			if (err) console.log(err);
 
-			mailer.params.user="andres_late1008@hotmail.com";
-			mailer.params.pass="Andresito900810";
+			mailer.params.user="";
+			mailer.params.pass="";
 			mailer.service="hotmail";
 			mailer.mailOptions.name = usr.name;
 			mailer.mailOptions.lastname = usr.lastname;
 			mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
-			/*console.log(usr);*/
-			res.render('admin_users_approval');
-		//});
+			res.render('admin_users_approval', {userTypeAdmin: true, });
 	});
 });
 
@@ -160,7 +157,6 @@ router.post('/admin/edituser/:userId', ensureAuthenticated, AdminUserFunction, (
 	let body = req.body
 	delete body["style-0"];
 	var approve;
-	//delete body["userApproval"];
 	if(body.userApproval==="true") approve=true
 	else approve=false
 	console.log(approve);
@@ -168,14 +164,13 @@ router.post('/admin/edituser/:userId', ensureAuthenticated, AdminUserFunction, (
 		if (err) throw error;
 		req.flash('success_msg', 'El usuario '+usr.username+' ha sido actualizado exitosamente.');
 		res.redirect('/admin/listUsers');
-		//res.send("Todo bien como el Pibe");
 	});
 });
 
 router.post('/admin/deleteUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
 let user = req.params.username;
 	User.find({ username:user }).remove().exec();
-	res.render('admin_users_approval');
+	res.render('admin_users_approval', {userTypeAdmin: true});
 });
 
 function ensureAuthenticated(req, res, next){
