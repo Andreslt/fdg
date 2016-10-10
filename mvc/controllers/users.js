@@ -1,4 +1,5 @@
 'use strict';
+/* >>> Modules <<< */
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -19,6 +20,12 @@ var userType = require("../models/userType");
 const tickets = require("../models/ticket");
 const city = require('../models/city');
 
+//Config
+const validations = require('../../config/validations');
+
+/* ---------->>> ROUTES <<<---------- */
+
+/* >>> GET <<< */
 // Register
 router.get('/register', function(req, res){
 	company.find({companyName: {$ne: 'Default company'}},(err, companies)=>{
@@ -31,11 +38,21 @@ router.get('/login', function(req, res){
 	res.render('login', {layout: 'auth', login: false, user: req.user});
 });
 
+// Logout
+router.get('/logout', function(req, res){
+	req.logout();
+
+	req.flash('success_msg', 'Ha cerrado sesión exitosamente.');
+
+	res.redirect('/');
+});
+
 // Forgot Password
 router.get('/forgotpassword', function(req, res){
 	res.render('forgotpassword', {layout: 'auth', login: true});
 });
 
+// Forgot Password Token
 router.get('/resetpassword/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     if (!user) {
@@ -99,18 +116,127 @@ router.get('/resetpassword/:token', function(req, res) {
 // });
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+router.get('/dashboard', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
 	let user = req.user, storeAdminSW;
-	user.userType === "storeAdmin"? storeAdminSW = true : storeAdminSW = false;
-	let companyName = "EPK";
-    if (user.userApproval){
-    	  res.render('2-storeAdmin/dashboard', {userTypeAdmin: false, storeAdminSW, companyName});
-		}else
-    	  res.render('unauthorized', {layout: 'accessDenied'});
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/dashboard', {layout: 'userLayout', storeAdminSW});
 });
 
+// Account
+router.get('/account', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	UserModule.find({company_id: user.company_id, _id: {$ne: user.id}}, (err, users) => {
+		store.find({company_id: user.company_id}, (err, stores) => {
+			let numero_empleados = users.length, numero_tiendas = stores.length;
+			(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+			res.render('2-users/account', {layout: 'userLayout', user, users, numero_empleados, numero_tiendas, storeAdminSW});
+		})
+	});
+});
+
+// Edit account
+router.get('/account/edit', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	UserModule.findOne({username: user.username}, (err, user) => {
+		company.find({companyName: {$ne: "Default company"}},(err, companies) => {
+			city.find({city: {$ne: "Default city"}},(err, cities) => {
+				store.find({storeName: {$ne: "Default store"}},(err, stores) => {
+					res.render('2-users/account_edit', {layout: 'userLayout', user, storeAdminSW, companies, cities, stores});
+				});
+			});
+		});		
+	});
+});
+
+// Employee account
+router.get('/account/employee', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let userEmployeeID = req.query.id;
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	UserModule.findOne({username: user.username}, (err, user) => {
+		company.find({companyName: {$ne: "Default company"}},(err, companies) => {
+			city.find({city: {$ne: "Default city"}},(err, cities) => {
+				store.find({storeName: {$ne: "Default store"}},(err, stores) => {
+					res.render('2-users/account_edit', {layout: 'userLayout', user, storeAdminSW, companies, cities, stores});
+				});
+			});
+		});		
+	});
+});
+
+// New ticket
+router.get('/newTicket', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/new_ticket', {layout: 'userLayout', storeAdminSW});
+});
+
+// Tickets
+router.get('/tickets', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/list_tickets', {layout: 'userLayout', storeAdminSW});
+});
+
+// New store
+router.get('/newStore', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/new_store', {layout: 'userLayout', storeAdminSW});
+});
+
+// Stores
+router.get('/stores', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/list_stores', {layout: 'userLayout', storeAdminSW});
+});
+
+// New asset
+router.get('/newAsset', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/new_asset', {layout: 'userLayout', storeAdminSW});
+});
+
+// Assets
+router.get('/assets', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/list_assets', {layout: 'userLayout', storeAdminSW});
+});
+
+// New employee
+router.get('/newEmployee', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/new_employee', {layout: 'userLayout', storeAdminSW});
+});
+
+// Employees
+router.get('/employees', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/list_employees', {layout: 'userLayout', storeAdminSW});
+});
+
+// New report
+router.get('/newReport', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/new_report', {layout: 'userLayout', storeAdminSW});
+});
+
+// Reports
+router.get('/reports', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+	res.render('2-users/list_reports', {layout: 'userLayout', storeAdminSW});
+});
+/*
 // storeAdmin User
-router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+router.get('/storeAdmin/:company/tickets/cities', ensureAuthenticated, approvedUser, function(req, res){
 	var companyName = req.params.company;
 	let storeAdminSW = true;
 	let cityHash = {};
@@ -140,7 +266,7 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 					tkts.push(result[item]);
 			}
 			res.render('2-storeAdmin/tickets_all', {storeAdminSW, companyName, tkts});
-		});
+		});*/
 /*			var eltk = tkts.filter((tk)=>{
 /*		var result =	_.where(tkts, {'store_id': ObjectId('57b5e98f0a940f3010662764')});
 /*	tickets.find({}, (err, tks) => {
@@ -154,9 +280,9 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 				});
 			});
 	});*/
-});
+//});
 
-router.get('/storeAdmin/:company/:city/tickets', ensureAuthenticated, ApprovedUserFunction, function(req, res){
+/*router.get('/storeAdmin/:company/:city/tickets', ensureAuthenticated, ApprovedUserFunction, function(req, res){
 	let storeAdminSW = true, companyName = req.params.company, cityName = req.params.city;
 		console.log(cityName);
 		tickets.find({})
@@ -166,33 +292,41 @@ router.get('/storeAdmin/:company/:city/tickets', ensureAuthenticated, ApprovedUs
 		.then(result=>{
 		var tkts = new Array();
 			for(let item in result){
-				let validations = result[item].store_id;
+				let validation = result[item].store_id;
 				//let lacity = result[item].store_id.city_id.city;
-				if (validations.company_id.companyName === companyName && validations.city_id.city  === cityName)
+				if (validation.company_id.companyName === companyName && validation.city_id.city  === cityName)
 					tkts.push(result[item]);
 			}
 			console.log(tkts);
 			res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, cityName, tkts});
-		});
+		});*/
 /*		console.log(city);
 	res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, city});*/
-});
+//});
 
-// Register User
+/*
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+ 									>>> POST <<< 
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+*/
+
+// User Register
 router.post('/register', function(req, res){
 	var username = req.body.username;
 	var email = req.body.email;
 	var password = req.body.password;
 	var password2 = req.body.password2;
 	var name = req.body.name;
-  var lastname = req.body.lastname;
-  var userTypebody = req.body.userType;
+  	var lastname = req.body.lastname;
+  	var userTypebody = req.body.userType;
 	var localId = req.body.localId;
-  var companyId = req.body.companyId;
+  	var companyId = req.body.companyId;
 
 	// Validation
 	req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('lastname', 'Lastname is required').notEmpty();
+  	req.checkBody('lastname', 'Lastname is required').notEmpty();
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('username', 'Username is required').notEmpty();
@@ -203,12 +337,12 @@ router.post('/register', function(req, res){
 
 	var errors = req.validationErrors();
 	var newUser;
-  var usrParams = {
-      username: username,
+  	var usrParams = {
+      		username: username,
 			email:email,
 			password: password,
-      name: name,
-      lastname: lastname,
+      		name: name,
+      		lastname: lastname,
 			userType: userTypebody,
 			localId: localId,
 			companyId: companyId
@@ -239,7 +373,15 @@ router.post('/register', function(req, res){
 			 });
 	}
 });
+// User Login
+router.post('/login',
+  passport.authenticate('local', {successRedirect:'/dashboard', failureRedirect:'/',failureFlash: true}),
+  function(req, res) {
+    res.redirect('/');
+  });
 
+// User Edit
+router.post('/edit/:id')
 router.post('/storeAdmin/EditTicket', (req, res)=>{
 	let user = req.user, ticket = req.body.ticketId, 
 				title = req.body.ticketTitle, description = req.body.ticketDesc;
@@ -278,21 +420,9 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-router.post('/login',
-  passport.authenticate('local', {successRedirect:'/dashboard', failureRedirect:'/',failureFlash: true}),
-  function(req, res) {
-    res.redirect('/');
-  });
 
-router.get('/logout', function(req, res){
-	req.logout();
 
-	req.flash('success_msg', 'Ha cerrado sesión exitosamente.');
-
-	res.redirect('/');
-});
-
-function ensureAuthenticated(req, res, next){
+/*function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	} else {
@@ -300,7 +430,7 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-function ApprovedUserFunction (req, res,next){
+function validapprovedUser (req, res,next){
 	if(req.user.userApproval){
 		return next();
 	}else{
@@ -321,9 +451,20 @@ function validUserAdmin (req, res,next){
 	return next();
 }
 
+function validStoreAdmin (req, res,next){
+	if(req.user.userType==='systemAdmin'){
+		console.log("HELLO ADMIN!");
+		return next();
+	}else{
+		res.render('adminAccess_only',{layout: 'accessDenied'});
+		console.log("GO AWAY IMPOSTOR!");
+	}
+	return next();
+}
+
 function gettingFullStores(currentCompany){
 //	let currentCompany = req.params.company;
-	let lacompany = company.findOne({companyName: currentCompany});
+	let lacompany = company.findOne({_id: currentCompany});
 	let storeAdminSW = true;
 	let cityHash = {};
 
@@ -336,5 +477,5 @@ function gettingFullStores(currentCompany){
 				resolve(stores);
 			})
 		)});
-}
+}*/
 module.exports = router;

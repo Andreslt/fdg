@@ -33,6 +33,8 @@ var UserSchema = new mongoose.Schema({
 		required: true
 	},
 	userType: String,
+	position: String,
+	cellphone: String,
 	createdOn: {
 		type: Date,
 		default: Date.now
@@ -59,7 +61,9 @@ var UserSchema = new mongoose.Schema({
 	city_id:{
 		type: ObjectId,
 		ref: 'City'
-	},	
+	},
+	image_large: String,
+	image_small: String,	
 	resetPasswordToken: String,
 	resetPasswordExpires: Date
 }, options);

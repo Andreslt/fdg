@@ -12,6 +12,7 @@ var moment = require('moment');
 // Controllers
 const routes = require('./mvc/controllers/index');
 const users = require('./mvc/controllers/users');
+const admin = require('./mvc/controllers/admin');
 // const routes = require('./mvc/controllers/routes');
 
 // Models
@@ -71,6 +72,18 @@ var hbsEngine = exphbs.create({
 							} catch (error) {
 								return "disabled"
 							}
+        },
+        cel1: (cellphone_Number)=>{
+          let cellphone_String = cellphone_Number.toString();
+          return cellphone_String.substring(0,3);
+        },
+        cel2: (cellphone_Number)=>{
+          let cellphone_String = cellphone_Number.toString();          
+          return cellphone_String.substring(3,6);
+        },
+        cel3: (cellphone_Number)=>{
+          let cellphone_String = cellphone_Number.toString();            
+          return cellphone_String.substring(6,10);
         }
     }
 });
@@ -161,6 +174,7 @@ app.use(function (req, res, next) {
 // app.use('/', routes());
 app.use('/', routes);
 app.use('/users', users);
+app.use('/admin', admin);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

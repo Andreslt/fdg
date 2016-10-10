@@ -9,26 +9,120 @@ const cities = require('../models/city');
 const company = require('../models/company');
 const mailer = require('../../config/mailer');
 
-// Get Homepage
-router.get('/', ensureAuthenticated, function(req, res){
+// Go Home
+router.get('/', ensureAuthenticated, (req, res)=>{
 	res.redirect('/dashboard');	
 });
 
-// General Dashboard
-router.get('/dashboard', ensureAuthenticated, function(req, res){
+/* ---> INICIO <--- */
+// 1. Dashboard
+router.get('/dashboard', ensureAuthenticated, (req, res)=>{
 	if (req.user.userType === 'systemAdmin'){
 	    res.redirect('/admin/dashboard');
 	}else{
 	    res.redirect('/users/dashboard');
 	}
 });
-
-// Admin Dashboard
-router.get('/admin/dashboard', ensureAuthenticated, AdminUserFunction, function(req, res){
-	company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-		res.render('1-admin/dashboard', {userTypeAdmin: true, customers});
-	});
+// 2. Cuenta
+router.get('/account', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/account');
+	}else{
+	    res.redirect('/users/account');
+	}
 });
+
+/* ---> ORDENES <--- */
+// 1. Crear Ticket
+router.get('/newTicket', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newTicket');
+	}else{
+	    res.redirect('/users/newTicket');
+	}
+});
+// 2. Ver Tickets
+router.get('/tickets', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/tickets');
+	}else{
+	    res.redirect('/users/tickets');
+	}
+});
+
+/* ---> TIENDAS <--- */
+// 1. Crear Tienda
+router.get('/newStore', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newStore');
+	}else{
+	    res.redirect('/users/newStore');
+	}
+});
+// 2. Ver Tiendas
+router.get('/stores', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/stores');
+	}else{
+	    res.redirect('/users/stores');
+	}
+});
+
+/* ---> ACTIVOS <--- */
+// 1. Crear Activo
+router.get('/newAsset', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newAsset');
+	}else{
+	    res.redirect('/users/newAsset');
+	}
+});
+// 2. Ver Activos
+router.get('/assets', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/assets');
+	}else{
+	    res.redirect('/users/assets');
+	}
+});
+
+/* ---> EMPLEADOS <--- */
+// 1. Crear Empleado
+router.get('/newEmployee', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newEmployee');
+	}else{
+	    res.redirect('/users/newEmployee');
+	}
+});
+// 2. Ver Empleados
+router.get('/employees', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/employees');
+	}else{
+	    res.redirect('/users/employees');
+	}
+});
+
+/* ---> REPORTES <--- */
+// 1. Crear Reporte
+router.get('/newReport', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newReport');
+	}else{
+	    res.redirect('/users/newReport');
+	}
+});
+// 2. Ver Reportes
+router.get('/reports', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/reports');
+	}else{
+	    res.redirect('/users/reports');
+	}
+});
+
+
 
 router.get('/admin/customers/:customer/tickets', ensureAuthenticated, AdminUserFunction, (req, res) => {
 	let customer = req.params.customer;
@@ -50,19 +144,7 @@ router.get('/admin/customers/:customer/tickets', ensureAuthenticated, AdminUserF
 					});										
 				});
 			});
-	 });
-		// tickets.find({}, (err, tkts) => {
-		// 	stores.findOne({'company_id': '57b5e6118fc445a60fbdd8d5'})
-		// 	.populate({path: "store_id"}, (err, salida) =>{
-		// 		console.log(salida);
-		// 	});
-		// });	
-		// tickets.find({}).populate('store_id').exec((err, tkt)=>{
-		// 	console.log(tkt);			
-		// });
-	// store.find({}, (err, stores) => {
-	// 	store.populate(companies, {path :""})			
-	// });			
+	 });	
 });
 });
 
