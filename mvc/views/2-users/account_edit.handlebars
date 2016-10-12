@@ -99,7 +99,7 @@
 										<!-- widget content -->
 										<div class="widget-body">
 					
-											<form method= "post" action="/admin/edituser/{{user.id}}" class="form-horizontal">
+											<form method= "post" action="/account/edit" class="form-horizontal" enctype="multipart/form-data">
 												
 												<fieldset>
 													<legend>Información personal</legend>
@@ -144,7 +144,7 @@
 																<div class="col-sm-12">
 																	<div class="input-group">
 																		<span class="input-group-addon">U</span>
-																		<input class="form-control" name="userType" id="userType" placeholder="Tipo de Usuario" type="text" value="{{user.userType}}">
+																		<input class="form-control" disabled name="userType" id="userType" placeholder="Tipo de Usuario" type="text" value="{{user.userType}}">
 																	</div>
 																</div>
 															</div>														
@@ -154,7 +154,7 @@
 																<div class="col-sm-12 col-md-12 col-lg-12">
 																	<div class="input-group">
 																		<span class="input-group-addon"> ©</span>
-																		<input class="form-control" name="localId" id="localId" placeholder="Documento de Identidad (sin comas ni puntos)" type="text" value="{{user.position}}">
+																		<input class="form-control" name="position" id="position" placeholder="Posición" type="text" value="{{user.position}}">
 																	</div>
 																</div>
 															</div>														
@@ -181,7 +181,7 @@
 																		<div class="col-sm-12">
 																			<div class="input-group">
 																				<span class="input-group-addon"> 📱</span>
-																				<input class="form-control" name="Cellphone" id="Cellphone" placeholder="Numero Celular" type="text" value="{{user.cellphone}}">
+																				<input class="form-control" name="cellphone" id="cellphone" placeholder="Numero Celular" type="text" value="{{user.cellphone}}">
 																			</div>
 																		</div>
 																	</div>														
@@ -361,7 +361,7 @@
 													<div class="form-group">
 														<label class="col-md-2 control-label">Editar Foto</label>
 														<div class="col-md-10">
-															<input type="file" class="btn btn-default" id="exampleInputFile1">
+															<input type="file" name="file" class="btn btn-default" id="image">
 															<p class="help-block">
 																Agregar Foto.
 															</p>

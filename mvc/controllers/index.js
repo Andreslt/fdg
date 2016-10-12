@@ -24,14 +24,28 @@ router.get('/dashboard', ensureAuthenticated, (req, res)=>{
 	}
 });
 // 2. Cuenta
-router.get('/account', ensureAuthenticated, (req, res)=>{
+router.get('/account', ensureAuthenticated, (req, res)=>{	
 	if (req.user.userType === 'systemAdmin'){
 	    res.redirect('/admin/account');
 	}else{
 	    res.redirect('/users/account');
 	}
 });
-
+router.get('/account/edit', ensureAuthenticated, (req, res)=>{
+	req.flash('success_msg','El usuario se ha actualizado satisfactoriamente.')
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/account');
+	}else{
+	    res.redirect('/users/account');
+	}
+});
+router.post('/account/edit', (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect(307, '/admin/account/edit');
+	}else{
+	    res.redirect(307, '/users/account/edit');
+	}		
+});
 /* ---> ORDENES <--- */
 // 1. Crear Ticket
 router.get('/newTicket', ensureAuthenticated, (req, res)=>{

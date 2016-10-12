@@ -1,5 +1,5 @@
 //    Creating new MongoDBObjects
-var db = require('./db/setdb');
+//var db = require('./db/setdb');
 
 /*var LocalStoreSchema = {
     storeName: "Default",
@@ -250,4 +250,10 @@ store.find({}, function(err, stores) {
 //   pass: ""
 // }
 // const service = "hotmail";
+'use strict';
 // const mailer = require('./config/mailer')(service,auth,mailOptions);
+
+var imageUp = require('./config/imagesUpload');
+let originPath = '/Users/Andres/Desktop/Pluriza.png';
+let destinationPath = 'companyID_userID';
+imageUp.uploadFile(originPath, destinationPath);

@@ -8,6 +8,8 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const exphbs = require('express-handlebars');
 var moment = require('moment');
+var fs = require('fs');
+const formidable = require('express-formidable');
 
 // Controllers
 const routes = require('./mvc/controllers/index');
@@ -84,10 +86,19 @@ var hbsEngine = exphbs.create({
         cel3: (cellphone_Number)=>{
           let cellphone_String = cellphone_Number.toString();            
           return cellphone_String.substring(6,10);
+        },
+        userImage: (imagePath, size)=>{
+          let option;
+          if (size === "small") option="c_fill,h_35,w_35/";
+          else if (size === "medium") option="c_fill,h_100,w_100/";
+          else option="c_fill,h_150,w_150/";
+
+          return 'http://res.cloudinary.com/pluriza/image/upload/'
+                  + option
+                  + imagePath
         }
     }
 });
-
 
 // View Engine
 app.set('views', viewsPath);
@@ -178,6 +189,13 @@ app.use('/admin', admin);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
+
+// Multipart/form-ata
+app.use(formidable({
+  encoding: 'utf-8',
+  uploadDir: __dirname+'/resources/tempFiles',
+  keepExtensions: true
+}));
 
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));

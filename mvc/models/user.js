@@ -62,6 +62,7 @@ var UserSchema = new mongoose.Schema({
 		type: ObjectId,
 		ref: 'City'
 	},
+	image:String,
 	image_large: String,
 	image_small: String,	
 	resetPasswordToken: String,

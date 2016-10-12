@@ -9,6 +9,7 @@ var async = require('async');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('underscore');
+var formidable = require('formidable');
 //var schedule = require('node-schedule');
 
 //Models
@@ -22,7 +23,15 @@ const city = require('../models/city');
 
 //Config
 const validations = require('../../config/validations');
-
+const imageUp = require('../../config/imagesUpload');
+/*var Cloudinary = require('cloudinary');
+Cloudinary.config({ 
+  cloud_name: 'pluriza', 
+  api_key: '194971666456459', 
+  api_secret: 'CQq5NuANVAJDCu1LvcYMCWHKCss' 
+});
+var cloudinaryStorage = multerCloudinary({cloudinary: Cloudinary});
+var cloudinaryUpload = multer({storage: cloudinaryStorage});*/
 /* ---------->>> ROUTES <<<---------- */
 
 /* >>> GET <<< */
@@ -381,7 +390,28 @@ router.post('/login',
   });
 
 // User Edit
-router.post('/edit/:id')
+router.post('/account/edit', (req, res)=>{
+var user = req.user;
+ var form = new formidable.IncomingForm();
+   form.parse(req, function(err, fields, files) {
+	   company.findOne({_id: user.company_id}, (err, cny)=>{
+		   let fSImagePath_cloudinary = 'http://res.cloudinary.com/pluriza/image/upload/' + cny.companyName+'/'+user.id;
+			UserModule.findOneAndUpdate({_id: user.id}, {$set: {name:fields.name, lastname: fields.lastname,
+				username: fields.username, localId: fields.localId,	position: fields.position,	email: fields.email,
+				cellphone: fields.cellphone, image: fSImagePath_cloudinary}} , {new: true}, (err, usr)=>{
+				if (err) req.flash('error','Ha ocurrido un error. Inténtelo de nuevo más tarde.') 
+					if (files.file.path!=null)
+					{
+						let originPath = files.file.path;
+						let destinationPath = fSImagePath_cloudinary;
+						imageUp.uploadFile(originPath, destinationPath);		
+					}
+					req.flash('success_msg','El usuario se ha actualizado satisfactoriamente.')				
+					res.redirect('/account/edit');
+			});
+	   });
+	});
+});
 router.post('/storeAdmin/EditTicket', (req, res)=>{
 	let user = req.user, ticket = req.body.ticketId, 
 				title = req.body.ticketTitle, description = req.body.ticketDesc;
