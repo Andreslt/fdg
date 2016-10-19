@@ -19,10 +19,6 @@ var LocalStoreSchema = mongoose.Schema({
         ref: 'City',
         required: true
     },    
-    city: {
-        name: String,
-        image: String
-    },    
     address:{
         type: String
     },

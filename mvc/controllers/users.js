@@ -24,14 +24,7 @@ const city = require('../models/city');
 //Config
 const validations = require('../../config/validations');
 const imageUp = require('../../config/imagesUpload');
-/*var Cloudinary = require('cloudinary');
-Cloudinary.config({ 
-  cloud_name: 'pluriza', 
-  api_key: '194971666456459', 
-  api_secret: 'CQq5NuANVAJDCu1LvcYMCWHKCss' 
-});
-var cloudinaryStorage = multerCloudinary({cloudinary: Cloudinary});
-var cloudinaryUpload = multer({storage: cloudinaryStorage});*/
+
 /* ---------->>> ROUTES <<<---------- */
 
 /* >>> GET <<< */
@@ -124,6 +117,13 @@ router.get('/resetpassword/:token', function(req, res) {
 //   });
 // });
 
+// Home
+router.get('/home', validations.ensureAuthenticated, validations.approvedUser, function(req, res){
+	let user = req.user, storeAdminSW;
+	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+		res.render('2-users/home', {layout: 'userLayout', storeAdminSW});
+});
+
 // Dashboard
 router.get('/dashboard', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
 	let user = req.user, storeAdminSW;
@@ -176,18 +176,41 @@ router.get('/account/employee', validations.ensureAuthenticated, validations.app
 
 // New ticket
 router.get('/newTicket', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
-	let user = req.user, storeAdminSW;
-	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
-	res.render('2-users/new_ticket', {layout: 'userLayout', storeAdminSW});
+	var user = req.user, storeAdminSW;
+	store.find({company_id: user.company_id})
+	.exec((err, stores) => {				
+		(user.userType === "storeAdmin")? storeAdminSW = true : storeAdminSW=false;
+		res.render('2-users/new_ticket', {layout: 'userLayout', storeAdminSW, stores});
+	})
 });
 
 // Tickets
 router.get('/tickets', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
 	let user = req.user, storeAdminSW;
-	(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
-	res.render('2-users/list_tickets', {layout: 'userLayout', storeAdminSW});
+		tickets.find({})
+		.then(tks1 => store.populate(tks1, {path: "store_id"}))
+		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
+		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}))
+		.then(result=>{
+		var tkts = new Array();
+			for(let item in result){
+				let validation = result[item].store_id;
+				//if (validation.company_id.companyName === companyName && validation.city_id.city  === cityName)
+					tkts.push(result[item]);
+			}
+			(user.userType === "storeAdmin")? storeAdminSW=true:storeAdminSW=false;
+			res.render('2-users/list_tickets', {layout: 'userLayout', storeAdminSW, tkts});
+		});			
 });
 
+router.get('/tickets/edit/success', validations.ensureAuthenticated, (req, res)=>{
+	req.flash('success_msg','Ticket actualizado con éxito.');
+	res.redirect('/users/tickets');
+});
+router.get('/tickets/edit/failed', validations.ensureAuthenticated, (req, res)=>{
+	req.flash('error_msg','El ticket no pudo ser actualizado. Escriba una descripción válida.');
+	res.redirect('/users/tickets');
+});
 // New store
 router.get('/newStore', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
 	let user = req.user, storeAdminSW;
@@ -384,23 +407,24 @@ router.post('/register', function(req, res){
 });
 // User Login
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/dashboard', failureRedirect:'/',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/',failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   });
 
 // User Edit
 router.post('/account/edit', (req, res)=>{
-var user = req.user;
- var form = new formidable.IncomingForm();
+	var user = req.user;
+ 	var form = new formidable.IncomingForm();
    form.parse(req, function(err, fields, files) {
 	   company.findOne({_id: user.company_id}, (err, cny)=>{
-		   let fSImagePath_cloudinary = 'http://res.cloudinary.com/pluriza/image/upload/' + cny.companyName+'/'+user.id;
+		   let fSImagePath_cloudinary;
+		   if (files.file.path!=null) fSImagePath_cloudinary = cny.companyName+'/'+user.id;
 			UserModule.findOneAndUpdate({_id: user.id}, {$set: {name:fields.name, lastname: fields.lastname,
 				username: fields.username, localId: fields.localId,	position: fields.position,	email: fields.email,
 				cellphone: fields.cellphone, image: fSImagePath_cloudinary}} , {new: true}, (err, usr)=>{
 				if (err) req.flash('error','Ha ocurrido un error. Inténtelo de nuevo más tarde.') 
-					if (files.file.path!=null)
+					if (files.file.name!="")
 					{
 						let originPath = files.file.path;
 						let destinationPath = fSImagePath_cloudinary;
@@ -412,12 +436,12 @@ var user = req.user;
 	   });
 	});
 });
-router.post('/storeAdmin/EditTicket', (req, res)=>{
-	let user = req.user, ticket = req.body.ticketId, 
-				title = req.body.ticketTitle, description = req.body.ticketDesc;
-	tickets.findOneAndUpdate({_id: ticket}, {$set: {title: title, description: description}}, (err, tkts)=>{
-		if(err) console.log(err);
-		res.redirect('/users/dashboard');
+router.post('/tickets/edit', (req, res)=>{
+	let user = req.user, ticket = req.body.ticketId, description = req.body.ticketDesc;
+	tickets.findOneAndUpdate({_id: ticket}, {$set: {description: description}}, (err, tkts)=>{
+		if(err) res.redirect('/users/tickets/edit/failed');
+		else
+		res.redirect('/users/tickets/edit/success');
 	});
 });
 

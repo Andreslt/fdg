@@ -291,18 +291,12 @@
 					{{/if}}
 
 					{{#if error_msg}}
-						<div class="alert alert-danger">Por favor verificar los datos ingresados.</div>
+						<div class="alert alert-danger">{{error_msg}}</div>
 					{{/if}}
 
 					{{#if error}}
-						<div class="alert alert-danger">Por favor verificar los datos ingresados.</div>
-					{{/if}}
-					
-{{!--					{{#if errors}}
-						{{#each errors}}
-							<div class="alert alert-danger">{{msg}}</div>
-						{{/each}}
-					{{/if}}	--}}			
+						<div class="alert alert-danger">{{error_msg}}</div>
+					{{/if}}							
 				</div>        
 			</div>
 
@@ -485,12 +479,6 @@
 			<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
 			<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 			<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>	
-			
-			<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-			<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 			<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
 			<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
 
@@ -503,6 +491,10 @@
 
 				// DO NOT REMOVE : GLOBAL FUNCTIONS!
 				pageSetUp();
+			     
+
+			
+
 
 				var randomScalingFactor = function() {
 		            return Math.round(Math.random() * 100);

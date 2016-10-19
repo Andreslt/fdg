@@ -13,6 +13,15 @@ var TicketSchema = mongoose.Schema({
         type: String, 
         required: true
     },
+    store_id: {
+        type: ObjectId,
+        ref: "Store",
+        required: true
+    },
+    priority: {
+        type: String,
+        required: true
+    },     
     description: {
         type: String,
         required: true
@@ -20,23 +29,32 @@ var TicketSchema = mongoose.Schema({
     status: {
         type: String,
         required: true
-    },
-    store_id: {
+    },   
+    created_by: {
         type: ObjectId,
-        ref: "Store"
-    },
-    openningDate: {
+        ref: "Users",
+        required: true
+    },    
+    startdate: {
         type: Date,
+        default: Date.now,
         required: true
     },
-    closingDate: {
+    finishdate: {
         type: Date
-    },    
+    },
+    lastupdate: {
+        type: Date
+    },         
     feedback: {
         type: Number,
         min: 0,
         max: 5
     },
+    categories: [{
+        type: String
+    }],
+    attachements: String,
     tracking: [{
         employeeId: {
             type: String
@@ -57,3 +75,7 @@ var TicketSchema = mongoose.Schema({
 });
 
 var Ticket = module.exports = mongoose.model('Ticket', TicketSchema);
+
+module.exports.createTicket = (newTicket, callback) => {
+    newTicket.save(callback);
+}

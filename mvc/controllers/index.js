@@ -8,10 +8,17 @@ const stores = require('../models/store');
 const cities = require('../models/city');
 const company = require('../models/company');
 const mailer = require('../../config/mailer');
-
+const formidable = require('formidable');
 // Go Home
 router.get('/', ensureAuthenticated, (req, res)=>{
-	res.redirect('/dashboard');	
+	    res.redirect('/home');
+});
+router.get('/home', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/home');
+	}else{
+	    res.redirect('/users/home');
+	}	
 });
 
 /* ---> INICIO <--- */
@@ -55,12 +62,88 @@ router.get('/newTicket', ensureAuthenticated, (req, res)=>{
 	    res.redirect('/users/newTicket');
 	}
 });
+
+router.get('/newTicket/failed', ensureAuthenticated, (req, res)=>{
+	req.flash('error_msg','No se pudo crear el ticket. Todos los campos no opcionales son requeridos.')
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/newTicket');
+	}else{
+	    res.redirect('/users/newTicket');
+	}
+});
+
+router.get('/newTicket/success', ensureAuthenticated, (req, res)=>{
+	req.flash('success_msg','Ticket creado con éxito.')
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/tickets');
+	}else{
+	    res.redirect('/users/tickets');
+	}
+});
+
+router.post('/newTicket', ensureAuthenticated, (req, res)=>{
+	var user = req.user, storeAdminSW;
+	var form = new formidable.IncomingForm();
+	form.parse(req, function(err, fields, files) {
+		let body = fields, datenew= body.startdate.slice(-4)+"/"+body.startdate.substring(6,2)+"/"+body.startdate.substring(0,2);
+		var params={
+			ticketNumber: body.ticketNumber,
+			title: body.title,
+			startdate: new Date (datenew),
+			store_id: body.store,
+			priority: body.priority,
+			description: body.description,
+			categories: body.categories,
+			status: "Pendiente",
+			created_by: req.user.id	
+		}
+
+		var newTicket = new tickets(params);
+		tickets.createTicket(newTicket, (err, ticket)=>{
+			if (err) {
+				req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
+				res.redirect('/newTicket/failed');
+			}else{									
+				(user.userType === "storeAdmin")? storeAdminSW = true : storeAdminSW=false;
+				res.redirect('/newTicket/success');				
+			}
+		});
+	})	
+});
 // 2. Ver Tickets
 router.get('/tickets', ensureAuthenticated, (req, res)=>{
 	if (req.user.userType === 'systemAdmin'){
 	    res.redirect('/admin/tickets');
 	}else{
 	    res.redirect('/users/tickets');
+	}
+});
+
+router.get('/tickets/edit/success', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/tickets/edit/success');
+	}else{
+	    res.redirect('/users/tickets/edit/success');
+	}
+});
+
+router.get('/tickets/edit/failed', ensureAuthenticated, (req, res)=>{
+	if (req.user.userType === 'systemAdmin'){
+	    res.redirect('/admin/tickets/edit/failed');
+	}else{
+	    res.redirect('/users/tickets/edit/failed');
+	}
+});
+
+router.post('/tickets/edit', ensureAuthenticated, (req, res)=>{
+	if (req.body.ticketDesc != ""){
+		if (req.user.userType === 'systemAdmin'){
+			res.redirect(307, '/admin/tickets/edit');
+		}else{
+			res.redirect(307, '/users/tickets/edit');
+		}
+	}else{
+		res.redirect('/tickets/edit/failed');
 	}
 });
 
@@ -137,7 +220,7 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 });
 
 
-
+/* ---> OLD <--- */
 router.get('/admin/customers/:customer/tickets', ensureAuthenticated, AdminUserFunction, (req, res) => {
 	let customer = req.params.customer;
 	 company.find({companyName: {$ne: "Default company"}}, (err, customers) => {

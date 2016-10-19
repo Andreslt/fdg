@@ -12,8 +12,12 @@
 					
 					<!-- breadcrumb -->
 					<ol class="breadcrumb">
-						<li><a href="/dashboard">Inicio</a></li><li><a href="/users/account">Cuenta</a></li><li>Editar</li>
+						<li><a href="/home">Inicio</a></li><li><a href="/users/account">Cuenta</a></li><li>Editar</li>
 					</ol>
+
+					<span class="ribbon-button-alignment pull-right">
+						<a href="/newTicket"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
+					</span> 			
 					<!-- end breadcrumb -->
 
 					<!-- You can also add more buttons to the
@@ -32,18 +36,6 @@
 
 				<!-- MAIN CONTENT -->
 				<div id="content">
-
-					<div class="row">
-						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-							<h1 class="page-title txt-color-blueDark">
-								<i class="fa fa-pencil-square-o fa-fw "></i> 
-									Usuarios
-								<span>> 
-									Editar Información
-								</span>
-							</h1>
-						</div>
-					</div>
 					
 					<!-- widget grid -->
 	<!--				<section id="widget-grid" class="">
@@ -373,9 +365,9 @@
 												<div class="form-actions">
 													<div class="row">
 														<div class="col-md-12">
-															<button class="btn btn-default" type="submit">
+															<a href="/account" class="btn btn-default">
 																Cancelar
-															</button>
+															</a>
 															<button class="btn btn-primary" type="submit">
 																<i class="fa fa-save"></i>
 																Guardar
