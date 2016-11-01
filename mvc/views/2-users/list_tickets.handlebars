@@ -172,85 +172,85 @@
 <!-- END MAIN CONTENT -->
 				<!-- Ticket Info Modal -->
 				<form method ="post" action="/tickets/edit">
-				<div class="modal fade" id="TicketInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							
-								<input type="hidden" id="edit-ticket-id" name="ticketId">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-										&times;
-									</button>
-									<h4 class="modal-title" id="myModalLabel">Detalle de Ticket</h4>
-								</div>
-								<div class="modal-body">
-									<!--Ticket No. ---<o>--- Titulo del Ticket-->
-									<div class="row">
-										<div class = "col-md-4">
-											<div class="form-group">
-												<label for="edit-ticket-number"><small><b>Ticket No.:</b></small></label>
-												<input type="text" class="form-control" placeholder="Ticket No." required name="ticketNum" id="edit-ticket-number" disabled align="center"/>
-											</div>
-										</div>
-										<div class = "col-md-8">
-											<div class="form-group">
-												<label for="edit-ticket-title"><small><b>Título:</b></small></label>
-												<input type="text" class="form-control" placeholder="Titulo del Ticket" required name="ticketTitle" id="edit-ticket-title" disabled/>
-											</div>
-										</div>	
-									</div>
-									<!--Fecha Inicio ---<o>--- Last Update-->
-									<div class="row">
-										<div class = "col-md-6">
-											<div class="form-group">
-												<label for="openningDate"><small><b>Fecha Creación:</b></small></label>
-												<input type="text" class="form-control" placeholder="Fecha de Creación" required name="openningDate" id="openningDate" disabled/>
-											</div>										
-										</div>										
-										<div class = "col-md-6">
-											<div class="form-group">
-												<label for="lastUpdate"><small><b>Ultima Modificación:</b></small></label>
-												<input type="text" class="form-control" placeholder="Ultima Modificación" required name="lastUpdate" id="lastUpdate" disabled/>
-											</div>
-										</div>
-									</div>
-									<!--Tienda ---<o>--- Ciudad-->
-									<div class="row">
-										<div class = "col-md-6">
-											<div class="form-group">
-												<label for="edit-ticket-city"><small><b>Ciudad:</b></small></label>
-												<input type="text" class="form-control" placeholder="Ciudad" required name="ticketCity" id="edit-ticket-city" disabled/>
-											</div>										
-										</div>										
-										<div class = "col-md-6">
-											<div class="form-group">
-												<label for="edit-ticket-store"><small><b>Tienda:</b></small></label>
-												<input type="text" class="form-control" placeholder="Tienda" required name="ticketStore" id="edit-ticket-store" disabled/>
-											</div>
-										</div>
-									</div>
-									<!--Descripción-->
-									<div class = "row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label for="edit-ticket-description"><small><b>Descripción:</b></small></label>
-												<textarea class="form-control" placeholder="Descripción" rows="2" name="ticketDesc" id="edit-ticket-description"></textarea>
-											</div>
-										</div>
-									</div>													
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">
-										Cerrar
-									</button>
-									<button id= "submitModal" type="submit" class="btn btn-primary">
-										Editar
-									</button>
-								</div>
+					<div class="modal fade" id="TicketInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
 								
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
+									<input type="hidden" id="edit-ticket-id" name="ticketId">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+										<h4 class="modal-title" id="myModalLabel">Detalle de Ticket</h4>
+									</div>
+									<div class="modal-body">
+										<!--Ticket No. ---<o>--- Titulo del Ticket-->
+										<div class="row">
+											<div class = "col-md-4">
+												<div class="form-group">
+													<label for="edit-ticket-number"><small><b>Ticket No.:</b></small></label>
+													<input type="text" class="form-control" placeholder="Ticket No." required name="ticketNum" id="edit-ticket-number" disabled align="center"/>
+												</div>
+											</div>
+											<div class = "col-md-8">
+												<div class="form-group">
+													<label for="edit-ticket-title"><small><b>Título:</b></small></label>
+													<input type="text" class="form-control" placeholder="Titulo del Ticket" required name="ticketTitle" id="edit-ticket-title" disabled/>
+												</div>
+											</div>	
+										</div>
+										<!--Fecha Inicio ---<o>--- Last Update-->
+										<div class="row">
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="openningDate"><small><b>Fecha Creación:</b></small></label>
+													<input type="text" class="form-control" placeholder="Fecha de Creación" required name="openningDate" id="openningDate" disabled/>
+												</div>										
+											</div>										
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="lastUpdate"><small><b>Ultima Modificación:</b></small></label>
+													<input type="text" class="form-control" placeholder="Ultima Modificación" required name="lastUpdate" id="lastUpdate" disabled/>
+												</div>
+											</div>
+										</div>
+										<!--Tienda ---<o>--- Ciudad-->
+										<div class="row">
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="edit-ticket-city"><small><b>Ciudad:</b></small></label>
+													<input type="text" class="form-control" placeholder="Ciudad" required name="ticketCity" id="edit-ticket-city" disabled/>
+												</div>										
+											</div>										
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="edit-ticket-store"><small><b>Tienda:</b></small></label>
+													<input type="text" class="form-control" placeholder="Tienda" required name="ticketStore" id="edit-ticket-store" disabled/>
+												</div>
+											</div>
+										</div>
+										<!--Descripción-->
+										<div class = "row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label for="edit-ticket-description"><small><b>Descripción:</b></small></label>
+													<textarea class="form-control" placeholder="Descripción" rows="2" name="ticketDesc" id="edit-ticket-description"></textarea>
+												</div>
+											</div>
+										</div>													
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+										<button id= "submitModal" type="submit" class="btn btn-primary">
+											Editar
+										</button>
+									</div>
+									
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
 				</form>
 </div>
 <!-- END MAIN PANEL -->

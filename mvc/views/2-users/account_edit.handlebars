@@ -14,10 +14,7 @@
 					<ol class="breadcrumb">
 						<li><a href="/home">Inicio</a></li><li><a href="/users/account">Cuenta</a></li><li>Editar</li>
 					</ol>
-
-					<span class="ribbon-button-alignment pull-right">
-						<a href="/newTicket"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
-					</span> 			
+		
 					<!-- end breadcrumb -->
 
 					<!-- You can also add more buttons to the
@@ -173,7 +170,7 @@
 																		<div class="col-sm-12">
 																			<div class="input-group">
 																				<span class="input-group-addon"> 📱</span>
-																				<input class="form-control" name="cellphone" id="cellphone" placeholder="Numero Celular" type="text" value="{{user.cellphone}}">
+																				<input class="form-control" name="cellphone" id="cellphone" placeholder="Numero Celular" type="text" value="{{user.phone}}">
 																			</div>
 																		</div>
 																	</div>														
@@ -221,19 +218,19 @@
 														<div class="col-md-2">
 															<select class="form-control input-sm" disabled>
 																{{#select userDates.creatMonth}}
-																<option value="1">Enero</option>
-																<option value="2">Febrero</option>
-																<option value="3">Marzo</option>
-																<option value="4">Abril</option>
-																<option value="5">Mayo</option>
-																<option value="6">Junio</option>
-																<option value="7">Julio</option>
-																<option value="8">Agosto</option>
-																<option value="9">Septiembre</option>
-																<option value="10">Octubre</option>
-																<option value="11">Noviembre</option>
-																<option value="12">Diciembre</option>
-															{{/select}}
+																<option value="0">Enero</option>
+																<option value="1">Febrero</option>
+																<option value="2">Marzo</option>
+																<option value="3">Abril</option>
+																<option value="4">Mayo</option>
+																<option value="5">Junio</option>
+																<option value="6">Julio</option>
+																<option value="7">Agosto</option>
+																<option value="8">Septiembre</option>
+																<option value="9">Octubre</option>
+																<option value="10">Noviembre</option>
+																<option value="11">Diciembre</option>
+																{{/select}}
 															</select>															
 														</div>
 														<label class="control-label col-md-1">Dia</label>
@@ -282,6 +279,7 @@
 														<div class="col-md-2">
 															<select class="form-control input-sm" disabled>
 																{{#select userDates.aprobYear}}
+																	<option value="99">-</option>
 																	<option value="2016">2016</option>
 																	<option value="2017">2017</option>
 																	<option value="2018">2018</option>
@@ -294,18 +292,19 @@
 														<div class="col-md-2">
 															<select class="form-control input-sm" disabled>
 																{{#select userDates.aprobMonth}}
-																<option value="1">Enero</option>
-																<option value="2">Febrero</option>
-																<option value="3">Marzo</option>
-																<option value="4">Abril</option>
-																<option value="5">Mayo</option>
-																<option value="6">Junio</option>
-																<option value="7">Julio</option>
-																<option value="8">Agosto</option>
-																<option value="9">Septiembre</option>
-																<option value="10">Octubre</option>
-																<option value="11">Noviembre</option>
-																<option value="12">Diciembre</option>
+																<option value="99">-</option>
+																<option value="0">Enero</option>
+																<option value="1">Febrero</option>
+																<option value="2">Marzo</option>
+																<option value="3">Abril</option>
+																<option value="4">Mayo</option>
+																<option value="5">Junio</option>
+																<option value="6">Julio</option>
+																<option value="7">Agosto</option>
+																<option value="8">Septiembre</option>
+																<option value="9">Octubre</option>
+																<option value="10">Noviembre</option>
+																<option value="11">Diciembre</option>
 																{{/select}}
 															</select>
 														</div>
@@ -313,6 +312,7 @@
 														<div class="col-md-2">
 															<select class="form-control input-sm" disabled>
 																{{#select userDates.aprobDay}}
+																<option value="99">-</option>
 																<option value="1">1</option>
 																<option value="2">2</option>
 																<option value="3">3</option>

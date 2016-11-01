@@ -12,9 +12,12 @@ var fs = require('fs');
 const formidable = require('express-formidable');
 
 // Controllers
-const routes = require('./mvc/controllers/index');
+const index = require('./mvc/controllers/index')
+const routes = index.router;
+/*const logger = index.logger;*/
 const users = require('./mvc/controllers/users');
 const admin = require('./mvc/controllers/admin');
+const oauth = require('./mvc/controllers/oauth');
 // const routes = require('./mvc/controllers/routes');
 
 // Models
@@ -75,17 +78,18 @@ var hbsEngine = exphbs.create({
 								return "disabled"
 							}
         },
-        cel1: (cellphone_Number)=>{
-          let cellphone_String = cellphone_Number.toString();
-          return cellphone_String.substring(0,3);
+        substring: (phone_number, start, end)=>{
+          return phone_number.substring(start,end);
         },
-        cel2: (cellphone_Number)=>{
-          let cellphone_String = cellphone_Number.toString();          
-          return cellphone_String.substring(3,6);
+        formatPhone: (phone)=>{
+          let phone_number = phone.toString();
+          return "(" + phone_number.substring(0,3) + ")" + phone_number.substring(3,6) + "-" + phone_number.substring(6,10);
         },
-        cel3: (cellphone_Number)=>{
-          let cellphone_String = cellphone_Number.toString();            
-          return cellphone_String.substring(6,10);
+        comparation: (string1, string2)=>{
+          if(string1===string2)
+            return true;
+          else
+            return false;
         },
         userImage: (imagePath, size)=>{
           let option;
@@ -186,6 +190,32 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin);
+app.use('/oauth', oauth);
+
+//Not found pages
+app.use(function(req, res, next){
+    res.status(404);
+    console.log('error','Not found URL: %s',req.url);
+    res.send({ error: 'Not found' });
+    return;
+});
+
+/*app.use(function(err, req, res, next){
+    res.status(err.status || 500);
+    console.log('error','Internal error(%d): %s',res.statusCode,err.message);
+    res.send({ error: err.message });
+    return;
+});*/
+
+// Morgan
+app.use(require('morgan')('combined', {
+  stream: {
+    write: message =>{
+      //Writing Logs
+      console.log('info', message);
+    }
+  }
+}));
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

@@ -11,6 +11,7 @@
 	<!-- Basic Styles -->
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<link rel="stylesheet" href="/css/style.css" /><!-- Not included in template -->
+	<link rel="stylesheet" href="/css/stylesfdg.css" /><!-- Not included in template -->
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/font-awesome.min.css">
 
 	<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
@@ -49,12 +50,56 @@
 <body class="smart-style-1">
 	<header id="header">
 			<div id="logo-group">
+
 				<!-- PLACE YOUR LOGO HERE -->
 				<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
 				<!-- END LOGO PLACEHOLDER -->
+
+				<!-- Note: The activity badge color changes when clicked and resets the number to 0
+					 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+				<div class="ajax-dropdown">
+
+					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+					<div class="btn-group btn-group-justified" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="/ajax/notify/mail.html">
+							Msgs (14) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="/ajax/notify/notifications.html">
+							notify (3) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="/ajax/notify/tasks.html">
+							Tasks (4) </label>
+					</div>
+
+					<!-- notification content -->
+					<div class="ajax-notifications custom-scroll">
+
+						<div class="alert alert-transparent">
+							<h4>Click a button to show messages here</h4>
+							This blank page message helps protect your privacy, or you can show the first message here automatically.
+						</div>
+
+						<i class="fa fa-lock fa-4x fa-border"></i>
+
+					</div>
+					<!-- end notification content -->
+
+					<!-- footer: refresh area -->
+					<span> Ultima actualización: 12/12/2013 9:43AM
+						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+							<i class="fa fa-refresh"></i>
+						</button> </span>
+					<!-- end footer -->
+
+				</div>
+				<!-- END AJAX-DROPDOWN -->
 			</div>
 
-			<!-- projects dropdown -->
+			<!-- #PROJECTS: projects dropdown -->
 			<div class="project-context hidden-xs">
 
 				<span class="label">Projects:</span>
@@ -63,7 +108,7 @@
 				<!-- Suggestion: populate this list with fetch and push technique -->
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/users">Online e-merchant management system - attaching integration with the iOS</a>
+						<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
 					</li>
 					<li>
 						<a href="javascript:void(0);">Notes on pipeline upgradee</a>
@@ -79,7 +124,7 @@
 				<!-- end dropdown-menu-->
 
 			</div>
-			<!-- end projects dropdown -->
+			<!-- end projects dropdown -->			
 
 			<!-- pulled right: nav area -->
 			<div class="pull-right">
@@ -163,49 +208,14 @@
 
 				<!-- NAVIGATION : This navigation is also responsive-->
 		<nav>
-			{{#if userTypeAdmin}}
-			<ul>
-				<li>
-					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Ver Clientes</span></a>
-					<ul>
-						{{#each customers}}
-						<li>
-								<a href="#" title="Dashboard">{{companyName}}</a>
-								<ul>
-									<li>
-										<a href="/admin/customers/{{companyName}}/tickets" title="Dashboard"><i class="fa fa-lg fa-fw fa-ticket"></i>Ver Tickets</a>
-									</li>
-									<li>
-										<a href="/admin/dashboard" title="Dashboard"><i class= "fa fa-lg fa-fw fa-building"></i> Ver Activos</a>
-									</li>
-								</ul>
-							</li>
-						{{/each}}
-					</ul>
-				</li>
-				<li class="top-menu-invisible">
-					<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">Gestionar usuarios</span></a>
-					<ul>
-						<li class="">
-							<a href="/admin/listUsers" title="Listar Usuarios"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Listar Usuarios</span></a>
-						</li>						
-						<li class="">
-							<a href="/admin/usersAuth" title="Autorizar Usuarios"><i class="fa fa-lg fa-fw fa-flickr"></i> <span class="menu-item-parent">Autorizar Usuarios</span></a>
-						</li>
-					</ul>
-			</ul>
-			{{/if}}
-
-			{{#unless userTypeAdmin}}
-				{{#if storeAdminSW}}
 					<ul>
 						<li class="active">
 							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Inicio</span></a>
 							<ul>
-								<li class="active">
+<!--								<li class="active">
 									<a href="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i>Home</a>
-								</li>								
-								<li class="">
+								</li>	-->							
+								<li class="active">
 									<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
 								</li>
 								<li class="">
@@ -220,7 +230,7 @@
 									<a href="/newTicket" title="Nuevo Ticket"><i class="fa fa-lg fa-fw fa-ticket"></i>Crear Ticket</a>
 								</li>								
 								<li>
-									<a href="/tickets" title="Ver Ordenes de Trabajo"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
+									<a href="/tickets?target=all" title="Ver Ordenes de Trabajo"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
 								</li>						
 							</ul>
 						</li>
@@ -235,7 +245,7 @@
 								</li>						
 							</ul>
 						</li>						
-						<li class="">
+<!--						<li class="">
 							<a href="#" title="Activos"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
 							<ul>
 								<li>
@@ -245,19 +255,19 @@
 									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
 								</li>						
 							</ul>
-						</li>						
+						</li>	-->					
 						<li class="">
 							<a href="#" title="Empleados"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Empleados</span></a>
 							<ul>
-								<li>
+<!--								<li>
 									<a href="/newEmployee" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-male"></i>Crear Empleado</a>
-								</li>								
+								</li>	-->							
 								<li>
 									<a href="/employees" title="All Tickets"><i class="fa fa-lg fa-fw fa-group"></i>Ver Empleados</a>
 								</li>						
 							</ul>
 						</li>
-						<li class="">
+<!--						<li class="">
 							<a href="#" title="Reportes"><i class="fa fa-lg fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
 							<ul>
 								<li>
@@ -267,13 +277,11 @@
 									<a href="/reports" title="All Tickets"><i class="fa fa-lg fa-file-text-o"></i>Ver Reportes</a>
 								</li>						
 							</ul>
-						</li>								
+						</li>	-->							
 						<li class="">
 							<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
 						</li>													
 					</ul>
-				{{/if}}
-			{{/unless}}
 		</nav>
 
 
@@ -398,7 +406,7 @@
 				var userCity = "{{userEdit.city_id.city}}"
 				var storeAdmin = "{{selectedUserType.storeAdmin}}"
 				var storeEmp = "{{selectedUserType.storeEmp}}"
-				var companyName = "{{companyName}}"		
+				var companyName = "{{companyName}}"
 			</script>
 			<script src="/js/fdgcomponents.js"></script>
 
@@ -440,6 +448,9 @@
 
 			<!-- FastClick: For mobile devices -->
 			<script src="/js/plugin/fastclick/fastclick.min.js"></script>
+
+			<!-- ProgressBar -->
+			<script src="/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>			
 
 			<!--[if IE 8]>
 
@@ -521,7 +532,7 @@
 
 				// DO NOT REMOVE : GLOBAL FUNCTIONS!
 				pageSetUp();
-
+				
 			var $checkoutForm = $('#checkout-form').validate({
 			// Rules for form validation
 				rules : {
@@ -570,6 +581,7 @@
 						digits : true
 					}
 				},
+				
 		
 				// Messages for form validation
 				messages : {
@@ -972,6 +984,74 @@
 
 		        };
 
+		        var RadarConfig = {
+			        type: 'radar',
+			        data: {
+			            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+			            datasets: [{
+			                label: "My First dataset",
+			                backgroundColor: "rgba(220,220,220,0.2)",
+			                pointBackgroundColor: "rgba(220,220,220,1)",
+			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+			            }, {
+			                label: "My Second dataset",
+			                backgroundColor: "rgba(151,187,205,0.2)",
+			                pointBackgroundColor: "rgba(151,187,205,1)",
+			                hoverPointBackgroundColor: "#fff",
+			                pointHighlightStroke: "rgba(151,187,205,1)",
+			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+			            },]
+			        },
+			        options: {
+			            legend: {
+			                position: 'top',
+			            },
+			            
+			            scale: {
+			              reverse: false,
+			              ticks: {
+			                beginAtZero: true
+			              }
+			            }
+			        }
+			    };				
+
+
+			    var DoughtnutConfig = {
+			        type: 'doughnut',
+			        data: {
+			            datasets: [{
+			                data: [
+			                    randomScalingFactor(),
+			                    randomScalingFactor(),
+			                    randomScalingFactor(),
+			                    randomScalingFactor(),
+			                    randomScalingFactor(),
+			                ],
+			                backgroundColor: [
+			                    "#F7464A",
+			                    "#46BFBD",
+			                    "#FDB45C",
+			                    "#949FB1",
+			                    "#4D5360",
+			                ],
+			                label: 'Dataset 1'
+			            }],
+			            labels: [
+			                "Red",
+			                "Green",
+			                "Yellow",
+			                "Grey",
+			                "Dark Grey"
+			            ]
+			        },
+			        options: {
+			            responsive: true,
+			            legend: {
+			                position: 'top',
+			            }
+			        }
+			    };
 				window.onload = function() {
 		            //window.myLine = new Chart(document.getElementById("lineChart"), LineConfig);
 		            window.myBar = new Chart(document.getElementById("barChart"), {
@@ -981,8 +1061,8 @@
 		                    responsive: true,
 		                }
 		            });
-		            /*window.myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
-        			window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
+		            window.myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
+        			window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);/*
         			window.myPolarArea = Chart.PolarArea(document.getElementById("polarChart"), PolarConfig);
         			window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);*/
 		        };								

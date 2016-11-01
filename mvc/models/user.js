@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
+var uniqueValidator = require('mongoose-unique-validator');
 /*var Company = require('./company');*/
 
 // Discriminator Key
@@ -18,7 +19,8 @@ var UserSchema = new mongoose.Schema({
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	password: {
 		type: String,
@@ -34,10 +36,11 @@ var UserSchema = new mongoose.Schema({
 	},
 	userType: String,
 	position: String,
-	cellphone: String,
+	phone: String,
 	createdOn: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
+		required:true
 	},
 	userApproval:{
 		type: Boolean,
@@ -69,6 +72,7 @@ var UserSchema = new mongoose.Schema({
 	resetPasswordExpires: Date
 }, options);
 
+UserSchema.plugin(uniqueValidator);
 var User = module.exports.user = mongoose.model('User', UserSchema);
 
 //System Administrator

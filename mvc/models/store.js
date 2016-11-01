@@ -2,12 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 var Company = require('./company');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var LocalStoreSchema = mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },    
     storeName: {
         type: String, 
-        required: true, 
-        unique: true
+        required: true
     },
     company_id:{
         type: ObjectId,
@@ -20,15 +25,24 @@ var LocalStoreSchema = mongoose.Schema({
         required: true
     },    
     address:{
-        type: String
+        type: String,
+        required: true
     },
     phone:{
-        type: String
+        type: Number,
+        required: true
     },
-    email: {
-        type: String
+    representative:{
+        type: ObjectId,
+        ref: 'User',
+        required: true
+    }, 
+    startdate:{
+        type: Date,
+        default: Date.now,
+        required: true
     },
-    representative: String
 });
 
+LocalStoreSchema.plugin(uniqueValidator);
 var LocalStore = module.exports = mongoose.model('Store', LocalStoreSchema);

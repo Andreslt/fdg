@@ -1,6 +1,5 @@
 {
     "host": "http://localhost:3000",
-    
     "dbURI": "mongodb://Admin:12345@ds023674.mlab.com:23674/fdg",
     "sessionSecret": "fdgEngenering2016"
 }

@@ -1,4 +1,5 @@
 'use strict';
+var UserModule = require('../mvc/models/user').user;
 
 module.exports.ensureAuthenticated = (req, res, next)=>{
 	if(req.isAuthenticated()){
@@ -12,10 +13,9 @@ module.exports.approvedUser = (req, res,next)=>{
 	if(req.user.userApproval){
 		return next();
 	}else{
-		res.render('unauthorized',{layout: 'accessDenied'});
-		console.log("WAIT YOUR TURN!");
+		res.render('0-Auth/unauthorized',{layout: 'accessDenied'});
+		console.log(req.user.username + " WAIT YOUR TURN!");
 	}
-	return next();
 }
 
 module.exports.systemAdmin = (req, res,next)=>{
@@ -26,7 +26,6 @@ module.exports.systemAdmin = (req, res,next)=>{
 		res.render('adminAccess_only',{layout: 'accessDenied'});
 		console.log("GO AWAY IMPOSTOR!");
 	}
-	return next();
 }
 
 module.exports.storeAdmin = (req, res,next) => {
@@ -37,5 +36,10 @@ module.exports.storeAdmin = (req, res,next) => {
 		res.render('adminAccess_only',{layout: 'accessDenied'});
 		console.log("GO AWAY IMPOSTOR!");
 	}
-	return next();
+}
+
+module.exports.updateEmployeesInStore = (store) => {
+	UserModule.update({store_id: store.id}, {$set: {city_id: store.city_id}}, {new:true, multi: true}, (err, result)=>{
+		console.log(result);
+	});	
 }

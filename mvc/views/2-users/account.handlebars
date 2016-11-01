@@ -13,11 +13,7 @@
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
 					<li><a href="/dashboard">Inicio</a></li><li>Cuenta</li>
-				</ol>
-
-				<span class="ribbon-button-alignment pull-right">
-					<a href="/newTicket"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
-				</span> 					
+				</ol>				
 				<!-- end breadcrumb -->
 
 				<!-- You can also add more buttons to the
@@ -108,7 +104,7 @@
 															<ul class="list-unstyled">
 																<li>
 																	<p class="text-muted">
-																		<i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">{{cel1 user.cellphone}}</span>) <span class="txt-color-darken">{{cel2 user.cellphone}}</span> - <span class="txt-color-darken">{{cel3 user.cellphone}}</span>
+																		<i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">{{substring user.phone 0 3}}</span>) <span class="txt-color-darken">{{substring user.phone 3 6}}</span>-<span class="txt-color-darken">{{substring user.phone 6 10}}</span>
 																	</p>
 																</li>
 																<li>

@@ -55,6 +55,11 @@ var TicketSchema = mongoose.Schema({
         type: String
     }],
     attachements: String,
+    viewed: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     tracking: [{
         employeeId: {
             type: String

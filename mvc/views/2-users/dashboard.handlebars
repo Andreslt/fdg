@@ -15,21 +15,7 @@
 					<li>Dashboard</li>
 				</ol>
 				<!-- end breadcrumb -->
-				</div>
-				<span class="ribbon-button-alignment pull-right">
-					<a href="/newTicket"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
-				</span> 				
-<!--				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-					<ul class = "header-dropdown-list hidden-xs">
-						<li><button>button 1</button></li>
-						<li><button>button 2</button></li>
-					</ul>
-				</div>-->
-				<!-- You can also add more buttons to the
-				ribbon for further usability
-
-				Example below:
- -->
+				</div>			
 			</div>
 			<!-- END RIBBON -->
 
@@ -38,239 +24,127 @@
 				<section id="widget-grid" class="">
 					<!-- row -->
 					<div class="row">
-						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
-								<!-- widget options:
-									usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-									
-									data-widget-colorbutton="false"	
-									data-widget-editbutton="false"
-									data-widget-togglebutton="false"
-									data-widget-deletebutton="false"
-									data-widget-fullscreenbutton="false"
-									data-widget-custombutton="false"
-									data-widget-collapsed="true" 
-									data-widget-sortable="false"
-									
-								-->
-								<header>
-
-									<h2>Tickets</h2>				
-									
-								</header>
-
-								<!-- widget div-->
-								<div>
-									
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-										<input class="form-control" type="text">	
-									</div>
-									<!-- end widget edit box -->
-									
-									<!-- widget content -->
-									<div class="widget-body">
-										
-										<!-- this is what the user will see -->
-										<canvas id="barChart" height="120"></canvas>
-
-									</div>
-									<!-- end widget content -->
-									
-								</div>
-								<!-- end widget div -->
-								
-							</div>
-							<!-- end widget -->
-
-						</article>
-					</div>
-
-					<!-- end row -->
-
-					<!-- row -->
-
-					<div class="row">
-
-						<article class="col-sm-12 col-md-12 col-lg-6">
-
-							<!-- new widget -->
-							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
-
-								<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-								data-widget-colorbutton="false"
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true"
-								data-widget-sortable="false"
-
-								-->
-
-								<header>
-									<span class="widget-icon"> <i class="fa fa-comments txt-color-white"></i> </span>
-									<h2> SmartChat </h2>
-									<div class="widget-toolbar">
-										<!-- add: non-hidden - to disable auto hide -->
-
-										<div class="btn-group">
-											<button class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
-												Status <i class="fa fa-caret-down"></i>
-											</button>
-											<ul class="dropdown-menu pull-right js-status-update">
-												<li>
-													<a href="javascript:void(0);"><i class="fa fa-circle txt-color-green"></i> Online</a>
-												</li>
-												<li>
-													<a href="javascript:void(0);"><i class="fa fa-circle txt-color-red"></i> Busy</a>
-												</li>
-												<li>
-													<a href="javascript:void(0);"><i class="fa fa-circle txt-color-orange"></i> Away</a>
-												</li>
-												<li class="divider"></li>
-												<li>
-													<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Log Off</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</header>
-
-								<!-- widget div-->
-								<div>
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<div>
-											<label>Title:</label>
-											<input type="text" />
-										</div>
-									</div>
-									<!-- end widget edit box -->
-
-									<div class="widget-body widget-hide-overflow no-padding">
-										<!-- content goes here -->
-
-										<!-- CHAT CONTAINER -->
-										<div id="chat-container">
-											<span class="chat-list-open-close"><i class="fa fa-user"></i><b>!</b></span>
-
-											<div class="chat-list-body custom-scroll">
-												<ul id="chat-users">
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/5.png" alt="">Robin Berry <span class="badge badge-inverse">23</span><span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Mark Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Belmain Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Galvitch Drewbery <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Sadi Orlaf <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Markus <span class="state"><i class="last-online pull-right">2m</i></span> </a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/sunny.png" alt="">Sunny <span class="state"><i class="last-online pull-right">2m</i></span> </a>
-													</li>
-													<li>
-														<a href="javascript:void(0);"><img src="img/avatars/male.png" alt="">Denmark <span class="state"><i class="last-online pull-right">2m</i></span> </a>
-													</li>
-												</ul>
-											</div>
-											<div class="chat-list-footer">
-
-												<div class="control-group">
-
-													<form class="smart-form">
-
-														<section>
-															<label class="input">
-																<input type="text" id="filter-chat-list" placeholder="Filter">
-															</label>
-														</section>
-
-													</form>
-
-												</div>
-
-											</div>
-
-										</div>
-
-										<!-- CHAT BODY -->
-										<div id="chat-body" class="chat-body custom-scroll">
-											<ul>
-												<li class="message">
-													<img src="img/avatars/5.png" class="online" alt="">
-													<div class="message-text">
-														<time>
-															2014-01-13
-														</time> <a href="javascript:void(0);" class="username">Sadi Orlaf</a> Hey did you meet the new board of director? He's a bit of an geek if you ask me...anyway here is the report you requested. I am off to launch with Lisa and Andrew, you wanna join?
-														<p class="chat-file row">
-															<b class="pull-left col-sm-6"> <!--<i class="fa fa-spinner fa-spin"></i>--> <i class="fa fa-file"></i> report-2013-demographic-report-annual-earnings.xls </b>
-															<span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-default">cancel</a> <a href="javascript:void(0);" class="btn btn-xs btn-success">save</a> </span>
-														</p>
-														<p class="chat-file row">
-															<b class="pull-left col-sm-6"> <i class="fa fa-ok txt-color-green"></i> tobacco-report-2012.doc </b>
-															<span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-primary">open</a> </span>
-														</p> </div>
-												</li>
-												<li class="message">
-													<img src="img/avatars/sunny.png" class="online" alt="">
-													<div class="message-text">
-														<time>
-															2014-01-13
-														</time> <a href="javascript:void(0);" class="username">John Doe</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i> 
+									<div class="col-lg-3 col-md-6 col-sm-6">
+										<div class="panel panel-primary">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-comments fa-5x"></i>
 													</div>
-												</li>
-											</ul>
-
-										</div>
-
-										<!-- CHAT FOOTER -->
-										<div class="chat-footer">
-
-											<!-- CHAT TEXTAREA -->
-											<div class="textarea-div">
-
-												<div class="typearea">
-													<textarea placeholder="Write a reply..." id="textarea-expand" class="custom-scroll"></textarea>
+													<div class="col-xs-9 text-right">
+														<div class="huge">26</div>
+														<div>Nuevos Mensajes</div>
+													</div>
 												</div>
-
 											</div>
-
-											<!-- CHAT REPLY/SEND -->
-											<span class="textarea-controls">
-												<button class="btn btn-sm btn-primary pull-right">
-													Reply
-												</button> <span class="pull-right smart-form" style="margin-top: 3px; margin-right: 10px;"> <label class="checkbox pull-right">
-														<input type="checkbox" name="subscription" id="subscription">
-														<i></i>Press <strong> ENTER </strong> to send </label> </span> <a href="javascript:void(0);" class="pull-left"><i class="fa fa-camera fa-fw fa-lg"></i></a> </span>
-
+											<a href="/messages">
+												<div class="panel-footer">
+													<span class="pull-left">Ver detalles</span>
+													<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
 										</div>
-
-										<!-- end content -->
 									</div>
-
+									<div class="col-lg-3 col-md-6 col-sm-6">
+										<div class="panel panel-green">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-tasks fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">{{totalTickets}}</div>
+														<div>Tickets del Mes</div>
+													</div>
+												</div>
+											</div>
+											<a href="/tickets?target=thisMonth">
+												<div class="panel-footer">
+													<span class="pull-left">Ver detalles</span>
+													<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 col-sm-6">
+										<div class="panel panel-yellow">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-shopping-cart fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">{{totalStores}}</div>
+														<div>Tiendas</div>
+													</div>
+												</div>
+											</div>
+											<a href="/stores">
+												<div class="panel-footer">
+													<span class="pull-left">Ver detalles</span>
+													<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 col-sm-6">
+										<div class="panel panel-red">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-group fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">{{totalEmployees}}</div>
+														<div>Empleados</div>
+													</div>
+												</div>
+											</div>
+											<a href="/employees">
+												<div class="panel-footer">
+													<span class="pull-left">Ver detalles</span>
+													<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>					
+					<!-- end row -->
+					
+					<!-- row -->
+					<div class="row">
+						<article class="col-sm-12 col-md-12 col-lg-6">
+								<div class="portlet">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="glyphicon glyphicon-calendar"></i>
+											<span class="caption-subject text-uppercase"> Portlet</span>
+											<span class="caption-helper">weekly stats...</span>
+										</div>
+										<div class="actions">
+											<a href="javascript:;" class="btn">
+												<i class="glyphicon glyphicon-pencil"></i>
+												Edit 
+											</a>
+											<a href="javascript:;" class="btn">
+												<i class="glyphicon glyphicon-paperclip"></i>
+												Add
+											</a>
+											<a href="javascript:;" class="btn btn-circle">
+												<i class="glyphicon glyphicon-resize-full"></i>
+											</a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<h4>Heading Text</h4>
+										<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+									</div>
 								</div>
-								<!-- end widget div -->
-							</div>
-							<!-- end widget -->
-
 						</article>
-
 						<article class="col-sm-12 col-md-12 col-lg-6">
 
 							<!-- new widget -->
@@ -343,15 +217,7 @@
 													<span class="date">Nov 22, 2013</span>
 												</p>
 											</li>
-											<li>
-												<span class="handle"> <label class="checkbox">
-														<input type="checkbox" name="checkbox-inline">
-														<i></i> </label> </span>
-												<p>
-													<strong>Ticket #17643</strong> - Hotfix for WebApp interface issue [<a href="javascript:void(0);" class="font-xs">More Details</a>] <span class="text-muted">Sea deep blessed bearing under darkness from God air living isn't. </span>
-													<span class="date">Jan 1, 2014</span>
-												</p>
-											</li>
+
 										</ul>
 
 										<h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (<small class="num-of-tasks">1</small>)</h5>
@@ -375,12 +241,165 @@
 							</div>
 							<!-- end widget -->
 
-						</article>
+						</article>						
+					</div>
+					<!-- end row -->
 
+					<div class="row">
+						<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+								<!-- widget options:
+									usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+									data-widget-colorbutton="false"	
+									data-widget-editbutton="false"
+									data-widget-togglebutton="false"
+									data-widget-deletebutton="false"
+									data-widget-fullscreenbutton="false"
+									data-widget-custombutton="false"
+									data-widget-collapsed="true" 
+									data-widget-sortable="false"
+									
+								-->
+								<header>
+
+									<h2>Tickets</h2>				
+									
+								</header>
+
+								<!-- widget div-->
+								<div>
+									
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+										<input class="form-control" type="text">	
+									</div>
+									<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body">
+										
+										<!-- this is what the user will see -->
+										<canvas id="barChart" height="120"></canvas>
+
+									</div>
+									<!-- end widget content -->
+									
+								</div>
+								<!-- end widget div -->
+								
+							</div>
+							<!-- end widget -->
+						</article>
+						<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+								<!-- widget options:
+									usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+									data-widget-colorbutton="false"	
+									data-widget-editbutton="false"
+									data-widget-togglebutton="false"
+									data-widget-deletebutton="false"
+									data-widget-fullscreenbutton="false"
+									data-widget-custombutton="false"
+									data-widget-collapsed="true" 
+									data-widget-sortable="false"
+									
+								-->
+								<header>
+
+									<h2>Radar Chart </h2>				
+									
+								</header>
+
+								<!-- widget div-->
+								<div>
+									
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+										<input class="form-control" type="text">	
+									</div>
+									<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body">
+										
+										<!-- this is what the user will see -->
+										<canvas id="radarChart" height="120"></canvas>
+
+									</div>
+									<!-- end widget content -->
+									
+								</div>
+								<!-- end widget div -->
+								
+							</div>
+							<!-- end widget -->
+
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+								<!-- widget options:
+									usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+									
+									data-widget-colorbutton="false"	
+									data-widget-editbutton="false"
+									data-widget-togglebutton="false"
+									data-widget-deletebutton="false"
+									data-widget-fullscreenbutton="false"
+									data-widget-custombutton="false"
+									data-widget-collapsed="true" 
+									data-widget-sortable="false"
+									
+								-->
+								<header>
+
+									<h2>Doughnut Chart </h2>				
+									
+								</header>
+
+								<!-- widget div-->
+								<div>
+									
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+										<input class="form-control" type="text">	
+									</div>
+									<!-- end widget edit box -->
+									
+									<!-- widget content -->
+									<div class="widget-body">
+										
+										<!-- this is what the user will see -->
+										<canvas id="doughnutChart" height="120"></canvas>
+
+									</div>
+									<!-- end widget content -->
+									
+								</div>
+								<!-- end widget div -->
+								
+							</div>
+							<!-- end widget -->
+
+						</article>						
 					</div>
 
 					<!-- end row -->
 
+					<!-- row -->
+
+					<div class="row">
+
+					</div>
+
+					<!-- end row -->
 				</section>
 				<!-- end widget grid -->
 

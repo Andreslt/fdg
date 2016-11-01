@@ -1,0 +1,298 @@
+		<!-- MAIN PANEL -->
+		<div role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="/home">Inicio</a></li><li>Todas los empleados</li>			
+                </ol>
+                <!-- end breadcrumb -->	
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark">
+							<i class="fa fa-table fa-fw "></i> 
+								Tiendas 
+							<span>> 
+                                {{employees.[0].company_id.companyName}}
+							</span>
+						</h1>
+					</div>
+				</div>
+				
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">				
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+									<h2>Empleados</h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+				
+										<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+					
+									        <thead>
+												<tr>
+													<th class="hasinput" style="width:17%">
+														<input type="text" class="form-control" placeholder="Nombre" />
+													</th>
+													<th class="hasinput" style="width:18%">
+														<div class="input-group">
+															<input class="form-control" placeholder="Ciudad" type="text">
+														</div>	
+													</th>
+													<th class="hasinput" style="width:16%">
+														<input type="text" class="form-control" placeholder="Telefono" />
+													</th>
+													<th class="hasinput" style="width:17%">
+														<input type="text" class="form-control" placeholder="Email" />
+													</th>
+													<th class="hasinput" style="width:16%">
+														<input type="text" class="form-control" placeholder="Encargado Tienda" />
+													</th>                                                    
+													<th class="hasinput icon-addon">
+														<input id="dateselect_filter" type="text" placeholder="Fecha Creación" class="form-control datepicker" data-dateformat="dd/mm/yy">
+														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Encargado Tienda"></label>
+													</th>
+												</tr>
+									            <tr>
+								                    <th data-class="expand">Username</th>
+								                    <th>Nombre</th>
+								                    <th data-hide="phone">Ciudad</th>
+								                    <th data-hide="phone">Tienda</th>								                    
+								                    <th data-hide="phone,tablet">Posición</th>
+                                                    <th data-hide="phone,tablet">Fecha Creación</th>
+									            </tr>
+									        </thead>
+				
+									        <tbody>
+                                                
+                                                {{#each employees}}
+												<tr>
+                                                    <td><a class="edit-employee" data-toggle="modal" data-target="#employeeModal"
+                                                    data-id="{{id}}"
+                                                    data-username = "{{username}}"
+                                                    data-name = "{{name}}"
+                                                    data-lastname= "{{lastname}}"                                                    
+                                                    data-phone= "{{phone}}"
+                                                    data-email= "{{email}}"
+                                                    data-localid = "{{localId}}"
+                                                    data-position = "{{position}}"                                                    
+                                                    data-createdon = "{{formatDate createdOn "DD/MM/YYYY"}}"
+                                                    data-approvedon = "{{formatDate approvedOn "DD/MM/YYYY"}}"
+													data-storeid= "{{store_id.id}}"
+													> {{username}}</a></td>
+                                                    <td> {{name}} {{lastname}}</td>
+                                                    <td> {{city_id.city}}</td>
+                                                    <td> {{store_id.storeName}}</td>                                                    
+                                                    <td> {{position}}</td>
+                                                    <td> {{formatDate approvedOn "DD/MM/YYYY"}}</td>
+													</tr>
+                                                {{/each}}
+                                                
+									        </tbody>
+									
+										</table>
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->			
+						</article>
+						<!-- WIDGET END -->
+				
+					</div>
+				
+					<!-- end row -->
+				
+					<!-- end row -->
+				
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+				<!-- Ticket Info Modal -->
+				<form method ="post" action="/employee/edit">
+					<div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">								
+									<input type="hidden" id="edit-employee-id" name="employeeID">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+										<h4 class="modal-title" id="myModalLabel">Información del Empleado</h4>
+									</div>
+									<div class="modal-body">
+										<!--Nombre ---<o>--- Apellido-->
+										<div class="row">
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="name"><small><b>Nombre(s):</b></small></label>
+													<input type="text" class="form-control" placeholder="Nombre(s) del empleado" required name="name" id="edit-employee-name" align="center"/>
+												</div>
+											</div>
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="lastname"><small><b>Apellido(s):</b></small></label>
+													<input type="text" class="form-control" placeholder="Apellido(s) del empleado" required name="lastname" id="edit-employee-lastname" align="center"/>
+												</div>
+											</div>                                            
+										</div>
+										<!--Username ---<o>--- E-mail-->
+										<div class="row">
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="usernam"><small><b>Username:</b></small></label>
+													<input type="text" class="form-control" placeholder="Username del empleado" disabled required name="username" id="edit-employee-username" align="center"/>
+												</div>
+											</div>                                            
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="email"><small><b>E-mail:</b></small></label>
+													<input type="email" class="form-control" placeholder="Correo Electrónico de Empleado" required name="email" id="edit-employee-email" />
+												</div>										
+											</div>										
+										</div>                                        
+										<!--Fecha Inicio ---<o>--- Last Update-->
+										<div class="row">
+<!--											<div class = "col-md-4">
+												<div class="form-group">
+													<label for="city_idModal"><small><b>Ciudad:</b></small></label>
+													<section class="col col-3">
+														<label required class="select" style="width: 290px;">
+															<select class="select2" name="city_idModal" id ="edit-employee-city" style ="height: 32px !important;" required>
+																{{#each cities}}
+																	<option value="{{id}}">{{city}}</option>
+																{{/each}}
+															</select> <i></i> </label>
+													</section>
+												</div>
+											</div>-->
+											<div class = "col-md-5">
+												<div class="form-group">
+													<label for="city_id"><small><b>Tienda:</b></small></label>
+													<section class="col col-3">
+														<label class="select" style="width: 290px;">
+															<select class="select2" name="store_id" id ="edit-employee-store_id" style ="height: 32px !important;">
+                                                                {{#each stores}}
+																	<option value="{{id}}">{{city_id.city}} - {{storeName}}</option>
+																{{/each}}
+															</select> <i></i> </label>
+													</section>
+												</div>
+											</div>
+											<div class = "col-md-4">
+												<div class="form-group">
+													<label for="localId"><small><b>Local ID:</b></small></label>
+													<input type="number" class="form-control" placeholder="Documento ID" required name="localId" id="edit-employee-localId" />
+												</div>
+											</div>                                            	                                              	                                            										
+											<div class = "col-md-3">
+												<div class="form-group">
+													<label for="phone"><small><b>Teléfono:</b></small></label>
+													<input type="text" class="form-control" placeholder="Teléfono" data-mask="(999)999-9999" required name="phone" id="edit-employee-phone" />
+												</div>
+											</div>
+										</div>
+										<!--Tienda ---<o>--- Ciudad-->
+										<div class="row">										
+											<div class = "col-md-6">
+												<div class="form-group">
+													<label for="position"><small><b>Posición en Tienda:</b></small></label>
+													<section class="col col-3">
+														<label class="select" style="width: 290px;">
+															<select class="select2" name="position" id="edit-employee-position" style ="height: 32px !important;">															
+																<option value="Coordinador">Coordinador de Tienda</option>
+																<option value="Asesor">Asesor de Tienda</option>
+																<option value="Auxiliar">Auxiliar de Tienda</option>
+																<option value="Otro">Otro</option>
+															</select> <i></i> </label>
+													</section>												
+												</div>												
+											</div>
+										</div>
+										<div>
+                                        <p><small>Empleado creado el: <input type="text" name="createdOnModal" id="edit-employee-createdOn" disabled style="border: 0"/></small></p>    
+										<p><small>Empleado aprobado el: <input type="text" name="approvedOnModal" id="edit-employee-approvedOn" disabled style="border: 0"/></small></p>
+										</div>											
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+										<button id= "submitModal" type="submit" class="btn btn-primary">
+											Editar
+										</button>
+									</div>
+									
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+				</form>
+				
+		</div>
+		<!-- END MAIN PANEL -->
