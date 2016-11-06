@@ -138,11 +138,11 @@
 												<section class="col col-3">
 													<label class="select">
 														<select name="priority">
-															<option value="0" selected="" disabled="">Seleccione el grado de prioridad</option>
-															<option value="Risk">Alto Riesgo: La falla representa un riesgo humano o para el equipo.</option>
-															<option value="Hight">Alta: La falla no le permite continuar con su operación.</option>
-															<option value="Medium">Media: La falla le permite continuar con su operación, pero le genera retrasos.</option>
-															<option value="Low">Baja: La falla le permite continuar con su operación de forma normal.</option>
+															<option value="" selected="" disabled="">Seleccione el grado de prioridad</option>
+															<option value="Muy Alto">Alto Riesgo: La falla representa un riesgo humano o para el equipo.</option>
+															<option value="Alto">Alta: La falla no le permite continuar con su operación.</option>
+															<option value="Medio">Media: La falla le permite continuar con su operación, pero le genera retrasos.</option>
+															<option value="Bajo">Baja: La falla le permite continuar con su operación de forma normal.</option>
 														</select> <i></i> </label>
 												</section>																								
 											</div>											
@@ -190,51 +190,6 @@
 										<div class="note" class="col-md-3 control-label" style= "margin-left: 20px">
 											<strong>*</strong> Todos los campos (no opcionales) son requeridos.
 										</div>										
-										
-										<fieldset>
-										<legend>
-											Administrar Ticket
-										</legend>
-										<label class="col-md-1 control-label" style= "margin-left: 10px;margin-top: 5px;width: 60px;">Estado:</label>											
-											<div class="row">
-												<section class="col col-5">
-													<label class="select">
-														<select name="interested">
-															<option value="0" selected="" disabled="">Estado del Ticket</option>
-															<option value="1">Pendiente</option>
-															<option value="2">Asignado</option>
-															<option value="3">Finalizado</option>
-															<option value="4">Cancelado</option>
-														</select> <i></i> </label>
-												</section>
-												<label class="col-md-1 control-label" style= "margin-left: 5px;margin-top: 5px;width: 60px;">Asignar a:</label>
-												<section class="col col-5">
-													<label class="select">
-														<select name="budget">
-															<option value="0" selected="" disabled="">Budget</option>
-															<option value="1">less than 5000$</option>
-															<option value="2">5000$ - 10000$</option>
-															<option value="3">10000$ - 20000$</option>
-															<option value="4">more than 20000$</option>
-														</select> <i></i> </label>
-												</section>
-											</div>
-
-											<section class="col col-4">
-												<label>Prioridad:</label>	
-												<div class="inline-group">
-													<label class="radio">
-														<input type="radio" name="radio-inline" checked="">
-														<i></i>Alta</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>Media</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>Baja</label>
-												</div>
-											</section>
-										</fieldset>
 										
 										<footer>
 											<button type="submit" class="btn btn-primary">

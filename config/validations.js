@@ -10,11 +10,16 @@ module.exports.ensureAuthenticated = (req, res, next)=>{
 }
 
 module.exports.approvedUser = (req, res,next)=>{
-	if(req.user.userApproval){
-		return next();
+	console.log('req.user.userRole: '+req.user.userRole);
+	if (req.user.userRole!="systemAdmin"){
+		if(req.user.userApproval){
+			return next();
+		}else{
+			res.render('0-Auth/unauthorized',{layout: 'accessDenied'});
+			console.log(req.user.username + " WAIT YOUR TURN!");
+		}
 	}else{
-		res.render('0-Auth/unauthorized',{layout: 'accessDenied'});
-		console.log(req.user.username + " WAIT YOUR TURN!");
+		next();
 	}
 }
 

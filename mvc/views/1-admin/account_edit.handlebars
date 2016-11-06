@@ -1,0 +1,403 @@
+			<!-- MAIN PANEL -->
+			<div role="main">
+
+				<!-- RIBBON -->
+				<div id="ribbon">
+
+					<span class="ribbon-button-alignment"> 
+						<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+							<i class="fa fa-refresh"></i>
+						</span> 
+					</span>
+					
+					<!-- breadcrumb -->
+					<ol class="breadcrumb">
+						<li><a href="/home">Inicio</a></li><li><a href="/users/account">Cuenta</a></li><li>Editar</li>
+					</ol>
+		
+					<!-- end breadcrumb -->
+
+					<!-- You can also add more buttons to the
+					ribbon for further usability
+
+					Example below:
+
+					<span class="ribbon-button-alignment pull-right">
+					<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+					<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+					<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+					</span> -->
+
+				</div>
+				<!-- END RIBBON -->
+
+				<!-- MAIN CONTENT -->
+				<div id="content">
+					
+					<!-- widget grid -->
+	<!--				<section id="widget-grid" class="">
+					
+						<div class="well">
+							<div class="input-group">
+								<input class="form-control" type="text" placeholder="Search...">
+								<div class="input-group-btn">
+									<button class="btn btn-default btn-primary" type="button">
+										<i class="fa fa-search"></i> Search
+									</button>
+								</div>
+							</div>
+						</div>-->
+					
+						<!-- row -->
+						<div class="row">
+					
+							<!-- NEW WIDGET START -->
+							<article class="col-sm-12 col-md-12 col-lg-12">
+					
+								<!-- Widget ID (each widget will need unique ID)-->
+								<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+									<!-- widget options:
+									usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+					
+									data-widget-colorbutton="false"
+									data-widget-editbutton="false"
+									data-widget-togglebutton="false"
+									data-widget-deletebutton="false"
+									data-widget-fullscreenbutton="false"
+									data-widget-custombutton="false"
+									data-widget-collapsed="true"
+									data-widget-sortable="false"
+					
+									-->
+									<header>
+										<span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+										<h2>Editar Usuario</h2>
+					
+									</header>
+					
+									<!-- widget div-->
+									<div>
+					
+										<!-- widget edit box -->
+										<div class="jarviswidget-editbox">
+											<!-- This area used as dropdown edit box -->
+					
+										</div>
+										<!-- end widget edit box -->
+					
+										<!-- widget content -->
+										<div class="widget-body">
+					
+											<form method= "post" action="/account/edit" class="form-horizontal" enctype="multipart/form-data">
+												
+												<fieldset>
+													<legend>Información personal</legend>
+													<div class="form-group">
+														<label class="col-md-2 control-label">Nombre Completo</label>
+														<div class="col-md-5">
+															<input class="form-control" placeholder="Nombre(s)" name ="name" id="name" type="text" value="{{user.name}}">
+														</div>
+														<div class="col-md-5">
+															<input class="form-control" placeholder="Apellido(s)" name="lastname" id="lastname" type="text" value="{{user.lastname}}">
+														</div>													
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-2" for="username">Identificación</label>
+														<div class="col-md-5">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="input-group">
+																		<span class="input-group-addon">@</span>
+																		<input class="form-control" name="username" id="username" placeholder="Username" type="text" value="{{user.username}}">
+																	</div>
+																</div>
+															</div>														
+														</div>
+														<div class="col-md-5">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="input-group">
+																		<span class="input-group-addon fa-chevron-right"></span>
+																		<input class="form-control" name="localId" id="localId" placeholder="Documento de Identidad (sin comas ni puntos)" type="text" value="{{user.localId}}">
+																	</div>
+																</div>
+															</div>														
+														</div>													
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-2" for="username">Permisos</label>
+														<div class="col-md-5">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="input-group">
+																		<span class="input-group-addon">U</span>
+																		<input class="form-control" disabled name="userType" id="userType" placeholder="Tipo de Usuario" type="text" value="{{user.userType}}">
+																	</div>
+																</div>
+															</div>														
+														</div>
+														<div class="col-md-5">
+															<div class="row">
+																<div class="col-sm-12 col-md-12 col-lg-12">
+																	<div class="input-group">
+																		<span class="input-group-addon"> ©</span>
+																		<input class="form-control" name="position" id="position" placeholder="Posición" type="text" value="{{user.position}}">
+																	</div>
+																</div>
+															</div>														
+														</div>													
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-2">Contacto</label>
+														<div class="col-md-10">
+															<div class="row">
+																<div class="col-md-5">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<span class="input-group-addon"> ✉</span>
+																				<input class="form-control" name="email" id="email" placeholder="Correo Electrónico" type="text" value="{{user.email}}">
+																			</div>
+																		</div>
+																	</div>														
+																</div>
+
+																<div class="col-md-5">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<span class="input-group-addon"> 📱</span>
+																				<input class="form-control" name="cellphone" id="cellphone" placeholder="Numero Celular" type="text" value="{{user.phone}}">
+																			</div>
+																		</div>
+																	</div>														
+																</div>
+                                                                																													
+	<!--															<div class="col-sm-5">
+																	<div class="input-group">
+																		<input class="form-control" placeholder="Reestablecer Contraseña" id="password" name="password" type="password" value="mypassword">
+																		<span class="input-group-addon">
+																			<span class="onoffswitch">
+																				<input type="checkbox" name="start_interval" class="onoffswitch-checkbox" id="st3">
+																				<label class="onoffswitch-label" for="st3"> 
+																					<span class="onoffswitch-inner" data-swchon-text="YES" data-swchoff-text="NO"></span> 
+																					<span class="onoffswitch-switch"></span> 
+																				</label> 
+																			</span>
+																		</span>
+																	</div>
+																</div>-->
+															</div>
+														</div>
+													</div>										
+												
+												</fieldset>												
+					
+												<fieldset>
+													<legend>Settings</legend>
+													
+													<div class="form-group">
+														<label class="control-label col-md-2">Fecha de Creación</label>
+														<label class="control-label col-md-1">Año</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.creatYear}}
+																<option value="2015">2015</option>
+																<option value="2016">2016</option>
+                												<option value="2017">2017</option>
+																<option value="2018">2018</option>
+																<option value="2019">2019</option>
+																<option value="2020">2020</option>
+																{{/select}}
+															</select>
+														</div>
+														<label class="control-label col-md-1">Mes</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.creatMonth}}
+																<option value="0">Enero</option>
+																<option value="1">Febrero</option>
+																<option value="2">Marzo</option>
+																<option value="3">Abril</option>
+																<option value="4">Mayo</option>
+																<option value="5">Junio</option>
+																<option value="6">Julio</option>
+																<option value="7">Agosto</option>
+																<option value="8">Septiembre</option>
+																<option value="9">Octubre</option>
+																<option value="10">Noviembre</option>
+																<option value="11">Diciembre</option>
+																{{/select}}
+															</select>															
+														</div>
+														<label class="control-label col-md-1">Dia</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.creatDay}}
+                <option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+																<option value="24">24</option>
+																<option value="25">25</option>
+																<option value="26">26</option>
+																<option value="27">27</option>
+																<option value="28">28</option>
+																<option value="29">29</option>
+																<option value="30">30</option>
+																<option value="31">31</option>
+															{{/select}}
+															</select>
+														</div>																										
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-md-2">Fecha de Aprobación</label>
+														<label class="control-label col-md-1">Año</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.aprobYear}}
+																	<option value="99">-</option>
+																	<option value="2016">2016</option>
+																	<option value="2017">2017</option>
+																	<option value="2018">2018</option>
+																	<option value="2019">2019</option>
+																	<option value="2020">2020</option>
+																{{/select}}
+															</select>
+														</div>
+														<label class="control-label col-md-1">Mes</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.aprobMonth}}
+																<option value="99">-</option>
+																<option value="0">Enero</option>
+																<option value="1">Febrero</option>
+																<option value="2">Marzo</option>
+																<option value="3">Abril</option>
+																<option value="4">Mayo</option>
+																<option value="5">Junio</option>
+																<option value="6">Julio</option>
+																<option value="7">Agosto</option>
+																<option value="8">Septiembre</option>
+																<option value="9">Octubre</option>
+																<option value="10">Noviembre</option>
+																<option value="11">Diciembre</option>
+																{{/select}}
+															</select>
+														</div>
+														<label class="control-label col-md-1">Dia</label>
+														<div class="col-md-2">
+															<select class="form-control input-sm" disabled>
+																{{#select userDates.aprobDay}}
+																<option value="99">-</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+																<option value="24">24</option>
+																<option value="25">25</option>
+																<option value="26">26</option>
+																<option value="27">27</option>
+																<option value="28">28</option>
+																<option value="29">29</option>
+																<option value="30">30</option>
+																<option value="31">31</option>
+																{{/select}}
+															</select>
+														</div>																										
+													</div>
+
+
+													<div class="form-group">
+														<label class="col-md-2 control-label">Editar Foto</label>
+														<div class="col-md-10">
+															<input type="file" name="file" class="btn btn-default" id="image">
+															<p class="help-block">
+																Agregar Foto.
+															</p>
+														</div>
+													</div>												
+
+												</fieldset>
+												
+												<div class="form-actions">
+													<div class="row">
+														<div class="col-md-12">
+															<a href="/account" class="btn btn-default">
+																Cancelar
+															</a>
+															<button class="btn btn-primary" type="submit">
+																<i class="fa fa-save"></i>
+																Guardar
+															</button>
+														</div>
+													</div>
+												</div>
+					
+											</form>
+					
+										</div>
+										<!-- end widget content -->
+					
+									</div>
+									<!-- end widget div -->
+					
+								</div>
+								<!-- end widget -->				
+					
+							</article>
+							<!-- WIDGET END -->
+						</div>
+					
+						<!-- end row -->									
+					
+					</section>
+					<!-- end widget grid -->
+
+				</div>
+				<!-- END MAIN CONTENT -->
+
+			</div>
+			<!-- END MAIN PANEL -->

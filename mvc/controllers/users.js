@@ -221,7 +221,7 @@ router.get('/newTicket', validations.ensureAuthenticated, validations.approvedUs
 
 // Tickets
 router.get('/tickets', validations.ensureAuthenticated, validations.approvedUser, (req, res)=>{
-	let user = req.user, storeAdminSW, query, query2;
+	let user = req.user, storeAdminSW;
 	var gteYear, gteMonth, ltYear, ltMonth;
 	if (req.query.target==="thisMonth") {
 		gteYear = new Date().getFullYear();

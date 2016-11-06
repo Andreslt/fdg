@@ -45,12 +45,12 @@ var hbsEngine = exphbs.create({
         },
         statusTag: (status) =>{
           if (status==="Pendiente"){
-            return "btn-info"
+            return "info"
           }else if (status ==="Asignado"){
-            return "btn-warning"
-          }else{
-            return "btn-success"
-          }
+            return "warning"
+          }else if (status ==="Finalizado"){
+            return "success"
+          }else return "danger"
         },
         times: () =>{
           var day=new Array();
@@ -100,6 +100,11 @@ var hbsEngine = exphbs.create({
           return 'http://res.cloudinary.com/pluriza/image/upload/'
                   + option
                   + imagePath
+        },
+        mayusc: (word) =>{
+          if (word!=null)
+          return word.toUpperCase()
+          else return ""
         }
     }
 });

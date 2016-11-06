@@ -1,0 +1,77 @@
+		<!-- MAIN PANEL -->
+		<div role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					<ol class="breadcrumb">
+						<li><a href="/users/dashboard">Dashboard</a></li>
+						<li>Tickets por Ciudad</li>
+					</ol>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<ul class = "header-dropdown-list hidden-xs">
+						<li><button>button 1</button></li>
+						<li><button>button 2</button></li>
+						<li><button>button 3</button></li>
+					</ul>
+				</div>
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+<div class="row hidden-mobile">
+	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa-fw fa fa-puzzle-piece"></i> 
+			Tickets <span>>
+			{{companyName}} </span></h1>
+	</div>
+
+	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-align-right">
+		<div class="page-title">
+			<a href="javascript:void(0);" class="btn btn-default">Crear Ticket</a>
+		</div>
+	</div>
+</div>
+
+<!-- row -->
+<div class="row">
+
+	<!-- SuperBox -->
+	<div class="superbox col-sm-12">
+		{{#each cityHash}}
+			<div class="superbox-list">														
+				<a href="/users/storeAdmin/{{../companyName}}/{{city}}/tickets"><img src="{{image}}" data-img="#" alt="{{city}}" title="{{city}}" class="superbox-img"></a>
+			</div>
+		{{/each}}
+		<div class="superbox-float"></div>
+	</div>
+	<!-- /SuperBox -->
+	
+	<div class="superbox-show" style="height:300px; display: none"></div>
+
+</div>
+
+	<!-- end row -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->

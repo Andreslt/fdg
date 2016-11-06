@@ -1,0 +1,418 @@
+		<!-- MAIN PANEL -->
+		<div role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li><a href="/dashboard">Inicio</a></li><li>Cuenta</li>
+				</ol>				
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<!-- Bread crumb is created dynamically -->				
+				<!-- row -->
+				
+				<div class="row">
+				
+					<div class="col-sm-12">
+				
+				
+							<div class="well well-sm">
+				
+								<div class="row">
+				
+									<div class="col-sm-12 col-md-12 col-lg-7">
+										<div class="well well-light well-sm no-margin no-padding">
+				
+											<div class="row">
+				
+												<div class="col-sm-12">
+													<div id="myCarousel" class="carousel fade profile-carousel">
+														<div class="air air-bottom-right padding-10">
+															<a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-check"></i> Follow</a>&nbsp; <a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i> Connect</a>
+														</div>
+														<div class="air air-top-left padding-10">
+															<h4 class="txt-color-white font-md">Jan 1, 2014</h4>
+														</div>
+														<ol class="carousel-indicators">
+															<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+															<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+															<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+														</ol>
+														<div class="carousel-inner">
+															<!-- Slide 1 -->
+															<div class="item active">
+																<img src="/img/demo/s1.jpg" alt="demo user" style="height: 50px">
+															</div>
+															<!-- Slide 2 -->
+															<div class="item">
+																<img src="/img/demo/s2.jpg" alt="demo user">
+															</div>
+															<!-- Slide 3 -->
+															<div class="item">
+																<img src="/img/demo/m3.jpg" alt="demo user">
+															</div>
+														</div>
+													</div>
+												</div>
+				
+												<div class="col-sm-12">
+				
+													<div class="row">
+				
+														<div class="col-sm-3 profile-pic">
+															<img src="{{userImage user.image medium}}" alt="demo user">
+															<div class="padding-10">
+																<h4 class="font-md"><strong>{{numero_tiendas}}</strong>
+																<br>
+																<small>Tiendas</small></h4>
+																<br>
+																<h4 class="font-md"><strong>{{numero_empleados}}</strong>
+																<br>
+																<small>Empleados</small></h4>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<h1>{{user.name}} {{user.lastname}}
+															<br>
+															<small><span class="semi-bold">{{user.position}}</span></small></h1>
+				
+															<ul class="list-unstyled">
+																<li>
+																	<p class="text-muted">
+																		<i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">{{substring user.phone 0 3}}</span>) <span class="txt-color-darken">{{substring user.phone 3 6}}</span>-<span class="txt-color-darken">{{substring user.phone 6 10}}</span>
+																	</p>
+																</li>
+																<li>
+																	<p class="text-muted">
+																		<i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{user.email}}">{{user.email}}</a>
+																	</p>
+																</li>
+																<li>
+																	<p class="text-muted">
+																		<i class="fa fa-skype"></i>&nbsp;&nbsp;<span class="txt-color-darken">{{user.username}}</span>
+																	</p>
+																</li>
+															</ul>
+															<br>
+															<br>
+															<a href="account/edit?username={{user.username}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i> Editar</a>
+															<br>
+															<br>
+				
+														</div>
+														<div class="col-sm-3">
+															<h1><small>Empleados</small></h1>
+															<ul class="list-inline friends-list">
+																<li><img src="/img/avatars/1.png" alt="friend-1">
+																</li>
+																<li><img src="/img/avatars/2.png" alt="friend-2">
+																</li>
+																<li><img src="/img/avatars/3.png" alt="friend-3">
+																</li>
+																<li><img src="/img/avatars/4.png" alt="friend-4">
+																</li>
+																<li><img src="/img/avatars/5.png" alt="friend-5">
+																</li>
+																<li><img src="/img/avatars/male.png" alt="friend-6">
+																</li>
+															</ul>   				
+														</div>
+				
+													</div>
+				
+												</div>
+				
+											</div>
+				
+											<div class="row">
+				
+												<div class="col-sm-12">
+				
+													<hr>
+				
+													<div class="padding-10">
+				
+														<ul class="nav nav-tabs tabs-pull-right">
+															<li class="active">
+																<a href="#a1" data-toggle="tab">Próximos Eventos</a>
+															</li>
+															<li>
+																<a href="#a2" data-toggle="tab">Empleados</a>
+															</li>
+															<li class="pull-left">
+																<span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i> Activity</span>
+															</li>
+														</ul>
+				
+														<div class="tab-content padding-top-10">
+															<div class="tab-pane fade in active" id="a1">
+				
+																<div class="row">
+				
+																	<div class="col-xs-2 col-sm-1">
+																		<time datetime="2014-09-20" class="icon">
+																			<strong>Jan</strong>
+																			<span>10</span>
+																		</time>
+																	</div>
+				
+																	<div class="col-xs-10 col-sm-11">
+																		<h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
+																		<p>
+																			Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
+																			Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+																			sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel.
+																		</p>
+																	</div>
+				
+																	<div class="col-sm-12">
+				
+																		<hr>
+				
+																	</div>
+				
+																	<div class="col-xs-2 col-sm-1">
+																		<time datetime="2014-09-20" class="icon">
+																			<strong>Jan</strong>
+																			<span>10</span>
+																		</time>
+																	</div>
+				
+																	<div class="col-xs-10 col-sm-11">
+																		<h6 class="no-margin"><a href="javascript:void(0);">World Report</a></h6>
+																		<p>
+																			Morning our be dry. Life also third land after first beginning to evening cattle created let subdue you'll winged don't Face firmament.
+																			You winged you're was Fruit divided signs lights i living cattle yielding over light life life sea, so deep.
+																			Abundantly given years bring were after. Greater you're meat beast creeping behold he unto She'd doesn't. Replenish brought kind gathering Meat.
+																		</p>
+																	</div>
+				
+																	<div class="col-sm-12">
+				
+																		<hr>
+				
+																	</div>
+
+																	<div class="col-xs-2 col-sm-1">
+																		<time datetime="2014-09-20" class="icon">
+																			<strong>Jan</strong>
+																			<span>10</span>
+																		</time>
+																	</div>
+				
+																	<div class="col-xs-10 col-sm-11">
+																		<h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
+																		<p>
+																			Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
+																			Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+																			sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel.
+																		</p>
+																	</div>
+
+																	<div class="col-sm-12">
+				
+																		<br>
+				
+																	</div>																																		
+				
+																</div>
+				
+															</div>
+															<div class="tab-pane fade" id="a2">
+				
+																<div class="alert alert-info fade in">
+																	<button class="close" data-dismiss="alert">
+																		×
+																	</button>
+																	<i class="fa-fw fa fa-info"></i>
+																	<strong>{{numero_empleados}} empleados </strong>a nivel nacional
+																</div>
+				
+                                                                {{#each users}}
+                                                                    <div class="user" title="{{username}}">
+                                                                        <img src="{{image_small}}" alt="{{username}}"><a href="/users/account/edit?id={{id}}">{{name}} {{lastname}}</a>
+                                                                        <div class="username">{{username}}</div>
+                                                                        <div class="email">{{email}}</div>
+                                                                    </div>
+                                                                {{/each}}                                                              
+																<div class="text-center">
+																	<ul class="pagination pagination-sm">
+																		<li class="disabled">
+																			<a href="javascript:void(0);">Prev</a>
+																		</li>
+																		<li class="active">
+																			<a href="javascript:void(0);">1</a>
+																		</li>
+																		<li>
+																			<a href="javascript:void(0);">2</a>
+																		</li>
+																		<li>
+																			<a href="javascript:void(0);">3</a>
+																		</li>
+																		<li>
+																			<a href="javascript:void(0);">...</a>
+																		</li>
+																		<li>
+																			<a href="javascript:void(0);">99</a>
+																		</li>
+																		<li>
+																			<a href="javascript:void(0);">Next</a>
+																		</li>
+																	</ul>
+																</div>
+				
+															</div><!-- end tab -->
+														</div>
+				
+													</div>
+				
+												</div>
+				
+											</div>
+											<!-- end row -->
+				
+										</div>
+				
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+
+											<div class="well well-sm">
+												<!-- Timeline Content -->
+												<div class="smart-timeline">
+													<ul class="smart-timeline-list">
+														<li>
+															<div class="smart-timeline-icon">
+																<img src="/img/avatars/sunny.png" width="32" height="32">
+															</div>
+															<div class="smart-timeline-time">
+																<small>just now</small>
+															</div>
+															<div class="smart-timeline-content">
+																<p>
+																	<a href="javascript:void(0);"><strong>Trip to Adalaskar</strong></a>
+																</p>
+																<p>
+																	Check out my tour to Adalaskar
+																</p>
+																<p>
+																	<a href="javascript:void(0);" class="btn btn-xs btn-primary"><i class="fa fa-file"></i> Read the post</a>
+																</p>
+																<img src="/img/superbox/superbox-thumb-4.jpg" alt="img" width="150">
+
+																		
+																	
+															</div>
+														</li>
+														<li>
+															<div class="smart-timeline-icon">
+																<i class="fa fa-file-text"></i>
+															</div>
+															<div class="smart-timeline-time">
+																<small>1 min ago</small>
+															</div>
+															<div class="smart-timeline-content">
+																<p>
+																	<strong>Meeting invite for "GENERAL GNU" [<a href="javascript:void(0);"><i>Go to my calendar</i></a>]</strong>
+																</p>
+																
+																<div class="well well-sm display-inline">
+																	<p>Will you be able to attend the meeting - <strong> 10:00 am</strong> tomorrow?</p>
+																	<button class="btn btn-xs btn-default">Confirm Attendance</button>
+																</div>		
+																			
+															</div>
+														</li>
+														<li>
+															<div class="smart-timeline-icon bg-color-greenDark">
+																<i class="fa fa-bar-chart-o"></i>
+															</div>
+															<div class="smart-timeline-time">
+																<small>5 hrs ago</small>
+															</div>
+															<div class="smart-timeline-content">
+																<p>
+																	<strong class="txt-color-greenDark">24hrs User Feed</strong>
+																</p>
+																
+																<div class="sparkline" data-sparkline-type="compositeline" data-sparkline-spotradius-top="5" data-sparkline-color-top="#3a6965" data-sparkline-line-width-top="3" data-sparkline-color-bottom="#2b5c59" data-sparkline-spot-color="#2b5c59" data-sparkline-minspot-color-top="#97bfbf" data-sparkline-maxspot-color-top="#c2cccc" data-sparkline-highlightline-color-top="#cce8e4" data-sparkline-highlightspot-color-top="#9dbdb9" data-sparkline-width="170px" data-sparkline-height="40px" data-sparkline-line-val="[6,4,7,8,4,3,2,2,5,6,7,4,1,5,7,9,9,8,7,6]" data-sparkline-bar-val="[4,1,5,7,9,9,8,7,6,6,4,7,8,4,3,2,2,5,6,7]"><canvas width="170" height="40" style="display: inline-block; width: 170px; height: 40px; vertical-align: top;"></canvas></div>
+																
+																<br>
+															</div>
+														</li>
+														<li>
+															<div class="smart-timeline-icon">
+																<i class="fa fa-user"></i>
+															</div>
+															<div class="smart-timeline-time">
+																<small>yesterday</small>
+															</div>
+															<div class="smart-timeline-content">
+																<p>
+																	<a href="javascript:void(0);"><strong>Update user information</strong></a>
+																</p>
+																<p>
+																	Curabitur ullamcorper ultricies nisi. Nam eget dui.
+																</p>
+																
+																Tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
+																
+																<ul class="list-inline no-margin">
+																	<li>
+																		<img src="/img/superbox/superbox-thumb-6.jpg" alt="img" width="50">
+																	</li>
+																	<li>
+																		<img src="/img/superbox/superbox-thumb-5.jpg" alt="img" width="50">
+																	</li>
+																	<li>
+																		<img src="/img/superbox/superbox-thumb-7.jpg" alt="img" width="50">
+																	</li>
+																</ul>
+															</div>
+														</li>
+														<li class="text-center">
+															<a href="javascript:void(0)" class="btn btn-sm btn-default"><i class="fa fa-mail-forward text-muted"></i> Ver Notificaciones</a>
+														</li>
+													</ul>
+												</div>
+												<!-- END Timeline Content -->
+
+											</div>
+
+									</div>																	
+								</div>			
+							</div>			
+					</div>	
+				</div>
+				
+				<!-- end row -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->

@@ -11,6 +11,7 @@ const mailer = require('../../config/mailer');
 const formidable = require('formidable');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+var _ = require('underscore');
 
 /* ---> GENERAL <--- */
 // Go Home
@@ -89,22 +90,39 @@ router.post('/newTicket', ensureAuthenticated, (req, res)=>{
 	var user = req.user, storeAdminSW;
 	var form = new formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
-		let body = fields, datenew= body.startdate.slice(-4)+"/"+body.startdate.substring(6,2)+"/"+body.startdate.substring(0,2);
+		let body = fields, datenew= body.startdate.slice(-4)+"/"+body.startdate.substring(6,2)+"/"+body.startdate.substring(0,2),
+		contacts;
+
+		contacts = new Array();
+		//Adding the creator user as contact
+		contacts.push(req.user);
+
+		User.find({company_id: req.company_id}, (err, users)=>{	
+			for(let i=0;i<users.length;i++){
+				if(_.contains(users[i]))
+					console.log("Element contained");
+				else
+				contacts.push(users[i]);
+			}
+		});
 		var params={
 			ticketNumber: body.ticketNumber,
 			title: body.title,
 			startdate: new Date (datenew),
 			store_id: body.store,
 			priority: body.priority,
+			contacts: contacts,
 			description: body.description,
 			categories: body.categories,
 			status: "Pendiente",
-			created_by: req.user.id	
+			created_by: req.user.id,
+			modified_by: req.user.id	
 		}
-
 		var newTicket = new tickets(params);
+		console.log('newTicket: '+newTicket);
 		tickets.createTicket(newTicket, (err, ticket)=>{
 			if (err) {
+				console.log(err);
 				req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
 				res.redirect('/newTicket/failed');
 			}else{									

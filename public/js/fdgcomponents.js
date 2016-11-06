@@ -109,6 +109,18 @@ $(document).ready(function(){
         this.selected = (this.text == userCity); 
     });
 
+    $("select#setstatus option").each(function() { 
+        this.selected = (this.text === tktstatus.toString()); 
+    });  
+
+    $("#setadvance option").each(function() { 
+        this.selected = (this.value === tktadvance.toString()); 
+    });
+
+    $("#setpriority").val(tktpriority.toString())/*each(function() { 
+        this.selected = (this.value === tktpriority.toString()); 
+    });  */
+
 /*    $('#storetypes div label input').each(function() { 
         $("#storeEmp").prop('checked',false);
         $("#storeAdmin").prop('checked',false);    
