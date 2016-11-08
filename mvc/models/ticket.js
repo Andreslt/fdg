@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.ObjectId;
 var Store = require('./store');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var TicketSchema = mongoose.Schema({
     ticketNumber: {
@@ -44,12 +45,7 @@ var TicketSchema = mongoose.Schema({
         type: ObjectId,
         ref: "User",
         required: true
-    }],              
-    feedback: {
-        type: Number,
-        min: 0,
-        max: 5
-    },
+    }],
     categories: [{
         type: String
     }],
@@ -106,6 +102,7 @@ var TicketSchema = mongoose.Schema({
     }      
 });
 
+TicketSchema.plugin(uniqueValidator);
 var Ticket = module.exports = mongoose.model('Ticket', TicketSchema);
 
 module.exports.createTicket = (newTicket, callback) => {

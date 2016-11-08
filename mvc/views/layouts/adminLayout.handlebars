@@ -233,7 +233,7 @@
 									<a href="/tickets?target=all" title="Ver Ordenes de Trabajo"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
 								</li>						
 							</ul>
-						</li>
+						</li>							
 						<li class="">
 							<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
 							<ul>
@@ -985,9 +985,18 @@
 				prevText : '<i class="fa fa-chevron-left"></i>',
 				nextText : '<i class="fa fa-chevron-right"></i>',
 				onSelect : function(selectedDate) {
-					$('#expendingDate').datepicker('option', 'minDate', selectedDate);
+					$('#deadline').datepicker('option', 'minDate', selectedDate);
 				}
-			});			
+			});
+
+			$('#setdeadline').datepicker({
+				dateFormat : 'dd.mm.yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#setdeadline').datepicker('option', 'minDate', selectedDate);
+				}
+			});							
 
 		    $('#tags').editable({
 		        inputclass: 'input-large',
@@ -1325,7 +1334,7 @@
 			            { "data": "status" },
 			            { "data": "target-actual"},
 			            { "data": "startdate" },
-						{ "data": "expendingDate" },
+						{ "data": "deadline" },
 			            { "data": "tracker" },
 			        ],
 			        "order": [[1, 'asc']],

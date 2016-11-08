@@ -43,6 +43,26 @@ module.exports.storeAdmin = (req, res,next) => {
 	}
 }
 
+module.exports.numberGenerator = (useCase) => {
+	let w;
+	if(useCase === 'record'){
+		w = 'AC'
+	}
+
+	return w+"-"+ new Date().getFullYear()+new Date().getMonth()+new Date().getDate()+ "-" +  makeid()
+}
+
+function makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
 module.exports.updateEmployeesInStore = (store) => {
 	UserModule.update({store_id: store.id}, {$set: {city_id: store.city_id}}, {new:true, multi: true}, (err, result)=>{
 		console.log(result);
