@@ -1,0 +1,1983 @@
+2016-11-08T20:15:43.252Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T20:15:43.259Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T20:15:43.265Z - info: Extensions location cache not found, crawling directories
+2016-11-08T20:15:44.565Z - info: Found 26 extensions
+2016-11-08T20:15:44.589Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T20:15:44.590Z - debug: Discovered 26 extensions
+2016-11-08T20:15:44.594Z - info: Using extension jsrender
+2016-11-08T20:15:44.598Z - info: Using extension studio
+2016-11-08T20:15:44.739Z - info: Using extension browser-client
+2016-11-08T20:15:44.790Z - info: Using extension templates
+2016-11-08T20:15:44.808Z - debug: Extension authentication is disabled, skipping
+2016-11-08T20:15:44.808Z - info: Using extension debug
+2016-11-08T20:15:44.810Z - info: Using extension express
+2016-11-08T20:15:44.859Z - info: Using extension fop-pdf
+2016-11-08T20:15:44.914Z - info: Using extension handlebars
+2016-11-08T20:15:44.916Z - info: Using extension phantom-pdf
+2016-11-08T20:15:44.991Z - info: Using extension fs-store
+2016-11-08T20:15:45.395Z - info: Using extension images
+2016-11-08T20:15:45.501Z - info: Using extension data
+2016-11-08T20:15:45.516Z - info: Using extension licensing
+2016-11-08T20:15:45.562Z - info: Using extension authorization
+2016-11-08T20:15:45.573Z - debug: Extension authorization was disabled
+2016-11-08T20:15:45.573Z - info: Using extension text
+2016-11-08T20:15:45.575Z - info: Using extension reports
+2016-11-08T20:15:45.583Z - info: Using extension resources
+2016-11-08T20:15:45.600Z - info: Using extension child-templates
+2016-11-08T20:15:45.613Z - info: Using extension html-to-xlsx
+2016-11-08T20:15:45.692Z - info: Using extension scheduling
+2016-11-08T20:15:45.761Z - info: Using extension scripts
+2016-11-08T20:15:45.778Z - info: Using extension assets
+2016-11-08T20:15:45.881Z - info: Using extension xlsx
+2016-11-08T20:15:46.423Z - info: Using extension sample-template
+2016-11-08T20:15:46.424Z - info: Using extension public-templates
+2016-11-08T20:15:46.439Z - debug: Extension public-templates was disabled
+2016-11-08T20:15:46.441Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T20:15:46.627Z - info: Configuring routes for existing express app.
+2016-11-08T20:15:46.784Z - info: Using existing server instance.
+2016-11-08T20:15:46.791Z - warn: License not found, using free
+2016-11-08T20:15:46.824Z - info: reporter initialized
+2016-11-08T20:17:26.566Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T20:17:26.572Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T20:17:26.597Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T20:17:26.934Z - info: Found 26 extensions
+2016-11-08T20:17:26.956Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T20:17:26.958Z - debug: Discovered 26 extensions
+2016-11-08T20:17:26.961Z - info: Using extension jsrender
+2016-11-08T20:17:26.965Z - info: Using extension studio
+2016-11-08T20:17:27.116Z - info: Using extension browser-client
+2016-11-08T20:17:27.173Z - info: Using extension templates
+2016-11-08T20:17:27.198Z - debug: Extension authentication is disabled, skipping
+2016-11-08T20:17:27.198Z - info: Using extension debug
+2016-11-08T20:17:27.200Z - info: Using extension express
+2016-11-08T20:17:27.259Z - info: Using extension fop-pdf
+2016-11-08T20:17:27.313Z - info: Using extension handlebars
+2016-11-08T20:17:27.315Z - info: Using extension phantom-pdf
+2016-11-08T20:17:27.390Z - info: Using extension fs-store
+2016-11-08T20:17:27.792Z - info: Using extension images
+2016-11-08T20:17:27.889Z - info: Using extension data
+2016-11-08T20:17:27.903Z - info: Using extension licensing
+2016-11-08T20:17:27.947Z - info: Using extension authorization
+2016-11-08T20:17:27.957Z - debug: Extension authorization was disabled
+2016-11-08T20:17:27.957Z - info: Using extension text
+2016-11-08T20:17:27.958Z - info: Using extension reports
+2016-11-08T20:17:27.979Z - info: Using extension resources
+2016-11-08T20:17:27.998Z - info: Using extension child-templates
+2016-11-08T20:17:28.013Z - info: Using extension html-to-xlsx
+2016-11-08T20:17:28.098Z - info: Using extension scheduling
+2016-11-08T20:17:28.185Z - info: Using extension scripts
+2016-11-08T20:17:28.202Z - info: Using extension assets
+2016-11-08T20:17:28.314Z - info: Using extension xlsx
+2016-11-08T20:17:28.910Z - info: Using extension sample-template
+2016-11-08T20:17:28.911Z - info: Using extension public-templates
+2016-11-08T20:17:28.933Z - debug: Extension public-templates was disabled
+2016-11-08T20:17:28.935Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T20:17:29.132Z - info: Configuring routes for existing express app.
+2016-11-08T20:17:29.265Z - info: Using existing server instance.
+2016-11-08T20:17:29.273Z - warn: License not found, using free
+2016-11-08T20:17:29.279Z - info: reporter initialized
+2016-11-08T20:19:19.411Z - debug: OData query on templates
+2016-11-08T20:19:19.413Z - debug: OData query on images
+2016-11-08T20:19:19.415Z - debug: OData query on data
+2016-11-08T20:19:19.417Z - debug: OData query on scripts
+2016-11-08T20:19:19.419Z - debug: OData query on assets
+2016-11-08T20:19:19.421Z - debug: OData query on xlsxTemplates
+2016-11-08T20:19:19.440Z - debug: OData query on schedules
+2016-11-08T20:19:19.450Z - debug: OData query on settings
+2016-11-08T20:19:19.598Z - debug: OData query on templates
+2016-11-08T20:19:19.630Z - debug: OData query on settings
+2016-11-08T20:20:03.027Z - debug: OData query on templates
+2016-11-08T20:20:03.038Z - debug: OData query on templates
+2016-11-08T20:20:03.235Z - debug: OData query on settings
+2016-11-08T20:20:07.947Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T20:20:07.952Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T20:20:07.953Z - debug: Adding sample data SJodG21We requestId=1
+2016-11-08T20:20:07.960Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T20:20:07.962Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:20:08.046Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:20:08.047Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:20:08.047Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T20:20:08.051Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T20:20:08.230Z - error: Error when processing render request Error during rendering report: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+ Error: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+    at doRequire (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:62:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:149:37
+    at Array.forEach (native)
+    at module.exports (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:148:38)
+    at process.<anonymous> (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/script-manager/lib/worker-processes.js:45:38)
+    at emitTwo (events.js:87:13)
+    at process.emit (events.js:172:7)
+    at internal/child_process.js:696:12
+From previous event:
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/render.js:144:54
+    at _fulfilled (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:794:54)
+    at self.promiseDispatch.done (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:823:30)
+    at Promise.promise.promiseDispatch (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:756:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:564:44
+    at flush (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:110:17) requestId=1
+2016-11-08T20:20:08.231Z - error: Error during processing request: http://localhost:3000/reporting/api/report details: Error during rendering report: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+ Error: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+    at doRequire (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:62:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:149:37
+    at Array.forEach (native)
+    at module.exports (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:148:38)
+    at process.<anonymous> (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/script-manager/lib/worker-processes.js:45:38)
+    at emitTwo (events.js:87:13)
+    at process.emit (events.js:172:7)
+    at internal/child_process.js:696:12
+From previous event:
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/render.js:144:54
+    at _fulfilled (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:794:54)
+    at self.promiseDispatch.done (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:823:30)
+    at Promise.promise.promiseDispatch (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:756:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:564:44
+    at flush (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:110:17)
+2016-11-08T20:35:22.295Z - debug: OData query on templates
+2016-11-08T20:35:22.300Z - debug: OData query on images
+2016-11-08T20:35:22.303Z - debug: OData query on data
+2016-11-08T20:35:22.307Z - debug: OData query on scripts
+2016-11-08T20:35:22.309Z - debug: OData query on assets
+2016-11-08T20:35:22.311Z - debug: OData query on xlsxTemplates
+2016-11-08T20:35:22.317Z - debug: OData query on schedules
+2016-11-08T20:35:22.337Z - debug: OData query on settings
+2016-11-08T20:35:22.492Z - debug: OData query on templates
+2016-11-08T20:35:22.520Z - debug: OData query on settings
+2016-11-08T20:35:25.637Z - debug: OData query on templates
+2016-11-08T20:35:25.652Z - debug: OData query on templates
+2016-11-08T20:35:25.850Z - debug: OData query on settings
+2016-11-08T20:35:29.448Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T20:35:29.453Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=2
+2016-11-08T20:35:29.458Z - debug: Adding sample data SJodG21We requestId=2
+2016-11-08T20:35:29.462Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T20:35:29.465Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:35:29.581Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:35:29.582Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:35:29.582Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T20:35:29.586Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T20:35:29.775Z - error: Error when processing render request Error during rendering report: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+ Error: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+    at doRequire (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:62:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:149:37
+    at Array.forEach (native)
+    at module.exports (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:148:38)
+    at process.<anonymous> (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/script-manager/lib/worker-processes.js:45:38)
+    at emitTwo (events.js:87:13)
+    at process.emit (events.js:172:7)
+    at internal/child_process.js:696:12
+From previous event:
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/render.js:144:54
+    at _fulfilled (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:794:54)
+    at self.promiseDispatch.done (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:823:30)
+    at Promise.promise.promiseDispatch (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:756:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:564:44
+    at flush (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:110:17) requestId=2
+2016-11-08T20:35:29.776Z - error: Error during processing request: http://localhost:3000/reporting/api/report details: Error during rendering report: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+ Error: Unable to find module /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+Searched paths: 
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+/Users/Andres/Documents/Proyectos/fdg/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-handlebars/node_modules/handlebars
+    at doRequire (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:62:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:149:37
+    at Array.forEach (native)
+    at module.exports (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/engineScript.js:148:38)
+    at process.<anonymous> (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/script-manager/lib/worker-processes.js:45:38)
+    at emitTwo (events.js:87:13)
+    at process.emit (events.js:172:7)
+    at internal/child_process.js:696:12
+From previous event:
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/lib/render/render.js:144:54
+    at _fulfilled (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:794:54)
+    at self.promiseDispatch.done (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:823:30)
+    at Promise.promise.promiseDispatch (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:756:13)
+    at /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:564:44
+    at flush (/Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/jsreport-core/node_modules/listener-collection/node_modules/q/q.js:110:17)
+2016-11-08T20:35:41.561Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T20:35:41.566Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T20:35:41.573Z - info: Extensions location cache /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json contains older information, crawling
+2016-11-08T20:35:43.699Z - info: Found 26 extensions
+2016-11-08T20:35:43.744Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T20:35:43.745Z - debug: Discovered 26 extensions
+2016-11-08T20:35:43.750Z - info: Using extension jsrender
+2016-11-08T20:35:43.756Z - info: Using extension studio
+2016-11-08T20:35:43.887Z - info: Using extension browser-client
+2016-11-08T20:35:43.940Z - info: Using extension templates
+2016-11-08T20:35:43.961Z - debug: Extension authentication is disabled, skipping
+2016-11-08T20:35:43.961Z - info: Using extension debug
+2016-11-08T20:35:43.963Z - info: Using extension express
+2016-11-08T20:35:44.018Z - info: Using extension fop-pdf
+2016-11-08T20:35:44.062Z - info: Using extension handlebars
+2016-11-08T20:35:44.065Z - info: Using extension phantom-pdf
+2016-11-08T20:35:44.124Z - info: Using extension fs-store
+2016-11-08T20:35:44.518Z - info: Using extension images
+2016-11-08T20:35:44.608Z - info: Using extension data
+2016-11-08T20:35:44.623Z - info: Using extension licensing
+2016-11-08T20:35:44.661Z - info: Using extension authorization
+2016-11-08T20:35:44.669Z - debug: Extension authorization was disabled
+2016-11-08T20:35:44.670Z - info: Using extension text
+2016-11-08T20:35:44.671Z - info: Using extension reports
+2016-11-08T20:35:44.680Z - info: Using extension resources
+2016-11-08T20:35:44.693Z - info: Using extension child-templates
+2016-11-08T20:35:44.708Z - info: Using extension html-to-xlsx
+2016-11-08T20:35:44.785Z - info: Using extension scheduling
+2016-11-08T20:35:44.842Z - info: Using extension scripts
+2016-11-08T20:35:44.862Z - info: Using extension assets
+2016-11-08T20:35:44.958Z - info: Using extension xlsx
+2016-11-08T20:35:45.579Z - info: Using extension sample-template
+2016-11-08T20:35:45.580Z - info: Using extension public-templates
+2016-11-08T20:35:45.599Z - debug: Extension public-templates was disabled
+2016-11-08T20:35:45.601Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T20:35:45.802Z - info: Configuring routes for existing express app.
+2016-11-08T20:35:45.953Z - info: Using existing server instance.
+2016-11-08T20:35:45.960Z - warn: License not found, using free
+2016-11-08T20:35:45.967Z - info: reporter initialized
+2016-11-08T20:35:58.729Z - debug: OData query on templates
+2016-11-08T20:35:58.732Z - debug: OData query on images
+2016-11-08T20:35:58.734Z - debug: OData query on data
+2016-11-08T20:35:58.737Z - debug: OData query on scripts
+2016-11-08T20:35:58.740Z - debug: OData query on assets
+2016-11-08T20:35:58.743Z - debug: OData query on xlsxTemplates
+2016-11-08T20:35:58.757Z - debug: OData query on schedules
+2016-11-08T20:35:58.779Z - debug: OData query on settings
+2016-11-08T20:35:58.955Z - debug: OData query on templates
+2016-11-08T20:35:58.984Z - debug: OData query on settings
+2016-11-08T20:36:00.601Z - debug: OData query on templates
+2016-11-08T20:36:00.615Z - debug: OData query on templates
+2016-11-08T20:36:00.803Z - debug: OData query on settings
+2016-11-08T20:36:02.885Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T20:36:02.888Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T20:36:02.891Z - debug: Adding sample data SJodG21We requestId=1
+2016-11-08T20:36:02.898Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T20:36:02.900Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:36:02.997Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:36:02.998Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:36:02.999Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T20:36:03.003Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T20:36:03.214Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:36:03 GMT-0500 (COT), requestId=1
+2016-11-08T20:36:03.217Z - debug: Replaced images [] requestId=1
+2016-11-08T20:36:03.218Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:36:03.220Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T20:36:03.221Z - debug: Starting child request to render pdf header requestId=1
+2016-11-08T20:36:03.227Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T20:36:03.230Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=2
+2016-11-08T20:36:03.231Z - debug: Inline data specified. requestId=2
+2016-11-08T20:36:03.233Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T20:36:03.234Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:36:03.325Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:36:03.325Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:36:03.326Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T20:36:03.327Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T20:36:03.488Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:36:03 GMT-0500 (COT), requestId=2
+2016-11-08T20:36:03.489Z - debug: Replaced images [] requestId=2
+2016-11-08T20:36:03.490Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:36:03.491Z - debug: Executing recipe html requestId=2
+2016-11-08T20:36:03.496Z - debug: Skipping storing report. requestId=2
+2016-11-08T20:36:03.600Z - info: Rendering request 2 finished in 374 ms requestId=2
+2016-11-08T20:36:03.601Z - debug: Starting child request to render pdf footer requestId=1
+2016-11-08T20:36:03.602Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-11-08T20:36:03.605Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=3
+2016-11-08T20:36:03.605Z - debug: Inline data specified. requestId=3
+2016-11-08T20:36:03.609Z - debug: Executing script HJi_G31bg requestId=3
+2016-11-08T20:36:03.610Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:36:03.696Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:36:03.697Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:36:03.697Z - debug: Resources not defined for this template. requestId=3
+2016-11-08T20:36:03.698Z - debug: Rendering engine handlebars requestId=3
+2016-11-08T20:36:03.865Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:36:03 GMT-0500 (COT), requestId=3
+2016-11-08T20:36:03.867Z - debug: Replaced images [] requestId=3
+2016-11-08T20:36:03.868Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:36:03.869Z - debug: Executing recipe html requestId=3
+2016-11-08T20:36:03.874Z - debug: Skipping storing report. requestId=3
+2016-11-08T20:36:03.958Z - info: Rendering request 3 finished in 356 ms requestId=3
+2016-11-08T20:38:47.922Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T20:38:47.927Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T20:38:47.955Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T20:38:48.348Z - info: Found 26 extensions
+2016-11-08T20:38:48.372Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T20:38:48.373Z - debug: Discovered 26 extensions
+2016-11-08T20:38:48.376Z - info: Using extension jsrender
+2016-11-08T20:38:48.380Z - info: Using extension studio
+2016-11-08T20:38:48.516Z - info: Using extension browser-client
+2016-11-08T20:38:48.566Z - info: Using extension templates
+2016-11-08T20:38:48.585Z - debug: Extension authentication is disabled, skipping
+2016-11-08T20:38:48.585Z - info: Using extension debug
+2016-11-08T20:38:48.587Z - info: Using extension express
+2016-11-08T20:38:48.634Z - info: Using extension fop-pdf
+2016-11-08T20:38:48.679Z - info: Using extension handlebars
+2016-11-08T20:38:48.681Z - info: Using extension phantom-pdf
+2016-11-08T20:38:48.742Z - info: Using extension fs-store
+2016-11-08T20:38:49.120Z - info: Using extension images
+2016-11-08T20:38:49.215Z - info: Using extension data
+2016-11-08T20:38:49.229Z - info: Using extension licensing
+2016-11-08T20:38:49.265Z - info: Using extension authorization
+2016-11-08T20:38:49.272Z - debug: Extension authorization was disabled
+2016-11-08T20:38:49.273Z - info: Using extension text
+2016-11-08T20:38:49.274Z - info: Using extension reports
+2016-11-08T20:38:49.283Z - info: Using extension resources
+2016-11-08T20:38:49.297Z - info: Using extension child-templates
+2016-11-08T20:38:49.309Z - info: Using extension html-to-xlsx
+2016-11-08T20:38:49.379Z - info: Using extension scheduling
+2016-11-08T20:38:49.437Z - info: Using extension scripts
+2016-11-08T20:38:49.451Z - info: Using extension assets
+2016-11-08T20:38:49.540Z - info: Using extension xlsx
+2016-11-08T20:38:50.120Z - info: Using extension sample-template
+2016-11-08T20:38:50.121Z - info: Using extension public-templates
+2016-11-08T20:38:50.136Z - debug: Extension public-templates was disabled
+2016-11-08T20:38:50.138Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T20:38:50.323Z - info: Configuring routes for existing express app.
+2016-11-08T20:38:50.463Z - info: Using existing server instance.
+2016-11-08T20:38:50.472Z - warn: License not found, using free
+2016-11-08T20:38:50.479Z - info: reporter initialized
+2016-11-08T20:45:54.822Z - debug: OData query on templates
+2016-11-08T20:45:54.825Z - debug: OData query on images
+2016-11-08T20:45:54.827Z - debug: OData query on data
+2016-11-08T20:45:54.830Z - debug: OData query on scripts
+2016-11-08T20:45:54.833Z - debug: OData query on assets
+2016-11-08T20:45:54.836Z - debug: OData query on xlsxTemplates
+2016-11-08T20:45:54.849Z - debug: OData query on schedules
+2016-11-08T20:45:54.858Z - debug: OData query on settings
+2016-11-08T20:45:55.315Z - debug: OData query on templates
+2016-11-08T20:45:55.357Z - debug: OData query on settings
+2016-11-08T20:46:06.086Z - debug: OData query on templates
+2016-11-08T20:46:06.098Z - debug: OData query on templates
+2016-11-08T20:46:06.367Z - debug: OData query on settings
+2016-11-08T20:46:10.378Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T20:46:10.383Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T20:46:10.386Z - debug: Adding sample data SJodG21We requestId=1
+2016-11-08T20:46:10.395Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T20:46:10.398Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:46:10.495Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:46:10.496Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:46:10.497Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T20:46:10.501Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T20:46:10.719Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:46:10 GMT-0500 (COT), requestId=1
+2016-11-08T20:46:10.725Z - debug: Replaced images [] requestId=1
+2016-11-08T20:46:10.726Z - debug: Replaced assets [] requestId=1
+2016-11-08T20:46:10.727Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T20:46:10.728Z - debug: Starting child request to render pdf header requestId=1
+2016-11-08T20:46:10.734Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T20:46:10.737Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=2
+2016-11-08T20:46:10.737Z - debug: Inline data specified. requestId=2
+2016-11-08T20:46:10.741Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T20:46:10.745Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:46:10.831Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:46:10.832Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:46:10.832Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T20:46:10.834Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T20:46:10.994Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:46:10 GMT-0500 (COT), requestId=2
+2016-11-08T20:46:10.995Z - debug: Replaced images [] requestId=2
+2016-11-08T20:46:10.997Z - debug: Replaced assets [] requestId=2
+2016-11-08T20:46:10.997Z - debug: Executing recipe html requestId=2
+2016-11-08T20:46:11.008Z - debug: Skipping storing report. requestId=2
+2016-11-08T20:46:11.098Z - info: Rendering request 2 finished in 364 ms requestId=2
+2016-11-08T20:46:11.098Z - debug: Starting child request to render pdf footer requestId=1
+2016-11-08T20:46:11.101Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-11-08T20:46:11.104Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=3
+2016-11-08T20:46:11.105Z - debug: Inline data specified. requestId=3
+2016-11-08T20:46:11.109Z - debug: Executing script HJi_G31bg requestId=3
+2016-11-08T20:46:11.109Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:46:11.201Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:46:11.202Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:46:11.202Z - debug: Resources not defined for this template. requestId=3
+2016-11-08T20:46:11.203Z - debug: Rendering engine handlebars requestId=3
+2016-11-08T20:46:11.373Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 15:46:11 GMT-0500 (COT), requestId=3
+2016-11-08T20:46:11.377Z - debug: Replaced images [] requestId=3
+2016-11-08T20:46:11.379Z - debug: Replaced assets [] requestId=3
+2016-11-08T20:46:11.381Z - debug: Executing recipe html requestId=3
+2016-11-08T20:46:11.392Z - debug: Skipping storing report. requestId=3
+2016-11-08T20:46:11.480Z - info: Rendering request 3 finished in 378 ms requestId=3
+2016-11-08T20:46:45.280Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T20:46:45.288Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T20:46:45.309Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T20:46:45.659Z - info: Found 26 extensions
+2016-11-08T20:46:45.682Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T20:46:45.684Z - debug: Discovered 26 extensions
+2016-11-08T20:46:45.687Z - info: Using extension jsrender
+2016-11-08T20:46:45.691Z - info: Using extension studio
+2016-11-08T20:46:45.840Z - info: Using extension browser-client
+2016-11-08T20:46:45.909Z - info: Using extension templates
+2016-11-08T20:46:45.931Z - debug: Extension authentication is disabled, skipping
+2016-11-08T20:46:45.931Z - info: Using extension debug
+2016-11-08T20:46:45.933Z - info: Using extension express
+2016-11-08T20:46:45.999Z - info: Using extension fop-pdf
+2016-11-08T20:46:46.052Z - info: Using extension handlebars
+2016-11-08T20:46:46.054Z - info: Using extension phantom-pdf
+2016-11-08T20:46:46.132Z - info: Using extension fs-store
+2016-11-08T20:46:46.547Z - info: Using extension images
+2016-11-08T20:46:46.656Z - info: Using extension data
+2016-11-08T20:46:46.670Z - info: Using extension licensing
+2016-11-08T20:46:46.719Z - info: Using extension authorization
+2016-11-08T20:46:46.729Z - debug: Extension authorization was disabled
+2016-11-08T20:46:46.729Z - info: Using extension text
+2016-11-08T20:46:46.730Z - info: Using extension reports
+2016-11-08T20:46:46.742Z - info: Using extension resources
+2016-11-08T20:46:46.775Z - info: Using extension child-templates
+2016-11-08T20:46:46.790Z - info: Using extension html-to-xlsx
+2016-11-08T20:46:46.878Z - info: Using extension scheduling
+2016-11-08T20:46:46.960Z - info: Using extension scripts
+2016-11-08T20:46:46.976Z - info: Using extension assets
+2016-11-08T20:46:47.096Z - info: Using extension xlsx
+2016-11-08T20:46:47.720Z - info: Using extension sample-template
+2016-11-08T20:46:47.722Z - info: Using extension public-templates
+2016-11-08T20:46:47.739Z - debug: Extension public-templates was disabled
+2016-11-08T20:46:47.741Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T20:46:47.947Z - info: Configuring routes for existing express app.
+2016-11-08T20:46:48.145Z - info: Using existing server instance.
+2016-11-08T20:46:48.153Z - warn: License not found, using free
+2016-11-08T20:46:48.159Z - info: reporter initialized
+2016-11-08T21:10:22.777Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:10:22.788Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:10:22.879Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:10:23.881Z - info: Found 26 extensions
+2016-11-08T21:10:23.901Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:10:23.903Z - debug: Discovered 26 extensions
+2016-11-08T21:10:23.906Z - info: Using extension jsrender
+2016-11-08T21:10:23.909Z - info: Using extension studio
+2016-11-08T21:10:24.062Z - info: Using extension browser-client
+2016-11-08T21:10:24.120Z - info: Using extension templates
+2016-11-08T21:10:24.144Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:10:24.146Z - info: Using extension debug
+2016-11-08T21:10:24.148Z - info: Using extension express
+2016-11-08T21:10:24.217Z - info: Using extension fop-pdf
+2016-11-08T21:10:24.296Z - info: Using extension handlebars
+2016-11-08T21:10:24.298Z - info: Using extension phantom-pdf
+2016-11-08T21:10:24.365Z - info: Using extension fs-store
+2016-11-08T21:10:24.810Z - info: Using extension images
+2016-11-08T21:10:24.909Z - info: Using extension data
+2016-11-08T21:10:24.925Z - info: Using extension licensing
+2016-11-08T21:10:24.967Z - info: Using extension authorization
+2016-11-08T21:10:24.980Z - debug: Extension authorization was disabled
+2016-11-08T21:10:24.980Z - info: Using extension text
+2016-11-08T21:10:24.981Z - info: Using extension reports
+2016-11-08T21:10:24.990Z - info: Using extension resources
+2016-11-08T21:10:25.010Z - info: Using extension child-templates
+2016-11-08T21:10:25.025Z - info: Using extension html-to-xlsx
+2016-11-08T21:10:25.109Z - info: Using extension scheduling
+2016-11-08T21:10:25.203Z - info: Using extension scripts
+2016-11-08T21:10:25.218Z - info: Using extension assets
+2016-11-08T21:10:25.327Z - info: Using extension xlsx
+2016-11-08T21:10:25.940Z - info: Using extension sample-template
+2016-11-08T21:10:25.942Z - info: Using extension public-templates
+2016-11-08T21:10:25.961Z - debug: Extension public-templates was disabled
+2016-11-08T21:10:25.963Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:10:26.070Z - info: Configuring routes for existing express app.
+2016-11-08T21:10:26.215Z - info: Using existing server instance.
+2016-11-08T21:10:26.330Z - warn: License not found, using free
+2016-11-08T21:10:26.336Z - info: reporter initialized
+2016-11-08T21:11:11.047Z - debug: OData query on templates
+2016-11-08T21:11:11.050Z - debug: OData query on images
+2016-11-08T21:11:11.052Z - debug: OData query on data
+2016-11-08T21:11:11.054Z - debug: OData query on scripts
+2016-11-08T21:11:11.056Z - debug: OData query on assets
+2016-11-08T21:11:11.057Z - debug: OData query on xlsxTemplates
+2016-11-08T21:11:11.074Z - debug: OData query on schedules
+2016-11-08T21:11:11.082Z - debug: OData query on settings
+2016-11-08T21:11:11.199Z - debug: OData query on templates
+2016-11-08T21:11:11.252Z - debug: OData query on settings
+2016-11-08T21:11:12.827Z - debug: OData query on templates
+2016-11-08T21:11:12.836Z - debug: OData query on templates
+2016-11-08T21:11:13.050Z - debug: OData query on settings
+2016-11-08T21:11:16.072Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T21:11:16.087Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T21:11:16.089Z - debug: Adding sample data SJodG21We requestId=1
+2016-11-08T21:11:16.094Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T21:11:16.097Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:11:16.186Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:11:16.187Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:11:16.187Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T21:11:16.191Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T21:11:16.390Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:11:16 GMT-0500 (COT), requestId=1
+2016-11-08T21:11:16.393Z - debug: Replaced images [] requestId=1
+2016-11-08T21:11:16.394Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:11:16.396Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T21:11:16.397Z - debug: Starting child request to render pdf header requestId=1
+2016-11-08T21:11:16.404Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T21:11:16.408Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=2
+2016-11-08T21:11:16.408Z - debug: Inline data specified. requestId=2
+2016-11-08T21:11:16.412Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T21:11:16.413Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:11:16.491Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:11:16.492Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:11:16.493Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T21:11:16.494Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T21:11:16.648Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:11:16 GMT-0500 (COT), requestId=2
+2016-11-08T21:11:16.650Z - debug: Replaced images [] requestId=2
+2016-11-08T21:11:16.662Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:11:16.663Z - debug: Executing recipe html requestId=2
+2016-11-08T21:11:16.669Z - debug: Skipping storing report. requestId=2
+2016-11-08T21:11:16.747Z - info: Rendering request 2 finished in 343 ms requestId=2
+2016-11-08T21:11:16.748Z - debug: Starting child request to render pdf footer requestId=1
+2016-11-08T21:11:16.751Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-11-08T21:11:16.755Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=3
+2016-11-08T21:11:16.756Z - debug: Inline data specified. requestId=3
+2016-11-08T21:11:16.758Z - debug: Executing script HJi_G31bg requestId=3
+2016-11-08T21:11:16.758Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:11:16.833Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:11:16.833Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:11:16.834Z - debug: Resources not defined for this template. requestId=3
+2016-11-08T21:11:16.835Z - debug: Rendering engine handlebars requestId=3
+2016-11-08T21:11:16.998Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:11:16 GMT-0500 (COT), requestId=3
+2016-11-08T21:11:17.000Z - debug: Replaced images [] requestId=3
+2016-11-08T21:11:17.001Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:11:17.002Z - debug: Executing recipe html requestId=3
+2016-11-08T21:11:17.012Z - debug: Skipping storing report. requestId=3
+2016-11-08T21:11:17.089Z - info: Rendering request 3 finished in 338 ms requestId=3
+2016-11-08T21:13:26.690Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:13:26.695Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:13:26.764Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:13:27.780Z - info: Found 26 extensions
+2016-11-08T21:13:27.802Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:13:27.803Z - debug: Discovered 26 extensions
+2016-11-08T21:13:27.806Z - info: Using extension jsrender
+2016-11-08T21:13:27.811Z - info: Using extension studio
+2016-11-08T21:13:27.970Z - info: Using extension browser-client
+2016-11-08T21:13:28.037Z - info: Using extension templates
+2016-11-08T21:13:28.063Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:13:28.063Z - info: Using extension debug
+2016-11-08T21:13:28.065Z - info: Using extension express
+2016-11-08T21:13:28.131Z - info: Using extension fop-pdf
+2016-11-08T21:13:28.191Z - info: Using extension handlebars
+2016-11-08T21:13:28.195Z - info: Using extension phantom-pdf
+2016-11-08T21:13:28.272Z - info: Using extension fs-store
+2016-11-08T21:13:28.700Z - info: Using extension images
+2016-11-08T21:13:28.814Z - info: Using extension data
+2016-11-08T21:13:28.831Z - info: Using extension licensing
+2016-11-08T21:13:28.887Z - info: Using extension authorization
+2016-11-08T21:13:28.898Z - debug: Extension authorization was disabled
+2016-11-08T21:13:28.898Z - info: Using extension text
+2016-11-08T21:13:28.900Z - info: Using extension reports
+2016-11-08T21:13:28.915Z - info: Using extension resources
+2016-11-08T21:13:28.942Z - info: Using extension child-templates
+2016-11-08T21:13:28.956Z - info: Using extension html-to-xlsx
+2016-11-08T21:13:29.052Z - info: Using extension scheduling
+2016-11-08T21:13:29.128Z - info: Using extension scripts
+2016-11-08T21:13:29.143Z - info: Using extension assets
+2016-11-08T21:13:29.259Z - info: Using extension xlsx
+2016-11-08T21:13:29.899Z - info: Using extension sample-template
+2016-11-08T21:13:29.901Z - info: Using extension public-templates
+2016-11-08T21:13:29.921Z - debug: Extension public-templates was disabled
+2016-11-08T21:13:29.924Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:13:30.140Z - info: Configuring routes for existing express app.
+2016-11-08T21:13:30.302Z - info: Using existing server instance.
+2016-11-08T21:13:30.309Z - warn: License not found, using free
+2016-11-08T21:13:30.319Z - info: reporter initialized
+2016-11-08T21:13:51.980Z - debug: OData query on templates
+2016-11-08T21:13:51.982Z - debug: OData query on images
+2016-11-08T21:13:51.984Z - debug: OData query on data
+2016-11-08T21:13:51.985Z - debug: OData query on scripts
+2016-11-08T21:13:51.987Z - debug: OData query on assets
+2016-11-08T21:13:51.988Z - debug: OData query on xlsxTemplates
+2016-11-08T21:13:51.996Z - debug: OData query on schedules
+2016-11-08T21:13:52.002Z - debug: OData query on settings
+2016-11-08T21:13:52.457Z - debug: OData query on templates
+2016-11-08T21:13:52.505Z - debug: OData query on settings
+2016-11-08T21:13:55.049Z - debug: OData query on data
+2016-11-08T21:13:55.060Z - debug: OData query on templates
+2016-11-08T21:13:55.216Z - debug: OData query on settings
+2016-11-08T21:14:17.954Z - debug: OData insert into templates
+2016-11-08T21:14:20.376Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:14:20.381Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:14:20.409Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:14:20.757Z - info: Found 26 extensions
+2016-11-08T21:14:20.779Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:14:20.781Z - debug: Discovered 26 extensions
+2016-11-08T21:14:20.784Z - info: Using extension jsrender
+2016-11-08T21:14:20.788Z - info: Using extension studio
+2016-11-08T21:14:20.921Z - info: Using extension browser-client
+2016-11-08T21:14:20.975Z - info: Using extension templates
+2016-11-08T21:14:20.994Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:14:20.994Z - info: Using extension debug
+2016-11-08T21:14:20.996Z - info: Using extension express
+2016-11-08T21:14:21.046Z - info: Using extension fop-pdf
+2016-11-08T21:14:21.090Z - info: Using extension handlebars
+2016-11-08T21:14:21.092Z - info: Using extension phantom-pdf
+2016-11-08T21:14:21.158Z - info: Using extension fs-store
+2016-11-08T21:14:21.565Z - info: Using extension images
+2016-11-08T21:14:21.656Z - info: Using extension data
+2016-11-08T21:14:21.670Z - info: Using extension licensing
+2016-11-08T21:14:21.706Z - info: Using extension authorization
+2016-11-08T21:14:21.714Z - debug: Extension authorization was disabled
+2016-11-08T21:14:21.714Z - info: Using extension text
+2016-11-08T21:14:21.715Z - info: Using extension reports
+2016-11-08T21:14:21.725Z - info: Using extension resources
+2016-11-08T21:14:21.744Z - info: Using extension child-templates
+2016-11-08T21:14:21.755Z - info: Using extension html-to-xlsx
+2016-11-08T21:14:21.821Z - info: Using extension scheduling
+2016-11-08T21:14:21.888Z - info: Using extension scripts
+2016-11-08T21:14:21.903Z - info: Using extension assets
+2016-11-08T21:14:22.002Z - info: Using extension xlsx
+2016-11-08T21:14:22.609Z - info: Using extension sample-template
+2016-11-08T21:14:22.610Z - info: Using extension public-templates
+2016-11-08T21:14:22.628Z - debug: Extension public-templates was disabled
+2016-11-08T21:14:22.630Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:14:22.868Z - info: Configuring routes for existing express app.
+2016-11-08T21:14:23.033Z - info: Using existing server instance.
+2016-11-08T21:14:23.040Z - warn: License not found, using free
+2016-11-08T21:14:23.046Z - info: reporter initialized
+2016-11-08T21:14:30.773Z - debug: OData update on templates
+2016-11-08T21:14:32.626Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:14:32.631Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:14:32.662Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:14:33.058Z - info: Found 26 extensions
+2016-11-08T21:14:33.071Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:14:33.073Z - debug: Discovered 26 extensions
+2016-11-08T21:14:33.076Z - info: Using extension jsrender
+2016-11-08T21:14:33.079Z - info: Using extension studio
+2016-11-08T21:14:33.165Z - info: Using extension browser-client
+2016-11-08T21:14:33.204Z - info: Using extension templates
+2016-11-08T21:14:33.217Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:14:33.217Z - info: Using extension debug
+2016-11-08T21:14:33.219Z - info: Using extension express
+2016-11-08T21:14:33.253Z - info: Using extension fop-pdf
+2016-11-08T21:14:33.284Z - info: Using extension handlebars
+2016-11-08T21:14:33.286Z - info: Using extension phantom-pdf
+2016-11-08T21:14:33.336Z - info: Using extension fs-store
+2016-11-08T21:14:33.598Z - info: Using extension images
+2016-11-08T21:14:33.664Z - info: Using extension data
+2016-11-08T21:14:33.674Z - info: Using extension licensing
+2016-11-08T21:14:33.700Z - info: Using extension authorization
+2016-11-08T21:14:33.707Z - debug: Extension authorization was disabled
+2016-11-08T21:14:33.707Z - info: Using extension text
+2016-11-08T21:14:33.708Z - info: Using extension reports
+2016-11-08T21:14:33.720Z - info: Using extension resources
+2016-11-08T21:14:33.730Z - info: Using extension child-templates
+2016-11-08T21:14:33.741Z - info: Using extension html-to-xlsx
+2016-11-08T21:14:33.792Z - info: Using extension scheduling
+2016-11-08T21:14:33.842Z - info: Using extension scripts
+2016-11-08T21:14:33.853Z - info: Using extension assets
+2016-11-08T21:14:33.924Z - info: Using extension xlsx
+2016-11-08T21:14:34.302Z - info: Using extension sample-template
+2016-11-08T21:14:34.304Z - info: Using extension public-templates
+2016-11-08T21:14:34.320Z - debug: Extension public-templates was disabled
+2016-11-08T21:14:34.322Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:14:34.503Z - info: Configuring routes for existing express app.
+2016-11-08T21:14:34.579Z - info: Using existing server instance.
+2016-11-08T21:14:34.587Z - warn: License not found, using free
+2016-11-08T21:14:34.593Z - info: reporter initialized
+2016-11-08T21:14:51.417Z - debug: OData update on data
+2016-11-08T21:14:51.423Z - debug: OData update on templates
+2016-11-08T21:14:52.326Z - debug: OData query on templates
+2016-11-08T21:14:52.340Z - debug: OData query on templates
+2016-11-08T21:14:54.151Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:14:54.157Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:14:54.185Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:14:54.686Z - info: Found 26 extensions
+2016-11-08T21:14:54.704Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:14:54.706Z - debug: Discovered 26 extensions
+2016-11-08T21:14:54.712Z - info: Using extension jsrender
+2016-11-08T21:14:54.717Z - info: Using extension studio
+2016-11-08T21:14:54.859Z - info: Using extension browser-client
+2016-11-08T21:14:54.910Z - info: Using extension templates
+2016-11-08T21:14:54.931Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:14:54.932Z - info: Using extension debug
+2016-11-08T21:14:54.933Z - info: Using extension express
+2016-11-08T21:14:54.979Z - info: Using extension fop-pdf
+2016-11-08T21:14:55.016Z - info: Using extension handlebars
+2016-11-08T21:14:55.024Z - info: Using extension phantom-pdf
+2016-11-08T21:14:55.094Z - info: Using extension fs-store
+2016-11-08T21:14:55.421Z - info: Using extension images
+2016-11-08T21:14:55.516Z - info: Using extension data
+2016-11-08T21:14:55.528Z - info: Using extension licensing
+2016-11-08T21:14:55.566Z - info: Using extension authorization
+2016-11-08T21:14:55.574Z - debug: Extension authorization was disabled
+2016-11-08T21:14:55.575Z - info: Using extension text
+2016-11-08T21:14:55.577Z - info: Using extension reports
+2016-11-08T21:14:55.589Z - info: Using extension resources
+2016-11-08T21:14:55.600Z - info: Using extension child-templates
+2016-11-08T21:14:55.610Z - info: Using extension html-to-xlsx
+2016-11-08T21:14:55.678Z - info: Using extension scheduling
+2016-11-08T21:14:55.732Z - info: Using extension scripts
+2016-11-08T21:14:55.745Z - info: Using extension assets
+2016-11-08T21:14:55.842Z - info: Using extension xlsx
+2016-11-08T21:14:56.231Z - info: Using extension sample-template
+2016-11-08T21:14:56.232Z - info: Using extension public-templates
+2016-11-08T21:14:56.246Z - debug: Extension public-templates was disabled
+2016-11-08T21:14:56.248Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:14:56.439Z - info: Configuring routes for existing express app.
+2016-11-08T21:14:56.566Z - info: Using existing server instance.
+2016-11-08T21:14:56.574Z - warn: License not found, using free
+2016-11-08T21:14:56.582Z - info: reporter initialized
+2016-11-08T21:15:21.105Z - debug: OData query on templates
+2016-11-08T21:15:26.992Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T21:15:26.997Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T21:15:26.998Z - debug: Inline data specified. requestId=1
+2016-11-08T21:15:27.007Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T21:15:27.010Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:15:27.117Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:15:27.118Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:15:27.119Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T21:15:27.122Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T21:15:27.312Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:15:27 GMT-0500 (COT), requestId=1
+2016-11-08T21:15:27.315Z - debug: Replaced images [] requestId=1
+2016-11-08T21:15:27.316Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:15:27.318Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T21:15:27.319Z - debug: Starting child request to render pdf header requestId=1
+2016-11-08T21:15:27.324Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T21:15:27.326Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=2
+2016-11-08T21:15:27.326Z - debug: Inline data specified. requestId=2
+2016-11-08T21:15:27.328Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T21:15:27.329Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:15:27.410Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:15:27.411Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:15:27.411Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T21:15:27.412Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T21:15:27.577Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:15:27 GMT-0500 (COT), requestId=2
+2016-11-08T21:15:27.578Z - debug: Replaced images [] requestId=2
+2016-11-08T21:15:27.579Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:15:27.581Z - debug: Executing recipe html requestId=2
+2016-11-08T21:15:27.587Z - debug: Skipping storing report. requestId=2
+2016-11-08T21:15:27.677Z - info: Rendering request 2 finished in 354 ms requestId=2
+2016-11-08T21:15:27.678Z - debug: Starting child request to render pdf footer requestId=1
+2016-11-08T21:15:27.680Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-11-08T21:15:27.683Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=3
+2016-11-08T21:15:27.684Z - debug: Inline data specified. requestId=3
+2016-11-08T21:15:27.687Z - debug: Executing script HJi_G31bg requestId=3
+2016-11-08T21:15:27.687Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:15:27.779Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:15:27.779Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:15:27.779Z - debug: Resources not defined for this template. requestId=3
+2016-11-08T21:15:27.780Z - debug: Rendering engine handlebars requestId=3
+2016-11-08T21:15:27.953Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:15:27 GMT-0500 (COT), requestId=3
+2016-11-08T21:15:27.955Z - debug: Replaced images [] requestId=3
+2016-11-08T21:15:27.956Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:15:27.957Z - debug: Executing recipe html requestId=3
+2016-11-08T21:15:27.961Z - debug: Skipping storing report. requestId=3
+2016-11-08T21:15:28.046Z - info: Rendering request 3 finished in 366 ms requestId=3
+2016-11-08T21:17:16.626Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:17:16.630Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:17:16.681Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:17:17.097Z - info: Found 26 extensions
+2016-11-08T21:17:17.117Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:17:17.119Z - debug: Discovered 26 extensions
+2016-11-08T21:17:17.123Z - info: Using extension jsrender
+2016-11-08T21:17:17.127Z - info: Using extension studio
+2016-11-08T21:17:17.272Z - info: Using extension browser-client
+2016-11-08T21:17:17.319Z - info: Using extension templates
+2016-11-08T21:17:17.341Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:17:17.341Z - info: Using extension debug
+2016-11-08T21:17:17.343Z - info: Using extension express
+2016-11-08T21:17:17.397Z - info: Using extension fop-pdf
+2016-11-08T21:17:17.445Z - info: Using extension handlebars
+2016-11-08T21:17:17.446Z - info: Using extension phantom-pdf
+2016-11-08T21:17:17.510Z - info: Using extension fs-store
+2016-11-08T21:17:17.924Z - info: Using extension images
+2016-11-08T21:17:18.016Z - info: Using extension data
+2016-11-08T21:17:18.031Z - info: Using extension licensing
+2016-11-08T21:17:18.069Z - info: Using extension authorization
+2016-11-08T21:17:18.079Z - debug: Extension authorization was disabled
+2016-11-08T21:17:18.079Z - info: Using extension text
+2016-11-08T21:17:18.080Z - info: Using extension reports
+2016-11-08T21:17:18.091Z - info: Using extension resources
+2016-11-08T21:17:18.103Z - info: Using extension child-templates
+2016-11-08T21:17:18.117Z - info: Using extension html-to-xlsx
+2016-11-08T21:17:18.197Z - info: Using extension scheduling
+2016-11-08T21:17:18.260Z - info: Using extension scripts
+2016-11-08T21:17:18.275Z - info: Using extension assets
+2016-11-08T21:17:18.371Z - info: Using extension xlsx
+2016-11-08T21:17:18.940Z - info: Using extension sample-template
+2016-11-08T21:17:18.942Z - info: Using extension public-templates
+2016-11-08T21:17:18.958Z - debug: Extension public-templates was disabled
+2016-11-08T21:17:18.961Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:17:19.214Z - info: Configuring routes for existing express app.
+2016-11-08T21:17:19.371Z - info: Using existing server instance.
+2016-11-08T21:17:19.380Z - warn: License not found, using free
+2016-11-08T21:17:19.386Z - info: reporter initialized
+2016-11-08T21:17:55.679Z - debug: OData query on templates
+2016-11-08T21:17:55.682Z - debug: OData query on images
+2016-11-08T21:17:55.685Z - debug: OData query on data
+2016-11-08T21:17:55.687Z - debug: OData query on scripts
+2016-11-08T21:17:55.688Z - debug: OData query on assets
+2016-11-08T21:17:55.690Z - debug: OData query on xlsxTemplates
+2016-11-08T21:17:55.699Z - debug: OData query on schedules
+2016-11-08T21:17:55.706Z - debug: OData query on settings
+2016-11-08T21:17:56.139Z - debug: OData query on templates
+2016-11-08T21:17:56.165Z - debug: OData query on settings
+2016-11-08T21:18:05.644Z - debug: OData query on templates
+2016-11-08T21:18:05.662Z - debug: OData query on images
+2016-11-08T21:18:05.670Z - debug: OData query on data
+2016-11-08T21:18:05.677Z - debug: OData query on scripts
+2016-11-08T21:18:05.686Z - debug: OData query on assets
+2016-11-08T21:18:05.703Z - debug: OData query on xlsxTemplates
+2016-11-08T21:18:05.727Z - debug: OData query on schedules
+2016-11-08T21:18:05.760Z - debug: OData query on settings
+2016-11-08T21:18:05.933Z - debug: OData query on templates
+2016-11-08T21:18:05.962Z - debug: OData query on settings
+2016-11-08T21:18:11.559Z - debug: OData query on templates
+2016-11-08T21:18:11.569Z - debug: OData query on templates
+2016-11-08T21:18:11.788Z - debug: OData query on settings
+2016-11-08T21:18:17.700Z - debug: OData query on templates
+2016-11-08T21:18:17.716Z - debug: OData query on settings
+2016-11-08T21:18:29.363Z - debug: OData query on templates
+2016-11-08T21:18:29.429Z - debug: OData query on settings
+2016-11-08T21:18:40.814Z - debug: OData query on templates
+2016-11-08T21:18:40.831Z - debug: OData query on settings
+2016-11-08T21:18:46.504Z - debug: OData query on templates
+2016-11-08T21:18:46.557Z - debug: OData query on settings
+2016-11-08T21:18:51.415Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T21:18:51.419Z - info: Rendering template {shortid:Skodfh1bl, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T21:18:51.421Z - debug: Adding sample data SJodG21We requestId=1
+2016-11-08T21:18:51.426Z - debug: Executing script HJi_G31bg requestId=1
+2016-11-08T21:18:51.430Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:18:51.515Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:18:51.516Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:18:51.516Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T21:18:51.520Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T21:18:51.706Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:18:51 GMT-0500 (COT), requestId=1
+2016-11-08T21:18:51.710Z - debug: Replaced images [] requestId=1
+2016-11-08T21:18:51.711Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:18:51.713Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T21:18:51.714Z - debug: Starting child request to render pdf header requestId=1
+2016-11-08T21:18:51.719Z - info: Starting rendering request 2 (user: null) requestId=2
+2016-11-08T21:18:51.722Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=2
+2016-11-08T21:18:51.722Z - debug: Inline data specified. requestId=2
+2016-11-08T21:18:51.726Z - debug: Executing script HJi_G31bg requestId=2
+2016-11-08T21:18:51.727Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:18:51.807Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:18:51.807Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:18:51.808Z - debug: Resources not defined for this template. requestId=2
+2016-11-08T21:18:51.809Z - debug: Rendering engine handlebars requestId=2
+2016-11-08T21:18:51.967Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:18:51 GMT-0500 (COT), requestId=2
+2016-11-08T21:18:51.968Z - debug: Replaced images [] requestId=2
+2016-11-08T21:18:51.984Z - debug: Replaced assets [] requestId=2
+2016-11-08T21:18:51.985Z - debug: Executing recipe html requestId=2
+2016-11-08T21:18:51.992Z - debug: Skipping storing report. requestId=2
+2016-11-08T21:18:52.080Z - info: Rendering request 2 finished in 360 ms requestId=2
+2016-11-08T21:18:52.081Z - debug: Starting child request to render pdf footer requestId=1
+2016-11-08T21:18:52.085Z - info: Starting rendering request 3 (user: null) requestId=3
+2016-11-08T21:18:52.088Z - info: Rendering template {shortid:Skodfh1bl, recipe:html,engine:handlebars} requestId=3
+2016-11-08T21:18:52.089Z - debug: Inline data specified. requestId=3
+2016-11-08T21:18:52.097Z - debug: Executing script HJi_G31bg requestId=3
+2016-11-08T21:18:52.098Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:18:52.180Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:18:52.180Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:18:52.181Z - debug: Resources not defined for this template. requestId=3
+2016-11-08T21:18:52.182Z - debug: Rendering engine handlebars requestId=3
+2016-11-08T21:18:52.353Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:18:52 GMT-0500 (COT), requestId=3
+2016-11-08T21:18:52.355Z - debug: Replaced images [] requestId=3
+2016-11-08T21:18:52.356Z - debug: Replaced assets [] requestId=3
+2016-11-08T21:18:52.357Z - debug: Executing recipe html requestId=3
+2016-11-08T21:18:52.364Z - debug: Skipping storing report. requestId=3
+2016-11-08T21:18:52.453Z - info: Rendering request 3 finished in 367 ms requestId=3
+2016-11-08T21:50:25.792Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:50:25.799Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:50:25.824Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:50:26.179Z - info: Found 26 extensions
+2016-11-08T21:50:26.203Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:50:26.204Z - debug: Discovered 26 extensions
+2016-11-08T21:50:26.207Z - info: Using extension jsrender
+2016-11-08T21:50:26.211Z - info: Using extension studio
+2016-11-08T21:50:26.358Z - info: Using extension browser-client
+2016-11-08T21:50:26.427Z - info: Using extension templates
+2016-11-08T21:50:26.449Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:50:26.450Z - info: Using extension debug
+2016-11-08T21:50:26.451Z - info: Using extension express
+2016-11-08T21:50:26.515Z - info: Using extension fop-pdf
+2016-11-08T21:50:26.571Z - info: Using extension handlebars
+2016-11-08T21:50:26.573Z - info: Using extension phantom-pdf
+2016-11-08T21:50:26.652Z - info: Using extension fs-store
+2016-11-08T21:50:27.054Z - info: Using extension images
+2016-11-08T21:50:27.157Z - info: Using extension data
+2016-11-08T21:50:27.171Z - info: Using extension licensing
+2016-11-08T21:50:27.219Z - info: Using extension authorization
+2016-11-08T21:50:27.233Z - debug: Extension authorization was disabled
+2016-11-08T21:50:27.234Z - info: Using extension text
+2016-11-08T21:50:27.235Z - info: Using extension reports
+2016-11-08T21:50:27.244Z - info: Using extension resources
+2016-11-08T21:50:27.270Z - info: Using extension child-templates
+2016-11-08T21:50:27.282Z - info: Using extension html-to-xlsx
+2016-11-08T21:50:27.368Z - info: Using extension scheduling
+2016-11-08T21:50:27.453Z - info: Using extension scripts
+2016-11-08T21:50:27.468Z - info: Using extension assets
+2016-11-08T21:50:27.587Z - info: Using extension xlsx
+2016-11-08T21:50:28.194Z - info: Using extension sample-template
+2016-11-08T21:50:28.195Z - info: Using extension public-templates
+2016-11-08T21:50:28.211Z - debug: Extension public-templates was disabled
+2016-11-08T21:50:28.214Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:50:28.424Z - info: Configuring routes for existing express app.
+2016-11-08T21:50:28.601Z - info: Using existing server instance.
+2016-11-08T21:50:28.608Z - warn: License not found, using free
+2016-11-08T21:50:28.615Z - info: reporter initialized
+2016-11-08T21:50:39.249Z - debug: OData query on templates
+2016-11-08T21:50:39.253Z - debug: OData query on images
+2016-11-08T21:50:39.254Z - debug: OData query on data
+2016-11-08T21:50:39.258Z - debug: OData query on scripts
+2016-11-08T21:50:39.261Z - debug: OData query on assets
+2016-11-08T21:50:39.262Z - debug: OData query on xlsxTemplates
+2016-11-08T21:50:39.283Z - debug: OData query on schedules
+2016-11-08T21:50:39.305Z - debug: OData query on settings
+2016-11-08T21:50:39.444Z - debug: OData query on templates
+2016-11-08T21:50:39.471Z - debug: OData query on settings
+2016-11-08T21:50:42.020Z - debug: OData query on reports
+2016-11-08T21:50:58.170Z - debug: OData query on scripts
+2016-11-08T21:51:10.679Z - debug: OData query on templates
+2016-11-08T21:51:11.389Z - debug: OData query on templates
+2016-11-08T21:51:18.308Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-08T21:51:18.312Z - info: Rendering template {shortid:Hkpmxakbg, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-08T21:51:18.313Z - debug: Data item not defined for this template. requestId=1
+2016-11-08T21:51:18.320Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:51:18.322Z - debug: Resources not defined for this template. requestId=1
+2016-11-08T21:51:18.326Z - debug: Rendering engine handlebars requestId=1
+2016-11-08T21:51:18.506Z - debug: Compiled template not found in the cache, compiling timestamp=Tue Nov 08 2016 16:51:18 GMT-0500 (COT), requestId=1
+2016-11-08T21:51:18.510Z - debug: Replaced images [] requestId=1
+2016-11-08T21:51:18.512Z - debug: Replaced assets [] requestId=1
+2016-11-08T21:51:18.513Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-08T21:51:28.896Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-08T21:51:28.902Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-08T21:51:28.945Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-08T21:51:29.348Z - info: Found 26 extensions
+2016-11-08T21:51:29.370Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-08T21:51:29.372Z - debug: Discovered 26 extensions
+2016-11-08T21:51:29.375Z - info: Using extension jsrender
+2016-11-08T21:51:29.379Z - info: Using extension studio
+2016-11-08T21:51:29.530Z - info: Using extension browser-client
+2016-11-08T21:51:29.591Z - info: Using extension templates
+2016-11-08T21:51:29.615Z - debug: Extension authentication is disabled, skipping
+2016-11-08T21:51:29.615Z - info: Using extension debug
+2016-11-08T21:51:29.617Z - info: Using extension express
+2016-11-08T21:51:29.681Z - info: Using extension fop-pdf
+2016-11-08T21:51:29.734Z - info: Using extension handlebars
+2016-11-08T21:51:29.736Z - info: Using extension phantom-pdf
+2016-11-08T21:51:29.818Z - info: Using extension fs-store
+2016-11-08T21:51:30.235Z - info: Using extension images
+2016-11-08T21:51:30.353Z - info: Using extension data
+2016-11-08T21:51:30.368Z - info: Using extension licensing
+2016-11-08T21:51:30.412Z - info: Using extension authorization
+2016-11-08T21:51:30.423Z - debug: Extension authorization was disabled
+2016-11-08T21:51:30.424Z - info: Using extension text
+2016-11-08T21:51:30.426Z - info: Using extension reports
+2016-11-08T21:51:30.437Z - info: Using extension resources
+2016-11-08T21:51:30.449Z - info: Using extension child-templates
+2016-11-08T21:51:30.468Z - info: Using extension html-to-xlsx
+2016-11-08T21:51:30.555Z - info: Using extension scheduling
+2016-11-08T21:51:30.644Z - info: Using extension scripts
+2016-11-08T21:51:30.662Z - info: Using extension assets
+2016-11-08T21:51:30.779Z - info: Using extension xlsx
+2016-11-08T21:51:31.344Z - info: Using extension sample-template
+2016-11-08T21:51:31.345Z - info: Using extension public-templates
+2016-11-08T21:51:31.360Z - debug: Extension public-templates was disabled
+2016-11-08T21:51:31.362Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-08T21:51:31.577Z - info: Configuring routes for existing express app.
+2016-11-08T21:51:31.717Z - info: Using existing server instance.
+2016-11-08T21:51:31.724Z - warn: License not found, using free
+2016-11-08T21:51:31.731Z - info: reporter initialized
+2016-11-08T21:51:39.267Z - debug: OData query on templates
+2016-11-08T21:51:39.271Z - debug: OData query on images
+2016-11-08T21:51:39.279Z - debug: OData query on data
+2016-11-08T21:51:39.280Z - debug: OData query on scripts
+2016-11-08T21:51:39.282Z - debug: OData query on assets
+2016-11-08T21:51:39.284Z - debug: OData query on xlsxTemplates
+2016-11-08T21:51:39.297Z - debug: OData query on schedules
+2016-11-08T21:51:39.303Z - debug: OData query on settings
+2016-11-08T21:51:39.406Z - debug: OData query on templates
+2016-11-09T14:28:50.829Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T14:28:50.834Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T14:28:50.865Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T14:28:52.531Z - info: Found 26 extensions
+2016-11-09T14:28:52.551Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T14:28:52.553Z - debug: Discovered 26 extensions
+2016-11-09T14:28:52.556Z - info: Using extension jsrender
+2016-11-09T14:28:52.562Z - info: Using extension studio
+2016-11-09T14:28:52.729Z - info: Using extension browser-client
+2016-11-09T14:28:52.784Z - info: Using extension templates
+2016-11-09T14:28:52.811Z - debug: Extension authentication is disabled, skipping
+2016-11-09T14:28:52.812Z - info: Using extension debug
+2016-11-09T14:28:52.814Z - info: Using extension express
+2016-11-09T14:28:52.887Z - info: Using extension fop-pdf
+2016-11-09T14:28:52.942Z - info: Using extension handlebars
+2016-11-09T14:28:52.944Z - info: Using extension phantom-pdf
+2016-11-09T14:28:53.007Z - info: Using extension fs-store
+2016-11-09T14:28:53.512Z - info: Using extension images
+2016-11-09T14:28:53.631Z - info: Using extension data
+2016-11-09T14:28:53.648Z - info: Using extension licensing
+2016-11-09T14:28:53.688Z - info: Using extension authorization
+2016-11-09T14:28:53.697Z - debug: Extension authorization was disabled
+2016-11-09T14:28:53.697Z - info: Using extension text
+2016-11-09T14:28:53.699Z - info: Using extension reports
+2016-11-09T14:28:53.708Z - info: Using extension resources
+2016-11-09T14:28:53.727Z - info: Using extension child-templates
+2016-11-09T14:28:53.741Z - info: Using extension html-to-xlsx
+2016-11-09T14:28:53.822Z - info: Using extension scheduling
+2016-11-09T14:28:53.889Z - info: Using extension scripts
+2016-11-09T14:28:53.910Z - info: Using extension assets
+2016-11-09T14:28:54.021Z - info: Using extension xlsx
+2016-11-09T14:28:54.728Z - info: Using extension sample-template
+2016-11-09T14:28:54.730Z - info: Using extension public-templates
+2016-11-09T14:28:54.748Z - debug: Extension public-templates was disabled
+2016-11-09T14:28:54.750Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T14:28:54.899Z - info: Configuring routes for existing express app.
+2016-11-09T14:28:55.072Z - info: Using existing server instance.
+2016-11-09T14:28:55.086Z - warn: License not found, using free
+2016-11-09T14:28:55.094Z - info: reporter initialized
+2016-11-09T14:29:16.899Z - debug: OData query on xlsxTemplates
+2016-11-09T14:29:16.901Z - debug: OData query on templates
+2016-11-09T14:29:16.904Z - debug: OData query on images
+2016-11-09T14:29:16.908Z - debug: OData query on data
+2016-11-09T14:29:16.909Z - debug: OData query on scripts
+2016-11-09T14:29:16.910Z - debug: OData query on assets
+2016-11-09T14:29:16.931Z - debug: OData query on schedules
+2016-11-09T14:29:16.943Z - debug: OData query on settings
+2016-11-09T14:29:17.106Z - debug: OData query on templates
+2016-11-09T14:29:17.133Z - debug: OData query on settings
+2016-11-09T15:57:17.132Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T15:57:17.137Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T15:57:17.158Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T15:57:17.847Z - info: Found 26 extensions
+2016-11-09T15:57:17.868Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T15:57:17.869Z - debug: Discovered 26 extensions
+2016-11-09T15:57:17.872Z - info: Using extension jsrender
+2016-11-09T15:57:17.876Z - info: Using extension studio
+2016-11-09T15:57:18.022Z - info: Using extension browser-client
+2016-11-09T15:57:18.075Z - info: Using extension templates
+2016-11-09T15:57:18.094Z - debug: Extension authentication is disabled, skipping
+2016-11-09T15:57:18.094Z - info: Using extension debug
+2016-11-09T15:57:18.096Z - info: Using extension express
+2016-11-09T15:57:18.148Z - info: Using extension fop-pdf
+2016-11-09T15:57:18.194Z - info: Using extension handlebars
+2016-11-09T15:57:18.196Z - info: Using extension phantom-pdf
+2016-11-09T15:57:18.258Z - info: Using extension fs-store
+2016-11-09T15:57:18.695Z - info: Using extension images
+2016-11-09T15:57:18.798Z - info: Using extension data
+2016-11-09T15:57:18.813Z - info: Using extension licensing
+2016-11-09T15:57:18.858Z - info: Using extension authorization
+2016-11-09T15:57:18.867Z - debug: Extension authorization was disabled
+2016-11-09T15:57:18.867Z - info: Using extension text
+2016-11-09T15:57:18.869Z - info: Using extension reports
+2016-11-09T15:57:18.878Z - info: Using extension resources
+2016-11-09T15:57:18.890Z - info: Using extension child-templates
+2016-11-09T15:57:18.904Z - info: Using extension html-to-xlsx
+2016-11-09T15:57:18.984Z - info: Using extension scheduling
+2016-11-09T15:57:19.053Z - info: Using extension scripts
+2016-11-09T15:57:19.070Z - info: Using extension assets
+2016-11-09T15:57:19.175Z - info: Using extension xlsx
+2016-11-09T15:57:19.839Z - info: Using extension sample-template
+2016-11-09T15:57:19.841Z - info: Using extension public-templates
+2016-11-09T15:57:19.858Z - debug: Extension public-templates was disabled
+2016-11-09T15:57:19.860Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T15:57:20.101Z - info: Configuring routes for existing express app.
+2016-11-09T15:57:20.259Z - info: Using existing server instance.
+2016-11-09T15:57:20.273Z - warn: License not found, using free
+2016-11-09T15:57:20.279Z - info: reporter initialized
+2016-11-09T15:58:29.769Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T15:58:29.774Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T15:58:29.794Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T15:58:30.231Z - info: Found 26 extensions
+2016-11-09T15:58:30.255Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T15:58:30.257Z - debug: Discovered 26 extensions
+2016-11-09T15:58:30.260Z - info: Using extension jsrender
+2016-11-09T15:58:30.265Z - info: Using extension studio
+2016-11-09T15:58:30.430Z - info: Using extension browser-client
+2016-11-09T15:58:30.480Z - info: Using extension templates
+2016-11-09T15:58:30.505Z - debug: Extension authentication is disabled, skipping
+2016-11-09T15:58:30.506Z - info: Using extension debug
+2016-11-09T15:58:30.507Z - info: Using extension express
+2016-11-09T15:58:30.557Z - info: Using extension fop-pdf
+2016-11-09T15:58:30.605Z - info: Using extension handlebars
+2016-11-09T15:58:30.607Z - info: Using extension phantom-pdf
+2016-11-09T15:58:30.682Z - info: Using extension fs-store
+2016-11-09T15:58:31.076Z - info: Using extension images
+2016-11-09T15:58:31.163Z - info: Using extension data
+2016-11-09T15:58:31.178Z - info: Using extension licensing
+2016-11-09T15:58:31.219Z - info: Using extension authorization
+2016-11-09T15:58:31.227Z - debug: Extension authorization was disabled
+2016-11-09T15:58:31.227Z - info: Using extension text
+2016-11-09T15:58:31.229Z - info: Using extension reports
+2016-11-09T15:58:31.237Z - info: Using extension resources
+2016-11-09T15:58:31.250Z - info: Using extension child-templates
+2016-11-09T15:58:31.263Z - info: Using extension html-to-xlsx
+2016-11-09T15:58:31.331Z - info: Using extension scheduling
+2016-11-09T15:58:31.401Z - info: Using extension scripts
+2016-11-09T15:58:31.417Z - info: Using extension assets
+2016-11-09T15:58:31.518Z - info: Using extension xlsx
+2016-11-09T15:58:32.122Z - info: Using extension sample-template
+2016-11-09T15:58:32.123Z - info: Using extension public-templates
+2016-11-09T15:58:32.141Z - debug: Extension public-templates was disabled
+2016-11-09T15:58:32.142Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T15:58:32.367Z - info: Configuring routes for existing express app.
+2016-11-09T15:58:32.506Z - info: Using existing server instance.
+2016-11-09T15:58:32.513Z - warn: License not found, using free
+2016-11-09T15:58:32.519Z - info: reporter initialized
+2016-11-09T15:59:04.944Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T15:59:04.948Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T15:59:04.974Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T15:59:05.324Z - info: Found 26 extensions
+2016-11-09T15:59:05.346Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T15:59:05.348Z - debug: Discovered 26 extensions
+2016-11-09T15:59:05.351Z - info: Using extension jsrender
+2016-11-09T15:59:05.355Z - info: Using extension studio
+2016-11-09T15:59:05.495Z - info: Using extension browser-client
+2016-11-09T15:59:05.545Z - info: Using extension templates
+2016-11-09T15:59:05.564Z - debug: Extension authentication is disabled, skipping
+2016-11-09T15:59:05.565Z - info: Using extension debug
+2016-11-09T15:59:05.566Z - info: Using extension express
+2016-11-09T15:59:05.617Z - info: Using extension fop-pdf
+2016-11-09T15:59:05.662Z - info: Using extension handlebars
+2016-11-09T15:59:05.663Z - info: Using extension phantom-pdf
+2016-11-09T15:59:05.729Z - info: Using extension fs-store
+2016-11-09T15:59:06.120Z - info: Using extension images
+2016-11-09T15:59:06.210Z - info: Using extension data
+2016-11-09T15:59:06.224Z - info: Using extension licensing
+2016-11-09T15:59:06.267Z - info: Using extension authorization
+2016-11-09T15:59:06.276Z - debug: Extension authorization was disabled
+2016-11-09T15:59:06.277Z - info: Using extension text
+2016-11-09T15:59:06.278Z - info: Using extension reports
+2016-11-09T15:59:06.288Z - info: Using extension resources
+2016-11-09T15:59:06.301Z - info: Using extension child-templates
+2016-11-09T15:59:06.315Z - info: Using extension html-to-xlsx
+2016-11-09T15:59:06.389Z - info: Using extension scheduling
+2016-11-09T15:59:06.466Z - info: Using extension scripts
+2016-11-09T15:59:06.483Z - info: Using extension assets
+2016-11-09T15:59:06.594Z - info: Using extension xlsx
+2016-11-09T15:59:07.289Z - info: Using extension sample-template
+2016-11-09T15:59:07.290Z - info: Using extension public-templates
+2016-11-09T15:59:07.307Z - debug: Extension public-templates was disabled
+2016-11-09T15:59:07.310Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T15:59:07.571Z - info: Configuring routes for existing express app.
+2016-11-09T15:59:07.725Z - info: Using existing server instance.
+2016-11-09T15:59:07.735Z - warn: License not found, using free
+2016-11-09T15:59:07.742Z - info: reporter initialized
+2016-11-09T16:01:15.194Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:01:15.199Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:01:15.220Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:01:15.565Z - info: Found 26 extensions
+2016-11-09T16:01:15.595Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:01:15.597Z - debug: Discovered 26 extensions
+2016-11-09T16:01:15.600Z - info: Using extension jsrender
+2016-11-09T16:01:15.604Z - info: Using extension studio
+2016-11-09T16:01:15.750Z - info: Using extension browser-client
+2016-11-09T16:01:15.805Z - info: Using extension templates
+2016-11-09T16:01:15.824Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:01:15.825Z - info: Using extension debug
+2016-11-09T16:01:15.827Z - info: Using extension express
+2016-11-09T16:01:15.875Z - info: Using extension fop-pdf
+2016-11-09T16:01:15.923Z - info: Using extension handlebars
+2016-11-09T16:01:15.924Z - info: Using extension phantom-pdf
+2016-11-09T16:01:15.994Z - info: Using extension fs-store
+2016-11-09T16:01:16.375Z - info: Using extension images
+2016-11-09T16:01:16.464Z - info: Using extension data
+2016-11-09T16:01:16.477Z - info: Using extension licensing
+2016-11-09T16:01:16.519Z - info: Using extension authorization
+2016-11-09T16:01:16.528Z - debug: Extension authorization was disabled
+2016-11-09T16:01:16.528Z - info: Using extension text
+2016-11-09T16:01:16.529Z - info: Using extension reports
+2016-11-09T16:01:16.539Z - info: Using extension resources
+2016-11-09T16:01:16.552Z - info: Using extension child-templates
+2016-11-09T16:01:16.567Z - info: Using extension html-to-xlsx
+2016-11-09T16:01:16.636Z - info: Using extension scheduling
+2016-11-09T16:01:16.710Z - info: Using extension scripts
+2016-11-09T16:01:16.726Z - info: Using extension assets
+2016-11-09T16:01:16.827Z - info: Using extension xlsx
+2016-11-09T16:01:17.563Z - info: Using extension sample-template
+2016-11-09T16:01:17.565Z - info: Using extension public-templates
+2016-11-09T16:01:17.583Z - debug: Extension public-templates was disabled
+2016-11-09T16:01:17.586Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:01:17.805Z - info: Configuring routes for existing express app.
+2016-11-09T16:01:17.949Z - info: Using existing server instance.
+2016-11-09T16:01:17.955Z - warn: License not found, using free
+2016-11-09T16:01:17.962Z - info: reporter initialized
+2016-11-09T16:02:53.203Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:02:53.209Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:02:53.232Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:02:53.575Z - info: Found 26 extensions
+2016-11-09T16:02:53.597Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:02:53.599Z - debug: Discovered 26 extensions
+2016-11-09T16:02:53.601Z - info: Using extension jsrender
+2016-11-09T16:02:53.605Z - info: Using extension studio
+2016-11-09T16:02:53.722Z - info: Using extension browser-client
+2016-11-09T16:02:53.774Z - info: Using extension templates
+2016-11-09T16:02:53.791Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:02:53.792Z - info: Using extension debug
+2016-11-09T16:02:53.793Z - info: Using extension express
+2016-11-09T16:02:53.835Z - info: Using extension fop-pdf
+2016-11-09T16:02:53.877Z - info: Using extension handlebars
+2016-11-09T16:02:53.879Z - info: Using extension phantom-pdf
+2016-11-09T16:02:53.940Z - info: Using extension fs-store
+2016-11-09T16:02:54.283Z - info: Using extension images
+2016-11-09T16:02:54.376Z - info: Using extension data
+2016-11-09T16:02:54.389Z - info: Using extension licensing
+2016-11-09T16:02:54.427Z - info: Using extension authorization
+2016-11-09T16:02:54.435Z - debug: Extension authorization was disabled
+2016-11-09T16:02:54.435Z - info: Using extension text
+2016-11-09T16:02:54.436Z - info: Using extension reports
+2016-11-09T16:02:54.445Z - info: Using extension resources
+2016-11-09T16:02:54.456Z - info: Using extension child-templates
+2016-11-09T16:02:54.467Z - info: Using extension html-to-xlsx
+2016-11-09T16:02:54.531Z - info: Using extension scheduling
+2016-11-09T16:02:54.598Z - info: Using extension scripts
+2016-11-09T16:02:54.614Z - info: Using extension assets
+2016-11-09T16:02:54.713Z - info: Using extension xlsx
+2016-11-09T16:02:55.306Z - info: Using extension sample-template
+2016-11-09T16:02:55.307Z - info: Using extension public-templates
+2016-11-09T16:02:55.324Z - debug: Extension public-templates was disabled
+2016-11-09T16:02:55.327Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:02:55.533Z - info: Configuring routes for existing express app.
+2016-11-09T16:02:55.655Z - info: Using existing server instance.
+2016-11-09T16:02:55.662Z - warn: License not found, using free
+2016-11-09T16:02:55.668Z - info: reporter initialized
+2016-11-09T16:11:04.479Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:11:04.484Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:11:04.516Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:11:05.158Z - info: Found 26 extensions
+2016-11-09T16:11:05.180Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:11:05.182Z - debug: Discovered 26 extensions
+2016-11-09T16:11:05.185Z - info: Using extension jsrender
+2016-11-09T16:11:05.188Z - info: Using extension studio
+2016-11-09T16:11:05.327Z - info: Using extension browser-client
+2016-11-09T16:11:05.384Z - info: Using extension templates
+2016-11-09T16:11:05.405Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:11:05.406Z - info: Using extension debug
+2016-11-09T16:11:05.407Z - info: Using extension express
+2016-11-09T16:11:05.461Z - info: Using extension fop-pdf
+2016-11-09T16:11:05.519Z - info: Using extension handlebars
+2016-11-09T16:11:05.521Z - info: Using extension phantom-pdf
+2016-11-09T16:11:05.578Z - info: Using extension fs-store
+2016-11-09T16:11:05.989Z - info: Using extension images
+2016-11-09T16:11:06.129Z - info: Using extension data
+2016-11-09T16:11:06.147Z - info: Using extension licensing
+2016-11-09T16:11:06.189Z - info: Using extension authorization
+2016-11-09T16:11:06.198Z - debug: Extension authorization was disabled
+2016-11-09T16:11:06.198Z - info: Using extension text
+2016-11-09T16:11:06.200Z - info: Using extension reports
+2016-11-09T16:11:06.209Z - info: Using extension resources
+2016-11-09T16:11:06.222Z - info: Using extension child-templates
+2016-11-09T16:11:06.234Z - info: Using extension html-to-xlsx
+2016-11-09T16:11:06.303Z - info: Using extension scheduling
+2016-11-09T16:11:06.353Z - info: Using extension scripts
+2016-11-09T16:11:06.367Z - info: Using extension assets
+2016-11-09T16:11:06.462Z - info: Using extension xlsx
+2016-11-09T16:11:06.991Z - info: Using extension sample-template
+2016-11-09T16:11:06.992Z - info: Using extension public-templates
+2016-11-09T16:11:07.008Z - debug: Extension public-templates was disabled
+2016-11-09T16:11:07.010Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:11:07.192Z - info: Configuring routes for existing express app.
+2016-11-09T16:11:07.329Z - info: Using existing server instance.
+2016-11-09T16:11:07.336Z - warn: License not found, using free
+2016-11-09T16:11:07.343Z - info: reporter initialized
+2016-11-09T16:11:24.617Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:11:24.622Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:11:24.655Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:11:25.068Z - info: Found 26 extensions
+2016-11-09T16:11:25.091Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:11:25.092Z - debug: Discovered 26 extensions
+2016-11-09T16:11:25.095Z - info: Using extension jsrender
+2016-11-09T16:11:25.099Z - info: Using extension studio
+2016-11-09T16:11:25.234Z - info: Using extension browser-client
+2016-11-09T16:11:25.286Z - info: Using extension templates
+2016-11-09T16:11:25.304Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:11:25.304Z - info: Using extension debug
+2016-11-09T16:11:25.306Z - info: Using extension express
+2016-11-09T16:11:25.354Z - info: Using extension fop-pdf
+2016-11-09T16:11:25.399Z - info: Using extension handlebars
+2016-11-09T16:11:25.402Z - info: Using extension phantom-pdf
+2016-11-09T16:11:25.466Z - info: Using extension fs-store
+2016-11-09T16:11:25.861Z - info: Using extension images
+2016-11-09T16:11:25.933Z - info: Using extension data
+2016-11-09T16:11:25.943Z - info: Using extension licensing
+2016-11-09T16:11:25.970Z - info: Using extension authorization
+2016-11-09T16:11:25.979Z - debug: Extension authorization was disabled
+2016-11-09T16:11:25.980Z - info: Using extension text
+2016-11-09T16:11:25.982Z - info: Using extension reports
+2016-11-09T16:11:25.993Z - info: Using extension resources
+2016-11-09T16:11:26.005Z - info: Using extension child-templates
+2016-11-09T16:11:26.015Z - info: Using extension html-to-xlsx
+2016-11-09T16:11:26.069Z - info: Using extension scheduling
+2016-11-09T16:11:26.121Z - info: Using extension scripts
+2016-11-09T16:11:26.131Z - info: Using extension assets
+2016-11-09T16:11:26.213Z - info: Using extension xlsx
+2016-11-09T16:11:26.587Z - info: Using extension sample-template
+2016-11-09T16:11:26.588Z - info: Using extension public-templates
+2016-11-09T16:11:26.602Z - debug: Extension public-templates was disabled
+2016-11-09T16:11:26.604Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:11:26.786Z - info: Configuring routes for existing express app.
+2016-11-09T16:11:26.885Z - info: Using existing server instance.
+2016-11-09T16:11:26.893Z - warn: License not found, using free
+2016-11-09T16:11:26.899Z - info: reporter initialized
+2016-11-09T16:17:17.536Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:17:17.541Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:17:17.583Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:17:18.209Z - info: Found 26 extensions
+2016-11-09T16:17:18.232Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:17:18.233Z - debug: Discovered 26 extensions
+2016-11-09T16:17:18.236Z - info: Using extension jsrender
+2016-11-09T16:17:18.240Z - info: Using extension studio
+2016-11-09T16:17:18.392Z - info: Using extension browser-client
+2016-11-09T16:17:18.451Z - info: Using extension templates
+2016-11-09T16:17:18.476Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:17:18.476Z - info: Using extension debug
+2016-11-09T16:17:18.478Z - info: Using extension express
+2016-11-09T16:17:18.539Z - info: Using extension fop-pdf
+2016-11-09T16:17:18.592Z - info: Using extension handlebars
+2016-11-09T16:17:18.595Z - info: Using extension phantom-pdf
+2016-11-09T16:17:18.670Z - info: Using extension fs-store
+2016-11-09T16:17:19.073Z - info: Using extension images
+2016-11-09T16:17:19.183Z - info: Using extension data
+2016-11-09T16:17:19.198Z - info: Using extension licensing
+2016-11-09T16:17:19.244Z - info: Using extension authorization
+2016-11-09T16:17:19.252Z - debug: Extension authorization was disabled
+2016-11-09T16:17:19.252Z - info: Using extension text
+2016-11-09T16:17:19.254Z - info: Using extension reports
+2016-11-09T16:17:19.266Z - info: Using extension resources
+2016-11-09T16:17:19.288Z - info: Using extension child-templates
+2016-11-09T16:17:19.302Z - info: Using extension html-to-xlsx
+2016-11-09T16:17:19.392Z - info: Using extension scheduling
+2016-11-09T16:17:19.479Z - info: Using extension scripts
+2016-11-09T16:17:19.496Z - info: Using extension assets
+2016-11-09T16:17:19.611Z - info: Using extension xlsx
+2016-11-09T16:17:20.239Z - info: Using extension sample-template
+2016-11-09T16:17:20.241Z - info: Using extension public-templates
+2016-11-09T16:17:20.259Z - debug: Extension public-templates was disabled
+2016-11-09T16:17:20.262Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:17:20.481Z - info: Configuring routes for existing express app.
+2016-11-09T16:17:20.626Z - info: Using existing server instance.
+2016-11-09T16:17:20.632Z - warn: License not found, using free
+2016-11-09T16:17:20.638Z - info: reporter initialized
+2016-11-09T16:19:09.106Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T16:19:09.112Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T16:19:09.157Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T16:19:09.580Z - info: Found 26 extensions
+2016-11-09T16:19:09.601Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T16:19:09.603Z - debug: Discovered 26 extensions
+2016-11-09T16:19:09.606Z - info: Using extension jsrender
+2016-11-09T16:19:09.610Z - info: Using extension studio
+2016-11-09T16:19:09.759Z - info: Using extension browser-client
+2016-11-09T16:19:09.825Z - info: Using extension templates
+2016-11-09T16:19:09.849Z - debug: Extension authentication is disabled, skipping
+2016-11-09T16:19:09.850Z - info: Using extension debug
+2016-11-09T16:19:09.851Z - info: Using extension express
+2016-11-09T16:19:09.913Z - info: Using extension fop-pdf
+2016-11-09T16:19:09.970Z - info: Using extension handlebars
+2016-11-09T16:19:09.972Z - info: Using extension phantom-pdf
+2016-11-09T16:19:10.058Z - info: Using extension fs-store
+2016-11-09T16:19:10.457Z - info: Using extension images
+2016-11-09T16:19:10.557Z - info: Using extension data
+2016-11-09T16:19:10.573Z - info: Using extension licensing
+2016-11-09T16:19:10.618Z - info: Using extension authorization
+2016-11-09T16:19:10.627Z - debug: Extension authorization was disabled
+2016-11-09T16:19:10.627Z - info: Using extension text
+2016-11-09T16:19:10.628Z - info: Using extension reports
+2016-11-09T16:19:10.641Z - info: Using extension resources
+2016-11-09T16:19:10.659Z - info: Using extension child-templates
+2016-11-09T16:19:10.675Z - info: Using extension html-to-xlsx
+2016-11-09T16:19:10.765Z - info: Using extension scheduling
+2016-11-09T16:19:10.829Z - info: Using extension scripts
+2016-11-09T16:19:10.849Z - info: Using extension assets
+2016-11-09T16:19:10.964Z - info: Using extension xlsx
+2016-11-09T16:19:11.508Z - info: Using extension sample-template
+2016-11-09T16:19:11.510Z - info: Using extension public-templates
+2016-11-09T16:19:11.527Z - debug: Extension public-templates was disabled
+2016-11-09T16:19:11.529Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T16:19:11.728Z - info: Configuring routes for existing express app.
+2016-11-09T16:19:11.880Z - info: Using existing server instance.
+2016-11-09T16:19:11.887Z - warn: License not found, using free
+2016-11-09T16:19:11.895Z - info: reporter initialized
+2016-11-09T17:25:29.548Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:25:29.552Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:25:29.585Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:25:30.205Z - info: Found 26 extensions
+2016-11-09T17:25:30.230Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:25:30.231Z - debug: Discovered 26 extensions
+2016-11-09T17:25:30.235Z - info: Using extension jsrender
+2016-11-09T17:25:30.243Z - info: Using extension studio
+2016-11-09T17:25:30.394Z - info: Using extension browser-client
+2016-11-09T17:25:30.452Z - info: Using extension templates
+2016-11-09T17:25:30.472Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:25:30.472Z - info: Using extension debug
+2016-11-09T17:25:30.474Z - info: Using extension express
+2016-11-09T17:25:30.530Z - info: Using extension fop-pdf
+2016-11-09T17:25:30.580Z - info: Using extension handlebars
+2016-11-09T17:25:30.582Z - info: Using extension phantom-pdf
+2016-11-09T17:25:30.644Z - info: Using extension fs-store
+2016-11-09T17:25:31.190Z - info: Using extension images
+2016-11-09T17:25:31.343Z - info: Using extension data
+2016-11-09T17:25:31.365Z - info: Using extension licensing
+2016-11-09T17:25:31.423Z - info: Using extension authorization
+2016-11-09T17:25:31.434Z - debug: Extension authorization was disabled
+2016-11-09T17:25:31.434Z - info: Using extension text
+2016-11-09T17:25:31.436Z - info: Using extension reports
+2016-11-09T17:25:31.453Z - info: Using extension resources
+2016-11-09T17:25:31.475Z - info: Using extension child-templates
+2016-11-09T17:25:31.494Z - info: Using extension html-to-xlsx
+2016-11-09T17:25:31.575Z - info: Using extension scheduling
+2016-11-09T17:25:31.640Z - info: Using extension scripts
+2016-11-09T17:25:31.656Z - info: Using extension assets
+2016-11-09T17:25:31.759Z - info: Using extension xlsx
+2016-11-09T17:25:32.549Z - info: Using extension sample-template
+2016-11-09T17:25:32.551Z - info: Using extension public-templates
+2016-11-09T17:25:32.569Z - debug: Extension public-templates was disabled
+2016-11-09T17:25:32.572Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:25:32.895Z - info: Configuring routes for existing express app.
+2016-11-09T17:25:33.287Z - info: Using existing server instance.
+2016-11-09T17:25:33.302Z - warn: License not found, using free
+2016-11-09T17:25:33.394Z - info: reporter initialized
+2016-11-09T17:32:48.999Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:32:49.004Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:32:49.046Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:32:49.558Z - info: Found 26 extensions
+2016-11-09T17:32:49.580Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:32:49.581Z - debug: Discovered 26 extensions
+2016-11-09T17:32:49.585Z - info: Using extension jsrender
+2016-11-09T17:32:49.588Z - info: Using extension studio
+2016-11-09T17:32:49.741Z - info: Using extension browser-client
+2016-11-09T17:32:49.803Z - info: Using extension templates
+2016-11-09T17:32:49.828Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:32:49.828Z - info: Using extension debug
+2016-11-09T17:32:49.830Z - info: Using extension express
+2016-11-09T17:32:49.893Z - info: Using extension fop-pdf
+2016-11-09T17:32:49.948Z - info: Using extension handlebars
+2016-11-09T17:32:49.950Z - info: Using extension phantom-pdf
+2016-11-09T17:32:50.033Z - info: Using extension fs-store
+2016-11-09T17:32:50.451Z - info: Using extension images
+2016-11-09T17:32:50.560Z - info: Using extension data
+2016-11-09T17:32:50.576Z - info: Using extension licensing
+2016-11-09T17:32:50.630Z - info: Using extension authorization
+2016-11-09T17:32:50.639Z - debug: Extension authorization was disabled
+2016-11-09T17:32:50.639Z - info: Using extension text
+2016-11-09T17:32:50.641Z - info: Using extension reports
+2016-11-09T17:32:50.655Z - info: Using extension resources
+2016-11-09T17:32:50.676Z - info: Using extension child-templates
+2016-11-09T17:32:50.689Z - info: Using extension html-to-xlsx
+2016-11-09T17:32:50.773Z - info: Using extension scheduling
+2016-11-09T17:32:50.850Z - info: Using extension scripts
+2016-11-09T17:32:50.865Z - info: Using extension assets
+2016-11-09T17:32:50.981Z - info: Using extension xlsx
+2016-11-09T17:32:51.679Z - info: Using extension sample-template
+2016-11-09T17:32:51.680Z - info: Using extension public-templates
+2016-11-09T17:32:51.697Z - debug: Extension public-templates was disabled
+2016-11-09T17:32:51.699Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:32:51.929Z - info: Configuring routes for existing express app.
+2016-11-09T17:32:52.096Z - info: Using existing server instance.
+2016-11-09T17:32:52.105Z - warn: License not found, using free
+2016-11-09T17:32:52.112Z - info: reporter initialized
+2016-11-09T17:43:57.895Z - debug: OData query on templates
+2016-11-09T17:43:57.905Z - debug: OData query on images
+2016-11-09T17:43:57.908Z - debug: OData query on data
+2016-11-09T17:43:57.910Z - debug: OData query on scripts
+2016-11-09T17:43:57.912Z - debug: OData query on assets
+2016-11-09T17:43:57.914Z - debug: OData query on xlsxTemplates
+2016-11-09T17:43:57.924Z - debug: OData query on schedules
+2016-11-09T17:43:57.933Z - debug: OData query on settings
+2016-11-09T17:43:58.327Z - debug: OData query on templates
+2016-11-09T17:43:58.361Z - debug: OData query on settings
+2016-11-09T17:44:01.339Z - debug: OData query on templates
+2016-11-09T17:44:01.347Z - debug: OData query on templates
+2016-11-09T17:44:01.523Z - debug: OData query on settings
+2016-11-09T17:44:03.518Z - info: Starting rendering request 1 (user: null) requestId=1
+2016-11-09T17:44:03.522Z - info: Rendering template {shortid:Hkpmxakbg, recipe:phantom-pdf,engine:handlebars} requestId=1
+2016-11-09T17:44:03.522Z - debug: Data item not defined for this template. requestId=1
+2016-11-09T17:44:03.531Z - debug: Replaced assets [] requestId=1
+2016-11-09T17:44:03.533Z - debug: Resources not defined for this template. requestId=1
+2016-11-09T17:44:03.537Z - debug: Rendering engine handlebars requestId=1
+2016-11-09T17:44:03.713Z - debug: Compiled template not found in the cache, compiling timestamp=Wed Nov 09 2016 12:44:03 GMT-0500 (COT), requestId=1
+2016-11-09T17:44:03.717Z - debug: Replaced images [] requestId=1
+2016-11-09T17:44:03.724Z - debug: Replaced assets [] requestId=1
+2016-11-09T17:44:03.725Z - debug: Executing recipe phantom-pdf requestId=1
+2016-11-09T17:44:34.788Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:44:34.793Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:44:34.834Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:44:35.355Z - info: Found 26 extensions
+2016-11-09T17:44:35.408Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:44:35.410Z - debug: Discovered 26 extensions
+2016-11-09T17:44:35.415Z - info: Using extension jsrender
+2016-11-09T17:44:35.424Z - info: Using extension studio
+2016-11-09T17:44:35.666Z - info: Using extension browser-client
+2016-11-09T17:44:35.741Z - info: Using extension templates
+2016-11-09T17:44:35.760Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:44:35.760Z - info: Using extension debug
+2016-11-09T17:44:35.762Z - info: Using extension express
+2016-11-09T17:44:35.830Z - info: Using extension fop-pdf
+2016-11-09T17:44:35.896Z - info: Using extension handlebars
+2016-11-09T17:44:35.900Z - info: Using extension phantom-pdf
+2016-11-09T17:44:35.990Z - info: Using extension fs-store
+2016-11-09T17:44:36.414Z - info: Using extension images
+2016-11-09T17:44:36.518Z - info: Using extension data
+2016-11-09T17:44:36.533Z - info: Using extension licensing
+2016-11-09T17:44:36.583Z - info: Using extension authorization
+2016-11-09T17:44:36.594Z - debug: Extension authorization was disabled
+2016-11-09T17:44:36.594Z - info: Using extension text
+2016-11-09T17:44:36.596Z - info: Using extension reports
+2016-11-09T17:44:36.604Z - info: Using extension resources
+2016-11-09T17:44:36.619Z - info: Using extension child-templates
+2016-11-09T17:44:36.642Z - info: Using extension html-to-xlsx
+2016-11-09T17:44:36.728Z - info: Using extension scheduling
+2016-11-09T17:44:36.805Z - info: Using extension scripts
+2016-11-09T17:44:36.819Z - info: Using extension assets
+2016-11-09T17:44:36.931Z - info: Using extension xlsx
+2016-11-09T17:44:37.500Z - info: Using extension sample-template
+2016-11-09T17:44:37.502Z - info: Using extension public-templates
+2016-11-09T17:44:37.518Z - debug: Extension public-templates was disabled
+2016-11-09T17:44:37.520Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:44:37.766Z - info: Configuring routes for existing express app.
+2016-11-09T17:44:37.941Z - info: Using existing server instance.
+2016-11-09T17:44:37.960Z - warn: License not found, using free
+2016-11-09T17:44:37.972Z - info: reporter initialized
+2016-11-09T17:44:40.029Z - debug: OData query on templates
+2016-11-09T17:44:40.032Z - debug: OData query on images
+2016-11-09T17:44:40.035Z - debug: OData query on data
+2016-11-09T17:44:40.039Z - debug: OData query on scripts
+2016-11-09T17:44:40.041Z - debug: OData query on assets
+2016-11-09T17:44:40.043Z - debug: OData query on xlsxTemplates
+2016-11-09T17:44:40.052Z - debug: OData query on schedules
+2016-11-09T17:44:40.059Z - debug: OData query on settings
+2016-11-09T17:44:40.258Z - debug: OData query on templates
+2016-11-09T17:44:40.303Z - debug: OData query on settings
+2016-11-09T17:44:47.823Z - debug: OData query on templates
+2016-11-09T17:44:47.832Z - debug: OData query on templates
+2016-11-09T17:44:48.014Z - debug: OData query on settings
+2016-11-09T17:45:38.885Z - debug: OData query on templates
+2016-11-09T17:45:38.889Z - debug: OData query on images
+2016-11-09T17:45:38.893Z - debug: OData query on data
+2016-11-09T17:45:38.898Z - debug: OData query on scripts
+2016-11-09T17:45:38.901Z - debug: OData query on assets
+2016-11-09T17:45:38.907Z - debug: OData query on xlsxTemplates
+2016-11-09T17:45:38.909Z - debug: OData query on schedules
+2016-11-09T17:45:38.917Z - debug: OData query on settings
+2016-11-09T17:45:39.260Z - debug: OData query on templates
+2016-11-09T17:47:21.803Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:47:21.814Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:47:21.835Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:47:22.253Z - info: Found 26 extensions
+2016-11-09T17:47:22.276Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:47:22.278Z - debug: Discovered 26 extensions
+2016-11-09T17:47:22.281Z - info: Using extension jsrender
+2016-11-09T17:47:22.285Z - info: Using extension studio
+2016-11-09T17:47:22.417Z - info: Using extension browser-client
+2016-11-09T17:47:22.469Z - info: Using extension templates
+2016-11-09T17:47:22.488Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:47:22.489Z - info: Using extension debug
+2016-11-09T17:47:22.490Z - info: Using extension express
+2016-11-09T17:47:22.542Z - info: Using extension fop-pdf
+2016-11-09T17:47:22.585Z - info: Using extension handlebars
+2016-11-09T17:47:22.587Z - info: Using extension phantom-pdf
+2016-11-09T17:47:22.646Z - info: Using extension fs-store
+2016-11-09T17:47:23.028Z - info: Using extension images
+2016-11-09T17:47:23.117Z - info: Using extension data
+2016-11-09T17:47:23.130Z - info: Using extension licensing
+2016-11-09T17:47:23.166Z - info: Using extension authorization
+2016-11-09T17:47:23.174Z - debug: Extension authorization was disabled
+2016-11-09T17:47:23.174Z - info: Using extension text
+2016-11-09T17:47:23.176Z - info: Using extension reports
+2016-11-09T17:47:23.185Z - info: Using extension resources
+2016-11-09T17:47:23.199Z - info: Using extension child-templates
+2016-11-09T17:47:23.214Z - info: Using extension html-to-xlsx
+2016-11-09T17:47:23.284Z - info: Using extension scheduling
+2016-11-09T17:47:23.337Z - info: Using extension scripts
+2016-11-09T17:47:23.352Z - info: Using extension assets
+2016-11-09T17:47:23.447Z - info: Using extension xlsx
+2016-11-09T17:47:24.063Z - info: Using extension sample-template
+2016-11-09T17:47:24.064Z - info: Using extension public-templates
+2016-11-09T17:47:24.081Z - debug: Extension public-templates was disabled
+2016-11-09T17:47:24.083Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:47:24.292Z - info: Configuring routes for existing express app.
+2016-11-09T17:47:24.451Z - info: Using existing server instance.
+2016-11-09T17:47:24.458Z - warn: License not found, using free
+2016-11-09T17:47:24.464Z - info: reporter initialized
+2016-11-09T17:48:49.618Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:48:49.625Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:48:49.650Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:48:50.019Z - info: Found 26 extensions
+2016-11-09T17:48:50.044Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:48:50.046Z - debug: Discovered 26 extensions
+2016-11-09T17:48:50.049Z - info: Using extension jsrender
+2016-11-09T17:48:50.053Z - info: Using extension studio
+2016-11-09T17:48:50.203Z - info: Using extension browser-client
+2016-11-09T17:48:50.261Z - info: Using extension templates
+2016-11-09T17:48:50.288Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:48:50.289Z - info: Using extension debug
+2016-11-09T17:48:50.292Z - info: Using extension express
+2016-11-09T17:48:50.361Z - info: Using extension fop-pdf
+2016-11-09T17:48:50.416Z - info: Using extension handlebars
+2016-11-09T17:48:50.418Z - info: Using extension phantom-pdf
+2016-11-09T17:48:50.500Z - info: Using extension fs-store
+2016-11-09T17:48:50.901Z - info: Using extension images
+2016-11-09T17:48:51.006Z - info: Using extension data
+2016-11-09T17:48:51.021Z - info: Using extension licensing
+2016-11-09T17:48:51.065Z - info: Using extension authorization
+2016-11-09T17:48:51.081Z - debug: Extension authorization was disabled
+2016-11-09T17:48:51.081Z - info: Using extension text
+2016-11-09T17:48:51.082Z - info: Using extension reports
+2016-11-09T17:48:51.091Z - info: Using extension resources
+2016-11-09T17:48:51.103Z - info: Using extension child-templates
+2016-11-09T17:48:51.123Z - info: Using extension html-to-xlsx
+2016-11-09T17:48:51.209Z - info: Using extension scheduling
+2016-11-09T17:48:51.298Z - info: Using extension scripts
+2016-11-09T17:48:51.316Z - info: Using extension assets
+2016-11-09T17:48:51.432Z - info: Using extension xlsx
+2016-11-09T17:48:52.047Z - info: Using extension sample-template
+2016-11-09T17:48:52.049Z - info: Using extension public-templates
+2016-11-09T17:48:52.067Z - debug: Extension public-templates was disabled
+2016-11-09T17:48:52.069Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:48:52.285Z - info: Configuring routes for existing express app.
+2016-11-09T17:48:52.423Z - info: Using existing server instance.
+2016-11-09T17:48:52.430Z - warn: License not found, using free
+2016-11-09T17:48:52.436Z - info: reporter initialized
+2016-11-09T17:55:05.171Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:55:05.175Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:55:05.194Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:55:05.755Z - info: Found 26 extensions
+2016-11-09T17:55:05.773Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:55:05.775Z - debug: Discovered 26 extensions
+2016-11-09T17:55:05.778Z - info: Using extension jsrender
+2016-11-09T17:55:05.781Z - info: Using extension studio
+2016-11-09T17:55:05.908Z - info: Using extension browser-client
+2016-11-09T17:55:05.953Z - info: Using extension templates
+2016-11-09T17:55:05.972Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:55:05.972Z - info: Using extension debug
+2016-11-09T17:55:05.973Z - info: Using extension express
+2016-11-09T17:55:06.025Z - info: Using extension fop-pdf
+2016-11-09T17:55:06.068Z - info: Using extension handlebars
+2016-11-09T17:55:06.069Z - info: Using extension phantom-pdf
+2016-11-09T17:55:06.124Z - info: Using extension fs-store
+2016-11-09T17:55:06.546Z - info: Using extension images
+2016-11-09T17:55:06.633Z - info: Using extension data
+2016-11-09T17:55:06.647Z - info: Using extension licensing
+2016-11-09T17:55:06.680Z - info: Using extension authorization
+2016-11-09T17:55:06.688Z - debug: Extension authorization was disabled
+2016-11-09T17:55:06.688Z - info: Using extension text
+2016-11-09T17:55:06.689Z - info: Using extension reports
+2016-11-09T17:55:06.697Z - info: Using extension resources
+2016-11-09T17:55:06.709Z - info: Using extension child-templates
+2016-11-09T17:55:06.720Z - info: Using extension html-to-xlsx
+2016-11-09T17:55:06.786Z - info: Using extension scheduling
+2016-11-09T17:55:06.842Z - info: Using extension scripts
+2016-11-09T17:55:06.856Z - info: Using extension assets
+2016-11-09T17:55:06.953Z - info: Using extension xlsx
+2016-11-09T17:55:07.490Z - info: Using extension sample-template
+2016-11-09T17:55:07.492Z - info: Using extension public-templates
+2016-11-09T17:55:07.512Z - debug: Extension public-templates was disabled
+2016-11-09T17:55:07.515Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:55:07.642Z - info: Configuring routes for existing express app.
+2016-11-09T17:55:07.776Z - info: Using existing server instance.
+2016-11-09T17:55:07.870Z - warn: License not found, using free
+2016-11-09T17:55:07.876Z - info: reporter initialized
+2016-11-09T17:55:10.146Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T17:55:10.151Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T17:55:10.181Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T17:55:10.544Z - info: Found 26 extensions
+2016-11-09T17:55:10.558Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T17:55:10.559Z - debug: Discovered 26 extensions
+2016-11-09T17:55:10.562Z - info: Using extension jsrender
+2016-11-09T17:55:10.565Z - info: Using extension studio
+2016-11-09T17:55:10.674Z - info: Using extension browser-client
+2016-11-09T17:55:10.723Z - info: Using extension templates
+2016-11-09T17:55:10.741Z - debug: Extension authentication is disabled, skipping
+2016-11-09T17:55:10.742Z - info: Using extension debug
+2016-11-09T17:55:10.743Z - info: Using extension express
+2016-11-09T17:55:10.808Z - info: Using extension fop-pdf
+2016-11-09T17:55:10.864Z - info: Using extension handlebars
+2016-11-09T17:55:10.866Z - info: Using extension phantom-pdf
+2016-11-09T17:55:10.947Z - info: Using extension fs-store
+2016-11-09T17:55:11.252Z - info: Using extension images
+2016-11-09T17:55:11.347Z - info: Using extension data
+2016-11-09T17:55:11.357Z - info: Using extension licensing
+2016-11-09T17:55:11.389Z - info: Using extension authorization
+2016-11-09T17:55:11.418Z - debug: Extension authorization was disabled
+2016-11-09T17:55:11.419Z - info: Using extension text
+2016-11-09T17:55:11.421Z - info: Using extension reports
+2016-11-09T17:55:11.447Z - info: Using extension resources
+2016-11-09T17:55:11.471Z - info: Using extension child-templates
+2016-11-09T17:55:11.513Z - info: Using extension html-to-xlsx
+2016-11-09T17:55:11.662Z - info: Using extension scheduling
+2016-11-09T17:55:11.784Z - info: Using extension scripts
+2016-11-09T17:55:11.798Z - info: Using extension assets
+2016-11-09T17:55:11.906Z - info: Using extension xlsx
+2016-11-09T17:55:12.443Z - info: Using extension sample-template
+2016-11-09T17:55:12.445Z - info: Using extension public-templates
+2016-11-09T17:55:12.460Z - debug: Extension public-templates was disabled
+2016-11-09T17:55:12.462Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T17:55:12.699Z - info: Configuring routes for existing express app.
+2016-11-09T17:55:12.803Z - info: Using existing server instance.
+2016-11-09T17:55:12.812Z - warn: License not found, using free
+2016-11-09T17:55:12.819Z - info: reporter initialized
+2016-11-09T18:37:33.033Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:37:33.037Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:37:33.065Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:37:33.923Z - info: Found 26 extensions
+2016-11-09T18:37:33.941Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:37:33.943Z - debug: Discovered 26 extensions
+2016-11-09T18:37:33.945Z - info: Using extension jsrender
+2016-11-09T18:37:33.949Z - info: Using extension studio
+2016-11-09T18:37:34.076Z - info: Using extension browser-client
+2016-11-09T18:37:34.122Z - info: Using extension templates
+2016-11-09T18:37:34.139Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:37:34.139Z - info: Using extension debug
+2016-11-09T18:37:34.141Z - info: Using extension express
+2016-11-09T18:37:34.187Z - info: Using extension fop-pdf
+2016-11-09T18:37:34.231Z - info: Using extension handlebars
+2016-11-09T18:37:34.233Z - info: Using extension phantom-pdf
+2016-11-09T18:37:34.293Z - info: Using extension fs-store
+2016-11-09T18:37:34.671Z - info: Using extension images
+2016-11-09T18:37:34.761Z - info: Using extension data
+2016-11-09T18:37:34.775Z - info: Using extension licensing
+2016-11-09T18:37:34.808Z - info: Using extension authorization
+2016-11-09T18:37:34.817Z - debug: Extension authorization was disabled
+2016-11-09T18:37:34.817Z - info: Using extension text
+2016-11-09T18:37:34.818Z - info: Using extension reports
+2016-11-09T18:37:34.826Z - info: Using extension resources
+2016-11-09T18:37:34.839Z - info: Using extension child-templates
+2016-11-09T18:37:34.850Z - info: Using extension html-to-xlsx
+2016-11-09T18:37:34.918Z - info: Using extension scheduling
+2016-11-09T18:37:34.972Z - info: Using extension scripts
+2016-11-09T18:37:34.987Z - info: Using extension assets
+2016-11-09T18:37:35.081Z - info: Using extension xlsx
+2016-11-09T18:37:35.609Z - info: Using extension sample-template
+2016-11-09T18:37:35.610Z - info: Using extension public-templates
+2016-11-09T18:37:35.626Z - debug: Extension public-templates was disabled
+2016-11-09T18:37:35.629Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:37:35.723Z - info: Configuring routes for existing express app.
+2016-11-09T18:37:35.904Z - info: Using existing server instance.
+2016-11-09T18:37:35.911Z - warn: License not found, using free
+2016-11-09T18:37:35.920Z - info: reporter initialized
+2016-11-09T18:37:50.236Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:37:50.241Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:37:50.277Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:37:50.753Z - info: Found 26 extensions
+2016-11-09T18:37:50.767Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:37:50.768Z - debug: Discovered 26 extensions
+2016-11-09T18:37:50.771Z - info: Using extension jsrender
+2016-11-09T18:37:50.775Z - info: Using extension studio
+2016-11-09T18:37:50.891Z - info: Using extension browser-client
+2016-11-09T18:37:50.925Z - info: Using extension templates
+2016-11-09T18:37:50.948Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:37:50.949Z - info: Using extension debug
+2016-11-09T18:37:50.951Z - info: Using extension express
+2016-11-09T18:37:51.004Z - info: Using extension fop-pdf
+2016-11-09T18:37:51.047Z - info: Using extension handlebars
+2016-11-09T18:37:51.048Z - info: Using extension phantom-pdf
+2016-11-09T18:37:51.129Z - info: Using extension fs-store
+2016-11-09T18:37:51.428Z - info: Using extension images
+2016-11-09T18:37:51.514Z - info: Using extension data
+2016-11-09T18:37:51.524Z - info: Using extension licensing
+2016-11-09T18:37:51.558Z - info: Using extension authorization
+2016-11-09T18:37:51.567Z - debug: Extension authorization was disabled
+2016-11-09T18:37:51.568Z - info: Using extension text
+2016-11-09T18:37:51.569Z - info: Using extension reports
+2016-11-09T18:37:51.582Z - info: Using extension resources
+2016-11-09T18:37:51.611Z - info: Using extension child-templates
+2016-11-09T18:37:51.642Z - info: Using extension html-to-xlsx
+2016-11-09T18:37:51.812Z - info: Using extension scheduling
+2016-11-09T18:37:51.898Z - info: Using extension scripts
+2016-11-09T18:37:51.913Z - info: Using extension assets
+2016-11-09T18:37:52.021Z - info: Using extension xlsx
+2016-11-09T18:37:52.476Z - info: Using extension sample-template
+2016-11-09T18:37:52.477Z - info: Using extension public-templates
+2016-11-09T18:37:52.492Z - debug: Extension public-templates was disabled
+2016-11-09T18:37:52.494Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:37:52.608Z - info: Configuring routes for existing express app.
+2016-11-09T18:37:52.761Z - info: Using existing server instance.
+2016-11-09T18:37:52.868Z - warn: License not found, using free
+2016-11-09T18:37:52.875Z - info: reporter initialized
+2016-11-09T18:39:43.257Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:39:43.262Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:39:43.296Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:39:43.720Z - info: Found 26 extensions
+2016-11-09T18:39:43.760Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:39:43.768Z - debug: Discovered 26 extensions
+2016-11-09T18:39:43.771Z - info: Using extension jsrender
+2016-11-09T18:39:43.774Z - info: Using extension studio
+2016-11-09T18:39:43.903Z - info: Using extension browser-client
+2016-11-09T18:39:43.980Z - info: Using extension templates
+2016-11-09T18:39:44.012Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:39:44.012Z - info: Using extension debug
+2016-11-09T18:39:44.016Z - info: Using extension express
+2016-11-09T18:39:44.083Z - info: Using extension fop-pdf
+2016-11-09T18:39:44.169Z - info: Using extension handlebars
+2016-11-09T18:39:44.173Z - info: Using extension phantom-pdf
+2016-11-09T18:39:44.241Z - info: Using extension fs-store
+2016-11-09T18:39:44.616Z - info: Using extension images
+2016-11-09T18:39:44.706Z - info: Using extension data
+2016-11-09T18:39:44.720Z - info: Using extension licensing
+2016-11-09T18:39:44.756Z - info: Using extension authorization
+2016-11-09T18:39:44.765Z - debug: Extension authorization was disabled
+2016-11-09T18:39:44.765Z - info: Using extension text
+2016-11-09T18:39:44.767Z - info: Using extension reports
+2016-11-09T18:39:44.776Z - info: Using extension resources
+2016-11-09T18:39:44.788Z - info: Using extension child-templates
+2016-11-09T18:39:44.800Z - info: Using extension html-to-xlsx
+2016-11-09T18:39:44.872Z - info: Using extension scheduling
+2016-11-09T18:39:44.925Z - info: Using extension scripts
+2016-11-09T18:39:44.939Z - info: Using extension assets
+2016-11-09T18:39:45.035Z - info: Using extension xlsx
+2016-11-09T18:39:45.592Z - info: Using extension sample-template
+2016-11-09T18:39:45.594Z - info: Using extension public-templates
+2016-11-09T18:39:45.609Z - debug: Extension public-templates was disabled
+2016-11-09T18:39:45.611Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:39:45.738Z - info: Configuring routes for existing express app.
+2016-11-09T18:39:45.875Z - info: Using existing server instance.
+2016-11-09T18:39:46.069Z - warn: License not found, using free
+2016-11-09T18:39:46.094Z - info: reporter initialized
+2016-11-09T18:42:09.470Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:42:09.476Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:42:09.498Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:42:09.875Z - info: Found 26 extensions
+2016-11-09T18:42:09.929Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:42:09.937Z - debug: Discovered 26 extensions
+2016-11-09T18:42:09.940Z - info: Using extension jsrender
+2016-11-09T18:42:09.944Z - info: Using extension studio
+2016-11-09T18:42:10.086Z - info: Using extension browser-client
+2016-11-09T18:42:10.162Z - info: Using extension templates
+2016-11-09T18:42:10.198Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:42:10.199Z - info: Using extension debug
+2016-11-09T18:42:10.201Z - info: Using extension express
+2016-11-09T18:42:10.306Z - info: Using extension fop-pdf
+2016-11-09T18:42:10.360Z - info: Using extension handlebars
+2016-11-09T18:42:10.361Z - info: Using extension phantom-pdf
+2016-11-09T18:42:10.421Z - info: Using extension fs-store
+2016-11-09T18:42:10.790Z - info: Using extension images
+2016-11-09T18:42:10.879Z - info: Using extension data
+2016-11-09T18:42:10.893Z - info: Using extension licensing
+2016-11-09T18:42:10.926Z - info: Using extension authorization
+2016-11-09T18:42:10.934Z - debug: Extension authorization was disabled
+2016-11-09T18:42:10.934Z - info: Using extension text
+2016-11-09T18:42:10.936Z - info: Using extension reports
+2016-11-09T18:42:10.944Z - info: Using extension resources
+2016-11-09T18:42:10.956Z - info: Using extension child-templates
+2016-11-09T18:42:10.969Z - info: Using extension html-to-xlsx
+2016-11-09T18:42:11.039Z - info: Using extension scheduling
+2016-11-09T18:42:11.110Z - info: Using extension scripts
+2016-11-09T18:42:11.124Z - info: Using extension assets
+2016-11-09T18:42:11.223Z - info: Using extension xlsx
+2016-11-09T18:42:11.808Z - info: Using extension sample-template
+2016-11-09T18:42:11.810Z - info: Using extension public-templates
+2016-11-09T18:42:11.829Z - debug: Extension public-templates was disabled
+2016-11-09T18:42:11.830Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:42:12.059Z - info: Configuring routes for existing express app.
+2016-11-09T18:42:12.203Z - info: Using existing server instance.
+2016-11-09T18:42:12.224Z - warn: License not found, using free
+2016-11-09T18:42:12.236Z - info: reporter initialized
+2016-11-09T18:47:24.720Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:47:24.730Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:47:24.802Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:47:25.826Z - info: Found 26 extensions
+2016-11-09T18:47:25.872Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:47:25.875Z - debug: Discovered 26 extensions
+2016-11-09T18:47:25.885Z - info: Using extension jsrender
+2016-11-09T18:47:25.894Z - info: Using extension studio
+2016-11-09T18:47:26.182Z - info: Using extension browser-client
+2016-11-09T18:47:26.302Z - info: Using extension templates
+2016-11-09T18:47:26.344Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:47:26.345Z - info: Using extension debug
+2016-11-09T18:47:26.348Z - info: Using extension express
+2016-11-09T18:47:26.449Z - info: Using extension fop-pdf
+2016-11-09T18:47:26.539Z - info: Using extension handlebars
+2016-11-09T18:47:26.543Z - info: Using extension phantom-pdf
+2016-11-09T18:47:26.677Z - info: Using extension fs-store
+2016-11-09T18:47:27.447Z - info: Using extension images
+2016-11-09T18:47:27.675Z - info: Using extension data
+2016-11-09T18:47:27.709Z - info: Using extension licensing
+2016-11-09T18:47:27.786Z - info: Using extension authorization
+2016-11-09T18:47:27.804Z - debug: Extension authorization was disabled
+2016-11-09T18:47:27.805Z - info: Using extension text
+2016-11-09T18:47:27.807Z - info: Using extension reports
+2016-11-09T18:47:27.826Z - info: Using extension resources
+2016-11-09T18:47:27.852Z - info: Using extension child-templates
+2016-11-09T18:47:27.879Z - info: Using extension html-to-xlsx
+2016-11-09T18:47:28.020Z - info: Using extension scheduling
+2016-11-09T18:47:28.141Z - info: Using extension scripts
+2016-11-09T18:47:28.171Z - info: Using extension assets
+2016-11-09T18:47:28.372Z - info: Using extension xlsx
+2016-11-09T18:47:29.433Z - info: Using extension sample-template
+2016-11-09T18:47:29.435Z - info: Using extension public-templates
+2016-11-09T18:47:29.466Z - debug: Extension public-templates was disabled
+2016-11-09T18:47:29.470Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:47:30.023Z - info: Configuring routes for existing express app.
+2016-11-09T18:47:30.417Z - info: Using existing server instance.
+2016-11-09T18:47:30.445Z - warn: License not found, using free
+2016-11-09T18:47:30.497Z - info: reporter initialized
+2016-11-09T18:47:46.806Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:47:46.816Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:47:46.878Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:47:47.739Z - info: Found 26 extensions
+2016-11-09T18:47:47.801Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:47:47.805Z - debug: Discovered 26 extensions
+2016-11-09T18:47:47.831Z - info: Using extension jsrender
+2016-11-09T18:47:47.850Z - info: Using extension studio
+2016-11-09T18:47:48.227Z - info: Using extension browser-client
+2016-11-09T18:47:48.372Z - info: Using extension templates
+2016-11-09T18:47:48.425Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:47:48.426Z - info: Using extension debug
+2016-11-09T18:47:48.432Z - info: Using extension express
+2016-11-09T18:47:48.571Z - info: Using extension fop-pdf
+2016-11-09T18:47:48.698Z - info: Using extension handlebars
+2016-11-09T18:47:48.705Z - info: Using extension phantom-pdf
+2016-11-09T18:47:56.863Z - info: Initializing jsreport@1.1.0 in development mode using configuration file dev.config.json
+2016-11-09T18:47:56.873Z - info: Searching for available extensions in /Users/Andres/Documents/Proyectos/fdg/
+2016-11-09T18:47:56.927Z - info: Extensions location cache contains up to date information, skipping crawling in /Users/Andres/Documents/Proyectos/fdg/node_modules/jsreport/node_modules/
+2016-11-09T18:47:57.891Z - info: Found 26 extensions
+2016-11-09T18:47:57.921Z - debug: Writing extension locations cache to /var/folders/58/b3853x9n6q52ln4bk5rb5g_80000gn/T/jsreport-temp/extensions/locations.json
+2016-11-09T18:47:57.926Z - debug: Discovered 26 extensions
+2016-11-09T18:47:57.934Z - info: Using extension jsrender
+2016-11-09T18:47:57.945Z - info: Using extension studio
+2016-11-09T18:47:58.155Z - info: Using extension browser-client
+2016-11-09T18:47:58.253Z - info: Using extension templates
+2016-11-09T18:47:58.282Z - debug: Extension authentication is disabled, skipping
+2016-11-09T18:47:58.283Z - info: Using extension debug
+2016-11-09T18:47:58.286Z - info: Using extension express
+2016-11-09T18:47:58.366Z - info: Using extension fop-pdf
+2016-11-09T18:47:58.443Z - info: Using extension handlebars
+2016-11-09T18:47:58.447Z - info: Using extension phantom-pdf
+2016-11-09T18:47:58.577Z - info: Using extension fs-store
+2016-11-09T18:47:59.167Z - info: Using extension images
+2016-11-09T18:47:59.330Z - info: Using extension data
+2016-11-09T18:47:59.354Z - info: Using extension licensing
+2016-11-09T18:47:59.418Z - info: Using extension authorization
+2016-11-09T18:47:59.435Z - debug: Extension authorization was disabled
+2016-11-09T18:47:59.435Z - info: Using extension text
+2016-11-09T18:47:59.437Z - info: Using extension reports
+2016-11-09T18:47:59.455Z - info: Using extension resources
+2016-11-09T18:47:59.483Z - info: Using extension child-templates
+2016-11-09T18:47:59.505Z - info: Using extension html-to-xlsx
+2016-11-09T18:47:59.622Z - info: Using extension scheduling
+2016-11-09T18:47:59.743Z - info: Using extension scripts
+2016-11-09T18:47:59.767Z - info: Using extension assets
+2016-11-09T18:47:59.936Z - info: Using extension xlsx
+2016-11-09T18:48:00.807Z - info: Using extension sample-template
+2016-11-09T18:48:00.810Z - info: Using extension public-templates
+2016-11-09T18:48:00.839Z - debug: Extension public-templates was disabled
+2016-11-09T18:48:00.856Z - info: Initializing fs storage at /Users/Andres/Documents/Proyectos/fdg/data
+2016-11-09T18:48:01.304Z - info: Configuring routes for existing express app.
+2016-11-09T18:48:01.510Z - info: Using existing server instance.
+2016-11-09T18:48:01.526Z - warn: License not found, using free
+2016-11-09T18:48:01.541Z - info: reporter initialized

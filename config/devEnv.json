@@ -1,5 +1,8 @@
 {
     "host": "http://localhost:3000",
     "dbURI": "mongodb://Admin:12345@ds023674.mlab.com:23674/fdg",
-    "sessionSecret": "fdgEngenering2016"
+    "sessionSecret": "fdgEngenering2016",
+    "jsReportURI": "https://andreslt.jsreportonline.net/api/report",        
+    "jsReportUser": "andres_late1008@hotmail.com",
+    "jsReportPassword": "andresito"
 }

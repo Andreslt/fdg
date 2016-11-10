@@ -379,7 +379,7 @@
 																												<tbody>
 																													{{#each records}}
 																													<tr>
-																														<td align="center"><a href="//www.youtube.com">{{recordNumber}}</a></td>
+																														<td align="center"><a target="_blank" href="/admin/reports/view?recordNumber={{recordNumber}}">{{recordNumber}}</a></td>
 																														<td align="center">{{adminRepresentative.username}} - {{adminRepresentative.name}} {{adminRepresentative.lastname}}</td>
 																														<td align="center">{{custRepresentative.username}} - {{custRepresentative.name}} {{custRepresentative.lastname}}</td>
 																														<td align="center">{{formatDate createdOn "DD/MM/YYYY HH:mm"}}</td>
@@ -387,11 +387,7 @@
 																													{{/each}}
 																												</tbody>
 																											</table>
-
 																										</div>
-
-
-
 																									</div>
 																									<!-- end widget content -->
 

@@ -5,7 +5,9 @@ if (process.env.NODE_ENV === 'production'){
     module.exports = {
         host: process.env.host || "",
         dbURI: process.env.dbURI,
-        sessionSecret: process.env.sessionSecret
+        jsReportURI: process.env.jsReportURI,
+        jsReportUser: process.env.jsReportUser,
+        jsReportPassword: process.env.jsReportPassword,
     }
 }else{
     // Offer Development stage settings and data

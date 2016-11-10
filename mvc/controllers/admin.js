@@ -5,9 +5,9 @@ var router = express.Router();
 var fs = require("fs");
 var dateFormat = require('dateformat');
 var formidable = require('formidable');
-
 //Models
 var User = require('../models/user').user;
+var User2 = require('../models/user').user;
 var Company = require("../models/company");
 var Store = require("../models/store");
 var Ticket = require("../models/ticket");
@@ -16,6 +16,7 @@ var Record = require('../models/record');
 
 //Config
 var validations = require('../../config/validations');
+var config = require('../../config/config');
 
 /* >>> ROUTES <<< */
 // Dashboard
@@ -160,7 +161,7 @@ router.post('/newRecord', validations.ensureAuthenticated, validations.systemAdm
 			custRepresentative: custRepresentative,
 		},
 			record = new Record(params);
-			console.log(record);
+		console.log(record);
 		record.save((err) => {
 			if (err) req.flash('error', 'El acta no pudo ser guardada. Inténtelo nuevamente.');
 			else req.flash('success_msg', 'Acta No: ' + params.recordNumber + ' guardada con éxito.');
@@ -218,6 +219,82 @@ router.get('/reports', validations.ensureAuthenticated, (req, res) => {
 	res.render('1-admin/list_reports', { layout: 'adminLayout', storeAdminSW });
 });
 
+router.get('/reports/view', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+	let recordNumber = req.query.recordNumber,
+		request = require('request');
+
+	Record.findOne({ recordNumber: recordNumber }).populate('ticket_id').exec((err, record) => {
+		if (err) res.sendStatus(404);
+		Ticket.findOne({ _id: record.ticket_id }).populate('store_id').exec((err, ticket) => {
+			if (err) res.sendStatus(404);
+			City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
+				if (err) res.sendStatus(404);
+				Company.findOne({ _id: ticket.store_id.company_id }, (err, company) => {
+					if (err) res.sendStatus(404);
+					User.findOne({ _id: record.custRepresentative }, (err, custRepresentative) => {
+						if (err) res.sendStatus(404);
+						User.findOne({ _id: record.adminRepresentative }, (err, adminRepresentative) => {
+							if (err) res.sendStatus(404);
+							else {
+								console.log('record: '+record);
+								console.log('ticket: '+ticket);
+								console.log('city: '+city);
+								console.log('company: '+company);
+								console.log('custRepresentative: '+custRepresentative);
+								console.log('adminRepresentative: '+adminRepresentative);
+								var data = {
+									template: {
+										shortid: "BJbxYsgbe",
+									},
+									data: {
+										city: city.city,
+										day: record.createdOn.getDate(),
+										month: getSpanishMonth(record.createdOn.getMonth()),
+										year: record.createdOn.getFullYear(),
+										company: company.companyName,
+										custRepresentativeName: custRepresentative.name + " " + custRepresentative.lastname,
+										adminadminRepresentative: adminRepresentative.name + " " + adminRepresentative.lastname,
+										asset: record.ticket_id.asset_id,
+										reference: "referencia",
+										capacity: 123,
+										brand: "MacDonalds",
+										type: "tipo1",
+										refrigerant: "abcd",
+										assetLocation: "Bucaramanga",
+										time: formatAMPM(record.createdOn),
+										customerReq: record.customerReq/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh."*/,
+										currentState: record.currentState/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+										correctiveActions: record.correctiveActions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+										suggestions: record.suggestions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+										giverName: adminRepresentative.name + " " + adminRepresentative.lastname,/*"Felix Goenaga",*/
+										giverID: adminRepresentative.localId,
+										giverPosition: adminRepresentative.position,
+										receiverName: custRepresentative.name + " " + custRepresentative.lastname,
+										receiverID: custRepresentative.localId,
+										receiverPosition: custRepresentative.position
+									},
+									options: {
+										preview: true
+									}
+								};
+								var options = {
+									uri: "https://andreslt.jsreportonline.net/api/report",
+									headers: {
+										Authorization: "Basic " + new Buffer(config.jsReportUser + ":" + config.jsReportPassword).toString("base64")
+									},
+									method: 'POST',
+									json: data
+								};
+								request(options).pipe(res);
+							}
+						});
+					});
+				});
+			});
+		});
+	});
+});
+
 function getLabel(status) {
 	if (status === "Pendiente") {
 		return "info";
@@ -259,4 +336,20 @@ function setDates(date) {
 		return "";
 }
 
-module.exports = router;
+function getSpanishMonth(date) {
+	let dateArray = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+	return dateArray[date - 1]
+}
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+module.exports = router;	
