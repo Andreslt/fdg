@@ -53,6 +53,7 @@
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*",
+    "promise": "^7.1.1",
     "request": "^2.78.0",
     "sendgrid": "^4.0.2",
     "uid2": "0.0.3",

@@ -5,6 +5,7 @@ var router = express.Router();
 var fs = require("fs");
 var dateFormat = require('dateformat');
 var formidable = require('formidable');
+var Promise = require('promise');
 //Models
 var User = require('../models/user').user;
 var User2 = require('../models/user').user;
@@ -223,10 +224,17 @@ router.get('/reports/view', validations.ensureAuthenticated, validations.systemA
 	let recordNumber = req.query.recordNumber,
 		request = require('request');
 
-	Record.findOne({ recordNumber: recordNumber }).populate('ticket_id').exec((err, record) => {
-		if (err) res.sendStatus(404);
+	var searchRecord = new Promise((resolve, reject) => {
+		console.log('RecordNumber a buscar: ' + recordNumber);
+		Record.findOne({ recordNumber: recordNumber })
+			.populate('ticket_id').exec((err, record) => {
+				if (err || record == null) { reject(err) }
+				else resolve(record);
+			});
+	});
+	searchRecord.then(record => {
 		Ticket.findOne({ _id: record.ticket_id }).populate('store_id').exec((err, ticket) => {
-			if (err) res.sendStatus(404);
+			if (err) { res.sendStatus(404); console.log('Entró al error') }
 			City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
 				if (err) res.sendStatus(404);
 				Company.findOne({ _id: ticket.store_id.company_id }, (err, company) => {
@@ -236,12 +244,6 @@ router.get('/reports/view', validations.ensureAuthenticated, validations.systemA
 						User.findOne({ _id: record.adminRepresentative }, (err, adminRepresentative) => {
 							if (err) res.sendStatus(404);
 							else {
-								console.log('record: '+record);
-								console.log('ticket: '+ticket);
-								console.log('city: '+city);
-								console.log('company: '+company);
-								console.log('custRepresentative: '+custRepresentative);
-								console.log('adminRepresentative: '+adminRepresentative);
 								var data = {
 									template: {
 										shortid: "BJbxYsgbe",
@@ -293,6 +295,9 @@ router.get('/reports/view', validations.ensureAuthenticated, validations.systemA
 			});
 		});
 	});
+	searchRecord.catch(err => {
+		res.sendStatus(404);		
+	});
 });
 
 function getLabel(status) {
@@ -342,14 +347,14 @@ function getSpanishMonth(date) {
 }
 
 function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return strTime;
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var ampm = hours >= 12 ? 'pm' : 'am';
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	var strTime = hours + ':' + minutes + ' ' + ampm;
+	return strTime;
 }
 
 module.exports = router;	
