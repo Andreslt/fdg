@@ -97,6 +97,24 @@ $(document).ready(function(){
             $('#edit-employee-position').val(position).trigger("change");
     });
 
+    $('input.disablecopypaste').bind('copy paste', function (e) {
+       e.preventDefault();
+    });  
+
+    $('.deleteticket_button').on('click', function() {
+         $('#delete_ticket_id').val($(this).data('ticketid'));
+    });
+
+    $('#textValidation').on('input', function(e){
+        var entry = $(this).val(),
+        valid = tktnumber.slice(-5);
+        console.log(entry); 
+        if (entry === valid)
+        $('.deleteticket_button').removeClass('deleteticket_button').addClass('deleteticket_button2');
+        else
+        $('.deleteticket_button2').removeClass('deleteticket_button2').addClass('deleteticket_button');
+    });
+
     $("select#selectCompany option").each(function() { 
         this.selected = (this.text == userCompany); 
     });
@@ -109,13 +127,11 @@ $(document).ready(function(){
         this.selected = (this.text == userCity); 
     });
 
-    $("select#setstatus option").each(function() { 
-        this.selected = (this.text === tktstatus.toString()); 
-    });  
-
     $("#setadvance option").each(function() { 
         this.selected = (this.value === tktadvance.toString()); 
     });
+
+    $("#setstatus").val(tktstatus.toString())
 
     $("#setpriority").val(tktpriority.toString())/*each(function() { 
         this.selected = (this.value === tktpriority.toString()); 

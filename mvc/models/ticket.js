@@ -5,10 +5,14 @@ var uniqueValidator = require('mongoose-unique-validator');
 
 var TicketSchema = mongoose.Schema({
     ticketNumber: {
-        type: Number, 
+        type: String, 
         required: true,
         unique: true,
         min: 1
+    },
+    ticketType: {
+        type: String, 
+        required: true        
     },
     title: {
         type: String, 

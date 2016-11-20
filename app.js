@@ -18,6 +18,7 @@ const routes = index.router;
 const users = require('./mvc/controllers/users');
 const admin = require('./mvc/controllers/admin');
 const oauth = require('./mvc/controllers/oauth');
+const tickets = require('./mvc/controllers/tickets');
 // const routes = require('./mvc/controllers/routes');
 
 // Models
@@ -45,14 +46,31 @@ var hbsEngine = exphbs.create({
         formatDate: function (date, format) {
             return moment(date).format(format);
         },
+        ticketESP: function(ticketType) {
+          if(ticketType==='corrective')
+            return 'Correctivo'
+          else return 'Preventivo'
+        },
+        currentDate: function (){
+            return moment(new Date()).format("DD.MM.YYYY");
+        },
         statusTag: (status) =>{
-          if (status==="Pendiente"){
+          if (status==="pending"){
             return "info"
-          }else if (status ==="Asignado"){
+          }else if (status ==="asigned"){
             return "warning"
-          }else if (status ==="Finalizado"){
+          }else if (status ==="finished"){
             return "success"
           }else return "danger"
+        },
+        statusESP: (status) =>{
+          if (status==="pending"){
+            return "Pendiente"
+          }else if (status ==="asigned"){
+            return "Asignado"
+          }else if (status ==="finished"){
+            return "Finalizado"
+          }else return "Cancelado"          
         },
         times: () =>{
           var day=new Array();
@@ -197,6 +215,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin);
+app.use('/tickets', tickets);
 app.use('/oauth', oauth);
 
 //Not found pages

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  lang="en-us">
+<html lang="en-us">
+
 <head>
 	<meta charset="utf-8">
 	<title>SmartAdmin</title>
@@ -10,8 +11,10 @@
 
 	<!-- Basic Styles -->
 	<link rel="stylesheet" href="/css/bootstrap.css" />
-	<link rel="stylesheet" href="/css/style.css" /><!-- Not included in template -->
-	<link rel="stylesheet" href="/css/stylesfdg.css" /><!-- Not included in template -->
+	<link rel="stylesheet" href="/css/style.css" />
+	<!-- Not included in template -->
+	<link rel="stylesheet" href="/css/stylesfdg.css" />
+	<!-- Not included in template -->
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/font-awesome.min.css">
 
 	<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
@@ -47,109 +50,96 @@
 
 
 </head>
+
 <body class="smart-style-1">
 	<header id="header">
-			<div id="logo-group">
+		<div id="logo-group">
 
-				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
-				<!-- END LOGO PLACEHOLDER -->
+			<!-- PLACE YOUR LOGO HERE -->
+			<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
+			<!-- END LOGO PLACEHOLDER -->
 
-				<!-- Note: The activity badge color changes when clicked and resets the number to 0
+			<!-- Note: The activity badge color changes when clicked and resets the number to 0
 					 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+			<!--<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>-->
 
-				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-				<div class="ajax-dropdown">
-
-					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
-					<div class="btn-group btn-group-justified" data-toggle="buttons">
-						<label class="btn btn-default">
+			<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+<!--			<div class="ajax-dropdown">
+				<div class="btn-group btn-group-justified" data-toggle="buttons">
+					<label class="btn btn-default">
 							<input type="radio" name="activity" id="/ajax/notify/mail.html">
 							Msgs (14) </label>
-						<label class="btn btn-default">
+					<label class="btn btn-default">
 							<input type="radio" name="activity" id="/ajax/notify/notifications.html">
 							notify (3) </label>
-						<label class="btn btn-default">
+					<label class="btn btn-default">
 							<input type="radio" name="activity" id="/ajax/notify/tasks.html">
 							Tasks (4) </label>
+				</div>
+
+				<div class="ajax-notifications custom-scroll">
+
+					<div class="alert alert-transparent">
+						<h4>Click a button to show messages here</h4>
+						This blank page message helps protect your privacy, or you can show the first message here automatically.
 					</div>
 
-					<!-- notification content -->
-					<div class="ajax-notifications custom-scroll">
+					<i class="fa fa-lock fa-4x fa-border"></i>
 
-						<div class="alert alert-transparent">
-							<h4>Click a button to show messages here</h4>
-							This blank page message helps protect your privacy, or you can show the first message here automatically.
-						</div>
-
-						<i class="fa fa-lock fa-4x fa-border"></i>
-
-					</div>
-					<!-- end notification content -->
-
-					<!-- footer: refresh area -->
-					<span> Ultima actualización: 12/12/2013 9:43AM
+				</div>
+				<span> Ultima actualización: 12/12/2013 9:43AM
 						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
 							<i class="fa fa-refresh"></i>
 						</button> </span>
-					<!-- end footer -->
+			</div>-->
+		</div>
 
-				</div>
-				<!-- END AJAX-DROPDOWN -->
+<!--		<div class="project-context hidden-xs">
+
+			<span class="label">Projects:</span>
+			<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+
+			<ul class="dropdown-menu">
+				<li>
+					<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">Notes on pipeline upgradee</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">Assesment Report for merchant account</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
+				</li>
+			</ul>
+		</div>-->
+
+		<!-- pulled right: nav area -->
+		<div class="pull-right">
+
+			<!-- collapse menu button -->
+			<div id="hide-menu" class="btn-header pull-right">
+				<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Colapsar Menu"><i class="fa fa-reorder"></i></a> </span>
 			</div>
+			<!-- end collapse menu -->
 
-			<!-- #PROJECTS: projects dropdown -->
-			<div class="project-context hidden-xs">
-
-				<span class="label">Projects:</span>
-				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-				<!-- Suggestion: populate this list with fetch and push technique -->
-				<ul class="dropdown-menu">
-					<li>
-						<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Notes on pipeline upgradee</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Assesment Report for merchant account</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-					</li>
-				</ul>
-				<!-- end dropdown-menu-->
-
+			<!-- logout button -->
+			<div id="logout" class="btn-header transparent pull-right">
+				<span> <a href="/users/logout" title="Salida Segura" data-action="userLogout" data-logout-msg="¿Confirma que desea salir? Seleccione 'Yes' para salir. Seleccione 'No' para permanecer activo."><i class="fa fa-sign-out"></i></a> </span>
 			</div>
-			<!-- end projects dropdown -->			
+			<!-- end logout button -->
 
-			<!-- pulled right: nav area -->
-			<div class="pull-right">
-				
-				<!-- collapse menu button -->
-				<div id="hide-menu" class="btn-header pull-right">
-					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Colapsar Menu"><i class="fa fa-reorder"></i></a> </span>
-				</div>
-				<!-- end collapse menu -->
+			<!-- search mobile button (this is hidden till mobile view port) -->
+			<div id="search-mobile" class="btn-header transparent pull-right">
+				<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+			</div>
+			<!-- end search mobile button -->
 
-				<!-- logout button -->
-				<div id="logout" class="btn-header transparent pull-right">
-					<span> <a href="/users/logout" title="Salida Segura" data-action="userLogout" data-logout-msg="¿Confirma que desea salir? Seleccione 'Yes' para salir. Seleccione 'No' para permanecer activo."><i class="fa fa-sign-out"></i></a> </span>
-				</div>
-				<!-- end logout button -->
-
-				<!-- search mobile button (this is hidden till mobile view port) -->
-				<div id="search-mobile" class="btn-header transparent pull-right">
-					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
-				</div>
-				<!-- end search mobile button -->
-
-				<!-- input: search field -->
-				<form action="search.html" class="header-search pull-right">
-					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+			<!-- input: search field -->
+			<form action="search.html" class="header-search pull-right">
+				<input id="search-fld" type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
 					"ActionScript",
 					"AppleScript",
 					"Asp",
@@ -172,80 +162,96 @@
 					"Ruby",
 					"Scala",
 					"Scheme"]'>
-					<button type="submit">
+				<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
-					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-				</form>
-				<!-- end input: search field -->
+				<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+			</form>
+			<!-- end input: search field -->
 
-				<!-- fullscreen button -->
-				<div id="fullscreen" class="btn-header transparent pull-right">
-					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Expandir Pantalla"><i class="fa fa-arrows-alt"></i></a> </span>
-				</div>
-				<!-- end fullscreen button -->
+			<!-- fullscreen button -->
+			<div id="fullscreen" class="btn-header transparent pull-right">
+				<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Expandir Pantalla"><i class="fa fa-arrows-alt"></i></a> </span>
 			</div>
-			<!-- end pulled right: nav area -->
-			</header>
-			<!-- END HEADER -->
-			<!-- Left panel : Navigation area -->
-			<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-			<aside id="left-panel">
+			<!-- end fullscreen button -->
+		</div>
+		<!-- end pulled right: nav area -->
+	</header>
+	<!-- END HEADER -->
+	<!-- Left panel : Navigation area -->
+	<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+	<aside id="left-panel">
 
-				<!-- User info -->
-				<div class="login-info">
-					<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+		<!-- User info -->
+		<div class="login-info">
+			<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
 						<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 							<img src="{{userImage user.image small}}" alt="" class="online" />
 							<span>
 								{{user.username}}
 							</span>
-						</a>
-					</span>
-				</div>
-				<!-- end user info -->
+			</a>
+			</span>
+		</div>
+		<!-- end user info -->
 
-				<!-- NAVIGATION : This navigation is also responsive-->
+		<!-- NAVIGATION : This navigation is also responsive-->
 		<nav>
+			<ul>
+				<li class="active">
+					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Inicio</span></a>
 					<ul>
-						<li class="active">
-							<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Inicio</span></a>
-							<ul>
-<!--								<li class="active">
+						<!--								<li class="active">
 									<a href="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i>Home</a>
-								</li>	-->							
-								<li class="active">
-									<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
-								</li>
-								<li class="">
-									<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
-								</li>						
-							</ul>
-						</li>						
-						<li class="">
-							<a href="#" title="Ordenes"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Ordenes</span></a>
-							<ul>
-								<li>
-									<a href="/newTicket" title="Nuevo Ticket"><i class="fa fa-lg fa-fw fa-ticket"></i>Crear Ticket</a>
-								</li>								
-								<li>
-									<a href="/tickets?target=all" title="Ver Ordenes de Trabajo"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
-								</li>						
-							</ul>
+								</li>	-->
+						<li class="active">
+							<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
 						</li>
 						<li class="">
-							<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
+							<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
+						</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="#" title="Mantenimientos"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Mantenimientos</span></a>
+					<ul>
+						<li class="open">
+							<a href="#" title="Tickets Preventivos"><i class="fa fa-lg fa-fw fa-calendar-o"></i>Preventivo</a>
 							<ul>
 								<li>
-									<a href="/newStore" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
+									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>Agendar Ticket</a>
+								</li>
+								<li class="active">
+									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-align-left"></i>Ver Tickets</a>
+								</li>
+							</ul>
+						</li>
+						<li class="open">
+							<a href="#" title="Tickets Correctivos"><i class="fa fa-lg fa-fw fa-exclamation-triangle"></i>Correctivo</a>
+							<ul>
+								<li>
+									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-tags"></i>Crear Ticket</a>
 								</li>
 								<li>
-									<a href="/stores" title="Ver Tiendas"><i class="fa fa-lg fa-fw fa-align-justify"></i>Ver Tiendas</a>
-								</li>						
+									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
+								</li>
 							</ul>
-						</li>						
-<!--						<li class="">
+						</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
+					<ul>
+						<li>
+							<a href="/newStore" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
+						</li>
+						<li>
+							<a href="/stores" title="Ver Tiendas"><i class="fa fa-lg fa-fw fa-align-justify"></i>Ver Tiendas</a>
+						</li>
+					</ul>
+				</li>
+				<!--						<li class="">
 							<a href="#" title="Activos"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
 							<ul>
 								<li>
@@ -255,19 +261,16 @@
 									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
 								</li>						
 							</ul>
-						</li>	-->					
-						<li class="">
-							<a href="#" title="Empleados"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Empleados</span></a>
-							<ul>
-<!--								<li>
-									<a href="/newEmployee" title="Tickets by Cities"><i class="fa fa-lg fa-fw fa-male"></i>Crear Empleado</a>
-								</li>	-->							
-								<li>
-									<a href="/employees" title="All Tickets"><i class="fa fa-lg fa-fw fa-group"></i>Ver Empleados</a>
-								</li>						
-							</ul>
+						</li>	-->
+				<li class="">
+					<a href="#" title="Empleados"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Empleados</span></a>
+					<ul>
+						<li>
+							<a href="/employees" title="All Tickets"><i class="fa fa-lg fa-fw fa-group"></i>Ver Empleados</a>
 						</li>
-<!--						<li class="">
+					</ul>
+				</li>
+				<!--						<li class="">
 							<a href="#" title="Reportes"><i class="fa fa-lg fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
 							<ul>
 								<li>
@@ -277,130 +280,124 @@
 									<a href="/reports" title="All Tickets"><i class="fa fa-lg fa-file-text-o"></i>Ver Reportes</a>
 								</li>						
 							</ul>
-						</li>	-->							
-						<li class="">
-							<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
-						</li>													
-					</ul>
+						</li>	-->
+				<li class="">
+					<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
+				</li>
+			</ul>
 		</nav>
 
 
-				<span class="minifyme" data-action="minifyMenu">
+		<span class="minifyme" data-action="minifyMenu">
 					<i class="fa fa-arrow-circle-left hit"></i>
 				</span>
 
-			</aside>
-			<!-- END NAVIGATION -->
+	</aside>
+	<!-- END NAVIGATION -->
 
-			<!-- MAIN PANEL -->
-			<div id="main" role="main">	
+	<!-- MAIN PANEL -->
+	<div id="main" role="main">
 
-			<div class="row">
-				<div class="col-lg-12">
-					{{#if success_msg}}
-						<div class="alert alert-success">{{success_msg}}</div>
-					{{/if}}
+		<div class="row">
+			<div class="col-lg-12">
+				{{#if success_msg}}
+				<div class="alert alert-success">{{success_msg}}</div>
+				{{/if}} {{#if error_msg}}
+				<div class="alert alert-danger">{{error_msg}}</div>
+				{{/if}} {{!-- {{#if errors}} {{#each errors}}
+				<div class="alert alert-danger">{{msg}}</div>
+				{{/each}} {{/if}} --}}
+			</div>
+		</div>
 
-					{{#if error_msg}}
-						<div class="alert alert-danger">{{error_msg}}</div>
-					{{/if}}
-					
-{{!--					{{#if errors}}
-						{{#each errors}}
-							<div class="alert alert-danger">{{msg}}</div>
-						{{/each}}
-					{{/if}}	--}}			
-				</div>        
+		<div class="row">
+			<div class="col-lg-12">
+				{{#if errors}}
+				<div class="alert alert-danger">{{msg}}</div>
+				{{/if}}
+			</div>
+		</div>
+		{{{body}}}
+	</div>
+	<!-- END MAIN PANEL -->
+
+	<!-- PAGE FOOTER -->
+	<div class="page-footer">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2015</span>
 			</div>
 
-			<div class="row">
-				<div class="col-lg-12">
-					{{#if errors}}
-						<div class="alert alert-danger">{{msg}}</div>
-					{{/if}}
-				</div>        
-			</div>							
-					{{{body}}}
-			</div>
-			<!-- END MAIN PANEL -->
-
-			<!-- PAGE FOOTER -->
-			<div class="page-footer">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6">
-						<span class="txt-color-white">SmartAdmin 1.8.2 <span class="hidden-xs"> - Web Application Framework</span> © 2014-2015</span>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 text-right hidden-xs">
-						<div class="txt-color-white inline-block">
-							<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
-							<div class="btn-group dropup">
-								<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+			<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+				<div class="txt-color-white inline-block">
+					<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong>					</i>
+					<div class="btn-group dropup">
+						<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
 									<i class="fa fa-link"></i> <span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu pull-right text-left">
-									<li>
-										<div class="padding-5">
-											<p class="txt-color-darken font-sm no-margin">Download Progress</p>
-											<div class="progress progress-micro no-margin">
-												<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-											</div>
-										</div>
-									</li>
-									<li class="divider"></li>
-									<li>
-										<div class="padding-5">
-											<p class="txt-color-darken font-sm no-margin">Server Load</p>
-											<div class="progress progress-micro no-margin">
-												<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-											</div>
-										</div>
-									</li>
-									<li class="divider"></li>
-									<li>
-										<div class="padding-5">
-											<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-											<div class="progress progress-micro no-margin">
-												<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-											</div>
-										</div>
-									</li>
-									<li class="divider"></li>
-									<li>
-										<div class="padding-5">
-											<button class="btn btn-block btn-default">refresh</button>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
+						<ul class="dropdown-menu pull-right text-left">
+							<li>
+								<div class="padding-5">
+									<p class="txt-color-darken font-sm no-margin">Download Progress</p>
+									<div class="progress progress-micro no-margin">
+										<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="padding-5">
+									<p class="txt-color-darken font-sm no-margin">Server Load</p>
+									<div class="progress progress-micro no-margin">
+										<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="padding-5">
+									<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
+									<div class="progress progress-micro no-margin">
+										<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="padding-5">
+									<button class="btn btn-block btn-default">refresh</button>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<!-- END PAGE FOOTER -->
+		</div>
+	</div>
+	<!-- END PAGE FOOTER -->
 
-			<!--================================================== -->
+	<!--================================================== -->
 
-			<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-			<script data-pace-options='{ "restartOnRequestAfter": true }' src="/js/plugin/pace/pace.min.js"></script>
+	<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+	<script data-pace-options='{ "restartOnRequestAfter": true }' src="/js/plugin/pace/pace.min.js"></script>
 
-			<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script>
+	<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
 				if (!window.jQuery) {
 					document.write('<script src="/js/libs/jquery-2.1.1.min.js"><\/script>');
 				}
 			</script>
 
-			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-			<script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script>
 				if (!window.jQuery.ui) {
 					document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
 				}
 			</script>
 
-			<!-- FDG: APP CONFIG -->
-			<script>
+	<!-- FDG: APP CONFIG -->
+	<script>
 				var userCompany = "{{userEdit.company_id.companyName}}"
 				var userStore = "{{userEdit.store_id.storeName}}"
 				var userCity = "{{userEdit.city_id.city}}"
@@ -411,126 +408,126 @@
 				var tktadvance = "{{ticket.advance}}"
 				var tktpriority = "{{ticket.priority}}"				
 			</script>
-			<script src="/js/fdgcomponents.js"></script>
+	<script src="/js/fdgcomponents.js"></script>
 
-			<!-- IMPORTANT: APP CONFIG -->
-			<script src="/js/app.config.js"></script>
+	<!-- IMPORTANT: APP CONFIG -->
+	<script src="/js/app.config.js"></script>
 
-			<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-			<script src="/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+	<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+	<script src="/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
 
-			<!-- BOOTSTRAP JS -->
-			<script src="/js/bootstrap/bootstrap.min.js"></script>
+	<!-- BOOTSTRAP JS -->
+	<script src="/js/bootstrap/bootstrap.min.js"></script>
 
-			<!-- CUSTOM NOTIFICATION -->
-			<script src="/js/notification/SmartNotification.min.js"></script>
+	<!-- CUSTOM NOTIFICATION -->
+	<script src="/js/notification/SmartNotification.min.js"></script>
 
-			<!-- JARVIS WIDGETS -->
-			<script src="/js/smartwidgets/jarvis.widget.min.js"></script>
+	<!-- JARVIS WIDGETS -->
+	<script src="/js/smartwidgets/jarvis.widget.min.js"></script>
 
-			<!-- EASY PIE CHARTS -->
-			<script src="/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+	<!-- EASY PIE CHARTS -->
+	<script src="/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
 
-			<!-- SPARKLINES -->
-			<script src="/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+	<!-- SPARKLINES -->
+	<script src="/js/plugin/sparkline/jquery.sparkline.min.js"></script>
 
-			<!-- JQUERY VALIDATE -->
-			<script src="/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+	<!-- JQUERY VALIDATE -->
+	<script src="/js/plugin/jquery-validate/jquery.validate.min.js"></script>
 
-			<!-- JQUERY MASKED INPUT -->
-			<script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+	<!-- JQUERY MASKED INPUT -->
+	<script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
 
-			<!-- JQUERY SELECT2 INPUT -->
-			<script src="/js/plugin/select2/select2.min.js"></script>
+	<!-- JQUERY SELECT2 INPUT -->
+	<script src="/js/plugin/select2/select2.min.js"></script>
 
-			<!-- JQUERY UI + Bootstrap Slider -->
-			<script src="/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+	<!-- JQUERY UI + Bootstrap Slider -->
+	<script src="/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
 
-			<!-- browser msie issue fix -->
-			<script src="/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+	<!-- browser msie issue fix -->
+	<script src="/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
 
-			<!-- FastClick: For mobile devices -->
-			<script src="/js/plugin/fastclick/fastclick.min.js"></script>
+	<!-- FastClick: For mobile devices -->
+	<script src="/js/plugin/fastclick/fastclick.min.js"></script>
 
-			<!-- ProgressBar -->
-			<script src="/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>			
+	<!-- ProgressBar -->
+	<script src="/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 
-			<!--[if IE 8]>
+	<!--[if IE 8]>
 
 			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
 			<![endif]-->
 
-			<!-- Demo purpose only
+	<!-- Demo purpose only
 			<script src="/js/demo.min.js"></script>-->
 
-			<!-- MAIN APP JS FILE -->
-			<script src="/js/app.min.js"></script>
+	<!-- MAIN APP JS FILE -->
+	<script src="/js/app.min.js"></script>
 
-			<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
-			<!-- Voice command : plugin -->
-			<script src="/js/speech/voicecommand.min.js"></script>
+	<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+	<!-- Voice command : plugin -->
+	<script src="/js/speech/voicecommand.min.js"></script>
 
-			<!-- SmartChat UI : plugin -->
-			<script src="/js/smart-chat-ui/smart.chat.ui.min.js"></script>
-			<script src="/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+	<!-- SmartChat UI : plugin -->
+	<script src="/js/smart-chat-ui/smart.chat.ui.min.js"></script>
+	<script src="/js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
-			<!-- PAGE RELATED PLUGIN(S) -->
+	<!-- PAGE RELATED PLUGIN(S) -->
 
-			<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-			<script src="/js/plugin/flot/jquery.flot.cust.min.js"></script>
-			<script src="/js/plugin/flot/jquery.flot.resize.min.js"></script>
-			<script src="/js/plugin/flot/jquery.flot.time.min.js"></script>
-			<script src="/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+	<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+	<script src="/js/plugin/flot/jquery.flot.cust.min.js"></script>
+	<script src="/js/plugin/flot/jquery.flot.resize.min.js"></script>
+	<script src="/js/plugin/flot/jquery.flot.time.min.js"></script>
+	<script src="/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
 
-			<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
-			<script src="/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-			<script src="/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+	<script src="/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
 
-			<!-- Full Calendar -->
-			<script src="/js/plugin/moment/moment.min.js"></script>
-			<script src="/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+	<!-- Full Calendar -->
+	<script src="/js/plugin/moment/moment.min.js"></script>
+	<script src="/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
 
-			<!-- DASHBOARD PLUGINS
+	<!-- DASHBOARD PLUGINS
 			<script src="..."></script>-->
-			<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-			<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>	
-			
-			<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-			<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-			<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
-			<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
-			<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
+	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+	<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
-			<!-- TEMPLATE-FORM PLUGIN(S) -->
-			<script src="/js/plugin/jquery-form/jquery-form.min.js"></script>
+	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+	<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+	<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+	<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
+	<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
 
-			<!-- FORM PLUGIN(S) -->
-			<script src="/js/plugin/maxlength/bootstrap-maxlength.min.js"></script>
-			<script src="/js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-			<script src="/js/plugin/clockpicker/clockpicker.min.js"></script>
-			<script src="/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>
-			<script src="/js/plugin/noUiSlider/jquery.nouislider.min.js"></script>
-			<script src="/js/plugin/ion-slider/ion.rangeSlider.min.js"></script>
-			<script src="/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>		
-			<script src="/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
-			<script src="/js/plugin/knob/jquery.knob.min.js"></script>
-			<script src="/js/plugin/x-editable/moment.min.js"></script>
-			<script src="/js/plugin/x-editable/jquery.mockjax.min.js"></script>
-			<script src="/js/plugin/x-editable/x-editable.min.js"></script>
-			<script src="/js/plugin/typeahead/typeahead.min.js"></script>
-			<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
+	<!-- TEMPLATE-FORM PLUGIN(S) -->
+	<script src="/js/plugin/jquery-form/jquery-form.min.js"></script>
 
-			<!-- CHARTS PLUGIN(S) 
+	<!-- FORM PLUGIN(S) -->
+	<script src="/js/plugin/maxlength/bootstrap-maxlength.min.js"></script>
+	<script src="/js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="/js/plugin/clockpicker/clockpicker.min.js"></script>
+	<script src="/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>
+	<script src="/js/plugin/noUiSlider/jquery.nouislider.min.js"></script>
+	<script src="/js/plugin/ion-slider/ion.rangeSlider.min.js"></script>
+	<script src="/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+	<script src="/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
+	<script src="/js/plugin/knob/jquery.knob.min.js"></script>
+	<script src="/js/plugin/x-editable/moment.min.js"></script>
+	<script src="/js/plugin/x-editable/jquery.mockjax.min.js"></script>
+	<script src="/js/plugin/x-editable/x-editable.min.js"></script>
+	<script src="/js/plugin/typeahead/typeahead.min.js"></script>
+	<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
+
+	<!-- CHARTS PLUGIN(S) 
 			<script src="..."></script>-->
-			<script src="/js/plugin/moment/moment.min.js"></script>
-			<script src="/js/plugin/chartjs/chart.min.js"></script>			
-			<script>
+	<script src="/js/plugin/moment/moment.min.js"></script>
+	<script src="/js/plugin/chartjs/chart.min.js"></script>
+	<script>
 				$(document).ready(function() {		
 
 				// DO NOT REMOVE : GLOBAL FUNCTIONS!
@@ -2171,8 +2168,8 @@
 				});
 
 			</script>
-			<!-- Your GOOGLE ANALYTICS CODE Below -->
-			<script type="text/javascript">
+	<!-- Your GOOGLE ANALYTICS CODE Below -->
+	<script type="text/javascript">
 				var _gaq = _gaq || [];
 				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
 				_gaq.push(['_trackPageview']);
@@ -2188,12 +2185,13 @@
 
 			</script>
 
-			<script>
+	<script>
 			$(".nav ul li").on("click", function(){
 				alert("keep trying");
 			$(".nav").find(".active").removeClass("active");
 			$(this).parent().addClass("active");
 			});
-			</script>			
-		</body>
+			</script>
+</body>
+
 </html>

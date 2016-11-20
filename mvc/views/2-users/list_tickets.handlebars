@@ -15,7 +15,7 @@
 		</ol>
 		<!-- end breadcrumb -->
 		<span class="ribbon-button-alignment pull-right">
-			<a href="/newTicket"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
+			<a href="/tickets/{{ticket.ticketType}}/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
 		</span> 		
 	</div>
 			<!-- END RIBBON -->
@@ -70,41 +70,39 @@
 					
 									        <thead>
 												<tr>
-													<th class="hasinput" style="width:10%">
+													<th class="hasinput" style="width:13%">
 														<input type="text" class="form-control" placeholder="Ticket No." />
 													</th>
-													<th class="hasinput" style="width:20%">
-														<input type="text" class="form-control" placeholder="Titulo" />
+													<th class="hasinput" style="width:16%">
+														<div class="input-group">
+															<input class="form-control" placeholder="Titulo" type="text">
+														</div>	
 													</th>
-													<th class="hasinput" style="width:15%">
+													<th class="hasinput" style="width:13%">
 														<input type="text" class="form-control" placeholder="Ciudad" />
 													</th>
-													<th class="hasinput" style="width:15%">
+													<th class="hasinput" style="width:17%">
 														<input type="text" class="form-control" placeholder="Tienda" />
 													</th>
-<!--													<th class="hasinput" style="width:15%">
-														<input type="text" class="form-control" placeholder="Tienda" />
-													</th>-->
-													<th class="hasinput" style="padding-bottom: 0px">
-														<input id="dateselect_filter" type="text" placeholder="Creación" class="form-control datepicker" data-dateformat="yy/mm/dd">
-														<label for="dateselect_filter"  rel="tooltip" title="" data-original-title="Purchase Date"></label>
-													</th>																																					
-													<th class="hasinput" style="padding-bottom: 0px">
-														<input id="dateselect_filter2" type="text" placeholder="Modificación" class="form-control datepicker" data-dateformat="yy/mm/dd">
-														<label for="dateselect_filter2" rel="tooltip" title="" data-original-title="Purchase Date"></label>
-													</th>
-													<th class="hasinput" style="width:10%">
+													<th class="hasinput" style="width:13%">
+														<input type="text" class="form-control" placeholder="Prioridad" />
+													</th>													
+													<th class="hasinput icon-addon" style="width:91%;">
+														<input id="dateselect_filter" type="text" placeholder="Actualizado en" class="form-control datepicker" data-dateformat="dd/mm/yy">
+														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip"></label>
+													</th>												
+													<th class="hasinput" style="width:12%">
 														<input type="text" class="form-control" placeholder="Estado" />
 													</th>													
 												</tr>
 									            <tr>
 								                    <th data-class="expand">Ticket No.</th>
-								                    <th data-hide="phone,tablet">Titulo</th>
-								                    <th >Ciudad</th>
-								                    <th data-hide="phone,tablet">Tienda</th>
-								                    <th data-hide="phone,tablet">Creado:</th>								                    
-								                    <th >Actualizado:</th>
-								                    <th >Estado</th>
+								                    <th>Titulo de Ticket</th>
+								                    <th data-hide="phone">Ciudad</th>
+								                    <th data-hide="phone">Tienda</th>
+								                    <th data-hide="phone,tablet">Grado Prioridad</th>
+								                    <th data-hide="phone,tablet">Ultima Actualización</th>
+													<th>Estado</th>
 									            </tr>
 									        </thead>
 
@@ -115,8 +113,8 @@
 													<td align="center">{{title}}</td>
 													<td align="center">{{store_id.city_id.city}}</td>
 													<td align="center">{{store_id.storeName}}</td>
-													<td align="center">{{formatDate startdate "YYYY/MM/DD"}}</td>
-													<td align="center">{{formatDate lastupdate "YYYY/MM/DD"}}</td>
+													<td align="center">{{priority}}</td>
+													<td align="center">{{formatDate lastupdate "YYYY/MM/DD - HH:mm"}}</td>
 													<td><button class="btn btn-{{statusTag status}} center-block padding-5 label view-ticket" data-toggle="modal" 
 														data-target="#TicketInfoModal"
 														data-id ="{{id}}"

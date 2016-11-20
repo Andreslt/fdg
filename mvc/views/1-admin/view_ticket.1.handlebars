@@ -1,0 +1,647 @@
+<!-- MAIN PANEL -->
+<div role="main">
+
+	<!-- RIBBON -->
+	<div id="ribbon">
+
+		<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+		</span>
+
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li><a href="/home">Inicio</a></li>
+			<li><a href="/tickets">Tickets</a></li>
+			<li>Detalles</li>
+		</ol>
+		<!-- end breadcrumb -->
+		<span class="ribbon-button-alignment pull-right">
+					<a href="/tickets"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Tickets</span></a>
+		</span>
+		<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+	</div>
+	<!-- END RIBBON -->
+
+	<!-- MAIN CONTENT -->
+	<div id="content">
+
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+				<h1 class="page-title txt-color-blueDark">
+
+					<!-- PAGE HEADER -->
+					<i class="fa-fw fa fa-pencil-square-o"></i> Ticket
+					<span>>  
+							Detalles
+						</span>
+				</h1>
+			</div>
+
+		</div>
+
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+
+
+			<!-- START ROW -->
+
+			<div class="row">
+
+				<!-- NEW COL START -->
+				<article class="col-sm-12 col-md-12 col-lg-12">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+						<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+								
+								data-widget-colorbutton="false"	
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true" 
+								data-widget-sortable="false"
+								
+							-->
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+							<h2>Orden de Trabajo</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<form id="order-form" class="smart-form" method="post" action="/admin/ticket/save" enctype="multipart/form-data">
+
+
+									<header>
+										<div class="row">
+											<section class="col col-10">
+												Detalles Orden de Trabajo
+											</section>
+											<section class="col col-2">
+												<span class="label label-{{statusTag ticket.status}}" style="color: White; margin: auto; width: 80px; text-align: center;">{{ticket.status}} {{ticket.advance}}%</span>
+											</section>
+										</div>
+									</header>
+
+									<fieldset>
+										<input type="hidden" name="ticket_id" value="{{ticket.id}}">
+										<input type="hidden" name="getpriority" value="{{priority}}">
+										<div class="row">
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ticket No.:</label>
+											<section class="col col-2">
+												<label class="input"> <i class="icon-append fa fa-slack"></i>
+														<input type="text" id="ticketNumber" name="ticketNumber" placeholder="Numero de Ticket" disabled style="text-align: center;" value="{{ticket.ticketNumber}}">
+													</label>
+											</section>
+											<label class="col-md-1 control-label" style="margin-left: 10px;width: 50px;">Titulo:</label>
+											<section class="col col-5" style="padding-left: 0px;">
+												<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+														<input type="text" id="title" name="title" placeholder="Ingrese o modifique el título del ticket" style="text-align: center;" value="{{ticket.title}}">
+													</label>
+											</section>
+											<label class="col-md-1 control-label" style="margin-right: 20px;width: 50px;">Prioridad:</label>
+											<section class="col col-2" style="padding-left: 0px;">
+												<label class="input"> <i class="icon-append fa fa-asterisk"></i>
+														<input type="text" id="getpriority" name="getpriority" placeholder="Nivel de Prioridad" disabled style="text-align: center;" value="{{mayusc ticket.priority}}">
+													</label>
+											</section>
+										</div>
+										<div class="row">
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ciudad:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-university"></i>
+														<input type="text" id="city" name="city" placeholder="Ciudad" disabled style="text-align: center;" value="{{city.city}}">
+													</label>
+											</section>
+											<label class="col-md-1 control-label" style="margin-left: 1px;width: 50px;">Tienda:</label>
+											<section class="col col-4">
+												<label class="input"> <i class="icon-append fa fa-building"></i>
+														<input type="text" id="store" name="store" placeholder="Tienda" disabled style="text-align: center;" value="{{ticket.store_id.storeName}}">
+													</label>
+											</section>
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">ID Activo:</label>
+											<section class="col col-2">
+												<label class="input"> <i class="icon-append fa fa-laptop"></i>
+														<a href=""><input type="text" id="asset" name="asset" placeholder="#Activo" disabled title="Hacer click para ver Activo" style="text-align: center;" value="{{ticket.asset_id}}"></a>
+													</label>
+											</section>
+										</div>
+										<div class="row">
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Creación:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="startdate" id="startdate" disabled placeholder="Fecha de Creación" style="text-align: center;" value="{{formatDate ticket.startdate "DD.MM.YYYY"}}">
+													</label>
+												<div class="note">
+													Fecha de creación del ticket.
+												</div>
+											</section>
+											<label class="col-md-1 control-label" style="margin-right: 5px;width: 70px;">Actualización:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="lastupdate" id="lastupdate" disabled placeholder="Fecha de última modificación" style="text-align: center;" value="{{formatDate ticket.lastupdate "DD.MM.YYYY"}}">
+													</label>
+												<div class="note">
+													Fecha de última actualización del ticket.
+												</div>
+											</section>
+											<label class="col-md-1 control-label" style="margin-left: 5px; margin-right: 5px;width: 60px;">Terminación:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="deadline" id="deadline" disabled placeholder="Fecha de estimada de terminación" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
+													</label>
+												<div class="note">
+													Fecha de terminación <strong>estimada</strong> del ticket.
+												</div>
+											</section>
+										</div>
+										<section>
+											<label class="col-md-2 control-label">Descripción:</label>
+											<label class="textarea"> <i class="icon-append fa fa-comment" style="margin-top: 20px;"></i> 										
+													<textarea rows="3" id="description" name="description" placeholder="Ingrese la descripción del Ticket con el detalle del inconveniente que presenta.">{{ticket.description}}</textarea> 
+												</label>
+										</section>
+										<section class="col col-8">
+											<div class="form-group">
+												<label>Categorías Mantenimiento (Correctivo):</label>
+												<select id="mantCategories" multiple style="width:100%" class="select2">
+														<optgroup label="Electrico">
+															<option value="AK">Cortocircuito</option>
+															<option value="HI">Otro problema electrico</option>
+														</optgroup>
+														<optgroup label="Mecánico">
+															<option value="NV">Doblez</option>
+															<option value="OR">Otro problema mecánico</option>
+														</optgroup>
+														<optgroup label="Físico">
+															<option value="AZ">Rayón</option>
+															<option value="CO">Otro problema físico</option>
+														</optgroup>
+														<optgroup label="Térmico">
+															<option value="AL">Sobrecalentamiento</option>
+															<option value="AR">Otro problema térmico</option>
+														</optgroup>
+													</select>
+
+												<div class="note">
+													<strong>Nota:</strong> seleccionar las categorías consideradas como orígenes del problema.
+												</div>
+											</div>
+										</section>
+										<section class="col col-4">
+											<label>Adjuntar Imagen (Opcional):</label>
+											<div class="input input-file">
+												<span class="button"><input id="file2" type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</span>
+												<input type="text" placeholder="Nombre archivo" readonly="">
+											</div>
+										</section>
+									</fieldset>
+
+									<fieldset>
+										<div class="col-md-12 col-lg-12">
+											<!-- Widget ID (each widget will need unique ID)-->
+											<div class="jarviswidget" id="wid-id-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+												data-widget-custombutton="false" data-widget-sortable="false">
+												<header style="background-color:currentColor">
+													<h2 style="color: white">Administrar Ticket </h2>
+													<div class="widget-toolbar hidden-phone">
+														<div class="smart-form" style="padding-right: 10px;padding-left: 10px;">
+															<label class="toggle" style="padding-right: 0px; color:white">
+																<input type="checkbox" id="demo-switch-to-pills" name="checkbox-toggle">
+																Switch Navs / Pills</label>
+														</div>
+													</div>
+												</header>
+
+												<!-- widget div-->
+												<div style="padding-left: 0px; padding-right: 0px; margin-left: 14px; margin-right: 0px; width: 955px; display: block;">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+
+													</div>
+													<!-- end widget edit box -->
+
+													<!-- widget content -->
+													<div class="widget-body">
+
+														<div class="tabs-left">
+															<ul class="nav nav-tabs tabs-left" id="demo-pill-nav">
+																<li class="active">
+																	<a href="#tab-r1" data-toggle="tab">Parametrizar </a>
+																</li>
+																<li>
+																	<a href="#tab-r2" data-toggle="tab">Seguimiento</a>
+																</li>
+																<li>
+																	<a href="#tab-r3" data-toggle="tab">Asignar</a>
+																</li>
+															</ul>
+															<div class="tab-content">
+																<div class="tab-pane active" id="tab-r1">
+																	<div class="row" style="height: 50px;">
+																		<label class="col-md-1 control-label" style="margin-left: 0px;width: 60px;">Cambiar Estado:</label>
+																		<section class="col col-lg-4">
+																			<label class="select">
+																		<select name="setstatus" id="setstatus" style= "padding-left: 90px;">
+																			<option value="0" selected="" disabled="">Estado del Ticket</option>
+																			<option value="Pendiente">PENDIENTE</option>
+																			<option value="Asignado">ASIGNADO</option>
+																			<option value="Finalizado">FINALIZADO</option>
+																			<option value="Cancelado">CANCELADO</option>
+																		</select> <i></i> </label>
+																		</section>
+																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 60px;">Avance del ticket:</label>
+																		<section class="col col-lg-4">
+																			<label class="select">
+																		<select name="setadvance" id="setadvance" style= "padding-left: 90px;">
+																			<option value="-1" selected="" disabled="">% Avance</option>
+																			<option value="0">0% - Fase 0</option>
+																			<option value="10">10% - Fase 1</option>
+																			<option value="20">20% - Fase 2</option>
+																			<option value="30">30% - Fase 3</option>
+																			<option value="40">40% - Fase 4</option>
+																			<option value="50">50% - Fase 5</option>
+																			<option value="60">60% - Fase 6</option>
+																			<option value="70">70% - Fase 7</option>
+																			<option value="80">80% - Fase 8</option>
+																			<option value="90">90% - Fase 9</option>
+																			<option value="100">100% - Fase 10</option>
+																		</select> <i></i> </label>
+																		</section>
+																	</div>
+																	<div class="row">
+																		<label class="col-md-1 control-label" style="width: 60px;">Prioridad:</label>
+																		<section class="col col-lg-4">
+																			<label class="select" style="text-align: center;">
+																			<select name="setpriority" id="setpriority" style= "padding-left: 110px; text-align: center;">
+																				<option value="" selected="" disabled="">Establezca el nivel de prioridad</option>
+																				<option value="Muy Alta">MUY ALTA</option>
+																				<option value="Alta">ALTA</option>
+																				<option value="Media">MEDIA</option>
+																				<option value="Baja">BAJA</option>                                                                    
+																			</select> <i></i> </label>
+																		</section>
+																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Deadline:</label>
+																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="setdeadline" id="setdeadline" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
+																			</label>
+																	</div>
+																</div>
+																<div class="tab-pane" id="tab-r2">
+																	<div class="tab-content">
+																		<div class="tab-pane active" id="hb1">
+
+																			<div class="tabbable tabs-below">
+																				<ul class="nav nav-tabs" style="height: 45px;">
+																					<li class="active pull-right">
+																						<a data-toggle="tab" href="#acts">Actas</a>
+																					</li>
+																					<li class="pull-right">
+																						<a data-toggle="tab" href="#history">Historial</a>
+																					</li>
+																				</ul>
+																				<div class="tab-content padding-10">
+																					<div class="tab-pane active" id="acts">
+																						<div class="row">
+																							<!-- Widget ID (each widget will need unique ID)-->
+																							<div class="jarviswidget jarviswidget-color-greenDark" id="wid-id-18" data-widget-colorbutton="false" data-widget-editbutton="false">
+																								<header style="width: 805px; margin-left: 25px; background-color:currentColor">
+																									<h2 style="color: white"><strong>Actas</strong> del Ticket</h2>
+
+																								</header>
+
+																								<!-- widget div-->
+																								<div style="width: 780px; padding-right: 12px;">
+
+																									<!-- widget edit box -->
+																									<div class="jarviswidget-editbox">
+																										<!-- This area used as dropdown edit box -->
+																										<input class="form-control" type="text">
+																										<span class="note"><i class="fa fa-check text-success"></i> Change title to update and save instantly!</span>
+
+																									</div>
+																									<!-- end widget edit box -->
+
+																									<!-- widget content -->
+																									<div class="widget-body no-padding" style="width: 805px;">
+																										<div class="widget-body-toolbar">
+
+																											<div class="row" style="padding-top: 10px; margin-left:680px;">
+																												<span class="btn btn-success" style="padding-left: 5px;" data-toggle="modal" data-target="#recordModal">
+																													<i class="fa fa-plus"></i> <span class="hidden-mobile" style="padding-right: 10px;" >Nueva Acta</span>
+																												</span>
+																											</div>
+																										</div>
+
+																										<div class="custom-scroll table-responsive" style="height:160px; overflow-y: scroll;">
+
+
+																											<table class="table table-bordered">
+																												<thead>
+																													<tr>
+																														<th><i class="fa fa-key text-warning"></i> Numero de acta</th>
+																														<th>Representante</th>
+																														<th>Cliente</th>
+																														<th>Fecha</th>
+																													</tr>
+																												</thead>
+																												<tbody>
+																													{{#each records}}
+																													<tr>
+																														<td align="center"><a target="_blank" href="/admin/reports/view?recordNumber={{recordNumber}}">{{recordNumber}}</a></td>
+																														<td align="center">{{adminRepresentative.username}} - {{adminRepresentative.name}} {{adminRepresentative.lastname}}</td>
+																														<td align="center">{{custRepresentative.username}} - {{custRepresentative.name}} {{custRepresentative.lastname}}</td>
+																														<td align="center">{{formatDate createdOn "DD/MM/YYYY HH:mm"}}</td>
+																													</tr>
+																													{{/each}}
+																												</tbody>
+																											</table>
+																										</div>
+																									</div>
+																									<!-- end widget content -->
+
+																								</div>
+																								<!-- end widget div -->
+
+																							</div>
+																							<!-- end widget -->
+																						</div>
+																					</div>
+																					<div class="tab-pane" id="history">
+																						<p>
+																							HISTORIAL Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
+																							velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer
+																							twee.
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="tab-pane" id="tab-r3">
+																	<div class="row">
+																		<article class="col-sm-12 col-md-6 col-lg-5">
+																			<div style="padding-top: 20px " align="justify">
+																				<p> <strong>Contactos del ticket.</strong><br><br> Los contactos son todos aquellos usuarios activos de la
+																					plataforma que pueden relacionarse con un ticket para realizar un seguimiento y gestión al mismo.<br>																					Cada vez que un ticket es creado, el usuario creador se registra como contacto del ticket. De forma
+																					predeterminada, el sistema también registra como contactos a los administradores de la tienda a la que
+																					pertenece el usuario, así como también a todos los usuarios administradores del sistema.
+																				</p>
+																			</div>
+																		</article>
+																		<article class="col-sm-12 col-md-6 col-lg-6">
+
+																			<!-- Widget ID (each widget will need unique ID)-->
+																			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-1" data-widget-editbutton="false">
+
+																				<header style="width: 399px; margin-top: 0px;">
+																					<span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
+																					<h2 style="color: white;">Asignar Stakeholders </h2>
+																				</header>
+
+																				<!-- widget div-->
+																				<div style="padding-left: 40px; padding-right: 0px; margin-left: 14px; margin-right: -14; width: 359px;">
+
+																					<!-- widget edit box -->
+																					<div class="jarviswidget-editbox">
+																						<!-- This area used as dropdown edit box -->
+
+																					</div>
+																					<!-- end widget edit box -->
+
+																					<!-- widget content -->
+																					<div class="widget-body">
+
+																						<div class="tree smart-form">
+																							<ul>
+																								<li>
+																									<span><i class="fa fa-lg fa-plus-circle"></i> Contactos: </span>
+																									<ul>
+																										<li>
+																											<span><i class="fa fa-lg fa-plus-circle"></i> Administratores</span>
+																											<ul>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" name="checkbox-inline">
+																															<i></i>Michael.Jackson</label> </span>
+																												</li>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" checked="checked" name="checkbox-inline">
+																															<i></i>Sunny.Ahmed</label> </span>
+																												</li>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" checked="checked" name="checkbox-inline">
+																															<i></i>Jackie.Chan</label> </span>
+																												</li>
+																											</ul>
+																										</li>
+																										<li>
+																											<span><i class="fa fa-lg fa-plus-circle"></i> Usuarios</span>
+																											<ul>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" name="checkbox-inline">
+																															<i></i>EPK - Franciso</label> </span>
+																												</li>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" checked="checked" name="checkbox-inline">
+																															<i></i>EPK - Javier</label> </span>
+																												</li>
+																												<li style="display:none">
+																													<span> <label class="checkbox inline-block">
+																															<input type="checkbox" checked="checked" name="checkbox-inline">
+																															<i></i>EPK - Luisa</label> </span>
+																												</li>
+																											</ul>
+																										</li>
+																									</ul>
+																								</li>
+																							</ul>
+																						</div>
+
+																					</div>
+																					<!-- end widget content -->
+
+																				</div>
+																				<!-- end widget div -->
+
+																			</div>
+																			<!-- end widget -->
+
+																		</article>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+													</div>
+													<!-- end widget content -->
+
+												</div>
+												<!-- end widget div -->
+
+											</div>
+											<!-- end widget -->
+									</fieldset>
+									<footer>
+										<button type="submit" class="btn btn-primary">
+												Guardar
+											</button>
+									</footer>
+								</form>
+
+								</div>
+								<!-- end widget content -->
+
+							</div>
+							<!-- end widget div -->
+
+						</div>
+						<!-- end widget -->
+
+				</article>
+				<!-- END COL -->
+				</div>
+
+				<!-- END ROW -->
+
+				</section>
+				<!-- end widget grid -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+			<!-- Record Info Modal -->
+			<form method="post" action="/admin/newRecord">
+				<div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<input type="hidden" name="ticket_id" value="{{ticket.id}}">
+							<input type="hidden" id="edit-record-id" name="recordId">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+								<h4 class="modal-title" id="myModalLabel">Detalle del Acta</h4>
+							</div>
+							<div class="modal-body">
+								<!--Acta No.-->
+								<div class="row">
+									<div class="col-lg-12" style="padding-left:15px;">
+										<div class="col-md-2">
+											<div class="form-group">
+												<label for="edit-record-number"><small><b>Acta No.:</b></small></label>
+												<input style="font-size:12px; padding: 5px; width: 120px;" type="text" class="form-control" placeholder="Acta No." required="true" name="recordNum" id="edit-record-number" disabled value="{{recordNumber}}"
+													align="center" />
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="edit-asset-number"><small><b>No. Equipo:</b></small></label>
+												<input type="text" class="form-control" placeholder="No. Equipo" name="assetNum" id="edit-asset-number" disabled
+													align="center" />
+											</div>
+										</div>
+										<div class="col-md-3">								
+												<label for="edit-adminRepresentative"><small><b>Representante:</b></small></label>
+												<input type="text" class="form-control" placeholder="Representante" name="adminRepresentative" id="edit-adminRepresentative" disabled value="{{representative.username}} - {{representative.name}} {{representative.lastname}}"
+													align="center" />
+										</div>	
+										<div class="col-md-4">
+											<div class="row">
+											<label for="edit-custRepresentative"><small style="padding-left: 15px;"><b>Cliente:</b></small></label>
+											</div>
+											<div class="row">
+											<section class="col col-lg-12">
+												<label class="select" style="width:260px">
+											<select name="custRepresentative" id="custRepresentative" style="display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;line-height: 1.42857143; color: #555;">
+												<option value="0" selected="" disabled="">Seleccionar usuario que atendió visita</option>
+												{{#each costumers}}
+													<option value="{{_id}}">{{username}} - {{name}} {{lastname}}</option>
+												{{/each}}
+											</select> <i></i> </label></section>	
+											</div>									
+										</div>	
+									</div>																	
+									<!--Requerimiento del cliente-->
+									<div class="col-md-12">
+										<div class="form-group">
+												<label for="openningDate"><small><b>Requerimiento del cliente:</b></small></label>
+												<textarea class="form-control" name="customerReq" placeholder="Ingrese el requerimiento del cliente" rows="1"></textarea>
+										</div>
+									</div>	
+									<!--Situación Encontrada-->
+									<div class="col-md-12">
+										<div class="form-group">
+												<label for="openningDate"><small><b>Situación Encontrada:</b></small></label>
+												<textarea class="form-control" name="currentState" placeholder="Ingrese la situación encontrada" rows="3"></textarea>
+										</div>
+									</div>
+									<!--Acciones Correctivas-->
+									<div class="col-md-12">
+										<div class="form-group">
+												<label for="openningDate"><small><b>Acciones Correctivas:</b></small></label>
+												<textarea class="form-control" name="correctiveActions" placeholder="Ingrese las acciones correctivas" rows="2"></textarea>
+										</div>
+									</div>	
+									<!--Sugerencias-->
+									<div class="col-md-12">
+										<div class="form-group">
+												<label for="openningDate"><small><b>Sugerencias:</b></small></label>
+												<textarea class="form-control" name="suggestions" placeholder="Ingrese las sugerencias" rows="3"></textarea>
+										</div>
+									</div>																																																												
+								</div>																						
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+								<button id="submitModal" type="submit" class="btn btn-primary">
+											Guardar
+										</button>
+							</div>
+
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+			</form>
+	</div>
+	<!-- END MAIN PANEL -->

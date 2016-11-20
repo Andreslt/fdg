@@ -14,27 +14,46 @@ var Store = require("../models/store");
 var Ticket = require("../models/ticket");
 var City = require('../models/city');
 var Record = require('../models/record');
+var Event = require('../models/event');
 
 //Config
-var validations = require('../../config/validations');
+var Validations = require('../../config/validations');
 var config = require('../../config/config');
 
 /* >>> ROUTES <<< */
 // Dashboard
-router.get('/dashboard', validations.ensureAuthenticated, validations.systemAdmin, function (req, res) {
+router.get('/dashboard', Validations.ensureAuthenticated, Validations.systemAdmin, function (req, res) {
 	Company.find({ companyName: { $ne: "Default company" } }, (err, customers) => {
 		res.render('1-admin/dashboard', { layout: 'adminLayout', userTypeAdmin: true, customers });
 	});
 });
 
+// Calendar
+router.get('/calendar', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW;
+	res.render('1-admin/list_calendar_cities', { layout: 'adminLayout', storeAdminSW });
+});
+
+// Calendar
+router.get('/calendar/selected', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW, city = req.query.city;
+	Event.find({}).populate('city_id').exec((err, eventos) => {
+		let events = eventos.filter((elem) => {
+			return elem.city_id.city.toUpperCase() === city
+		});
+		if (err) console.log(err);
+		res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
+	});
+});
+
 // Account
-router.get('/account', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+router.get('/account', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/account', { layout: 'adminLayout', storeAdminSW });
 });
 
 // Edit account
-router.get('/account/edit', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+router.get('/account/edit', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW, userDates;
 	User.findOne({ username: user.username }, (err, user) => {
 		Company.find({ companyName: { $ne: "Default company" } }, (err, companies) => {
@@ -61,17 +80,101 @@ router.get('/account/edit', validations.ensureAuthenticated, validations.systemA
 	});
 });
 
-// New ticket
-router.get('/newTicket', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+//* Maintenances *//
+
+/*router.get('/scheduleNew', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
-	res.render('1-admin/new_ticket', { layout: 'adminLayout', storeAdminSW });
+	Event.find({}).populate('ticket_id').populate('created_by').exec((err, events) => {
+		console.log(events);
+		res.render('1-admin/new_schedule', { layout: 'adminLayout', storeAdminSW, events});
+	});
+});*/
+
+/*router.post('/scheduleSave', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+		let user = req.user, storeAdminSW;
+		var data = req.body;
+		var mode = data["!nativeeditor_status"];
+		var sid = data.id;
+		var tid = sid, dataJSON;
+
+		data.eventNumber= sid;		
+		data.modified_by = user.id;
+		dataJSON = JSON.stringify(data);
+
+		console.log('id: '+data.id);
+		console.log('text: '+data.text);
+		console.log('data: '+dataJSON);
+		console.log('mode: '+mode);
+		console.log('sid: '+sid);
+		console.log('tid: '+tid);
+		console.log('cityID: '+req.query.cityID);
+
+		delete data.id;
+		delete data.gr_id;
+		delete data["!nativeeditor_status"];
+
+
+		function update_response(err, result) {
+			if (err)
+				mode = "error";
+			else if (mode == "inserted")
+				tid = data._id;
+
+			res.setHeader("Content-Type", "text/xml");
+			res.send("<data><action type='" + mode + "' sid='" + sid + "' tid='" + tid + "'/></data>");
+		}
+
+		if (mode == "updated"){			
+			Event.findOneAndUpdate({eventNumber: sid}, {$set: data}, update_response);
+		}else if (mode == "inserted"){
+			data.created_by = user.id;
+			data.city_id =  req.query.cityID;
+			console.log('data: '+data);
+			var Evento =new Event(data, update_response)
+			console.log('Evento: '+Evento);
+			Evento.save((err, result)=>{
+				if (err) console.log(err);
+				console.log(result);
+			});
+		}else if (mode == "deleted")
+			Event.removeById(sid, update_response);
+		else
+			res.send("Not supported operation");
+});*/
+
+/*router.get('/scheduled_cities', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW;
+	res.render('1-admin/list_schedule_cities', { layout: 'adminLayout', storeAdminSW });
+});*/
+
+/*router.get('/scheduled_cities/selected', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW, city = req.query.city;
+	Event.find({}).populate('city_id').exec((err, eventos)=>{
+		let events = eventos.filter((elem)=>{
+			return elem.city_id.city.toUpperCase() === city
+		});
+		if(err) console.log(err);
+		res.render('1-admin/list_schedule_city', { layout: 'adminLayout', storeAdminSW,events});
+	});
+});*/
+
+// New ticket
+router.get('/newTicket', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW;
+	City.find({ city: { $ne: "Default city" } }, (err, cities) => {
+		if (err) console.log(err)
+		Store.find({ storeName: { $ne: "Default store" } }, (err, stores) => {
+			if (err) console.log(err)
+			res.render('1-admin/new_ticket', { layout: 'adminLayout', storeAdminSW, stores, cities, ticketNumber: Validations.numberGenerator('ticket') });
+		});
+	});
 });
 
 // Tickets
-router.get('/tickets', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+router.get('/list_tickets', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
 	var obj = { data: [] }, userImage;
-	Ticket.find({}).populate('contacts').exec((err, tkts) => {
+	Ticket.find({ ticketType: 'corrective' }).populate('contacts').exec((err, tkts) => {
 		if (err) console.log(err);
 		for (let t = 0; t < tkts.length; t++) {
 			obj.data.push(
@@ -101,126 +204,138 @@ router.get('/tickets', validations.ensureAuthenticated, validations.systemAdmin,
 	});
 });
 
-// Ticket Details
-router.get('/ticket/details', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
-	let ticketID = req.query.ID;
-	Ticket.findOne({ _id: ticketID }).populate('store_id').exec((err, ticket) => {
-		if (err) console.log(err);
-		City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
-			User.find({ company_id: ticket.store_id.company_id, userRole: "storeEmployee" }, (err, costumers) => {
-				Record.find({ ticket_id: ticketID }).populate('adminRepresentative').populate('custRepresentative').exec((err, records) => {
-					if (err) console.log(err);
-					let recordNumber = validations.numberGenerator("record"), representative = req.user;
-					res.render('1-admin/view_ticket', { layout: 'adminLayout', costumers, representative, recordNumber, ticket, records, city });
-				});
-			});
-		})
-	});
-});
-
-router.post('/ticket/save', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
-	var form = new formidable.IncomingForm(), user = req.user;
-	form.parse(req, function (err, fields, files) {
-		let body = fields, ticketID = body.ticket_id,
-
-			params = {
-				priority: body.setpriority,
-				advance: body.setadvance,
-				status: body.setstatus,
-				title: body.title,
-				description: body.description,
-				categories: body.categories,
-				lastupdate: new Date(),
-				deadline: setDates(body.setdeadline),
-				modified_by: req.user.id,
-			}
-
-		console.log(params);
-		Ticket.findOneAndUpdate({ _id: ticketID }, { $set: params }, { new: true }, (err, ticket) => {
-			if (err) {
-				console.log(err);
-			} else {
-				req.flash("success_msg", "El ticket fue actualizado.");
-				res.redirect('/tickets');
-			}
-		});
-	});
-});
-
 // New record
-router.post('/newRecord', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+router.post('/newRecord', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let body = req.body;
-	User.findOne({ _id: body.custRepresentative }, (err, custRepresentative) => {
-		let params = {
-			recordNumber: validations.numberGenerator("record"),
-			ticket_id: body.ticket_id,
-			customerReq: body.customerReq,
-			currentState: body.currentState,
-			correctiveActions: body.correctiveActions,
-			suggestions: body.suggestions,
-			adminRepresentative: req.user,
-			custRepresentative: custRepresentative,
-		},
+	Ticket.findOne({_id: body.ticket_id}, (err, ticket) => {
+		User.findOne({ _id: body.custRepresentative }, (err, custRepresentative) => {
+			let params = {
+				recordNumber: Validations.numberGenerator("record"),
+				ticket_id: body.ticket_id,
+				customerReq: body.customerReq,
+				currentState: body.currentState,
+				correctiveActions: body.correctiveActions,
+				suggestions: body.suggestions,
+				adminRepresentative: req.user,
+				custRepresentative: custRepresentative,
+			},
 			record = new Record(params);
-		console.log(record);
-		record.save((err) => {
-			if (err) req.flash('error', 'El acta no pudo ser guardada. Inténtelo nuevamente.');
-			else req.flash('success_msg', 'Acta No: ' + params.recordNumber + ' guardada con éxito.');
+			record.save((err) => {
+				if (err) req.flash('error', 'El acta no pudo ser guardada. Inténtelo nuevamente.');
+				else req.flash('success_msg', 'Acta No: ' + params.recordNumber + ' guardada con éxito.');
 
-			res.redirect('/admin/ticket/details?ID=' + params.ticket_id);
+				res.redirect('/tickets/ticket_details?ID=581e01ca662fb4a4af5e1202');
+			});
 		});
 	});
 });
 
 // New store
-router.get('/newStore', validations.ensureAuthenticated, (req, res) => {
+router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/new_store', { layout: 'adminLayout', storeAdminSW });
 });
 
 // Stores
-router.get('/stores', validations.ensureAuthenticated, (req, res) => {
+router.get('/stores', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/list_stores', { layout: 'adminLayout', storeAdminSW });
 });
 
 // New asset
-router.get('/newAsset', validations.ensureAuthenticated, (req, res) => {
+router.get('/newAsset', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/new_asset', { layout: 'adminLayout', storeAdminSW });
 });
 
 // Assets
-router.get('/assets', validations.ensureAuthenticated, (req, res) => {
+router.get('/assets', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/list_assets', { layout: 'adminLayout', storeAdminSW });
 });
 
 // New employee
-router.get('/newEmployee', validations.ensureAuthenticated, (req, res) => {
+router.get('/newEmployee', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/new_employee', { layout: 'adminLayout', storeAdminSW });
 });
 
-// Employees
-router.get('/employees', validations.ensureAuthenticated, (req, res) => {
+// Users to be Approved (or Deleted)
+router.get('/usersApproval', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
-	res.render('1-admin/list_employees', { layout: 'adminLayout', storeAdminSW });
+	User.find({ userApproval: false }).populate('company_id').exec((err, users) => {
+		if (err) console.log(err)
+		res.render('1-admin/list_users_to_approve', { layout: 'adminLayout', storeAdminSW, users });
+	});
+});
+
+router.post('/usersApproval/approveUser/:username', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW, username = req.params.username;
+	User.findOneAndUpdate({ username: username }, { $set: { userApproval: true, approvedOn: new Date() } }, { new: true }, (err, user) => {
+		if (err) console.log(err)
+		res.redirect('/admin/list_users_to_approve');
+	});
+});
+
+router.post('/usersApproval/deleteUser/:username', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW, username = req.params.username;
+	User.remove({ username: username }, (err, user) => {
+		if (err) console.log(err)
+		res.redirect('/admin/list_users_to_approve');
+	});
+});
+
+// Approved Users
+router.get('/usersApproved', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW;
+	User.find({ userApproval: true, userRole: { $ne: 'systemAdmin' } })
+		.populate('company_id').populate('city_id').populate('store_id').exec((err, users) => {
+			if (err) throw err
+			Store.find({ storeName: { $ne: 'Default store' } }).populate('city_id').sort({ city_id: -1 }).exec((err, stores) => {
+				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
+			});
+		});
+	/*	User.find({ userApproval: true, userRole: { $ne: 'systemAdmin' } }).populate('store_id').populate('company_id').exec((err, usuarios) => {
+			Store.find({ storeName: { $ne: 'Default store' } }).populate('city_id').exec((err, stores) => {
+				let users = new Array();
+				for(let i=0;i<usuarios.length;i++){
+					users.push(usuarios[i]);
+	
+					users[i].city_id
+				}
+				if (err) console.log(err)
+				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
+			})
+		});*/
+});
+
+// Edit User
+router.post('/editUser', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.body;
+	User.findOneAndUpdate({ _id: user.userID }, { $set: user }, { new: true }, (err, result) => {
+		if (err) {
+			req.flash('error', 'El usuario no pudo ser actualizado. Por favor inténtelo de nuevo más tarde.');
+			res.redirect('/admin/usersApproved');
+		} else {
+			req.flash('success_msg', 'El usuario ha sido actualizado exitosamente.');
+			res.redirect('/admin/usersApproved');
+		}
+	});
 });
 
 // New report
-router.get('/newReport', validations.ensureAuthenticated, (req, res) => {
+router.get('/newReport', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/new_report', { layout: 'adminLayout', storeAdminSW });
 });
 
 // Reports
-router.get('/reports', validations.ensureAuthenticated, (req, res) => {
+router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
 	res.render('1-admin/list_reports', { layout: 'adminLayout', storeAdminSW });
 });
 
-router.get('/reports/view', validations.ensureAuthenticated, validations.systemAdmin, (req, res) => {
+router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let recordNumber = req.query.recordNumber,
 		request = require('request');
 
@@ -296,7 +411,7 @@ router.get('/reports/view', validations.ensureAuthenticated, validations.systemA
 		});
 	});
 	searchRecord.catch(err => {
-		res.sendStatus(404);		
+		res.sendStatus(404);
 	});
 });
 

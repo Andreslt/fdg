@@ -90,3 +90,33 @@
 .huge {
     font-size: 40px;
 }
+
+.disablecopypaste {
+	width: 90%; 
+	font-size: 18px; 
+	font-family:'Comic Sans MS';
+
+}
+
+.deleteticket_button{
+	margin-top: 20px !important;
+	padding: 0 20px !important;
+	width: 50px !important;
+	height: 30px !important;
+	border-radius: 50px;
+	background-color: darkred !important;
+    opacity: 0.4 !important;
+	pointer-events: none !important;
+    cursor: not-allowed !important;
+	text-align: "center" !important;	
+}
+
+.deleteticket_button2{
+	margin-top: 20px !important;
+	padding: 0 20px !important;
+	width: 50px !important;
+	height: 30px !important;
+	border-radius: 50px;
+	background-color: darkred !important;
+	text-align: "center" !important;	
+}

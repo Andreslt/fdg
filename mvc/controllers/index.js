@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user").user;
-const tickets = require("../models/ticket");
+const Ticket = require("../models/ticket");
 const stores = require('../models/store');
 const cities = require('../models/city');
 const company = require('../models/company');
@@ -12,276 +12,256 @@ const formidable = require('formidable');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 var _ = require('underscore');
+var Validations = require('../../config/validations');
 
 /* ---> GENERAL <--- */
 // Go Home
-router.get('/', ensureAuthenticated, (req, res)=>{
-	    res.redirect('/dashboard');
+router.get('/', Validations.ensureAuthenticated, (req, res) => {
+	res.redirect('/dashboard');
 });
-router.get('/home', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/home');
-	}else{
-	    res.redirect('/users/home');
-	}	
+router.get('/home', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/home');
+	} else {
+		res.redirect('/users/home');
+	}
 });
 
 /* ---> INICIO <--- */
 // 1. Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/dashboard');
-	}else{
-	    res.redirect('/users/dashboard');
+router.get('/dashboard', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/dashboard');
+	} else {
+		res.redirect('/users/dashboard');
 	}
 });
-// 2. Cuenta
-router.get('/account', ensureAuthenticated, (req, res)=>{	
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/account');
-	}else{
-	    res.redirect('/users/account');
+// 2. Calendario
+router.get('/calendar', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/calendar');
+	} else {
+		res.redirect('/users/calendar');
 	}
 });
-router.get('/account/edit', ensureAuthenticated, (req, res)=>{
-	req.flash('success_msg','El usuario se ha actualizado satisfactoriamente.')
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/account');
-	}else{
-	    res.redirect('/users/account');
+// 3. Cuenta
+router.get('/account', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/account');
+	} else {
+		res.redirect('/users/account');
 	}
 });
-router.post('/account/edit', (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect(307, '/admin/account/edit');
-	}else{
-	    res.redirect(307, '/users/account/edit');
-	}		
+router.get('/account/edit', Validations.ensureAuthenticated, (req, res) => {
+	req.flash('success_msg', 'El usuario se ha actualizado satisfactoriamente.')
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/account');
+	} else {
+		res.redirect('/users/account');
+	}
 });
-/* ---> ORDENES <--- */
-// 1. Crear Ticket
-router.get('/newTicket', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newTicket');
+router.post('/account/edit', (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect(307, '/admin/account/edit');
+	} else {
+		res.redirect(307, '/users/account/edit');
+	}
+});
+/* ---> MANTENIMIENTOS <--- */
+
+/*Preventivo*/
+
+// 1. Programar Nuevo
+router.get('/scheduleNew', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/scheduleNew');
+	} else {
+		res.redirect('/users/scheduleNew');
+	}
+});
+// 2. Ver Programación
+/*router.get('/scheduled_all', Validations.ensureAuthenticated, (req, res)=>{
+	if (req.user.userRole === 'systemAdmin'){
+	    res.redirect('/admin/scheduled_all');
 	}else{
-	    res.redirect('/users/newTicket');
+	    res.redirect('/users/scheduled_all');
+	}
+});*/
+router.get('/scheduled_cities', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/scheduled_cities');
+	} else {
+		res.redirect('/users/scheduled_cities');
+	}
+});
+router.get('/calendar/selected', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/calendar/selected?city=' + req.query.city);
+	} else {
+		res.redirect('/users/calendar/selected?city=' + req.query.city);
 	}
 });
 
-router.get('/newTicket/failed', ensureAuthenticated, (req, res)=>{
-	req.flash('error_msg','No se pudo crear el ticket. Todos los campos no opcionales son requeridos.')
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newTicket');
-	}else{
-	    res.redirect('/users/newTicket');
-	}
-});
-
-router.get('/newTicket/success', ensureAuthenticated, (req, res)=>{
-	req.flash('success_msg','Ticket creado con éxito.')
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/tickets');
-	}else{
-	    res.redirect('/users/tickets');
-	}
-});
-
-router.post('/newTicket', ensureAuthenticated, (req, res)=>{
-	var user = req.user, storeAdminSW;
-	var form = new formidable.IncomingForm();
-	form.parse(req, function(err, fields, files) {
-		let body = fields, datenew= body.startdate.slice(-4)+"/"+body.startdate.substring(6,2)+"/"+body.startdate.substring(0,2),
-		contacts;
-
-		contacts = new Array();
-		//Adding the creator user as contact
-		contacts.push(req.user);
-
-		User.find({company_id: req.company_id}, (err, users)=>{	
-			for(let i=0;i<users.length;i++){
-				if(_.contains(users[i]))
-					console.log("Element contained");
-				else
-				contacts.push(users[i]);
-			}
-		});
-		var params={
-			ticketNumber: body.ticketNumber,
-			title: body.title,
-			startdate: new Date (datenew),
-			store_id: body.store,
-			priority: body.priority,
-			contacts: contacts,
-			description: body.description,
-			categories: body.categories,
-			status: "Pendiente",
-			created_by: req.user.id,
-			modified_by: req.user.id	
-		}
-		var newTicket = new tickets(params);
-		console.log('newTicket: '+newTicket);
-		tickets.createTicket(newTicket, (err, ticket)=>{
-			if (err) {
-				console.log(err);
-				req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
-				res.redirect('/newTicket/failed');
-			}else{									
-				(user.userType === "storeAdmin")? storeAdminSW = true : storeAdminSW=false;
-				res.redirect('/newTicket/success');				
-			}
-		});
-	})	
-});
 // 2. Ver Tickets
-router.get('/tickets', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/tickets');
-	}else{
-	    res.redirect('/users/tickets?target='+req.query.target);
+
+//Preventive
+router.get('/tickets_preventive', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/tickets_preventive');
+	} else {
+		res.redirect('/users/tickets_preventive?target=' + req.query.target);
+	}
+});
+//Corrective
+router.get('/list_tickets', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/list_tickets');
+	} else {
+		res.redirect('/users/list_tickets?target=' + req.query.target);
 	}
 });
 
-router.get('/tickets/edit/success', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/tickets/edit/success');
-	}else{
-	    res.redirect('/users/tickets/edit/success');
+router.get('/tickets/edit/success', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/tickets/edit/success');
+	} else {
+		res.redirect('/users/tickets/edit/success');
 	}
 });
 
-router.get('/tickets/edit/failed', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/tickets/edit/failed');
-	}else{
-	    res.redirect('/users/tickets/edit/failed');
+router.get('/tickets/edit/failed', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/tickets/edit/failed');
+	} else {
+		res.redirect('/users/tickets/edit/failed');
 	}
 });
 
-router.post('/tickets/edit', ensureAuthenticated, (req, res)=>{
-	if (req.body.ticketDesc != ""){
-		if (req.user.userType === 'systemAdmin'){
+router.post('/tickets/edit', Validations.ensureAuthenticated, (req, res) => {
+	if (req.body.ticketDesc != "") {
+		if (req.user.userRole === 'systemAdmin') {
 			res.redirect(307, '/admin/tickets/edit');
-		}else{
+		} else {
 			res.redirect(307, '/users/tickets/edit');
 		}
-	}else{
+	} else {
 		res.redirect('/tickets/edit/failed');
 	}
 });
 
 /* ---> TIENDAS <--- */
 // 1. Crear Tienda
-router.get('/newStore', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newStore');
-	}else{
-	    res.redirect('/users/newStore');
+router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/newStore');
+	} else {
+		res.redirect('/users/newStore');
 	}
 });
-router.post('/newStore', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect(307,'/admin/newStore');
+router.post('/newStore', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect(307, '/admin/newStore');
 		console.log("Creación de Tienda en Proceso para Administrador. Espere...");
-	}else{
-	    res.redirect(307,'/users/newStore');
+	} else {
+		res.redirect(307, '/users/newStore');
 		console.log("Creación de Tienda en Proceso para Usuario. Espere...");
 	}
 });
-/*router.get('/store/edit', ensureAuthenticated, (req, res)=>{
+/*router.get('/store/edit', Validations.ensureAuthenticated, (req, res)=>{
 	storeID = req.query.id;
 	stores.findOne({_id: storeID}, (err, store)=>{
 		if (err) throw err;
 		res.render('')
 	})
-	if (req.user.userType === 'systemAdmin'){
+	if (req.user.userRole === 'systemAdmin'){
 	    res.redirect('');
 	}else{
 	    res.redirect('');
 	}
 });*/
-router.post('/store/edit', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect(307,'/admin/store/edit');
-	}else{
-	    res.redirect(307,'/users/store/edit');
+router.post('/store/edit', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect(307, '/admin/store/edit');
+	} else {
+		res.redirect(307, '/users/store/edit');
 	}
 });
 
 // 2. Ver Tiendas
-router.get('/stores', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/stores');
-	}else{
-	    res.redirect('/users/stores');
+router.get('/stores', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/stores');
+	} else {
+		res.redirect('/users/stores');
 	}
 });
 
 /* ---> ACTIVOS <--- */
 // 1. Crear Activo
-router.get('/newAsset', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newAsset');
-	}else{
-	    res.redirect('/users/newAsset');
+router.get('/newAsset', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/newAsset');
+	} else {
+		res.redirect('/users/newAsset');
 	}
 });
 // 2. Ver Activos
-router.get('/assets', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/assets');
-	}else{
-	    res.redirect('/users/assets');
+router.get('/assets', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/assets');
+	} else {
+		res.redirect('/users/assets');
 	}
 });
 
 /* ---> EMPLEADOS <--- */
 // 1. Crear Empleado
-router.get('/newEmployee', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newEmployee');
-	}else{
-	    res.redirect('/users/newEmployee');
+router.get('/newEmployee', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/newEmployee');
+	} else {
+		res.redirect('/users/newEmployee');
 	}
 });
 // 2. Ver Empleados
-router.get('/employees', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/employees');
-	}else{
-	    res.redirect('/users/employees');
+router.get('/employees', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/employees');
+	} else {
+		res.redirect('/users/employees');
 	}
 });
 
-router.post('/employee/edit', ensureAuthenticated, (req, res)=>{
+router.post('/employee/edit', Validations.ensureAuthenticated, (req, res) => {
 	console.log("llegó");
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect(307, '/admin/employee/edit');
-	}else{
-	    res.redirect(307, '/users/employee/edit');
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect(307, '/admin/employee/edit');
+	} else {
+		res.redirect(307, '/users/employee/edit');
 	}
 });
 
 /* ---> REPORTES <--- */
 // 1. Crear Reporte
-router.get('/newReport', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/newReport');
-	}else{
-	    res.redirect('/users/newReport');
+router.get('/newReport', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/newReport');
+	} else {
+		res.redirect('/users/newReport');
 	}
 });
 // 2. Ver Reportes
-router.get('/reports', ensureAuthenticated, (req, res)=>{
-	if (req.user.userType === 'systemAdmin'){
-	    res.redirect('/admin/reports');
-	}else{
-	    res.redirect('/users/reports');
+router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/reports');
+	} else {
+		res.redirect('/users/reports');
 	}
 });
 
 
 /* ---> OLD <--- */
-/*	router.get('/admin/customers/:customer/tickets', ensureAuthenticated, AdminUserFunction, (req, res) => {
+/*	router.get('/admin/customers/:customer/tickets', Validations.ensureAuthenticated, AdminUserFunction, (req, res) => {
 		let customer = req.params.customer;
 		company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 			company.findOne({companyName: customer},(err, cny)=>{
@@ -297,7 +277,7 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 					}
 					tickets.find({store_id: {$in: stres}}, (err, tks) => {
 						stores.populate(tks, {path: "store_id"}, (err, tkts)=>{
-							res.render('admin_customers_tickets', {userTypeAdmin: true, customer, customers, tkts});
+							res.render('admin_customers_tickets', {userRoleAdmin: true, customer, customers, tkts});
 						});										
 					});
 				});
@@ -306,16 +286,16 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 	});
 
 	// Admin Users
-	router.get('/admin/listUsers', ensureAuthenticated, AdminUserFunction, (req,res)=>{
+	router.get('/admin/listUsers', Validations.ensureAuthenticated, AdminUserFunction, (req,res)=>{
 		company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
-			User.find({userType:{$ne: "systemAdmin"}},(err, users)=>{
+			User.find({userRole:{$ne: "systemAdmin"}},(err, users)=>{
 				if (err) throw err;
-				res.render('1-admin/users_list', {userTypeAdmin: true, users, customers});
+				res.render('1-admin/users_list', {userRoleAdmin: true, users, customers});
 			});	
 		});
 	});
 
-	router.get('/admin/listUsers/editUser', ensureAuthenticated, AdminUserFunction, (req,res)=>{
+	router.get('/admin/listUsers/editUser', Validations.ensureAuthenticated, AdminUserFunction, (req,res)=>{
 		var user = req.user;
 		company.find({companyName: {$ne: "Default company"}},(err, customers) => {
 			cities.find({},(err, cits) => {
@@ -339,31 +319,31 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 							userDates.aprobMonth = userEdit.approvedOn.getMonth()+1
 							userDates.aprobDay = userEdit.approvedOn.getDate()
 						}
-						const selectedUserType={
+						const selecteduserRole={
 							storeAdmin: true,
 							storeEmp: false
 						};
-						if(userEdit.userType==="storeEmployee"){
-							selectedUserType.storeAdmin=false;
-							selectedUserType.storeEmp=true;
+						if(userEdit.userRole==="storeEmployee"){
+							selecteduserRole.storeAdmin=false;
+							selecteduserRole.storeEmp=true;
 						}
-						res.render('admin_users_edit', {userTypeAdmin: true, userEdit, customers, cits, strs, userDates, selectedUserType});
+						res.render('admin_users_edit', {userRoleAdmin: true, userEdit, customers, cits, strs, userDates, selecteduserRole});
 					});
 				});
 			});
 		});
 	});
 
-	router.get('/admin/usersAuth', ensureAuthenticated, AdminUserFunction, (req, res)=>{
+	router.get('/admin/usersAuth', Validations.ensureAuthenticated, AdminUserFunction, (req, res)=>{
 		company.find({companyName: {$ne: "Default company"}}, (err, customers) => {
 			User.find({userApproval: false}, (err, usrs) =>{
-				res.render('admin_users_approval', {userTypeAdmin: true, customers, usrs});
+				res.render('admin_users_approval', {userRoleAdmin: true, customers, usrs});
 			});		
 		});
 	});
 
 	// Admin Edit tickets
-	router.post('/admin/customers/ticket/edit', ensureAuthenticated, AdminUserFunction, (req, res)=>{
+	router.post('/admin/customers/ticket/edit', Validations.ensureAuthenticated, AdminUserFunction, (req, res)=>{
 		let str = req.rawHeaders[19];
 		let st1 = str.search("/customers")+"/customers".length+1;
 		let st2 = str.search("/tickets");
@@ -377,7 +357,7 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 		});
 	});
 
-	router.post('/admin/approveUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
+	router.post('/admin/approveUser/:username', Validations.ensureAuthenticated, AdminUserFunction, (req, res)=>{
 	let user = req.params.username;
 		User.findOneAndUpdate({username: user}, {$set: {userApproval: true}, $currentDate: { "approvedOn": true }}, (err, usr)=>{
 				if (err) console.log(err);
@@ -388,11 +368,11 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 				mailer.mailOptions.name = usr.name;
 				mailer.mailOptions.lastname = usr.lastname;
 				mailer.sendEmail(mailer.params, mailer.service, mailer.mailOptions);
-				res.render('admin_users_approval', {userTypeAdmin: true, });
+				res.render('admin_users_approval', {userRoleAdmin: true, });
 		});
 	});
 
-	router.post('/admin/edituser/:userId', ensureAuthenticated, AdminUserFunction, (req,res)=>{
+	router.post('/admin/edituser/:userId', Validations.ensureAuthenticated, AdminUserFunction, (req,res)=>{
 		let body = req.body
 		delete body["style-0"];
 		var approve;
@@ -406,10 +386,10 @@ router.get('/reports', ensureAuthenticated, (req, res)=>{
 		});
 	});
 
-	router.post('/admin/deleteUser/:username', ensureAuthenticated, AdminUserFunction, (req, res)=>{
+	router.post('/admin/deleteUser/:username', Validations.ensureAuthenticated, AdminUserFunction, (req, res)=>{
 	let user = req.params.username;
 		User.find({ username:user }).remove().exec();
-		res.render('admin_users_approval', {userTypeAdmin: true});
+		res.render('admin_users_approval', {userRoleAdmin: true});
 	});
 */
 
@@ -423,7 +403,7 @@ router.post('/register', function(req, res){
 	var password2 = req.body.password2;
 	var name = req.body.name;
   	var lastname = req.body.lastname;
-  	var userTypebody = req.body.userType;
+  	var userRolebody = req.body.userRole;
 	var localId = req.body.localId;
   	var companyId = req.body.companyId;
 	var phone_number = req.body.phone_number;
@@ -447,7 +427,7 @@ router.post('/register', function(req, res){
 			password: password,
       		name: name,
       		lastname: lastname,
-			userType: userTypebody,
+			userRole: userRolebody,
 			localId: localId,
 			companyId: companyId,
 			phone:phone_number
@@ -458,11 +438,11 @@ router.post('/register', function(req, res){
 			errors:errors
 		});
 	} else {
-		if(userTypebody === "systemAdmin"){
+		if(userRolebody === "systemAdmin"){
 				usrParams.pin = 9999;
 				newUser = new User.systemAdmin(usrParams);
 		}else{
-				if (userTypebody === "storeAdmin"){
+				if (userRolebody === "storeAdmin"){
 					newUser = new User.storeAdmin(usrParams);
 				}else {
 						newUser = new User.storeEmployee(usrParams);
@@ -546,20 +526,20 @@ passport.deserializeUser(function(id, done) {
   });
 });*/
 
-function ensureAuthenticated(req, res, next){
-	if(req.isAuthenticated()){
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
 		return next();
 	} else {
-		res.render('login', {layout: 'auth', login: false});
+		res.render('login', { layout: 'auth', login: false });
 	}
 }
 
-function AdminUserFunction (req, res,next){
-	if(req.user.userType==='systemAdmin'){
+function AdminUserFunction(req, res, next) {
+	if (req.user.userRole === 'systemAdmin') {
 		console.log("HELLO ADMIN!");
 		return next();
-	}else{
-		res.render('adminAccess_only',{layout: 'accessDenied'});
+	} else {
+		res.render('adminAccess_only', { layout: 'accessDenied' });
 		console.log("GO AWAY IMPOSTOR!");
 	}
 	return next();
