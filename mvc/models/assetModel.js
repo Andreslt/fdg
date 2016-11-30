@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var AssetModelSchema = mongoose.Schema({
-    modelName: {
+    name: {
         type: String, 
         required: true
     },

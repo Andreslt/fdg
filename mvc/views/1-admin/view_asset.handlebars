@@ -1,0 +1,246 @@
+<!-- MAIN PANEL -->
+<div role="main">
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/tickets">Activos</a></li>
+            <li>Crear activo</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <span class="ribbon-button-alignment pull-right">
+					<a href="/tickets/{{ticketType}}/list"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Tickets</span></a>
+        </span>
+        <!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+    </div>
+    <!-- END RIBBON -->
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <h1 class="page-title txt-color-blueDark">
+
+                    <!-- PAGE HEADER -->
+                    <i class="fa-fw fa fa-pencil-square-o"></i> Nuevo
+                    <span>>  
+							Activo
+						</span>
+                </h1>
+            </div>
+
+        </div>
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- START ROW -->
+
+            <div class="row">
+
+						<!-- NEW WIDGET START -->
+						<article class="col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget well" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+								<header>
+									<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+									<h2>My Data </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body">
+										
+				
+										<ul id="myTab3" class="nav nav-tabs tabs-pull-right bordered">
+											<li class="pull-right">
+												<a href="#l4" data-toggle="tab">Proveedores</a>
+											</li>                                              
+											<li class="pull-right">
+												<a href="#l3" data-toggle="tab">Historial</a>
+											</li>  
+											<li class="pull-right">
+												<a href="#l2" data-toggle="tab">Especificaciones</a>
+											</li>                                            
+											<li class="active">
+												<a href="#l1" data-toggle="tab">General</a>
+											</li>                                                                                                                                      
+										</ul>
+				
+										<div id="myTabContent3" class="tab-content padding-10">
+											<div class="tab-pane fade in active" id="l1">
+
+											</div>
+											<div class="tab-pane fade" id="l2">
+												<p>
+													l2 - Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+												</p>
+											</div>
+											<div class="tab-pane fade" id="l3">
+												<p>
+													l3 - Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+												</p>
+											</div>
+											<div class="tab-pane fade" id="l4">
+												<p>
+													l4 - Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+												</p>
+											</div>                                            
+										</div>
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+								
+						</article>
+						<!-- WIDGET END -->
+
+            </div>
+
+            <!-- END ROW -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+    <!-- Record Info Modal -->
+    <form method="post" action="/admin/newRecord">
+        <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <input type="hidden" name="ticket_id" value="{{ticket.id}}">
+                    <input type="hidden" id="edit-record-id" name="recordId">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+                        <h4 class="modal-title" id="myModalLabel">Detalle del Acta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--Acta No.-->
+                        <div class="row">
+                            <div class="col-lg-12" style="padding-left:15px;">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="edit-record-number"><small><b>Acta No.:</b></small></label>
+                                        <input style="font-size:12px; padding: 5px; width: 120px;" type="text" class="form-control" placeholder="Acta No." required="true"
+                                            name="recordNum" id="edit-record-number" disabled value="{{recordNumber}}" align="center"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="edit-asset-number"><small><b>No. Equipo:</b></small></label>
+                                        <input type="text" class="form-control" placeholder="No. Equipo" name="assetNum" id="edit-asset-number" disabled align="center"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="edit-adminRepresentative"><small><b>Representante:</b></small></label>
+                                    <input type="text" class="form-control" placeholder="Representante" name="adminRepresentative" id="edit-adminRepresentative"
+                                        disabled value="{{representative.username}} - {{representative.name}} {{representative.lastname}}"
+                                        align="center" />
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <label for="edit-custRepresentative"><small style="padding-left: 15px;"><b>Cliente:</b></small></label>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-lg-12">
+                                            <label class="select" style="width:260px">
+											<select name="custRepresentative" id="custRepresentative" style="display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;line-height: 1.42857143; color: #555;">
+												<option value="0" selected="" disabled="">Seleccionar usuario que atendió visita</option>
+												{{#each costumers}}
+													<option value="{{_id}}">{{username}} - {{name}} {{lastname}}</option>
+												{{/each}}
+											</select> <i></i> </label></section>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Requerimiento del cliente-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="openningDate"><small><b>Requerimiento del cliente:</b></small></label>
+                                    <textarea class="form-control" name="customerReq" placeholder="Ingrese el requerimiento del cliente" rows="1"></textarea>
+                                </div>
+                            </div>
+                            <!--Situación Encontrada-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="openningDate"><small><b>Situación Encontrada:</b></small></label>
+                                    <textarea class="form-control" name="currentState" placeholder="Ingrese la situación encontrada" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <!--Acciones Correctivas-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="openningDate"><small><b>Acciones Correctivas:</b></small></label>
+                                    <textarea class="form-control" name="correctiveActions" placeholder="Ingrese las acciones correctivas" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <!--Sugerencias-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="openningDate"><small><b>Sugerencias:</b></small></label>
+                                    <textarea class="form-control" name="suggestions" placeholder="Ingrese las sugerencias" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+                        <button id="submitModal" type="submit" class="btn btn-primary">
+											Guardar
+										</button>
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </form>
+</div>
+<!-- END MAIN PANEL -->

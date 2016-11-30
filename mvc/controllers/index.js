@@ -151,7 +151,7 @@ router.post('/tickets/edit', Validations.ensureAuthenticated, (req, res) => {
 
 /* ---> TIENDAS <--- */
 // 1. Crear Tienda
-router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
+/*router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
 	if (req.user.userRole === 'systemAdmin') {
 		res.redirect('/admin/newStore');
 	} else {
@@ -167,7 +167,7 @@ router.post('/newStore', Validations.ensureAuthenticated, (req, res) => {
 		console.log("Creación de Tienda en Proceso para Usuario. Espere...");
 	}
 });
-/*router.get('/store/edit', Validations.ensureAuthenticated, (req, res)=>{
+router.get('/store/edit', Validations.ensureAuthenticated, (req, res)=>{
 	storeID = req.query.id;
 	stores.findOne({_id: storeID}, (err, store)=>{
 		if (err) throw err;
@@ -178,7 +178,7 @@ router.post('/newStore', Validations.ensureAuthenticated, (req, res) => {
 	}else{
 	    res.redirect('');
 	}
-});*/
+});
 router.post('/store/edit', Validations.ensureAuthenticated, (req, res) => {
 	if (req.user.userRole === 'systemAdmin') {
 		res.redirect(307, '/admin/store/edit');
@@ -196,9 +196,17 @@ router.get('/stores', Validations.ensureAuthenticated, (req, res) => {
 	}
 });
 
+router.get('/stores/store_details', Validations.ensureAuthenticated, (req, res) => {
+	if (req.user.userRole === 'systemAdmin') {
+		res.redirect('/admin/stores');
+	} else {
+		res.redirect('/users/stores');
+	}
+});*/
+
 /* ---> ACTIVOS <--- */
 // 1. Crear Activo
-router.get('/newAsset', Validations.ensureAuthenticated, (req, res) => {
+/*router.get('/newAsset', Validations.ensureAuthenticated, (req, res) => {
 	if (req.user.userRole === 'systemAdmin') {
 		res.redirect('/admin/newAsset');
 	} else {
@@ -212,7 +220,7 @@ router.get('/assets', Validations.ensureAuthenticated, (req, res) => {
 	} else {
 		res.redirect('/users/assets');
 	}
-});
+});*/
 
 /* ---> EMPLEADOS <--- */
 // 1. Crear Empleado

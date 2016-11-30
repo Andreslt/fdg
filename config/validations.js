@@ -1,5 +1,6 @@
 'use strict';
 var UserModule = require('../mvc/models/user').user;
+const Asset = require('../mvc/models/asset');
 
 module.exports.ensureAuthenticated = (req, res, next)=>{
 	if(req.isAuthenticated()){
@@ -51,8 +52,19 @@ module.exports.numberGenerator = (useCase) => {
 		w = 'MANCOR'
 	else if (useCase === 'preventive')
 		w = 'MANPRE'
-
+	else if (useCase === 'Asset')
+		w = 'EQ'		
+	else if (useCase === 'local_Asset')
+		w = 'LRef'
+	else if (useCase === 'ref_Asset')
+		w = 'REq'		
 	return w+"-"+ new Date().getFullYear()+new Date().getMonth()+new Date().getDate()+ "-" +  makeid()
+}
+
+module.exports.localAssetNum = (store) =>{
+	Asset.find({store_id: store}, (err, assets)=>{
+		return assets.length;
+	})
 }
 
 function makeid()
@@ -126,6 +138,10 @@ module.exports.setDates= (date) =>{
 module.exports.getSpanishMonth = (date) => {
 	let dateArray = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 	return dateArray[date - 1]
+}
+
+module.exports.phoneDecoded = (phone) =>{
+	return phone.substring(1,4)+phone.substring(6,9)+phone.substring(10,14)
 }
 
 module.exports.formatAMPM = (date) => {

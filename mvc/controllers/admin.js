@@ -239,7 +239,10 @@ router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
 // Stores
 router.get('/stores', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
-	res.render('1-admin/list_stores', { layout: 'adminLayout', storeAdminSW });
+	Store.find({storeName: {$ne: 'Default store'}}).populate('company_id').populate('city_id').populate('representative').exec((err, stores)=>{
+		if (err) console.log(err);
+		res.render('1-admin/list_stores', { layout: 'adminLayout', storeAdminSW, stores });
+	});	
 });
 
 // New asset
@@ -295,17 +298,29 @@ router.get('/usersApproved', Validations.ensureAuthenticated, Validations.system
 				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
 			});
 		});
-	/*	User.find({ userApproval: true, userRole: { $ne: 'systemAdmin' } }).populate('store_id').populate('company_id').exec((err, usuarios) => {
-			Store.find({ storeName: { $ne: 'Default store' } }).populate('city_id').exec((err, stores) => {
-				let users = new Array();
+/*		User.find({ userApproval: true, userRole: { $ne: 'systemAdmin' } }).exec((err, usuarios) => {
+			Store.find({ storeName: { $ne: 'Default store' } }).populate('company_id').populate('city_id').exec((err, stores) => {
+				var cont = 0;
 				for(let i=0;i<usuarios.length;i++){
-					users.push(usuarios[i]);
-	
-					users[i].city_id
+					for(let j=0;j<stores.length;j++){
+						cont=cont+1;
+						console.log('cont: '+cont);
+						console.log('usuarios[i].store_id: '+usuarios[i].store_id);
+						console.log('stores[j].id: '+stores[j].id);						
+						if (usuarios[i].store_id == stores[j].id){
+							console.log('stores[j].city_id.city: '+stores[j].city_id.city);
+							console.log('stores[j].company_id.companyName: '+stores[j].company_id.companyName);
+							usuarios[i]['nuevaProp']="hola mundo";
+							usuarios[i].city=stores[j].city_id.city;
+							usuarios[i].company=stores[j].company_id.companyName;
+							console.log('usuarios: '+usuarios[i]);
+						}
+					}
 				}
+				console.log('usuarios: '+usuarios);
 				if (err) console.log(err)
-				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
-			})
+				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, usuarios, stores });
+			});
 		});*/
 });
 

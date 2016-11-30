@@ -1,24 +1,26 @@
-		<!-- MAIN PANEL -->
-		<div role="main">
+<!-- MAIN PANEL -->
+<div role="main">
 
-			<!-- RIBBON -->
-			<div id="ribbon">
+	<!-- RIBBON -->
+	<div id="ribbon">
 
-				<span class="ribbon-button-alignment"> 
+		<span class="ribbon-button-alignment"> 
 					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
 						<i class="fa fa-refresh"></i>
-					</span> 
-				</span>
+					</span>
+		</span>
 
-				<!-- breadcrumb -->
-				<ol class="breadcrumb">
-					<li><a href="/home">Inicio</a></li><li><a href="/stores">Tiendas</a></li><li>Nueva Tienda</li>
-				</ol>
-				<!-- end breadcrumb -->
-				<span class="ribbon-button-alignment pull-right">
-					<a href="/tickets"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Tickets</span></a>
-				</span> 				
-				<!-- You can also add more buttons to the
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li><a href="/dashboard">Inicio</a></li>
+			<li><a href="/stores">Ver tiendas</a></li>
+			<li>Crear Tienda</li>
+		</ol>
+		<!-- end breadcrumb -->
+		<span class="ribbon-button-alignment pull-right">
+                    <a href="/stores"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Ver Tiendas</span></a>
+		</span>
+		<!-- You can also add more buttons to the
 				ribbon for further usability
 
 				Example below:
@@ -29,195 +31,124 @@
 				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
 				</span> -->
 
+	</div>
+	<!-- END RIBBON -->
+
+	<!-- MAIN CONTENT -->
+	<div id="content">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark">
+					<i class="fa fa-table fa-fw "></i> Tienda
+					<span>> 
+                                Crear Nueva
+							</span>
+				</h1>
 			</div>
-			<!-- END RIBBON -->
+		</div>
+		<!-- Widget ID (each widget will need unique ID)-->
+		<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
 
-			<!-- MAIN CONTENT -->
-			<div id="content">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+				<h2>Detalles de Tienda</h2>
 
+			</header>
 
-			<div class="row">
-				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-					<h1 class="page-title txt-color-blueDark">
-						
-						<!-- PAGE HEADER -->
-						<i class="fa-fw fa fa-pencil-square-o"></i> 
-							Tienda
-						<span>>  
-							Crear nueva
-						</span>
-					</h1>
+			<!-- widget div-->
+			<div>
+
+				<!-- widget edit box -->
+				<div class="jarviswidget-editbox">
+					<!-- This area used as dropdown edit box -->
+
 				</div>
-				
-			</div>
+				<!-- end widget edit box -->
 
-			<!-- widget grid -->
-			<section id="widget-grid" class="">
+				<!-- widget content -->
+				<div class="widget-body no-padding">
 
+					<form id="order-form" class="smart-form" method="POST" action="/stores/new">
+						<header style="height: 30px;">
+							Información básica de Tienda
+						</header>
 
-				<!-- START ROW -->
-
-				<div class="row">
-
-					<!-- NEW COL START -->
-					<article class="col-sm-12 col-md-12 col-lg-12">
-						
-						<!-- Widget ID (each widget will need unique ID)-->
-						<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
-							<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-								
-								data-widget-colorbutton="false"	
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true" 
-								data-widget-sortable="false"
-								
-							-->
-							<header>
-								<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-								<h2>Crear Tienda </h2>				
-								
-							</header>
-
-							<!-- widget div-->
-							<div>
-								
-								<!-- widget edit box -->
-								<div class="jarviswidget-editbox">
-									<!-- This area used as dropdown edit box -->
-									
-								</div>
-								<!-- end widget edit box -->
-								
-								<!-- widget content -->
-								<div class="widget-body no-padding">
-									
-									<form id="order-form" class="smart-form" method ="post" action="/newStore">
-										<header>
-											Información de la Tienda
-										</header>
-
-										<fieldset>
-											<div class="row">
-												<label class="col-md-1 control-label" style= "margin-left: 20px;width: 50px;">Nombre:</label>	
-												<section class="col col-5" style= "padding-left: 20px;">
-													<label class="input"> <i class="icon-append fa fa-briefcase"></i>
-														<input type="text" id="storeName" name="storeName" placeholder="Ingrese el nombre con el que desea identificar la tienda.">
+						<fieldset>
+							<input type="hidden" name="storeID" value="{{store.id}}">
+							<div class="row">
+								<section class="col col-6">
+									<label for="name">Nombre</label>
+									<label class="input"> <i class="icon-append fa fa-institution"></i>                                                        
+														<input type="text" name="storeName" required placeholder="Ingrese el nombre de la tienda">
 													</label>
-												</section>
-												<label class="col-md-1 control-label" style= "margin-left: 10px;margin-top: 5px;width: 60px;">Ciudad:</label>
-												<section class="col col-3">
-													<label class="select">
-														<select name="city_id">
-														<option value="0" selected="" disabled>Seleccione la ciudad</option>
-															{{#each cities}}
-																<option value="{{id}}">{{city}}</option>
-															{{/each}}
+								</section>
+								<section class="col col-6">
+									<label for="name">Ciudad</label>
+									<label class="select">
+														<select name="city_id" required id="store_city_new">
+															<option value="0" selected="" disabled="">Seleccione la ciudad de la tienda</option>
+                                                            {{#each cities}}
+                                                                <option value="{{id}}">{{city}}</option>
+                                                            {{/each}}
 														</select> <i></i> </label>
-												</section>		                                                
-											</div>
-
-											<div class="row">
-												<label class="col-md-1 control-label" style= "margin-left: 20px;width: 60px;">Dirección:</label>												
-												<section class="col col-3">
-													<label class="input"> <i class="icon-append fa fa-user"></i>
-														<input type="text" id="address" name="address" placeholder="Ingrese la dirección">
-													</label>
-												</section>                                              
-												<label class="col-md-1 control-label" style= "margin-left: 20px;width: 60px;">Telefono:</label>												
-												<section class="col col-3">                                          
-													<label class="input"> <i class="icon-append fa fa-user"></i>
-														<input type="text" id="phone" data-mask="(999)999-9999" name="phone" placeholder="Ingrese el teléfono">
-													</label>
-												</section>                                                
-												<label class="col-md-1 control-label" style= "margin-left: 10px;width: 60px;">Email:</label>												
-												<section class="col col-3">                                          
-													<label class="input"> <i class="icon-append fa fa-user"></i>
-														<input type="text" id="email"  name="email" placeholder="Ingrese el correo electrónico">
-													</label>
-												</section>   																							
-											</div>																																																													
-										</fieldset>
-										<div class="note" class="col-md-3 control-label" style= "margin-left: 20px">
-											<strong>*</strong> Todos los campos son requeridos.
-										</div>										
-										{{#if systemAdmin}}
-										<fieldset>
-										<legend>
-											Administrar Ticket
-										</legend>
-										<label class="col-md-1 control-label" style= "margin-left: 10px;margin-top: 5px;width: 60px;">Estado:</label>											
-											<div class="row">
-												<section class="col col-5">
-													<label class="select">
-														<select name="interested">
-															<option value="0" selected="" disabled="">Estado del Ticket</option>
-															<option value="1">Pendiente</option>
-															<option value="2">Asignado</option>
-															<option value="3">Finalizado</option>
-															<option value="4">Cancelado</option>
-														</select> <i></i> </label>
-												</section>
-												<label class="col-md-1 control-label" style= "margin-left: 5px;margin-top: 5px;width: 60px;">Asignar a:</label>
-												<section class="col col-5">
-													<label class="select">
-														<select name="budget">
-															<option value="0" selected="" disabled="">Budget</option>
-															<option value="1">less than 5000$</option>
-															<option value="2">5000$ - 10000$</option>
-															<option value="3">10000$ - 20000$</option>
-															<option value="4">more than 20000$</option>
-														</select> <i></i> </label>
-												</section>
-											</div>
-
-											<section class="col col-4">
-												<label>Prioridad:</label>	
-												<div class="inline-group">
-													<label class="radio">
-														<input type="radio" name="radio-inline" checked="">
-														<i></i>Alta</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>Media</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>Baja</label>
-												</div>
-											</section>
-										</fieldset>
-										{{/if}}
-										<footer>
-											<button type="submit" class="btn btn-primary">
-												Guardar
-											</button>
-										</footer>
-									</form>
-
-								</div>
-								<!-- end widget content -->
-								
+								</section>
 							</div>
-							<!-- end widget div -->
-							
-						</div>
-						<!-- end widget -->				
 
-					</article>
-					<!-- END COL -->	
+							<div class="row">
+								<section class="col col-6">
+									<label for="name">Correo Electrónico</label>
+									<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+														<input type="email" name="email" required placeholder="Ingrese el correo electrónico de la tienda">
+													</label>
+								</section>
+								<section class="col col-6">
+									<label for="name">Teléfono</label>
+									<label class="input"> <i class="icon-append fa fa-phone"></i>
+														<input type="tel" name="phoneNew" data-mask="(999) 999-9999" placeholder="Ingrese el teléfono de la tienda">
+													</label>
+								</section>
+							</div>
+
+							<div class="row">
+								<section class="col col-6">
+									<label for="address">Dirección</label>
+									<label class="input"> <i class="icon-append fa fa-exchange"></i>
+														<input type="address" name="address" required placeholder="Ingrese la dirección de la tienda">
+													</label>
+								</section>
+								<section class="col col-6">
+									<label for="company_id">Compañía</label>
+									<label class="select">
+									<select name="company_id" required id="store_company">
+										<option value="0" selected="" disabled="">Seleccione la compañía a la cual pertenece la tienda</option>
+                                            {{#each companies}}
+                                               <option value="{{id}}">{{companyName}}</option>
+                                             {{/each}}
+									</select> <i></i> </label>
+								</section>
+							</div>
+						</fieldset>
+						<footer>
+							<button type="submit" class="btn btn-primary">
+									    Guardar
+							</button>						
+							<a href="/stores"><span class="btn btn-default">
+                                        Cancelar
+                            </span></a>
+						</footer>
+					</form>
+
 				</div>
-
-				<!-- END ROW -->
-
-			</section>
-			<!-- end widget grid -->
+				<!-- end widget content -->
 
 			</div>
-			<!-- END MAIN CONTENT -->
+			<!-- end widget div -->
 
 		</div>
-		<!-- END MAIN PANEL -->
+		<!-- end widget -->
+	</div>
+	<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

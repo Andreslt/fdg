@@ -14,12 +14,13 @@ const formidable = require('express-formidable');
 // Controllers
 const index = require('./mvc/controllers/index')
 const routes = index.router;
-/*const logger = index.logger;*/
+
 const users = require('./mvc/controllers/users');
 const admin = require('./mvc/controllers/admin');
 const oauth = require('./mvc/controllers/oauth');
 const tickets = require('./mvc/controllers/tickets');
-// const routes = require('./mvc/controllers/routes');
+const stores = require('./mvc/controllers/stores');
+const assets = require('./mvc/controllers/assets');
 
 // Models
 const User = require('./mvc/models/user');
@@ -102,8 +103,10 @@ var hbsEngine = exphbs.create({
           return phone_number.substring(start,end);
         },
         formatPhone: (phone)=>{
+          if(phone !== null){
           let phone_number = phone.toString();
-          return "(" + phone_number.substring(0,3) + ")" + phone_number.substring(3,6) + "-" + phone_number.substring(6,10);
+          return "(" + phone_number.substring(0,3) + ")" + phone_number.substring(3,6) + "-" + phone_number.substring(6,10);}
+          else return "";
         },
         comparation: (string1, string2)=>{
           if(string1===string2)
@@ -216,6 +219,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin);
 app.use('/tickets', tickets);
+app.use('/stores', stores);
+app.use('/assets', assets);
 app.use('/oauth', oauth);
 
 //Not found pages

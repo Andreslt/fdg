@@ -1,0 +1,499 @@
+<!-- MAIN PANEL -->
+<div role="main">
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/assets">Activos</a></li>
+            <li>Crear activo</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <span class="ribbon-button-alignment pull-right">
+					<a href="/assets"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Activos</span></a>
+        </span>
+
+    </div>
+    <!-- END RIBBON -->
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <h1 class="page-title txt-color-blueDark">
+
+                    <!-- PAGE HEADER -->
+                    <i class="fa-fw fa fa-pencil-square-o"></i> Nuevo
+                    <span>>  
+							Activo
+						</span>
+                </h1>
+            </div>
+
+        </div>
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- START ROW -->
+
+            <div class="row">
+
+                <!-- NEW WIDGET START -->
+                <article class="col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget well" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false"
+                        data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false"
+                        data-widget-sortable="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                            <h2>My Data </h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+
+                                <ul id="myTab3" class="nav nav-tabs tabs-pull-right bordered">
+                                    <li class="pull-right">
+                                        <a href="#l2" data-toggle="tab">Referencia</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#l1" data-toggle="tab">General</a>
+                                    </li>
+                                </ul>
+
+                                <div id="myTabContent3" class="tab-content margin-10" style=" border: 0px;">
+                                    <div class="tab-pane fade in active" id="l1">
+                                        <!-- NEW COL START -->
+                                        <article class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px">
+                                            <!-- Widget ID (each widget will need unique ID)-->
+                                            <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                                                <header>
+                                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                                    <h2>Registration form </h2>
+
+                                                </header>
+
+                                                <!-- widget div-->
+                                                <div>
+
+                                                    <!-- widget edit box -->
+                                                    <div class="jarviswidget-editbox">
+                                                        <!-- This area used as dropdown edit box -->
+
+                                                    </div>
+                                                    <!-- end widget edit box -->
+
+                                                    <!-- widget content -->
+                                                    <div class="widget-body no-padding">
+
+                                                        <form id="asset-form" action="/assets/asset/new" method="POST" class="smart-form" enctype="multipart/form-data">
+
+                                                            <fieldset>
+                                                                <div style="padding: 1px; margin-bottom:25px; border-bottom: 1px dashed rgba(0,0,0,.2); ">
+                                                                    <div class="row">
+                                                                        <section class="col col-lg-12" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;font-size: 16px;">
+                                                                            Detalles del Activo
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Número de activo</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-slack"></i>
+                                                                            <input type="text" name="asset_number" placeholder="Número del activo" value="{{assetNum}}">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Nombre</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-briefcase"></i>
+                                                                            <input type="text" name="asset_name" placeholder="Nombre del activo">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Estado</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="asset_status">
+                                                                                <option value="0" selected="" disabled="">Seleccione el estado del activo</option>
+                                                                                <option value="active">Activo</option>
+                                                                                <option value="damaged">Averiado</option>
+                                                                                <option value="discontinued">Descontinuado</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <section class="col col-2">
+                                                                        <label for="name">Código en tienda</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-dot-circle-o"></i>
+                                                                            <input type="text" style="padding-left:50px" id="asset_localcode" name="asset_localcode" placeholder="Código activo">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Tienda</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select id="store_id" name="store_id">
+                                                                                <option value="0" selected="" disabled="">Seleccione la referencia del activo</option>
+                                                                                {{#each stores}}
+                                                                                    <option value="{{id}}">{{storeName}}</option>
+                                                                                {{/each}}
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-5">
+                                                                        <label for="name">Referencia</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="asset_reference">
+                                                                                <option value="0" selected="" disabled="">Seleccione la referencia del activo</option>
+                                                                                {{#each assetRefs}}
+                                                                                    <option value="{{id}}">{{number}} - {{brand}} -{{model}}</option>
+                                                                                {{/each}}
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+                                                            </fieldset>
+
+                                                            <fieldset>
+                                                                <section>
+                                                                    <label for="photo">Subir Foto</label>
+                                                                    <div class="input input-file">
+                                                                        <span class="button"><input id="file2" type="file" multiple name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</span>
+                                                                        <input type="text" placeholder="Adjuntar foto" readonly="">
+                                                                    </div>
+                                                                </section>
+                                                            </fieldset>
+                                                            <footer>
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Guardar Activo
+                                                                </button>
+                                                            </footer>
+                                                        </form>
+
+                                                    </div>
+                                                    <!-- end widget content -->
+
+                                                </div>
+                                                <!-- end widget div -->
+
+                                            </div>
+                                            <!-- end widget -->
+                                        </article>
+                                        <!-- END COL -->
+                                    </div>
+                                    <div class="tab-pane fade" id="l2">
+                                        <!-- NEW COL START -->
+                                        <article class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px">
+                                            <!-- Widget ID (each widget will need unique ID)-->
+                                            <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                                                <!-- widget div-->
+                                                <div>
+
+                                                    <!-- widget edit box -->
+                                                    <div class="jarviswidget-editbox">
+                                                        <!-- This area used as dropdown edit box -->
+
+                                                    </div>
+                                                    <!-- end widget edit box -->
+
+                                                    <!-- widget content -->
+                                                    <div class="widget-body no-padding">
+
+                                                        <form id="assetref-form" action="/assets/ref/new" method="POST" class="smart-form">
+
+                                                            <fieldset>
+                                                                <div style="padding: 1px; margin-bottom:25px; border-bottom: 1px dashed rgba(0,0,0,.2); ">
+                                                                    <div class="row">
+                                                                        <section class="col col-lg-12" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;font-size: 16px;">
+                                                                            Detalles de Referencia
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Número</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                                                                            <input type="text" name="ref_number" placeholder="Número de referencia" value="{{refNum}}">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-8">
+                                                                        <label for="name">Descripción</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-briefcase"></i>
+                                                                            <input type="text" name="ref_description" placeholder="Descripción de referencia">
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Marca</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_brand">
+                                                                                <option value="0" selected="" disabled="">Seleccione la marca de la referencia</option>
+                                                                                <option value="1">Activo</option>
+                                                                                <option value="2">Averiado</option>
+                                                                                <option value="3">Descontinuado</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Modelo</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_model" required>
+                                                                                <option value="0" selected="" disabled="">Seleccione el modelo de la referencia</option>
+                                                                                <option value="1">Activo</option>
+                                                                                <option value="2">Averiado</option>
+                                                                                <option value="3">Descontinuado</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Tipo</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_type" required>
+                                                                                <option value="0" selected="" disabled="">Seleccione el tipo de referencia</option>
+                                                                                <option value="1">Activo</option>
+                                                                                <option value="2">Averiado</option>
+                                                                                <option value="3">Descontinuado</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <h4>Ficha Técnica</h4><br>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4 col-md-2 col-lg-2">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Potencia</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_power" name="ref_power" class="form-control spinner ui-spinner-input" value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_power_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_power_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Unidades</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_powerunits">
+                                                                                <option value="0" selected="" disabled="">Seleccione la unidad de medida</option>
+                                                                                <option value="Wt">Watts</option>
+                                                                                <option value="Kw">Kilowats</option>
+                                                                                <option value="Bt">BTU</option>
+                                                                                <option value="Mw">Megawats</option>                                
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <div class="col-sm-1 col-md-1 col-lg-1">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Alto</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_height" name="ref_height" class="form-control spinner ui-spinner-input" value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_height_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_height_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-1 col-md-1 col-lg-1">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Largo</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_large" name="ref_large" class="form-control spinner ui-spinner-input" value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_large_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_large_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-1 col-md-1 col-lg-1">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Ancho</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_width" name="ref_width" class="form-control spinner ui-spinner-input" value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_width_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_width_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <section class="col col-3">
+                                                                        <label for="name">Unidades</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_dimensionunits">
+                                                                                <option value="0" selected="" disabled="">Seleccione la unidad de medida</option>
+                                                                                <option value="Cm">Centimetros</option>
+                                                                                <option value="Mt">Metros</option>
+                                                                                <option value="Ft">Pies</option>                                   
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <div class="col-sm-4 col-md-2 col-lg-2">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Capacidad</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_capacity" name="ref_capacity" class="form-control spinner ui-spinner-input" id="spinner-decimal"  value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_capacity_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_capacity_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Unidades</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_capacityunits">
+                                                                                <option value="0" selected="" disabled="">Seleccione la unidad de medida</option>                                                                                
+                                                                                    <option value="Ml">Mililitros</option>
+                                                                                    <option value="Lt">Litros</option>
+                                                                                    <option value="Gl">Galones</option>
+                                                                                    <option value="M3">Metros Cúbicos</option>                           
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <div class="col-sm-4 col-md-2 col-lg-2">
+                                                                        <div class="form-group" style="margin-left: 20px;">
+                                                                            <label>Peso</label>
+                                                                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input style="padding-left: 10px;" id="ref_weight" name="ref_weight" class="form-control spinner ui-spinner-input" value="0" aria-valuenow="8" autocomplete="off" role="spinbutton"><a id="ref_weight_up" class="ui-spinner-button ui-spinner-up ui-corner-tr" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-n">▲</span></a>
+                                                                            <a id="ref_weight_down" class="ui-spinner-button ui-spinner-down ui-corner-br" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-s">▼</span></a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Unidades</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="ref_weightunits">
+                                                                                <option value="0" selected="" disabled="">Seleccione la unidad de medida</option>
+                                                                                    <option value="Gr">Gramos</option>
+                                                                                    <option value="Kg">Kilogramos</option>
+                                                                                    <option value="Lb">Libras</option>
+                                                                                    <option value="Ton">Toneladas</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-lg-12">
+                                                                        <label for="name">Advertencias de Fábrica</label>
+                                                                        <label class="textarea"> <i class="icon-append fa fa-comment"></i> 										
+                                                                            <textarea rows="3" name="ref_factorywarnings" placeholder="Ingrese las advertencias de fábrica"></textarea> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+                                                            </fieldset>
+                                                            <footer style="border-bottom: 1px solid rgba(0,0,0,.1);background-color:white !important">
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Guardar Referencia
+                                                                </button>
+                                                            </footer>
+                                                        </form>
+                                                        <fieldset style="">
+                                                        <h4 style="padding-left:10px;margin:0px">Adjuntar Elementos </h4>
+                                                        <!-- Widget ID (each widget will need unique ID)-->
+                                                        <div style="margin: 0px" class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false">
+
+                                                            <header>
+                                                                <span class="widget-icon"> <i class="fa fa-cloud"></i> </span>
+
+
+                                                            </header>
+
+                                                            <!-- widget div-->
+                                                            <div>
+
+                                                                <!-- widget edit box -->
+                                                                <div class="jarviswidget-editbox">
+                                                                    <!-- This area used as dropdown edit box -->
+
+                                                                </div>
+                                                                <!-- end widget edit box -->
+
+                                                                <!-- widget content -->
+                                                                <div class="widget-body">
+
+                                                                    <form action="/assets/upload" method="POST" class="dropzone" id="mydropzone"></form>
+
+                                                                </div>
+                                                                <!-- end widget content -->
+
+                                                            </div>
+                                                            <!-- end widget div -->
+                                                            <small style="padding-left:10px;"> <strong>Nota: </strong> Puede adjuntar archivos, imágenes y/o planos con un tamaño máximo de 5mb c/u.</small>
+                                                        </div>
+                                                        </fieldset>
+                                                        <!-- end widget -->
+                                                        {{!--
+                                                        <footer class="col col-12 col-lg-offset-10" style="padding-bottom: 30px; margin-top: 0px">
+                                                            <form action="/assets/ref/new" method="POST">
+                                                                <input name="ref_number" id="hidden_ref_number" type="hidden" value="50">
+                                                                <input name="ref_description" id="hidden_ref_description" type="hidden" value="50">
+                                                                <input name="ref_brand" id="hidden_ref_brand" type="hidden" value="50">
+                                                                <input name="ref_model" id="hidden_ref_model" type="hidden" value="50">
+                                                                <input name="ref_type" id="hidden_ref_type" type="hidden" value="50">
+
+                                                                <input name="ref_power" id="hidden_ref_power" type="hidden" value="50">
+                                                                <input name="ref_power_unit" id="hidden_ref_power_unit" type="hidden" value="50">
+                                                                <input name="ref_height" id="hidden_ref_height" type="hidden" value="50">
+                                                                <input name="ref_height_unit" id="hidden_ref_height_unit" type="hidden" value="50">
+                                                                <input name="ref_large" id="hidden_ref_large" type="hidden" value="50">
+                                                                <input name="ref_large_unit" id="hidden_ref_large_unit" type="hidden" value="50">
+                                                                <input name="ref_width" id="hidden_ref_width" type="hidden" value="50">
+                                                                <input name="ref_width_unit" id="hidden_ref_width_unit" type="hidden" value="50">
+                                                                <input name="ref_capacity" id="hidden_ref_capacity" type="hidden" value="50">
+                                                                <input name="ref_capacity_unit" id="hidden_ref_capacity_unit" type="hidden" value="50">
+                                                                <input name="ref_weight" id="hidden_ref_weight" type="hidden" value="50">
+                                                                <input name="ref_weight_unit" id="hidden_ref_weight_unit" type="hidden" value="50">
+                                                                <button class="btn btn-primary" type="submit">Guardar Referencia</button>
+                                                            </form>
+                                                        </footer>--}}
+
+                                                    </div>
+                                                    <!-- end widget content -->
+
+                                                </div>
+                                                <!-- end widget div -->
+
+                                            </div>
+                                            <!-- end widget -->
+                                        </article>
+                                        <!-- END COL -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
+
+            </div>
+
+            <!-- END ROW -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

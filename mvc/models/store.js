@@ -37,9 +37,9 @@ var LocalStoreSchema = mongoose.Schema({
         ref: 'User',
         required: true
     }, 
-    startdate:{
+    created_on:{
         type: Date,
-        default: Date.now,
+        default: new Date(),
         required: true
     },
 });

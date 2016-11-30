@@ -253,24 +253,24 @@
 					<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
 					<ul>
 						<li>
-							<a href="/newStore" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
+							<a href="/stores/new" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
 						</li>
 						<li>
 							<a href="/stores" title="Ver Tiendas"><i class="fa fa-lg fa-fw fa-align-justify"></i>Ver Tiendas</a>
 						</li>
 					</ul>
 				</li>
-				<!--						<li class="">
+										<li class="">
 							<a href="#" title="Activos"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
 							<ul>
 								<li>
-									<a href="/newAsset" title="Crear Activo"><i class="fa fa-lg fa-fw fa-laptop"></i>Crear Activo</a>
+									<a href="/assets/new" title="Crear Activo"><i class="fa fa-lg fa-fw fa-laptop"></i>Crear Activo</a>
 								</li>								
 								<li>
 									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
 								</li>						
 							</ul>
-						</li>	-->
+						</li>	
 				<li class="">
 					<a href="#" title="Usuarios"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Gestionar Usuarios</span></a>
 					<ul>
@@ -420,9 +420,8 @@
 				var tktadvance = "{{ticket.advance}}"
 				var tktpriority = "{{ticket.priority}}"
 				var tktnumber = "{{ticket.ticketNumber}}"
-				console.log(tktstatus);
-/*				var testing = "{{testing}}"
-				console.log('testing: '+testing);*/
+				var storeID = "{{store.id}}"
+				var localCode = "{{LRef}}"
 			</script>
 	<script src="/js/fdgcomponents.js"></script>
 
@@ -539,15 +538,38 @@
 	<script src="/js/plugin/typeahead/typeahead.min.js"></script>
 	<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
 
+	<script src="/js/plugin/dropzone/dropzone.min.js"></script>
 	<!-- CHARTS PLUGIN(S) 
 			<script src="..."></script>-->
 	<script src="/js/plugin/moment/moment.min.js"></script>
 	<script src="/js/plugin/chartjs/chart.min.js"></script>
+
+
 	<script>
 				$(document).ready(function() {		
 
 				// DO NOT REMOVE : GLOBAL FUNCTIONS!
 				pageSetUp();
+
+			Dropzone.autoDiscover = false;
+			$("#mydropzone").dropzone({
+				//url: "/file/post",
+				addRemoveLinks : true,
+				maxFilesize: 5,
+				dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Drop files <span class="font-xs">to upload</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (Or Click)</h4></span>',
+				dictResponseError: 'Error uploading file!'
+			});
+
+			Dropzone.options.myDrop = {
+			init: function() {
+				this.on("complete", function() {
+				if (this.filesQueue.length == 0 && this.filesProcessing.length == 0) {
+					// File finished uploading, and there aren't any left in the queue.
+				}
+				});
+			}
+			};			
+
 			try{
 				scheduler.config.xml_date="%Y-%m-%d %H:%i";				
 				scheduler.init('scheduler_here', new Date(),"month");
@@ -575,6 +597,21 @@
 			}catch (e) {
 					console.log(e);
 				}
+
+/*			$("#input-ficons-4").fileinput({
+				uploadUrl: "/file-upload-batch/2",
+				previewFileIcon: '<i class="fa fa-file"></i>',
+				allowedPreviewTypes: null, // disable preview of standard types
+				allowedPreviewMimeTypes: ['image/jpeg', 'text/javascript'], // allow content to be shown only for certain mime types 
+				previewFileIconSettings: {
+					'docx': '<i class="fa fa-file-word-o text-primary"></i>',
+					'xls': '<i class="fa fa-file-excel-o text-success"></i>',
+					'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+					'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+					'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+					'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+				}
+			});*/
 
 			$('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');
 			$('.tree').find('li:has(ul)').addClass('parent_li').attr('role', 'treeitem').find(' > span').attr('title', 'Expandir').on('click', function(e) {

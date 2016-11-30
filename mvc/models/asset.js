@@ -1,51 +1,44 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
+var uniqueValidator = require('mongoose-unique-validator');
 
 var AssetSchema = mongoose.Schema({
+    number: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    localRef: {
+        type: Number,
+        required: true     
+    },
     name: {
-        type: String, 
+        type: String,
         required: true
     },
-    description: {
-        type: String
-    },
-    brand: {
-        type: ObjectId,
-        ref: 'assetBrand',
+    status: {
+        type: String,
         required: true
     },
-    model: {
-        type: ObjectId,
-        ref: 'assetModel',
-        required: true
-    },
-    reference: {
+    reference_id: {
         type: ObjectId,
         ref: 'assetReference',
         required: true
     },
-    owner: {
+    store_id: {
         type: ObjectId,
-        ref: 'store',
+        ref: 'Store',
         required: true
     },
-    marketPrice: {
-        type: Number,
-        min: 0
-    },
-    registryDate: {
-        type: Date
-    },
-    factoryWarnings: {
+    images: [{
         type: String
-    },
-    images: {
-        type: String
-    },
-    comments: {
-        type: String
-    }    
+    }],
+    created_on: {
+        type: Date,
+        default: new Date
+    }
 });
 
+AssetSchema.plugin(uniqueValidator);
 var Asset = module.exports = mongoose.model('Asset', AssetSchema);
