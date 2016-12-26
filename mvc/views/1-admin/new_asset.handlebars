@@ -63,18 +63,11 @@
                             <h2>My Data </h2>
 
                         </header>
-
-                        <!-- widget div-->
                         <div>
 
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <!-- This area used as dropdown edit box -->
+                            <div class="jarviswidget-editbox">                                
 
                             </div>
-                            <!-- end widget edit box -->
-
-                            <!-- widget content -->
                             <div class="widget-body">
 
 
@@ -102,15 +95,8 @@
 
                                                 <!-- widget div-->
                                                 <div>
-
-                                                    <!-- widget edit box -->
                                                     <div class="jarviswidget-editbox">
-                                                        <!-- This area used as dropdown edit box -->
-
                                                     </div>
-                                                    <!-- end widget edit box -->
-
-                                                    <!-- widget content -->
                                                     <div class="widget-body no-padding">
 
                                                         <form id="asset-form" action="/assets/asset/new" method="POST" class="smart-form" enctype="multipart/form-data">
@@ -127,7 +113,7 @@
                                                                     <section class="col col-4">
                                                                         <label for="name">Número de activo</label>
                                                                         <label class="input"> <i class="icon-append fa fa-slack"></i>
-                                                                            <input type="text" name="asset_number" placeholder="Número del activo" value="{{assetNum}}">
+                                                                            <input type="text"  name="asset_number" placeholder="Número del activo" value="{{assetNum}}">
                                                                         </label>
                                                                     </section>
                                                                     <section class="col col-4">
@@ -153,7 +139,7 @@
                                                                     <section class="col col-2">
                                                                         <label for="name">Código en tienda</label>
                                                                         <label class="input"> <i class="icon-append fa fa-dot-circle-o"></i>
-                                                                            <input type="text" style="padding-left:50px" id="asset_localcode" name="asset_localcode" placeholder="Código activo">
+                                                                            <input type="text"  style="padding-left:50px" id="asset_localcode" name="asset_localcode" placeholder="Código activo">
                                                                         </label>
                                                                     </section>
                                                                     <section class="col col-4">
@@ -183,11 +169,10 @@
 
                                                             <fieldset>
                                                                 <section>
-                                                                    <label for="photo">Subir Foto</label>
-                                                                    <div class="input input-file">
-                                                                        <span class="button"><input id="file2" type="file" multiple name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</span>
-                                                                        <input type="text" placeholder="Adjuntar foto" readonly="">
-                                                                    </div>
+                                                                    <label class="label">Subir Imagen</label>
+                                                                    <label for="file" class="input input-file">
+                                                                        <div class="button"><input type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</div><input type="text" placeholder="Include some files" readonly="">
+                                                                    </label>
                                                                 </section>
                                                             </fieldset>
                                                             <footer>
@@ -214,17 +199,11 @@
                                             <!-- Widget ID (each widget will need unique ID)-->
                                             <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
 
-                                                <!-- widget div-->
                                                 <div>
 
-                                                    <!-- widget edit box -->
-                                                    <div class="jarviswidget-editbox">
-                                                        <!-- This area used as dropdown edit box -->
+                                                    <div class="jarviswidget-editbox">                                                        
 
                                                     </div>
-                                                    <!-- end widget edit box -->
-
-                                                    <!-- widget content -->
                                                     <div class="widget-body no-padding">
 
                                                         <form id="assetref-form" action="/assets/ref/new" method="POST" class="smart-form">

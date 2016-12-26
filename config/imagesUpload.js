@@ -9,6 +9,6 @@ module.exports.cloudConfig = cloudinary.config({
 
 module.exports.uploadFile = function (originPath, destinationPath) {
     cloudinary.uploader.upload(originPath, result => { 
-        console.log(result) 
+        //console.log(result) 
     }, {public_id: destinationPath});
 }

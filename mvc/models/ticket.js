@@ -20,11 +20,12 @@ var TicketSchema = mongoose.Schema({
     },
     priority: {
         type: String,
-        default: "baja",
+        default: "low",
         required: true
     },  
     status: {
         type: String,
+        default: "pending",
         required: true
     }, 
     advance: {
@@ -53,12 +54,11 @@ var TicketSchema = mongoose.Schema({
     categories: [{
         type: String
     }],
-    image: String,
-    viewed: {
-        type: Boolean,
-        default: false,
-        required: true
-    },        
+    file: String,
+    track: {
+        type: String,
+        default: ""
+    },      
     tracking: [{
         employeeId: {
             type: ObjectId,

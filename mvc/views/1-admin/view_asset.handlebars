@@ -13,23 +13,13 @@
         <!-- breadcrumb -->
         <ol class="breadcrumb">
             <li><a href="/home">Inicio</a></li>
-            <li><a href="/tickets">Activos</a></li>
+            <li><a href="/assets">Activos</a></li>
             <li>Crear activo</li>
         </ol>
         <!-- end breadcrumb -->
         <span class="ribbon-button-alignment pull-right">
-					<a href="/tickets/{{ticketType}}/list"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Tickets</span></a>
+					<a href="/assets"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-align-justify"></i> Ver Activos</span></a>
         </span>
-        <!-- You can also add more buttons to the
-				ribbon for further usability
-
-				Example below:
-
-				<span class="ribbon-button-alignment pull-right">
-				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
-				</span> -->
 
     </div>
     <!-- END RIBBON -->
@@ -60,78 +50,328 @@
 
             <div class="row">
 
-						<!-- NEW WIDGET START -->
-						<article class="col-sm-12 col-md-12 col-lg-12">
-				
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget well" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
-								<header>
-									<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-									<h2>My Data </h2>
-				
-								</header>
-				
-								<!-- widget div-->
-								<div>
-				
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-				
-									</div>
-									<!-- end widget edit box -->
-				
-									<!-- widget content -->
-									<div class="widget-body">
-										
-				
-										<ul id="myTab3" class="nav nav-tabs tabs-pull-right bordered">
-											<li class="pull-right">
-												<a href="#l4" data-toggle="tab">Proveedores</a>
-											</li>                                              
-											<li class="pull-right">
-												<a href="#l3" data-toggle="tab">Historial</a>
-											</li>  
-											<li class="pull-right">
-												<a href="#l2" data-toggle="tab">Especificaciones</a>
-											</li>                                            
-											<li class="active">
-												<a href="#l1" data-toggle="tab">General</a>
-											</li>                                                                                                                                      
-										</ul>
-				
-										<div id="myTabContent3" class="tab-content padding-10">
-											<div class="tab-pane fade in active" id="l1">
+                <!-- NEW WIDGET START -->
+                <article class="col-sm-12 col-md-12 col-lg-12">
 
-											</div>
-											<div class="tab-pane fade" id="l2">
-												<p>
-													l2 - Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
-												</p>
-											</div>
-											<div class="tab-pane fade" id="l3">
-												<p>
-													l3 - Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-												</p>
-											</div>
-											<div class="tab-pane fade" id="l4">
-												<p>
-													l4 - Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-												</p>
-											</div>                                            
-										</div>
-				
-									</div>
-									<!-- end widget content -->
-				
-								</div>
-								<!-- end widget div -->
-				
-							</div>
-							<!-- end widget -->
-								
-						</article>
-						<!-- WIDGET END -->
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget well" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false"
+                        data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false"
+                        data-widget-sortable="false">
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                            <h2>My Data </h2>
+
+                        </header>
+                        <div>
+
+                            <div class="jarviswidget-editbox">
+
+                            </div>
+                            <div class="widget-body">
+
+
+                                <ul id="myTab3" class="nav nav-tabs tabs-pull-right bordered">
+                                    <li class="pull-right">
+                                        <a href="#l3" data-toggle="tab">Imágenes</a>
+                                    </li>
+                                    <li class="pull-right">
+                                        <a href="#l2" data-toggle="tab">Historial</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#l1" data-toggle="tab">General</a>
+                                    </li>
+                                </ul>
+
+                                <div id="myTabContent3" class="tab-content margin-10" style=" border: 0px;">
+                                    <div class="tab-pane fade in active" id="l1">
+                                        <!-- NEW COL START -->
+                                        <article class="col-sm-12 col-md-12 col-lg-12" style="padding: 0px">
+                                            <!-- Widget ID (each widget will need unique ID)-->
+                                            <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                                                <header>
+                                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                                    <h2>Registration form </h2>
+
+                                                </header>
+
+                                                <!-- widget div-->
+                                                <div>
+                                                    <div class="jarviswidget-editbox">
+                                                    </div>
+                                                    <div class="widget-body no-padding">
+
+                                                        <form id="asset-form" action="/assets/save" method="POST" class="smart-form" enctype="multipart/form-data">
+
+                                                            <fieldset>
+                                                                <div style="padding: 1px; margin-bottom:25px; border-bottom: 1px dashed rgba(0,0,0,.2); ">
+                                                                    <div class="row">
+                                                                        <section class="col col-lg-12" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;font-size: 16px;">
+                                                                            Detalles del Activo
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="assetID" value="{{asset.id}}">
+                                                                <input type="hidden" name="hidden_asset_number" value="{{asset.number}}">
+                                                                <div class="row">
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Número de activo</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-slack"></i>
+                                                                            <input type="text" disabled name="asset_number" placeholder="Número del activo" value="{{asset.number}}">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Nombre</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-briefcase"></i>
+                                                                            <input type="text" name="asset_name" placeholder="Nombre del activo" value="{{asset.name}}">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Estado</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="asset_status" id="asset_status_edit">
+                                                                                <option value="0" selected="" disabled="">Seleccione el estado del activo</option>
+                                                                                <option value="active">Activo</option>
+                                                                                <option value="damaged">Averiado</option>
+                                                                                <option value="discontinued">Descontinuado</option>
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <section class="col col-2">
+                                                                        <label for="name">Código en tienda</label>
+                                                                        <label class="input"> <i class="icon-append fa fa-dot-circle-o"></i>
+                                                                            <input type="text" disabled style="padding-left:50px" id="asset_localcode" name="asset_localcode" placeholder="Código activo" value="{{asset.localRef}}">
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-4">
+                                                                        <label for="name">Tienda</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="store_id" id="store_id_edit">
+                                                                                <option value="0" selected="" disabled="">Seleccione la referencia del activo</option>
+                                                                                {{#each stores}}
+                                                                                    <option value="{{id}}">{{storeName}}</option>
+                                                                                {{/each}}
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                    <section class="col col-5">
+                                                                        <label for="name">Referencia</label>
+                                                                        <label class="select">                                                                            
+                                                                            <select name="asset_reference" id="asset_reference_edit" >
+                                                                                <option value="0" selected="" disabled="">Seleccione la referencia del activo</option>
+                                                                                {{#each assetRefs}}
+                                                                                    <option value="{{id}}">{{number}} - {{brand}} -{{model}}</option>
+                                                                                {{/each}}
+                                                                            </select> <i></i> 
+                                                                        </label>
+                                                                    </section>
+                                                                </div>
+                                                            </fieldset>
+
+                                                            <fieldset>
+                                                                <section>
+                                                                    <label class="label">Subir Imagen</label>
+                                                                    <label for="file" class="input input-file">
+                                                                        <div class="button"><input type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</div><input type="text" placeholder="Include some files" readonly="">
+                                                                    </label>
+                                                                </section>
+                                                            </fieldset>
+                                                            <footer>
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Guardar
+                                                                </button>
+                                                                <a href="#deleteAssetModal" data-toggle="modal"><span class="btn btn-danger">
+                                                                            Eliminar
+                                                                </span></a>
+                                                                <a href="/assets"><span class="btn btn-default">
+                                                                            Cancelar
+                                                                </span></a>                                                                
+                                                            </footer>
+                                                        </form>
+
+                                                    </div>
+                                                    <!-- end widget content -->
+
+                                                </div>
+                                                <!-- end widget div -->
+
+                                            </div>
+                                            <!-- end widget -->
+                                        </article>
+                                        <!-- END COL -->
+                                    </div>
+                                    <div class="tab-pane fade" id="l2">
+                                        <!-- row -->
+                                        <div class="row">
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                                <div class="well well-sm">
+                                                    <!-- Timeline Content -->
+                                                    <div class="smart-timeline">
+                                                        <ul class="smart-timeline-list">
+                                                            {{#each tkts}}                                                            
+                                                            <li>
+                                                                <div class="smart-timeline-icon">
+                                                                    <img src="/img/avatars/sunny.png" width="32" height="32" alt="user" />
+                                                                </div>
+                                                                <div class="smart-timeline-time">
+                                                                    <small>{{formatDate lastupdate "DD/MM/YY HH:mm"}}</small>
+                                                                </div>
+                                                                <div class="smart-timeline-content">
+                                                                    <p>
+                                                                        <a href="/tickets/ticket_details?ID={{id}}"><strong>{{title}}</strong></a>
+                                                                    </p>
+                                                                    <p>
+                                                                        {{description}}
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            {{/each}}
+                                                        {{!--<li>
+                                                                <div class="smart-timeline-icon">
+                                                                    <i class="fa fa-file-text"></i>
+                                                                </div>
+                                                                <div class="smart-timeline-time">
+                                                                    <small>1 min ago</small>
+                                                                </div>
+                                                                <div class="smart-timeline-content">
+                                                                    <p>
+                                                                        <strong>Meeting invite for "GENERAL GNU" [<a href="javascript:void(0);"><i>Go to my calendar</i></a>]</strong>
+                                                                    </p>
+
+                                                                    <div class="well well-sm display-inline">
+                                                                        <p>Will you be able to attend the meeting - <strong> 10:00 am</strong>                                                                            tomorrow?</p>
+                                                                        <button class="btn btn-xs btn-default">Confirm Attendance</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="smart-timeline-icon bg-color-greenDark">
+                                                                    <i class="fa fa-bar-chart-o"></i>
+                                                                </div>
+                                                                <div class="smart-timeline-time">
+                                                                    <small>5 hrs ago</small>
+                                                                </div>
+                                                                <div class="smart-timeline-content">
+                                                                    <p>
+                                                                        <strong class="txt-color-greenDark">24hrs User Feed</strong>
+                                                                    </p>
+
+                                                                    <div class="sparkline" data-sparkline-type="compositeline" data-sparkline-spotradius-top="5" data-sparkline-color-top="#3a6965"
+                                                                        data-sparkline-line-width-top="3" data-sparkline-color-bottom="#2b5c59"
+                                                                        data-sparkline-spot-color="#2b5c59" data-sparkline-minspot-color-top="#97bfbf"
+                                                                        data-sparkline-maxspot-color-top="#c2cccc" data-sparkline-highlightline-color-top="#cce8e4"
+                                                                        data-sparkline-highlightspot-color-top="#9dbdb9" data-sparkline-width="170px"
+                                                                        data-sparkline-height="40px" data-sparkline-line-val="[6,4,7,8,4,3,2,2,5,6,7,4,1,5,7,9,9,8,7,6]"
+                                                                        data-sparkline-bar-val="[4,1,5,7,9,9,8,7,6,6,4,7,8,4,3,2,2,5,6,7]"></div>
+
+                                                                    <br>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="smart-timeline-icon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </div>
+                                                                <div class="smart-timeline-time">
+                                                                    <small>yesterday</small>
+                                                                </div>
+                                                                <div class="smart-timeline-content">
+                                                                    <p>
+                                                                        <a href="javascript:void(0);"><strong>Update user information</strong></a>
+                                                                    </p>
+                                                                    <p>
+                                                                        Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem
+                                                                        quam semper libero, sit amet adipiscing sem neque
+                                                                        sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                                                                        hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+                                                                        tempus. Donec vitae sapien ut libero venenatis faucibus.
+                                                                    </p>
+
+                                                                    Tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
+
+                                                                    <ul class="list-inline">
+                                                                        <li>
+                                                                            <img src="/img/superbox/superbox-thumb-6.jpg" alt="img" width="50">
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="/img/superbox/superbox-thumb-5.jpg" alt="img" width="50">
+                                                                        </li>
+                                                                        <li>
+                                                                            <img src="/img/superbox/superbox-thumb-7.jpg" alt="img" width="50">
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="smart-timeline-icon">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                </div>
+                                                                <div class="smart-timeline-time">
+                                                                    <small>12 Mar, 2013</small>
+                                                                </div>
+                                                                <div class="smart-timeline-content">
+                                                                    <p>
+                                                                        <a href="javascript:void(0);"><strong>Nabi Resource Report</strong></a>
+                                                                    </p>
+                                                                    <p>
+                                                                        Ean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
+                                                                        in, viverra quis.
+                                                                    </p>
+                                                                    <a href="javascript:void(0);" class="btn btn-xs btn-default">Read more</a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="text-center">
+                                                                <a href="javascript:void(0)" class="btn btn-sm btn-default"><i class="fa fa-arrow-down text-muted"></i> LOAD MORE</a>
+                                                            </li>--}}
+                                                        </ul>
+                                                    </div>
+                                                    <!-- END Timeline Content -->
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                    <div class="tab-pane fade" id="l3">
+                                        <!-- row -->
+                                        <div class="row">                                            
+                                            <div class="superbox col-sm-12">
+                                                {{#each asset.images}}
+                                                <div class="superbox-list">
+                                                    <img src="http://res.cloudinary.com/pluriza/image/upload/{{url}}" data-img="http://res.cloudinary.com/pluriza/image/upload/c_scale,w_425/{{url}}" alt="Asset image "+"{{title}}"
+                                                        title="{{title}}" class="superbox-img">
+                                                </div>
+                                                {{/each}}
+                                                <div class="superbox-float"></div>
+                                            </div>
+                                            <!-- /SuperBox -->
+
+                                            <div class="superbox-show" style="height:300px; display: none"></div>
+
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+
+                </article>
+                <!-- WIDGET END -->
 
             </div>
 
@@ -142,105 +382,63 @@
 
     </div>
     <!-- END MAIN CONTENT -->
-    <!-- Record Info Modal -->
-    <form method="post" action="/admin/newRecord">
-        <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <input type="hidden" name="ticket_id" value="{{ticket.id}}">
-                    <input type="hidden" id="edit-record-id" name="recordId">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-											&times;
-										</button>
-                        <h4 class="modal-title" id="myModalLabel">Detalle del Acta</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!--Acta No.-->
-                        <div class="row">
-                            <div class="col-lg-12" style="padding-left:15px;">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="edit-record-number"><small><b>Acta No.:</b></small></label>
-                                        <input style="font-size:12px; padding: 5px; width: 120px;" type="text" class="form-control" placeholder="Acta No." required="true"
-                                            name="recordNum" id="edit-record-number" disabled value="{{recordNumber}}" align="center"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="edit-asset-number"><small><b>No. Equipo:</b></small></label>
-                                        <input type="text" class="form-control" placeholder="No. Equipo" name="assetNum" id="edit-asset-number" disabled align="center"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="edit-adminRepresentative"><small><b>Representante:</b></small></label>
-                                    <input type="text" class="form-control" placeholder="Representante" name="adminRepresentative" id="edit-adminRepresentative"
-                                        disabled value="{{representative.username}} - {{representative.name}} {{representative.lastname}}"
-                                        align="center" />
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <label for="edit-custRepresentative"><small style="padding-left: 15px;"><b>Cliente:</b></small></label>
-                                    </div>
-                                    <div class="row">
-                                        <section class="col col-lg-12">
-                                            <label class="select" style="width:260px">
-											<select name="custRepresentative" id="custRepresentative" style="display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;line-height: 1.42857143; color: #555;">
-												<option value="0" selected="" disabled="">Seleccionar usuario que atendió visita</option>
-												{{#each costumers}}
-													<option value="{{_id}}">{{username}} - {{name}} {{lastname}}</option>
-												{{/each}}
-											</select> <i></i> </label></section>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Requerimiento del cliente-->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="openningDate"><small><b>Requerimiento del cliente:</b></small></label>
-                                    <textarea class="form-control" name="customerReq" placeholder="Ingrese el requerimiento del cliente" rows="1"></textarea>
-                                </div>
-                            </div>
-                            <!--Situación Encontrada-->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="openningDate"><small><b>Situación Encontrada:</b></small></label>
-                                    <textarea class="form-control" name="currentState" placeholder="Ingrese la situación encontrada" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <!--Acciones Correctivas-->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="openningDate"><small><b>Acciones Correctivas:</b></small></label>
-                                    <textarea class="form-control" name="correctiveActions" placeholder="Ingrese las acciones correctivas" rows="2"></textarea>
-                                </div>
-                            </div>
-                            <!--Sugerencias-->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="openningDate"><small><b>Sugerencias:</b></small></label>
-                                    <textarea class="form-control" name="suggestions" placeholder="Ingrese las sugerencias" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-											Cerrar
-										</button>
-                        <button id="submitModal" type="submit" class="btn btn-primary">
-											Guardar
-										</button>
-                    </div>
 
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </form>
 </div>
 <!-- END MAIN PANEL -->
+
+<!-- deleteModal -->
+<div class="modal fade" id="deleteModal">
+    <form action="/assets/deleteImage?assetID={{asset.id}}" method="POST">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <input type="hidden" id="delete-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+                <h4 class="modal-title" id="myModalLabel">Eliminar Imagen</h4>
+            </div>
+            <div class="modal-body">
+                <p> Esta seguro de eliminar esta imagen?<br></p>                 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+				    Cerrar
+				</button>
+                <button type="submit" class="btn btn-danger">
+				    Eliminar
+				</button>                                 
+            </div>            
+        </div>
+    </div>
+    </form>
+</div>
+
+<!-- deleteAssetModal -->
+<div class="modal fade" id="deleteAssetModal">
+    <form action="/assets/delete?assetID={{asset.id}}" method="POST">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <input type="hidden" id="delete-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+                <h4 class="modal-title" id="myModalLabel">Eliminar Activo</h4>
+            </div>
+            <div class="modal-body">
+                <p> Esta seguro de eliminar este activo?<br></p> 
+                <p><strong>Nota: </strong>Al hacerlo también eliminará todos los tickets e historial asociados. </p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+				    Cerrar
+				</button>
+                <button type="submit" class="btn btn-danger">
+				    Eliminar
+				</button>                                 
+            </div>            
+        </div>
+    </div>
+    </form>
+</div>

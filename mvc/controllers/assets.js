@@ -21,9 +21,11 @@ const AssetRef = require('../models/assetReference');
 //Config
 const Mailer = require('../../config/mailer');
 const Validations = require('../../config/validations');
+const imageUp = require('../../config/imagesUpload');
 
 router.get('/', Validations.ensureAuthenticated, (req, res) => {
-    let target = {};
+    let target = { storeName: { $ne: 'Default store' } };
+
     if (req.user.userRole !== 'systemAdmin') target.store_id = req.user.store_id
     Asset.find(target).populate('reference_id').populate('store_id').exec((err, assets) => {
         (req.user.userRole === 'systemAdmin') ? res.render('1-admin/list_assets', { layout: 'adminLayout', assets }) :
@@ -32,10 +34,19 @@ router.get('/', Validations.ensureAuthenticated, (req, res) => {
 });
 
 router.get('/asset_details', Validations.ensureAuthenticated, (req, res) => {
+    let target = { storeName: { $ne: 'Default store' } };
+
+    if (req.user.userRole !== 'systemAdmin') target.store_id = req.user.store_id
     Asset.findOne({ _id: req.query.ID }, (err, asset) => {
-        (req.user.userRole === 'systemAdmin') ? res.render('1-admin/view_asset', { layout: 'adminLayout', asset }) :
-            res.render('2-users/view_asset', { layout: 'userLayout', asset });
-    });
+        Ticket.find({store_id: asset.store_id}, (err, tkts) => {
+            AssetRef.find({}, (err, assetRefs) => {
+                Store.find(target, (err, stores) => {
+                    (req.user.userRole === 'systemAdmin') ? res.render('1-admin/view_asset', { layout: 'adminLayout', asset, assetRefs, stores, tkts }) :
+                        res.render('2-users/view_asset', { layout: 'userLayout', asset, assetRefs, stores, tkts });
+                });
+            });
+        });
+    }).limit(10).sort({'lastupdate': -1});
 });
 
 router.get('/new', Validations.ensureAuthenticated, (req, res) => {
@@ -59,35 +70,76 @@ router.get('/new', Validations.ensureAuthenticated, (req, res) => {
 router.post('/asset/new', Validations.ensureAuthenticated, (req, res) => {
     var form = new formidable.IncomingForm(), localAssetNum;
     form.parse(req, function (err, fields, files) {
-        console.log('asset_number: ' + fields.asset_number);
-        console.log('asset_localcode: ' + fields.asset_localcode);
-        /*        let promise = new Promise((resolve, reject) => {
-                    Asset.find({ store_id: fields.store_id }, (err, assets) => {
-                        resolve(assets.length);
-                    });
-                });
-        
-                promise.then(assets => {*/
-        new Asset({
+        let newAsset = {
             number: fields.asset_number,
             localRef: fields.asset_localcode,
             name: fields.asset_name,
             status: fields.asset_status,
             reference_id: fields.asset_reference,
             store_id: fields.store_id
-        }).save((err, result) => {
+        };
+        if (files.file2.name != "") {
+            newAsset.images = {
+                title: files.file2.name,
+                url: 'assets/' + fields.asset_number + '/imgs/' + files.file2.name.replace(/\.[^/.]+$/, "")
+            }
+        }
+        new Asset(newAsset).save((err, result) => {
             if (err) {
-                //                    console.log('err: ' + err);
-                req.flash('error_msg', 'El activo no pudo ser creado. Inténtelo de nuevo más tarde.');
-                res.redirect('/assets');
+                console.log('err: ' + err);
+                req.flash('error_msg', 'El activo no pudo ser creado. Inténtelo de nuevo más tarde.')
             } else {
-                //                    console.log('result: ' + result);
+                if (files.file2.name != "") imageUp.uploadFile(files.file2.path, newAsset.images.url);
+                console.log('result: ' + result);
                 req.flash('success_msg', 'Activo No. ' + fields.asset_number + ' creado exitosamente.');
                 res.redirect('/assets');
+
             }
         });
-        //        });
     });
+});
+
+router.post('/save', (req, res) => {
+    var form = new formidable.IncomingForm(), localAssetNum;
+    form.parse(req, function (err, fields, files) {
+        let changes = {
+            name: fields.asset_name,
+            status: fields.asset_status,
+            reference_id: fields.asset_reference,
+            store_id: fields.store_id
+        }, images = {}, method = { $set: changes }
+        if (files.file2.name != "") {
+            images = {
+                title: files.file2.name,
+                url: 'assets/' + fields.hidden_asset_number + '/imgs/' + files.file2.name.replace(/\.[^/.]+$/, "")
+            };
+            method.$push = {
+                images: images
+            }
+        }
+
+        Asset.update({ _id: fields.assetID }, method, (err, result) => {
+            if (err) {
+                req.flash('error_msg', 'El Activo no pudo ser actualizado. Inténtelo de nuevo más tarde.')
+            } else {
+                if (files.file2.name != "") imageUp.uploadFile(files.file2.path, images.url);
+                req.flash('success_msg', 'Activo actualizado correctamente.')
+            }
+
+            res.redirect('/assets/asset_details?ID=' + fields.assetID);
+        });
+    });
+});
+
+router.get('/assetRefs', Validations.ensureAuthenticated, (req, res) => {
+    AssetRef.find({}, (err, assetRefs) => {
+        (req.user.userRole === 'systemAdmin') ? res.render('1-admin/list_references', { layout: 'adminLayout', assetRefs }) :
+            res.render('2-users/list_references', { layout: 'userLayout', assetRefs });
+    });
+});
+
+router.get('/assetRefs/ref_details', Validations.ensureAuthenticated, (req, res) => {
+
 });
 
 router.post('/ref/new', Validations.ensureAuthenticated, (req, res) => {
@@ -118,8 +170,8 @@ router.post('/ref/new', Validations.ensureAuthenticated, (req, res) => {
     res.redirect('/assets/new');
 });
 
-router.post('/upload', (req, res) => {
-    console.log('llegó al upload');
+router.post('/deleteImage', (req, res) => {
+    console.log('assetID:' + req.query.assetID);
 });
 
 router.post('/getlocalnum/:store', (req, res) => {

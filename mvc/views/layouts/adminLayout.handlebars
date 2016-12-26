@@ -215,9 +215,6 @@
 							<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
 						</li>
 						<li class="">
-							<a href="/calendar" title="Calendario"><i class="fa fa-lg fa-fw fa-calendar"></i>Calendario</a>
-						</li>
-						<li class="">
 							<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
 						</li>
 					</ul>
@@ -234,6 +231,9 @@
 								<li class="active">
 									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-align-left"></i>Ver Tickets</a>
 								</li>
+								<li class="">
+									<a href="/admin/calendar" title="Calendario"><i class="fa fa-lg fa-fw fa-calendar"></i>Cronograma</a>
+								</li>								
 							</ul>
 						</li>
 						<li class="open">
@@ -267,8 +267,11 @@
 									<a href="/assets/new" title="Crear Activo"><i class="fa fa-lg fa-fw fa-laptop"></i>Crear Activo</a>
 								</li>								
 								<li>
-									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
-								</li>						
+									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-list-alt"></i>Ver Activos</a>
+								</li>
+								<li>
+									<a href="/assets/assetRefs" title="Ver Referencias"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Referencias</a>
+								</li>														
 							</ul>
 						</li>	
 				<li class="">
@@ -422,6 +425,23 @@
 				var tktnumber = "{{ticket.ticketNumber}}"
 				var storeID = "{{store.id}}"
 				var localCode = "{{LRef}}"
+				var assetID = "{{asset.id}}"
+				var status_asset = "{{asset.status}}"
+				var store_asset = "{{asset.store_id}}"
+				var reference_asset = "{{asset.reference_id}}"
+				var ticket_asset = "{{ticket.asset_id.id}}"
+				var categoriestkt = "{{ticket.categories}}".split(',')
+				var ticket_track = "{{ticket.track}}"
+
+				var checkclass='',
+				 checktext='Seguir',
+				 checksymbol=""
+
+				if(ticket_track==='checked'){
+				var checkclass='warning',
+				 checktext='Siguiendo',
+				 checksymbol="<i class='fa fa-check' style='margin-left:5px'>"
+				}
 			</script>
 	<script src="/js/fdgcomponents.js"></script>
 
@@ -503,14 +523,7 @@
 	<script src="/js/plugin/moment/moment.min.js"></script>
 	<script src="/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
 
-	<!-- DASHBOARD PLUGINS
-			<script src="..."></script>-->
-	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-	<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
-
+	<!-- DASHBOARD PLUGINS -->
 	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
 	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
 	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
@@ -537,8 +550,9 @@
 	<script src="/js/plugin/x-editable/x-editable.min.js"></script>
 	<script src="/js/plugin/typeahead/typeahead.min.js"></script>
 	<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
-
 	<script src="/js/plugin/dropzone/dropzone.min.js"></script>
+	<script src="/js/plugin/superbox/superbox.min.js"></script>
+
 	<!-- CHARTS PLUGIN(S) 
 			<script src="..."></script>-->
 	<script src="/js/plugin/moment/moment.min.js"></script>
@@ -546,11 +560,12 @@
 
 
 	<script>
-				$(document).ready(function() {		
+			$(document).ready(function() {		
 
 				// DO NOT REMOVE : GLOBAL FUNCTIONS!
 				pageSetUp();
 
+			$('.superbox').SuperBox();
 			Dropzone.autoDiscover = false;
 			$("#mydropzone").dropzone({
 				//url: "/file/post",
@@ -588,7 +603,7 @@
 					})
 				{{/each}}
 
-				console.log('eventos: '+eventos);
+				console.log('eventos: '+JSON.stringify(eventos));
 				scheduler.parse(JSON.stringify(eventos), "json");//takes the name and format of the data source				
 
 				var dp = new dataProcessor("/admin/scheduleSave?cityID="+"{{events.[0].city_id.id}}");
@@ -1353,14 +1368,6 @@
 					/* PROJECTS*/
 					function format ( d ) {
 				    // `d` is the original data object for the row
-/*					if(d.categories!=null)
-						
-				      categories=
-					  		'<td>'+
-							'<span class="label label-default">Categoría 1</span> '+
-							'<span class="label label-default">Categoría 2</span> '+
-							'<span class="label label-default">Categoría 3</span> '+
-							'</td>'+*/
 								
 				    return '<table cellpadding="5" cellspacing="0" border="0" class="table table-hover table-condensed">'+
 				        '<tr>'+
@@ -1439,12 +1446,7 @@
 					
 					/* COLUMN FILTER  */
 				    var otable = $('#datatable_fixed_column').DataTable({
-				    	//"bFilter": false,
-				    	//"bInfo": false,
-				    	//"bLengthChange": false
-				    	//"bAutoWidth": false,
-				    	//"bPaginate": false,
-				    	//"bStateSave": true // saves sort state using localStorage
+
 						"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
 								"t"+
 								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
@@ -1667,7 +1669,6 @@
 			
 			    /* hide default buttons */
 			    $('.fc-right, .fc-center').hide();
-
 			
 				$('#calendar-buttons #btn-prev').click(function () {
 				    $('.fc-prev-button').click();
@@ -1703,10 +1704,6 @@
 						$this.parents('.dropdown-menu').find('li').removeClass('active');
 						$this.parent().addClass('active');
 					});
-
-					/*
-					* TODO: add a way to add more todo's to list
-					*/
 
 					// initialize sortable
 					$(function() {
@@ -1759,37 +1756,6 @@
 						tablet : 1024,
 						phone : 480
 					};
-
-				/* END BASIC */
-				/* COLUMN FILTER  *//*
-			    var otable = $('#datatable_fixed_column').DataTable({
-			    	//"bFilter": false,
-			    	//"bInfo": false,
-			    	//"bLengthChange": false
-			    	//"bAutoWidth": false,
-			    	//"bPaginate": false,
-			    	//"bStateSave": true // saves sort state using localStorage
-					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
-							"t"+
-							"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-					"autoWidth" : true,
-					"oLanguage": {
-						"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-					},
-					"preDrawCallback" : function() {
-						// Initialize the responsive datatables helper once.
-						if (!responsiveHelper_datatable_fixed_column) {
-							responsiveHelper_datatable_fixed_column = new ResponsiveDatatablesHelper($('#datatable_fixed_column'), breakpointDefinition);
-						}
-					},
-					"rowCallback" : function(nRow) {
-						responsiveHelper_datatable_fixed_column.createExpandIcon(nRow);
-					},
-					"drawCallback" : function(oSettings) {
-						responsiveHelper_datatable_fixed_column.respond();
-					}		
-				
-			    });*/
 			    
 			    // custom toolbar
 			    $("div.toolbar").html('<div class="text-right"><img src="/img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
@@ -2322,5 +2288,4 @@
 			});
 			</script>
 </body>
-
 </html>

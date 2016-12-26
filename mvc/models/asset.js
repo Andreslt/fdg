@@ -32,7 +32,8 @@ var AssetSchema = mongoose.Schema({
         required: true
     },
     images: [{
-        type: String
+        title: String,
+        url: String
     }],
     created_on: {
         type: Date,

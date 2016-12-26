@@ -37,10 +37,15 @@ var AssetRefSchema = Schema({
     large: Number,
     dimension_units: String,
     capacity: Number,
-    capacity_unit: String,
+    capacity_units: String,
     weight: Number,
     weight_unit: String,
-    factoryWarnings: String
+    factoryWarnings: String,
+    created_on: {
+        type: Date,
+        required: true,
+        default: new Date()
+    }
 });
 
 //AssetRefSchema.plugin(uniqueValidator);

@@ -41,6 +41,7 @@ var recordSchema = mongoose.Schema({
         default: Date.now,
         required: true
     },
+    notified: String,
     feedback: [{
         'Reliability': {
             type: Number,

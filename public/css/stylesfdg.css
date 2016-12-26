@@ -120,3 +120,16 @@
 	background-color: darkred !important;
 	text-align: "center" !important;	
 }
+
+.superbox-img2{
+	max-width:100%;width:100%;cursor:pointer
+}
+
+.superbox-list2{
+	display:inline-block;
+	*display:inline;
+	zoom:1;
+	width:12.5%;
+	padding:5px !important;
+	position:relative;
+}

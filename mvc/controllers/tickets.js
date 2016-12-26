@@ -15,6 +15,8 @@ const Store = require('../models/store');
 const City = require('../models/city');
 const Company = require('../models/company');
 const Record = require('../models/record');
+const Asset = require('../models/asset');
+
 //Config
 const Mailer = require('../../config/mailer');
 const Validations = require('../../config/validations');
@@ -26,8 +28,10 @@ router.get('/:ticketType/new', Validations.ensureAuthenticated, (req, res) => {
 		City.find({ city: { $ne: "Default city" } }, (err, cities) => {
 			if (err) console.log(err)
 			Store.find({ storeName: { $ne: "Default store" } }, (err, stores) => {
-				if (err) console.log(err)
-				res.render('1-admin/new_ticket', { layout: 'adminLayout', storeAdminSW, stores, cities, ticketType, ticketNumber: Validations.numberGenerator(ticketType) });
+				Asset.find({}, (err, assets) => {
+					if (err) console.log(err)
+					res.render('1-admin/new_ticket', { layout: 'adminLayout', storeAdminSW, stores, cities, ticketType, ticketNumber: Validations.numberGenerator(ticketType), assets });
+				});
 			});
 		});
 	} else {
@@ -50,9 +54,16 @@ router.get('/new/success', Validations.ensureAuthenticated, (req, res) => {
 router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 	var user = req.user, storeAdminSW;
 	var form = new formidable.IncomingForm();
+	var categories = new Array();
+
+	form.on('field', function (name, value) {
+		if (name === 'categories') {
+			categories.push(value);
+		}
+	});
+
 	form.parse(req, function (err, fields, files) {
-		console.log(fields);
-		let body = fields, contacts;/*datenew = body.startdate.slice(-4) + "/" + body.startdate.substring(6, 2) + "/" + body.startdate.substring(0, 2)*/
+		let body = fields, contacts;
 
 		contacts = new Array();
 		contacts.push(req.user); //Adding the creator user as contact
@@ -73,13 +84,13 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			priority: body.priority,
 			contacts: contacts,
 			description: body.description,
-			categories: body.categories,
-			status: "Pendiente",
+			categories: categories,
+			status: "pending",
 			created_by: req.user.id,
 			modified_by: req.user.id
 		}
+
 		var newTicket = new Ticket(params);
-		console.log('newTicket: ' + newTicket);
 		Ticket.createTicket(newTicket, (err, ticket) => {
 			if (err) {
 				console.log(err);
@@ -95,6 +106,19 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 
 router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 	var form = new formidable.IncomingForm(), user = req.user;
+	var categories = new Array(), contacts = new Array();
+
+	form.on('field', function (name, value) {
+		if (name === 'categories') {
+			categories.push(value);
+		}
+
+		if (name.indexOf('contacts_')!==-1) {
+			//let contact = new User{}
+			contacts.push(name.split('_')[1])			
+		}
+		console.log('contacts: '+contacts);
+	});
 	form.parse(req, function (err, fields, files) {
 		let body = fields, ticketID = body.ticket_id,
 
@@ -102,15 +126,17 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 				priority: body.setpriority,
 				advance: body.setadvance,
 				status: body.setstatus,
+				asset_id: body.getasset,
 				title: body.title,
 				description: body.description,
-				categories: body.categories,
+				categories: categories,
 				lastupdate: new Date(),
 				deadline: Validations.setDates(body.setdeadline),
+				contacts: contacts,
 				modified_by: req.user.id,
-			}
+				track: body.trackTkt
+			};
 
-		console.log(params);
 		Ticket.findOneAndUpdate({ _id: ticketID }, { $set: params }, { new: true }, (err, ticket) => {
 			if (err) {
 				console.log(err);
@@ -158,6 +184,7 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 		Ticket.find({ ticketType: ticketType }).populate('contacts').exec((err, tkts) => {
 			if (err) console.log(err);
 			for (let t = 0; t < tkts.length; t++) {
+				let t2 = t + 1;
 				obj.data.push(
 					{
 						title: tkts[t].title + "<br><small class='text-muted'><i>#Ticket: " + tkts[t].ticketNumber + "<i></small>",
@@ -166,15 +193,13 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 						status: "<span style='text-align: center;' class='label label-" + Validations.getLabel(tkts[t].status) + "'>" + Validations.getLabelESP(tkts[t].status) + "</span>",
 						'target-actual': "<span style='margin-top:5px' class='sparkline display-inline' data-sparkline-type='compositebar' data-sparkline-height='18px' data-sparkline-barcolor='#aafaaf' data-sparkline-line-width='2.5' data-sparkline-line-val='[47,9,9,8,3,2,2,5,6,7,4,1,5,7,6]' data-sparkline-bar-val='[47,9,9,8,3,2,2,5,6,7,9,9,5,7,6]'></span>",
 						actual: "<span class='sparkline text-align-center' data-sparkline-type='line' data-sparkline-width='100%' data-sparkline-height='25px'>20,-35,70</span>",
-						tracker: "<span class='onoffswitch'><input type='checkbox' name='start_interval' class='onoffswitch-checkbox' id='st1' checked='checked'><label class='onoffswitch-label' for='st1'><span class='onoffswitch-inner' data-swchon-text='ON' data-swchoff-text='OFF'></span><span class='onoffswitch-switch'></span></label></span>",
+						tracker: "<span class='onoffswitch'><input type='checkbox' name='start_interval' class='onoffswitch-checkbox'" + tkts[t].track + " disabled id='st" + t2 + "'><label class='onoffswitch-label' for='st" + t2 + "'><span class='onoffswitch-inner' data-swchon-text='ON' data-swchoff-text='OFF'></span><span class='onoffswitch-switch'></span></label></span>",
 						startdate: dateFormat(tkts[t].startdate, "dd/mm/yyyy"),
 						lastupdate: dateFormat(tkts[t].lastupdate, "dd/mm/yyyy HH:MM"),
 						deadline: dateFormat(tkts[t].deadline, "dd/mm/yyyy"),
 						description: tkts[t].description,
 						categories: Validations.getCategories(tkts[t].categories),
-						action: "<a href='/tickets/ticket_details?ID=" + tkts[t].id + "' style='color: #FFFFFF;'><button class='btn btn-xs'>Ver Ticket</button></a>" /*+
-						"<a href='#confirm-delete' id='deleteticket' class='btn btn-xs btn-danger pull-right' style='margin-left:5px' " +
-						"data-ticketid=" + tkts[t].id + " data-toggle='modal'>Eliminar</a>"*/
+						action: "<a href='/tickets/ticket_details?ID=" + tkts[t].id + "' style='color: #FFFFFF;'><button class='btn btn-xs'>Ver Ticket</button></a>"
 					}
 				);
 			}
@@ -222,14 +247,24 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 // Ticket Details
 router.get('/ticket_details', Validations.ensureAuthenticated, (req, res) => {
 	let ticketID = req.query.ID;
-	Ticket.findOne({ _id: ticketID }).populate('store_id').exec((err, ticket) => {
-		if (err) console.log(err);
+	Ticket.findOne({ _id: ticketID }).populate('store_id').populate('asset_id').exec((err, ticket) => {
 		City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
-			User.find({ company_id: ticket.store_id.company_id, userRole: "storeEmployee" }, (err, costumers) => {
-				Record.find({ ticket_id: ticketID }).populate('adminRepresentative').populate('custRepresentative').exec((err, records) => {
-					if (err) console.log(err);
-					let recordNumber = Validations.numberGenerator("record"), representative = req.user;
-					res.render('1-admin/view_ticket', { layout: 'adminLayout', costumers, representative, recordNumber, ticket, records, city });
+			User.find({ userRole: 'systemAdmin' }, (err, admins) => {
+				User.find({ company_id: ticket.store_id.company_id }, null, {sort:{userRole:1}}, (err, employees) => {
+					Record.find({ ticket_id: ticketID }).populate('adminRepresentative').populate('custRepresentative').exec((err, records) => {
+						Asset.find({ store_id: ticket.store_id.id }, (err, assets) => {
+							if (err) console.log(err);
+							let checkclass = 'default', checktext = 'Seguir', checksymbol = "", checks = new Array();
+
+							if (ticket.track === 'checked') {
+								checkclass = 'warning';
+								checktext = 'Siguiendo';
+								checksymbol = "Check mark symbol "
+							}
+							let recordNumber = Validations.numberGenerator("record"), representative = req.user;
+							res.render('1-admin/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
+						})
+					});
 				});
 			});
 		})

@@ -1,0 +1,57 @@
+		<!-- MAIN PANEL -->
+		<div role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Admin</li><li>Clientes en la ciudad</li>
+				</ol>
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+			<div class="row hidden-mobile">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<h1 class="page-title txt-color-blueDark">
+						<i class="fa-fw fa fa-puzzle-piece"></i> 
+						Compañías con tiendas en <span>>
+						{{city}} </span></h1>
+				</div>
+			</div>
+
+			<!-- row -->
+			<div class="row">
+
+				<!-- SuperBox -->
+				<div class="superbox col-sm-12">
+					{{#each companies}}			
+					<div class="superbox-list2">
+						<a href='/admin/calendar/{{../city}}/{{companyName}}'><img src="{{image}}" data-img="img/superbox/superbox-full-1.jpg" alt="{{companyName}}" title="{{companyName}}" class="superbox-img2"></a>
+					</div>
+					{{/each}}
+					<div class="superbox-float"></div>
+				</div>
+				<!-- /SuperBox -->
+				
+				<div class="superbox-show" style="height:300px; display: none"></div>
+
+			</div>
+
+			<!-- end row -->
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->

@@ -4,15 +4,20 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/user").user;
 const Ticket = require("../models/ticket");
-const stores = require('../models/store');
-const cities = require('../models/city');
-const company = require('../models/company');
+const Store = require('../models/store');
+const City = require('../models/city');
+const Company = require('../models/company');
 const mailer = require('../../config/mailer');
 const formidable = require('formidable');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 var _ = require('underscore');
 var Validations = require('../../config/validations');
+var Asset = require('../models/asset');
+var AssetRef = require('../models/assetReference');
+var Promise = require('promise');
+var Record = require('../models/record');
+var config = require('../../config/config');
 
 /* ---> GENERAL <--- */
 // Go Home
@@ -267,6 +272,99 @@ router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
 	}
 });
 
+router.get('/reports/view',  (req, res) => {
+	let recordNumber = req.query.recordNumber,
+		request = require('request');		
+	var searchRecord = new Promise((resolve, reject) => {
+		Record.findOne({ recordNumber: recordNumber })
+			.populate('ticket_id').exec((err, record) => {
+				if (err || record == null) { reject(err) }
+				else resolve(record);
+			});
+	});
+	searchRecord.then(record => {
+		Ticket.findOne({ _id: record.ticket_id }).populate('store_id').exec((err, ticket) => {
+			if (err) { res.sendStatus(404); console.log('Entró al error') }
+			City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
+				if (err) res.sendStatus(404);
+				Company.findOne({ _id: ticket.store_id.company_id }, (err, company) => {
+					if (err) res.sendStatus(404);
+					User.findOne({ _id: record.custRepresentative }, (err, custRepresentative) => {
+						if (err) res.sendStatus(404);
+						User.findOne({ _id: record.adminRepresentative }, (err, adminRepresentative) => {
+							Asset.findOne({_id: ticket.asset_id}, (err, asset)=>{
+								AssetRef.findOne({_id: asset.reference_id}, (err, assetRef)=>{
+									if (err) res.sendStatus(404);
+									else {
+										
+										var data = {
+											template: {
+												shortid: "BJbxYsgbe",
+											},
+											data: {
+												city: city.city,
+												day: record.createdOn.getDate(),
+												month: Validations.getSpanishMonth(record.createdOn.getMonth()),
+												year: record.createdOn.getFullYear(),
+												company: company.companyName,
+												customerName: custRepresentative.name + " " + custRepresentative.lastname,
+												adminRepresentative: adminRepresentative.name + " " + adminRepresentative.lastname,
+												asset: asset.number,
+												reference: assetRef.number,
+												capacity: assetRef.capacity,
+												units: assetRef.capacity_unit,
+												brand: assetRef.brand,
+												type: assetRef.type,
+												refrigerant: assetRef.refrigerant,
+												assetLocation: city.city,
+												time: Validations.formatAMPM(record.createdOn),
+												customerReq: record.customerReq/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh."*/,
+												currentState: record.currentState/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+												correctiveActions: record.correctiveActions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+												suggestions: record.suggestions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
+												giverName: adminRepresentative.name + " " + adminRepresentative.lastname,/*"Felix Goenaga",*/
+												giverID: adminRepresentative.localId,
+												giverPosition: adminRepresentative.position,
+												receiverName: custRepresentative.name + " " + custRepresentative.lastname,
+												receiverID: custRepresentative.localId,
+												receiverPosition: custRepresentative.position
+											},
+											options: {
+												preview: true
+											}
+										};
+										var options = {
+											uri: "https://andreslt.jsreportonline.net/api/report",
+											headers: {
+												Authorization: "Basic " + new Buffer(config.jsReportUser + ":" + config.jsReportPassword).toString("base64")
+											},
+											method: 'POST',
+											json: data
+										};
+										request(options).pipe(res);
+									}
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+	searchRecord.catch(err => {
+		console.log('err:'+err);
+		res.sendStatus(404);
+	});
+});
+
+/* ---> AJAX REQUESTS <--- */
+router.post('/getContacts', (req,res)=>{
+	var ticketID = req.query.url.split('?')[1].substring(3).toString();	
+		Ticket.findOne({_id: ticketID}).populate('contacts').exec((err,ticket)=>{
+			let contacts 
+		res.send(ticket.contacts);
+	});
+})
 
 /* ---> OLD <--- */
 /*	router.get('/admin/customers/:customer/tickets', Validations.ensureAuthenticated, AdminUserFunction, (req, res) => {
@@ -306,7 +404,7 @@ router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
 	router.get('/admin/listUsers/editUser', Validations.ensureAuthenticated, AdminUserFunction, (req,res)=>{
 		var user = req.user;
 		company.find({companyName: {$ne: "Default company"}},(err, customers) => {
-			cities.find({},(err, cits) => {
+			City.find({},(err, cits) => {
 				stores.find({storeName: {$ne: "Default store"}},(err, strs) => {
 					User.findOne({_id: req.query.userId}).populate("company_id").populate("store_id").populate("city_id").exec((err, userEdit)=>{
 						if (err) throw err;

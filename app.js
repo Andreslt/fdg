@@ -73,6 +73,23 @@ var hbsEngine = exphbs.create({
             return "Finalizado"
           }else return "Cancelado"          
         },
+        priorityESP: (status) =>{
+          if (status==="vHigh"){
+            return "MUY ALTA"
+          }else if (status ==="high"){
+            return "ALTA"
+          }else if (status ==="medium"){
+            return "MEDIA"
+          }else if (status ==="low"){
+            return "BAJA"            
+          }else return ""          
+        },
+        if_Comp: (cond1,cond2, options)=>{
+          if(cond1===cond2)
+            return options.fn(this);
+          else
+            return options.inverse(this);
+        },       
         times: () =>{
           var day=new Array();
           for (var i=1;i<=30;i++)

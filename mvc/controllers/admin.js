@@ -15,34 +15,19 @@ var Ticket = require("../models/ticket");
 var City = require('../models/city');
 var Record = require('../models/record');
 var Event = require('../models/event');
+var Asset = require('../models/asset');
+var AssetRef = require('../models/assetReference');
 
 //Config
 var Validations = require('../../config/validations');
 var config = require('../../config/config');
+var mailer = require('../../config/mailer');
 
 /* >>> ROUTES <<< */
 // Dashboard
 router.get('/dashboard', Validations.ensureAuthenticated, Validations.systemAdmin, function (req, res) {
 	Company.find({ companyName: { $ne: "Default company" } }, (err, customers) => {
 		res.render('1-admin/dashboard', { layout: 'adminLayout', userTypeAdmin: true, customers });
-	});
-});
-
-// Calendar
-router.get('/calendar', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW;
-	res.render('1-admin/list_calendar_cities', { layout: 'adminLayout', storeAdminSW });
-});
-
-// Calendar
-router.get('/calendar/selected', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW, city = req.query.city;
-	Event.find({}).populate('city_id').exec((err, eventos) => {
-		let events = eventos.filter((elem) => {
-			return elem.city_id.city.toUpperCase() === city
-		});
-		if (err) console.log(err);
-		res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
 	});
 });
 
@@ -82,13 +67,67 @@ router.get('/account/edit', Validations.ensureAuthenticated, Validations.systemA
 
 //* Maintenances *//
 
-/*router.get('/scheduleNew', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+router.get('/calendar', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let user = req.user, storeAdminSW;
+	res.render('1-admin/list_calendar_cities', { layout: 'adminLayout', storeAdminSW });
+});
+
+router.get('/calendar/:city', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let city = req.params.city, storeAdminSW;
+	City.findOne({ city: city }, (err, city_id) => {
+		Store.find({ city_id: city_id.id }, (err, stores) => {
+			let companiesArray = new Array();
+			stores.forEach(function (elem) {
+				companiesArray.push(elem.company_id);
+			});
+			Company.find({ _id: { $in: companiesArray } }, (err, companies) => {
+				res.render('1-admin/list_calendar_companies', { layout: 'adminLayout', storeAdminSW, companies, city });
+			});
+		});
+	});
+});
+
+router.get('/calendar/:city/:company', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let city_params = req.params.city, company_params = req.params.company, storeAdminSW;
+	City.findOne({ city: city_params }, (err, city) => {
+		Company.findOne({ companyName: company_params }, (err, company) => {
+			Store.find({ city_id: city, company_id: company }, (err, stores) => {
+				let storesArray = new Array();
+				stores.forEach(function (elem) {
+					storesArray.push(elem.id);
+				});
+				Ticket.find({ store_id: { $in: storesArray } }, (err, tickets) => {
+					let ticketsArray = new Array();
+					tickets.forEach(function (elem) {
+						ticketsArray.push(elem.id);
+					});
+					Event.find({ ticket_id: { $in: ticketsArray } }).populate('city_id').exec((err, eventos) => {
+						let events = eventos.filter((elem) => {
+							return elem.city_id.city === city_params
+						});
+						if (err) console.log(err);
+						res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
+					});
+				});
+			});
+		});
+	});
+/*	Event.find({}).populate('city_id').exec((err, eventos) => {
+		let events = eventos.filter((elem) => {
+			return elem.city_id.city.toUpperCase() === city
+		});
+		if (err) console.log(err);
+		res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
+	});*/
+});
+
+router.get('/scheduleNew', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
 	Event.find({}).populate('ticket_id').populate('created_by').exec((err, events) => {
 		console.log(events);
-		res.render('1-admin/new_schedule', { layout: 'adminLayout', storeAdminSW, events});
+		res.render('1-admin/new_schedule', { layout: 'adminLayout', storeAdminSW, events });
 	});
-});*/
+});
 
 /*router.post('/scheduleSave', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 		let user = req.user, storeAdminSW;
@@ -207,7 +246,7 @@ router.get('/list_tickets', Validations.ensureAuthenticated, Validations.systemA
 // New record
 router.post('/newRecord', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let body = req.body;
-	Ticket.findOne({_id: body.ticket_id}, (err, ticket) => {
+	Ticket.findOne({ _id: body.ticket_id }, (err, ticket) => {
 		User.findOne({ _id: body.custRepresentative }, (err, custRepresentative) => {
 			let params = {
 				recordNumber: Validations.numberGenerator("record"),
@@ -219,12 +258,15 @@ router.post('/newRecord', Validations.ensureAuthenticated, Validations.systemAdm
 				adminRepresentative: req.user,
 				custRepresentative: custRepresentative,
 			},
-			record = new Record(params);
+				record = new Record(params);
 			record.save((err) => {
-				if (err) req.flash('error', 'El acta no pudo ser guardada. Inténtelo nuevamente.');
-				else req.flash('success_msg', 'Acta No: ' + params.recordNumber + ' guardada con éxito.');
-
-				res.redirect('/tickets/ticket_details?ID=581e01ca662fb4a4af5e1202');
+				if (err) {
+					req.flash('error', 'El acta no pudo ser guardada. Inténtelo nuevamente.');
+					res.redirect('/tickets/ticket_details?ID=' + ticket.id);
+				} else {
+					req.flash('success_msg', 'Acta No: ' + params.recordNumber + ' guardada con éxito.');
+					res.redirect('/tickets/ticket_details?ID=' + ticket.id);
+				}
 			});
 		});
 	});
@@ -239,10 +281,10 @@ router.get('/newStore', Validations.ensureAuthenticated, (req, res) => {
 // Stores
 router.get('/stores', Validations.ensureAuthenticated, (req, res) => {
 	let user = req.user, storeAdminSW;
-	Store.find({storeName: {$ne: 'Default store'}}).populate('company_id').populate('city_id').populate('representative').exec((err, stores)=>{
+	Store.find({ storeName: { $ne: 'Default store' } }).populate('company_id').populate('city_id').populate('representative').exec((err, stores) => {
 		if (err) console.log(err);
 		res.render('1-admin/list_stores', { layout: 'adminLayout', storeAdminSW, stores });
-	});	
+	});
 });
 
 // New asset
@@ -298,30 +340,6 @@ router.get('/usersApproved', Validations.ensureAuthenticated, Validations.system
 				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
 			});
 		});
-/*		User.find({ userApproval: true, userRole: { $ne: 'systemAdmin' } }).exec((err, usuarios) => {
-			Store.find({ storeName: { $ne: 'Default store' } }).populate('company_id').populate('city_id').exec((err, stores) => {
-				var cont = 0;
-				for(let i=0;i<usuarios.length;i++){
-					for(let j=0;j<stores.length;j++){
-						cont=cont+1;
-						console.log('cont: '+cont);
-						console.log('usuarios[i].store_id: '+usuarios[i].store_id);
-						console.log('stores[j].id: '+stores[j].id);						
-						if (usuarios[i].store_id == stores[j].id){
-							console.log('stores[j].city_id.city: '+stores[j].city_id.city);
-							console.log('stores[j].company_id.companyName: '+stores[j].company_id.companyName);
-							usuarios[i]['nuevaProp']="hola mundo";
-							usuarios[i].city=stores[j].city_id.city;
-							usuarios[i].company=stores[j].company_id.companyName;
-							console.log('usuarios: '+usuarios[i]);
-						}
-					}
-				}
-				console.log('usuarios: '+usuarios);
-				if (err) console.log(err)
-				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, usuarios, stores });
-			});
-		});*/
 });
 
 // Edit User
@@ -350,12 +368,11 @@ router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
 	res.render('1-admin/list_reports', { layout: 'adminLayout', storeAdminSW });
 });
 
-router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+/*router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let recordNumber = req.query.recordNumber,
 		request = require('request');
 
 	var searchRecord = new Promise((resolve, reject) => {
-		console.log('RecordNumber a buscar: ' + recordNumber);
 		Record.findOne({ recordNumber: recordNumber })
 			.populate('ticket_id').exec((err, record) => {
 				if (err || record == null) { reject(err) }
@@ -372,53 +389,58 @@ router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemA
 					User.findOne({ _id: record.custRepresentative }, (err, custRepresentative) => {
 						if (err) res.sendStatus(404);
 						User.findOne({ _id: record.adminRepresentative }, (err, adminRepresentative) => {
-							if (err) res.sendStatus(404);
-							else {
-								var data = {
-									template: {
-										shortid: "BJbxYsgbe",
-									},
-									data: {
-										city: city.city,
-										day: record.createdOn.getDate(),
-										month: getSpanishMonth(record.createdOn.getMonth()),
-										year: record.createdOn.getFullYear(),
-										company: company.companyName,
-										custRepresentativeName: custRepresentative.name + " " + custRepresentative.lastname,
-										adminadminRepresentative: adminRepresentative.name + " " + adminRepresentative.lastname,
-										asset: record.ticket_id.asset_id,
-										reference: "referencia",
-										capacity: 123,
-										brand: "MacDonalds",
-										type: "tipo1",
-										refrigerant: "abcd",
-										assetLocation: "Bucaramanga",
-										time: formatAMPM(record.createdOn),
-										customerReq: record.customerReq/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh."*/,
-										currentState: record.currentState/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
-										correctiveActions: record.correctiveActions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
-										suggestions: record.suggestions/*"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu cursus nisl, at finibus ex. Sed quis ultrices nibh. Praesent quis efficitur ipsum, sed viverra quam. "*/,
-										giverName: adminRepresentative.name + " " + adminRepresentative.lastname,/*"Felix Goenaga",*/
-										giverID: adminRepresentative.localId,
-										giverPosition: adminRepresentative.position,
-										receiverName: custRepresentative.name + " " + custRepresentative.lastname,
-										receiverID: custRepresentative.localId,
-										receiverPosition: custRepresentative.position
-									},
-									options: {
-										preview: true
+							Asset.findOne({_id: ticket.asset_id}, (err, asset)=>{
+								AssetRef.findOne({_id: asset.reference_id}, (err, assetRef)=>{
+									if (err) res.sendStatus(404);
+									else {
+										var data = {
+											template: {
+												shortid: "BJbxYsgbe",
+											},
+											data: {
+												city: city.city,
+												day: record.createdOn.getDate(),
+												month: getSpanishMonth(record.createdOn.getMonth()),
+												year: record.createdOn.getFullYear(),
+												company: company.companyName,
+												customerName: custRepresentative.name + " " + custRepresentative.lastname,
+												adminRepresentative: adminRepresentative.name + " " + adminRepresentative.lastname,
+												asset: asset.number,
+												reference: assetRef.number,
+												capacity: assetRef.capacity,
+												units: assetRef.capacity_unit,
+												brand: assetRef.brand,
+												type: assetRef.type,
+												refrigerant: assetRef.refrigerant,
+												assetLocation: city.city,
+												time: formatAMPM(record.createdOn),
+												customerReq: record.customerReq,
+												currentState: record.currentState,
+												correctiveActions: record.correctiveActions,
+												suggestions: record.suggestions,
+												giverName: adminRepresentative.name + " " + adminRepresentative.lastname,
+												giverID: adminRepresentative.localId,
+												giverPosition: adminRepresentative.position,
+												receiverName: custRepresentative.name + " " + custRepresentative.lastname,
+												receiverID: custRepresentative.localId,
+												receiverPosition: custRepresentative.position
+											},
+											options: {
+												preview: true
+											}
+										};
+										var options = {
+											uri: "https://andreslt.jsreportonline.net/api/report",
+											headers: {
+												Authorization: "Basic " + new Buffer(config.jsReportUser + ":" + config.jsReportPassword).toString("base64")
+											},
+											method: 'POST',
+											json: data
+										};
+										request(options).pipe(res);
 									}
-								};
-								var options = {
-									uri: "https://andreslt.jsreportonline.net/api/report",
-									headers: {
-										Authorization: "Basic " + new Buffer(config.jsReportUser + ":" + config.jsReportPassword).toString("base64")
-									},
-									method: 'POST',
-									json: data
-								};
-								request(options).pipe(res);
-							}
+								});
+							});
 						});
 					});
 				});
@@ -427,6 +449,46 @@ router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemA
 	});
 	searchRecord.catch(err => {
 		res.sendStatus(404);
+	});
+});*/
+
+router.post('/reports/notify', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
+	let reportID = req.query.reportID, target = req.query.target.split(',');
+	target = target[target.length - 1];
+	Record.findOneAndUpdate({ recordNumber: reportID }, { $set: { notified: target } }, { new: true }, (err, record) => {
+		Ticket.findOne({ _id: record.ticket_id }, (err, ticket) => {
+			User.find({ _id: { $in: ticket.contacts } }, (err, users) => {
+				let recipents = new Array();
+				for (var u = 0; u < users.length; u++) {
+					var sw = false;
+					console.log('target: ' + target);
+					if (target === "administradores") {
+						if (users[u].userRole === "systemAdmin") {
+							sw = true;
+							console.log('administradores: ' + users[u].username);
+						}
+					} else if (target === "usuarios") {
+						if (users[u].userRole !== "systemAdmin") {
+							sw = true;
+							console.log('usuarios: ' + users[u].username);
+						}
+					} else if (target === "contactos") {
+						sw = true;
+						console.log('contactos: ' + users[u].username);
+					}
+					if (sw) recipents.push(users[u].email);
+				}
+				console.log('recipents:' + recipents);
+				mailer.mailOptions.to = recipents;
+				mailer.mailOptions.subject = "Notificaciones FDG - Nueva Acta No." + record.recordNumber;
+				mailer.mailOptions.template = "record";
+				mailer.mailOptions.context = {
+					recordNumber: record.recordNumber,
+					ticketNumber: ticket.ticketNumber
+				};
+				mailer.sendEmail();
+			});
+		});
 	});
 });
 
