@@ -7,12 +7,7 @@ var EventSchema = mongoose.Schema({
     eventNumber: {
         type: Number, 
         required: true,
-        unique: true,
         min: 1
-    },
-    ticket_id: {
-        type: ObjectId,
-        ref: 'Ticket'
     },
     text: {
         type: String
@@ -25,22 +20,29 @@ var EventSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    city_id: {
+    rec_type: String,
+    rec_pattern: String,
+    event_length: String,      
+    ticket_id: {
         type: ObjectId,
-        ref: "City",
+        ref: 'Ticket',
         required: true
-    },
+    },    
     created_by: {
         type: ObjectId,
         ref: "User",
         required: true
     },
-    modified_by: {
-        type: ObjectId,
-        ref: "User",
+    created_on: {
+        type: Date,
+        default: new Date(),
         required: true
-    }      
+    }        
 });
 
 EventSchema.plugin(uniqueValidator);
 module.exports = mongoose.model('Event', EventSchema);
+
+module.exports.createEvent = (newEvent, callback) => {
+    newEvent.save(callback);
+}

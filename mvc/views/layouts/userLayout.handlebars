@@ -48,7 +48,6 @@
 	<link rel="apple-touch-startup-image" href="/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 	<link rel="apple-touch-startup-image" href="/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 
-
 </head>
 
 <body class="smart-style-1">
@@ -58,63 +57,7 @@
 			<!-- PLACE YOUR LOGO HERE -->
 			<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
 			<!-- END LOGO PLACEHOLDER -->
-
-			<!-- Note: The activity badge color changes when clicked and resets the number to 0
-					 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-			<!--<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>-->
-
-			<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-<!--			<div class="ajax-dropdown">
-				<div class="btn-group btn-group-justified" data-toggle="buttons">
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/mail.html">
-							Msgs (14) </label>
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/notifications.html">
-							notify (3) </label>
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/tasks.html">
-							Tasks (4) </label>
-				</div>
-
-				<div class="ajax-notifications custom-scroll">
-
-					<div class="alert alert-transparent">
-						<h4>Click a button to show messages here</h4>
-						This blank page message helps protect your privacy, or you can show the first message here automatically.
-					</div>
-
-					<i class="fa fa-lock fa-4x fa-border"></i>
-
-				</div>
-				<span> Ultima actualización: 12/12/2013 9:43AM
-						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
-							<i class="fa fa-refresh"></i>
-						</button> </span>
-			</div>-->
 		</div>
-
-<!--		<div class="project-context hidden-xs">
-
-			<span class="label">Projects:</span>
-			<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-			<ul class="dropdown-menu">
-				<li>
-					<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">Notes on pipeline upgradee</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">Assesment Report for merchant account</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-				</li>
-			</ul>
-		</div>-->
 
 		<!-- pulled right: nav area -->
 		<div class="pull-right">
@@ -200,18 +143,7 @@
 		<nav>
 			<ul>
 				<li class="active">
-					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Inicio</span></a>
-					<ul>
-						<!--								<li class="active">
-									<a href="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i>Home</a>
-								</li>	-->
-						<li class="active">
-							<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
-						</li>
-						<li class="">
-							<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
-						</li>
-					</ul>
+					<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Dashboard</span></a>
 				</li>
 				<li class="">
 					<a href="#" title="Mantenimientos"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Mantenimientos</span></a>
@@ -220,10 +152,13 @@
 							<a href="#" title="Tickets Preventivos"><i class="fa fa-lg fa-fw fa-calendar-o"></i>Preventivo</a>
 							<ul>
 								<li>
-									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>Agendar Ticket</a>
+									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Agendar Ticket</a>
 								</li>
 								<li class="active">
-									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-align-left"></i>Ver Tickets</a>
+									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
+								</li>
+								<li class="">
+									<a href="/calendar" title="Calendario"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Cronograma</a>
 								</li>
 							</ul>
 						</li>
@@ -231,10 +166,10 @@
 							<a href="#" title="Tickets Correctivos"><i class="fa fa-lg fa-fw fa-exclamation-triangle"></i>Correctivo</a>
 							<ul>
 								<li>
-									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-tags"></i>Crear Ticket</a>
+									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Crear Ticket</a>
 								</li>
 								<li>
-									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
+									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
 								</li>
 							</ul>
 						</li>
@@ -244,43 +179,30 @@
 					<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
 					<ul>
 						<li>
-							<a href="/newStore" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
+							<a href="/stores/new" title="Nueva Tienda"><i class="fa fa-lg fa-fw fa-building"></i>Crear Tienda</a>
 						</li>
 						<li>
 							<a href="/stores" title="Ver Tiendas"><i class="fa fa-lg fa-fw fa-align-justify"></i>Ver Tiendas</a>
 						</li>
 					</ul>
 				</li>
-				<!--						<li class="">
-							<a href="#" title="Activos"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
-							<ul>
-								<li>
-									<a href="/newAsset" title="Crear Activo"><i class="fa fa-lg fa-fw fa-laptop"></i>Crear Activo</a>
-								</li>								
-								<li>
-									<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Activos</a>
-								</li>						
-							</ul>
-						</li>	-->
 				<li class="">
-					<a href="#" title="Empleados"><i class="fa fa-lg fa-fw fa-sitemap"></i> <span class="menu-item-parent">Empleados</span></a>
+					<a href="#" title="Activos"><i class="fa fa-lg fa-fw  fa-hdd-o"></i> <span class="menu-item-parent">Activos</span></a>
 					<ul>
 						<li>
-							<a href="/employees" title="All Tickets"><i class="fa fa-lg fa-fw fa-group"></i>Ver Empleados</a>
+							<a href="/assets/new" title="Crear Activo"><i class="fa fa-lg fa-fw fa-laptop"></i>Crear Activo</a>
+						</li>
+						<li>
+							<a href="/assets" title="Ver Activos"><i class="fa fa-lg fa-fw fa-list-alt"></i>Ver Activos</a>
+						</li>
+						<li>
+							<a href="/assets/assetRefs" title="Ver Referencias"><i class="fa fa-lg fa-fw fa-barcode"></i>Ver Referencias</a>
 						</li>
 					</ul>
 				</li>
-				<!--						<li class="">
-							<a href="#" title="Reportes"><i class="fa fa-lg fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
-							<ul>
-								<li>
-									<a href="/newReport" title="Tickets by Cities"><i class="fa fa-lg fa-plus-square-o"></i>Crear Reporte</a>
-								</li>								
-								<li>
-									<a href="/reports" title="All Tickets"><i class="fa fa-lg fa-file-text-o"></i>Ver Reportes</a>
-								</li>						
-							</ul>
-						</li>	-->
+				<li>
+					<a href="/users/account/edit?username={{user.username}}"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Cuenta</span></a>
+				</li>
 				<li class="">
 					<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
 				</li>
@@ -341,1840 +263,1947 @@
 									<p class="txt-color-darken font-sm no-margin">Download Progress</p>
 									<div class="progress progress-micro no-margin">
 										<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<div class="padding-5">
-									<p class="txt-color-darken font-sm no-margin">Server Load</p>
-									<div class="progress progress-micro no-margin">
-										<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<div class="padding-5">
-									<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-									<div class="progress progress-micro no-margin">
-										<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-							<li>
-								<div class="padding-5">
-									<button class="btn btn-block btn-default">refresh</button>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+</div>
+</div>
+</li>
+<li class="divider"></li>
+<li>
+	<div class="padding-5">
+		<p class="txt-color-darken font-sm no-margin">Server Load</p>
+		<div class="progress progress-micro no-margin">
+			<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+</div>
+</div>
+</li>
+<li class="divider"></li>
+<li>
+	<div class="padding-5">
+		<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
+		<div class="progress progress-micro no-margin">
+			<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
+</div>
+</div>
+</li>
+<li class="divider"></li>
+<li>
+	<div class="padding-5">
+		<button class="btn btn-block btn-default">refresh</button>
 	</div>
-	<!-- END PAGE FOOTER -->
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- END PAGE FOOTER -->
 
-	<!--================================================== -->
+<!--================================================== -->
 
-	<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-	<script data-pace-options='{ "restartOnRequestAfter": true }' src="/js/plugin/pace/pace.min.js"></script>
+<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="/js/plugin/pace/pace.min.js"></script>
 
-	<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>
-				if (!window.jQuery) {
-					document.write('<script src="/js/libs/jquery-2.1.1.min.js"><\/script>');
-				}
-			</script>
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+		if (!window.jQuery) {
+			document.write('<script src="/js/libs/jquery-2.1.1.min.js"><\/script>');
+		}
+	</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<script>
-				if (!window.jQuery.ui) {
-					document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-				}
-			</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+		if (!window.jQuery.ui) {
+			document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+		}
+	</script>
 
-	<!-- FDG: APP CONFIG -->
-	<script>
+<!-- FDG: APP CONFIG -->
+<script>
 				var userCompany = "{{userEdit.company_id.companyName}}"
 				var userStore = "{{userEdit.store_id.storeName}}"
+				var username = "{{user.username}}"
 				var userCity = "{{userEdit.city_id.city}}"
 				var storeAdmin = "{{selectedUserType.storeAdmin}}"
 				var storeEmp = "{{selectedUserType.storeEmp}}"
 				var companyName = "{{companyName}}"
 				var tktstatus = "{{ticket.status}}"
 				var tktadvance = "{{ticket.advance}}"
-				var tktpriority = "{{ticket.priority}}"				
-			</script>
-	<script src="/js/fdgcomponents.js"></script>
+				var tktpriority = "{{ticket.priority}}"
+				var tktnumber = "{{ticket.ticketNumber}}"
+				var storeID = "{{store.id}}"
+				var localCode = "{{LRef}}"
+				var assetID = "{{asset.id}}"
+				var status_asset = "{{asset.status}}"
+				var store_asset = "{{asset.store_id}}"
+				var reference_asset = "{{asset.reference_id}}"
+				var ticket_asset = "{{ticket.asset_id.id}}"
+				var categoriestkt = "{{ticket.categories}}".split(',')
+				var ticket_track = "{{ticket.track}}"
 
-	<!-- IMPORTANT: APP CONFIG -->
-	<script src="/js/app.config.js"></script>
+				var checkclass = '',
+					checktext = 'Seguir',
+					checksymbol = ""
 
-	<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-	<script src="/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+				if (ticket_track === 'checked') {
+					var checkclass = 'warning',
+						checktext = 'Siguiendo',
+						checksymbol = "<i class='fa fa-check' style='margin-left:5px'>"
+				}
+	</script>
+<script src="/js/fdgcomponents.js"></script>
 
-	<!-- BOOTSTRAP JS -->
-	<script src="/js/bootstrap/bootstrap.min.js"></script>
+<!-- IMPORTANT: APP CONFIG -->
+<script src="/js/app.config.js"></script>
 
-	<!-- CUSTOM NOTIFICATION -->
-	<script src="/js/notification/SmartNotification.min.js"></script>
+<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+<script src="/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
 
-	<!-- JARVIS WIDGETS -->
-	<script src="/js/smartwidgets/jarvis.widget.min.js"></script>
+<!-- BOOTSTRAP JS -->
+<script src="/js/bootstrap/bootstrap.min.js"></script>
 
-	<!-- EASY PIE CHARTS -->
-	<script src="/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+<!-- CUSTOM NOTIFICATION -->
+<script src="/js/notification/SmartNotification.min.js"></script>
 
-	<!-- SPARKLINES -->
-	<script src="/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+<!-- JARVIS WIDGETS -->
+<script src="/js/smartwidgets/jarvis.widget.min.js"></script>
 
-	<!-- JQUERY VALIDATE -->
-	<script src="/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<!-- EASY PIE CHARTS -->
+<script src="/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
 
-	<!-- JQUERY MASKED INPUT -->
-	<script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<!-- SPARKLINES -->
+<script src="/js/plugin/sparkline/jquery.sparkline.min.js"></script>
 
-	<!-- JQUERY SELECT2 INPUT -->
-	<script src="/js/plugin/select2/select2.min.js"></script>
+<!-- JQUERY VALIDATE -->
+<script src="/js/plugin/jquery-validate/jquery.validate.min.js"></script>
 
-	<!-- JQUERY UI + Bootstrap Slider -->
-	<script src="/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+<!-- JQUERY MASKED INPUT -->
+<script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
 
-	<!-- browser msie issue fix -->
-	<script src="/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+<!-- JQUERY SELECT2 INPUT -->
+<script src="/js/plugin/select2/select2.min.js"></script>
 
-	<!-- FastClick: For mobile devices -->
-	<script src="/js/plugin/fastclick/fastclick.min.js"></script>
+<!-- JQUERY UI + Bootstrap Slider -->
+<script src="/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
 
-	<!-- ProgressBar -->
-	<script src="/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- browser msie issue fix -->
+<script src="/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
 
-	<!--[if IE 8]>
+<!-- FastClick: For mobile devices -->
+<script src="/js/plugin/fastclick/fastclick.min.js"></script>
+
+<!-- ProgressBar -->
+<script src="/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<!--[if IE 8]>
 
 			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
 			<![endif]-->
 
-	<!-- Demo purpose only
+<!-- Demo purpose only
 			<script src="/js/demo.min.js"></script>-->
 
-	<!-- MAIN APP JS FILE -->
-	<script src="/js/app.min.js"></script>
+<!-- MAIN APP JS FILE -->
+<script src="/js/app.min.js"></script>
 
-	<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
-	<!-- Voice command : plugin -->
-	<script src="/js/speech/voicecommand.min.js"></script>
+<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+<!-- Voice command : plugin -->
+<script src="/js/speech/voicecommand.min.js"></script>
 
-	<!-- SmartChat UI : plugin -->
-	<script src="/js/smart-chat-ui/smart.chat.ui.min.js"></script>
-	<script src="/js/smart-chat-ui/smart.chat.manager.min.js"></script>
+<!-- SmartChat UI : plugin -->
+<script src="/js/smart-chat-ui/smart.chat.ui.min.js"></script>
+<script src="/js/smart-chat-ui/smart.chat.manager.min.js"></script>
 
-	<!-- PAGE RELATED PLUGIN(S) -->
+<!-- PAGE RELATED PLUGIN(S) -->
 
-	<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-	<script src="/js/plugin/flot/jquery.flot.cust.min.js"></script>
-	<script src="/js/plugin/flot/jquery.flot.resize.min.js"></script>
-	<script src="/js/plugin/flot/jquery.flot.time.min.js"></script>
-	<script src="/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+<script src="/js/plugin/flot/jquery.flot.cust.min.js"></script>
+<script src="/js/plugin/flot/jquery.flot.resize.min.js"></script>
+<script src="/js/plugin/flot/jquery.flot.time.min.js"></script>
+<script src="/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
 
-	<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
-	<script src="/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+<script src="/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
 
-	<!-- Full Calendar -->
-	<script src="/js/plugin/moment/moment.min.js"></script>
-	<script src="/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+<!-- Full Calendar -->
+<script src="/js/plugin/moment/moment.min.js"></script>
+<script src="/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
 
-	<!-- DASHBOARD PLUGINS
+<!-- DASHBOARD PLUGINS -->
+<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
+<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
+<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
+
+<!-- TEMPLATE-FORM PLUGIN(S) -->
+<script src="/js/plugin/jquery-form/jquery-form.min.js"></script>
+
+<!-- FORM PLUGIN(S) -->
+<script src="/js/plugin/maxlength/bootstrap-maxlength.min.js"></script>
+<script src="/js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+<script src="/js/plugin/clockpicker/clockpicker.min.js"></script>
+<script src="/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>
+<script src="/js/plugin/noUiSlider/jquery.nouislider.min.js"></script>
+<script src="/js/plugin/ion-slider/ion.rangeSlider.min.js"></script>
+<script src="/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="/js/plugin/knob/jquery.knob.min.js"></script>
+<script src="/js/plugin/x-editable/moment.min.js"></script>
+<script src="/js/plugin/x-editable/jquery.mockjax.min.js"></script>
+<script src="/js/plugin/x-editable/x-editable.min.js"></script>
+<script src="/js/plugin/typeahead/typeahead.min.js"></script>
+<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
+<script src="/js/plugin/dropzone/dropzone.min.js"></script>
+<script src="/js/plugin/superbox/superbox.min.js"></script>
+
+<!-- CHARTS PLUGIN(S) 
 			<script src="..."></script>-->
-	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-	<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+<script src="/js/plugin/moment/moment.min.js"></script>
+<script src="/js/plugin/chartjs/chart.min.js"></script>
 
-	<script src="/js/plugin/datatables/jquery.dataTables.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.colVis.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-	<script src="/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-	<script src="/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
-	<script src="/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
-	<script src="/js/plugin/jqgrid/grid.locale-en.min.js"></script>
 
-	<!-- TEMPLATE-FORM PLUGIN(S) -->
-	<script src="/js/plugin/jquery-form/jquery-form.min.js"></script>
+<script>
+				$(document).ready(function () {
 
-	<!-- FORM PLUGIN(S) -->
-	<script src="/js/plugin/maxlength/bootstrap-maxlength.min.js"></script>
-	<script src="/js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-	<script src="/js/plugin/clockpicker/clockpicker.min.js"></script>
-	<script src="/js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>
-	<script src="/js/plugin/noUiSlider/jquery.nouislider.min.js"></script>
-	<script src="/js/plugin/ion-slider/ion.rangeSlider.min.js"></script>
-	<script src="/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-	<script src="/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
-	<script src="/js/plugin/knob/jquery.knob.min.js"></script>
-	<script src="/js/plugin/x-editable/moment.min.js"></script>
-	<script src="/js/plugin/x-editable/jquery.mockjax.min.js"></script>
-	<script src="/js/plugin/x-editable/x-editable.min.js"></script>
-	<script src="/js/plugin/typeahead/typeahead.min.js"></script>
-	<script src="/js/plugin/typeahead/typeaheadjs.min.js"></script>
+					// DO NOT REMOVE : GLOBAL FUNCTIONS!
+					pageSetUp();
 
-	<!-- CHARTS PLUGIN(S) 
-			<script src="..."></script>-->
-	<script src="/js/plugin/moment/moment.min.js"></script>
-	<script src="/js/plugin/chartjs/chart.min.js"></script>
-	<script>
-				$(document).ready(function() {		
-
-				// DO NOT REMOVE : GLOBAL FUNCTIONS!
-				pageSetUp();
-				
-			var $checkoutForm = $('#checkout-form').validate({
-			// Rules for form validation
-				rules : {
-					fname : {
-						required : true
-					},
-					lname : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					phone : {
-						required : true
-					},
-					country : {
-						required : true
-					},
-					city : {
-						required : true
-					},
-					code : {
-						required : true,
-						digits : true
-					},
-					address : {
-						required : true
-					},
-					name : {
-						required : true
-					},
-					card : {
-						required : true,
-						creditcard : true
-					},
-					cvv : {
-						required : true,
-						digits : true
-					},
-					month : {
-						required : true
-					},
-					year : {
-						required : true,
-						digits : true
-					}
-				},
-				
-		
-				// Messages for form validation
-				messages : {
-					fname : {
-						required : 'Please enter your first name'
-					},
-					lname : {
-						required : 'Please enter your last name'
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					phone : {
-						required : 'Please enter your phone number'
-					},
-					country : {
-						required : 'Please select your country'
-					},
-					city : {
-						required : 'Please enter your city'
-					},
-					code : {
-						required : 'Please enter code',
-						digits : 'Digits only please'
-					},
-					address : {
-						required : 'Please enter your full address'
-					},
-					name : {
-						required : 'Please enter name on your card'
-					},
-					card : {
-						required : 'Please enter your card number'
-					},
-					cvv : {
-						required : 'Enter CVV2',
-						digits : 'Digits only'
-					},
-					month : {
-						required : 'Select month'
-					},
-					year : {
-						required : 'Enter year',
-						digits : 'Digits only please'
-					}
-				},
-		
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-					
-			var $registerForm = $("#smart-form-register").validate({
-	
-				// Rules for form validation
-				rules : {
-					username : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					password : {
-						required : true,
-						minlength : 3,
-						maxlength : 20
-					},
-					passwordConfirm : {
-						required : true,
-						minlength : 3,
-						maxlength : 20,
-						equalTo : '#password'
-					},
-					firstname : {
-						required : true
-					},
-					lastname : {
-						required : true
-					},
-					gender : {
-						required : true
-					},
-					terms : {
-						required : true
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					login : {
-						required : 'Please enter your login'
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					password : {
-						required : 'Please enter your password'
-					},
-					passwordConfirm : {
-						required : 'Please enter your password one more time',
-						equalTo : 'Please enter the same password as above'
-					},
-					firstname : {
-						required : 'Please select your first name'
-					},
-					lastname : {
-						required : 'Please select your last name'
-					},
-					gender : {
-						required : 'Please select your gender'
-					},
-					terms : {
-						required : 'You must agree with Terms and Conditions'
-					}
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-	
-			var $reviewForm = $("#review-form").validate({
-				// Rules for form validation
-				rules : {
-					name : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					review : {
-						required : true,
-						minlength : 20
-					},
-					quality : {
-						required : true
-					},
-					reliability : {
-						required : true
-					},
-					overall : {
-						required : true
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					name : {
-						required : 'Please enter your name'
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : '<i class="fa fa-warning"></i><strong>Please enter a VALID email addres</strong>'
-					},
-					review : {
-						required : 'Please enter your review'
-					},
-					quality : {
-						required : 'Please rate quality of the product'
-					},
-					reliability : {
-						required : 'Please rate reliability of the product'
-					},
-					overall : {
-						required : 'Please rate the product'
-					}
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-			
-			var $commentForm = $("#comment-form").validate({
-				// Rules for form validation
-				rules : {
-					name : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					url : {
-						url : true
-					},
-					comment : {
-						required : true
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					name : {
-						required : 'Enter your name',
-					},
-					email : {
-						required : 'Enter your email address',
-						email : 'Enter a VALID email'
-					},
-					url : {
-						email : 'Enter a VALID url'
-					},
-					comment : {
-						required : 'Please enter your comment'
-					}
-				},
-	
-				// Ajax form submition
-				submitHandler : function(form) {
-					$(form).ajaxSubmit({
-						success : function() {
-							$("#comment-form").addClass('submited');
-						}
+					$('.superbox').SuperBox();
+					Dropzone.autoDiscover = false;
+					$("#mydropzone").dropzone({
+						//url: "/file/post",
+						addRemoveLinks: true,
+						maxFilesize: 5,
+						dictDefaultMessage: '<span class="text-center"><span class="font-lg visible-xs-block visible-sm-block visible-lg-block"><span class="font-lg"><i class="fa fa-caret-right text-danger"></i> Drop files <span class="font-xs">to upload</span></span><span>&nbsp&nbsp<h4 class="display-inline"> (Or Click)</h4></span>',
+						dictResponseError: 'Error uploading file!'
 					});
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-	
-			var $contactForm = $("#contact-form").validate({
-				// Rules for form validation
-				rules : {
-					name : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					message : {
-						required : true,
-						minlength : 10
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					name : {
-						required : 'Please enter your name',
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					message : {
-						required : 'Please enter your message'
-					}
-				},
-	
-				// Ajax form submition
-				submitHandler : function(form) {
-					$(form).ajaxSubmit({
-						success : function() {
-							$("#contact-form").addClass('submited');
-						}
-					});
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-	
-			var $loginForm = $("#login-form").validate({
-				// Rules for form validation
-				rules : {
-					email : {
-						required : true,
-						email : true
-					},
-					password : {
-						required : true,
-						minlength : 3,
-						maxlength : 20
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					password : {
-						required : 'Please enter your password'
-					}
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
-	
-			var $orderForm = $("#order-form").validate({
-				// Rules for form validation
-				rules : {
-					name : {
-						required : true
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					phone : {
-						required : true
-					},
-					interested : {
-						required : true
-					},
-					budget : {
-						required : true
-					}
-				},
-	
-				// Messages for form validation
-				messages : {
-					name : {
-						required : 'Please enter your name'
-					},
-					email : {
-						required : 'Please enter your email address',
-						email : 'Please enter a VALID email address'
-					},
-					phone : {
-						required : 'Please enter your phone number'
-					},
-					interested : {
-						required : 'Please select interested service'
-					},
-					budget : {
-						required : 'Please select your budget'
-					}
-				},
-	
-				// Do not change code below
-				errorPlacement : function(error, element) {
-					error.insertAfter(element.parent());
-				}
-			});
 
-			// START AND FINISH DATE
-			$('#startdate').datepicker({
-				dateFormat : 'dd.mm.yy',
-				prevText : '<i class="fa fa-chevron-left"></i>',
-				nextText : '<i class="fa fa-chevron-right"></i>',
-				onSelect : function(selectedDate) {
-					$('#finishdate').datepicker('option', 'minDate', selectedDate);
-				}
-			});
-			
-			$('#finishdate').datepicker({
-				dateFormat : 'dd.mm.yy',
-				prevText : '<i class="fa fa-chevron-left"></i>',
-				nextText : '<i class="fa fa-chevron-right"></i>',
-				onSelect : function(selectedDate) {
-					$('#startdate').datepicker('option', 'maxDate', selectedDate);
-				}
-			});
-
-		    $('#tags').editable({
-		        inputclass: 'input-large',
-		        select2: {
-		            tags: ['html', 'javascript', 'css', 'ajax'],
-		            tokenSeparators: [",", " "]
-		        }
-		    });
-
-				var randomScalingFactor = function() {
-		            return Math.round(Math.random() * 100);
-		            //return 0;
-		        };
-		        var barChartData = {
-		            labels: ["January", "February", "March", "April", "May", "June", "July"],
-		            datasets: [{
-		                label: 'Dataset 1',
-		                backgroundColor: "rgba(220,220,220,0.5)",
-		                data: [100, randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }, {
-		                label: 'Dataset 2',
-		                backgroundColor: "rgba(151,187,205,0.5)",
-		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }, {
-		                label: 'Dataset 3',
-		                backgroundColor: "rgba(151,187,205,0.5)",
-		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }]
-
-		        };
-
-		        var RadarConfig = {
-			        type: 'radar',
-			        data: {
-			            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-			            datasets: [{
-			                label: "My First dataset",
-			                backgroundColor: "rgba(220,220,220,0.2)",
-			                pointBackgroundColor: "rgba(220,220,220,1)",
-			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-			            }, {
-			                label: "My Second dataset",
-			                backgroundColor: "rgba(151,187,205,0.2)",
-			                pointBackgroundColor: "rgba(151,187,205,1)",
-			                hoverPointBackgroundColor: "#fff",
-			                pointHighlightStroke: "rgba(151,187,205,1)",
-			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-			            },]
-			        },
-			        options: {
-			            legend: {
-			                position: 'top',
-			            },
-			            
-			            scale: {
-			              reverse: false,
-			              ticks: {
-			                beginAtZero: true
-			              }
-			            }
-			        }
-			    };				
-
-
-			    var DoughtnutConfig = {
-			        type: 'doughnut',
-			        data: {
-			            datasets: [{
-			                data: [
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                    randomScalingFactor(),
-			                ],
-			                backgroundColor: [
-			                    "#F7464A",
-			                    "#46BFBD",
-			                    "#FDB45C",
-			                    "#949FB1",
-			                    "#4D5360",
-			                ],
-			                label: 'Dataset 1'
-			            }],
-			            labels: [
-			                "Red",
-			                "Green",
-			                "Yellow",
-			                "Grey",
-			                "Dark Grey"
-			            ]
-			        },
-			        options: {
-			            responsive: true,
-			            legend: {
-			                position: 'top',
-			            }
-			        }
-			    };
-				window.onload = function() {
-		            //window.myLine = new Chart(document.getElementById("lineChart"), LineConfig);
-		            window.myBar = new Chart(document.getElementById("barChart"), {
-		                type: 'bar',
-		                data: barChartData,
-		                options: {
-		                    responsive: true,
-		                }
-		            });
-		            window.myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
-        			window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);/*
-        			window.myPolarArea = Chart.PolarArea(document.getElementById("polarChart"), PolarConfig);
-        			window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);*/
-		        };								
-
-				var jqgrid_data = [];
-				{{#each usrs}}
-					jqgrid_data.push({
-						cliente: "1",
-						tipo: "{{userType}}",
-						usrname : "{{username}}",
-						name : "{{name}}",
-						lastname : "{{lastname}}",
-						email : "{{{email}}}",
-						created : "{{formatDate createdOn 'DD/MM/YYYY'}}"						
-					})
-				{{/each}}
-			
-				jQuery("#jqgrid").jqGrid({
-					data : jqgrid_data,
-					datatype : "local",
-					height : 'auto',
-					colNames : ['Cliente','Tipo de Usuario', 'Username', 'Nombre', 'Apellido', 'Email', 'Fecha'],
-					colModel : [{
-						name : 'cliente',
-						index : 'cliente'
-					}, {
-						name : 'tipo',
-						index : 'tipo',
-						editable : true
-					}, {
-						name : 'usrname',
-						index : 'usrname',
-						editable : true
-					}, {
-						name : 'name',
-						index : 'name',
-						editable : true
-					}, {
-						name : 'lastname',
-						index : 'lastname',
-						editable : true
-					}, {
-						name : 'email',
-						index : 'email',
-						editable : true
-					}, {
-						name : 'created',
-						index : 'created',
-						sortable : false,
-						editable : true
-					}],
-					rowNum : 10,
-					rowList : [10, 20, 30],
-					pager : '#pjqgrid',
-					sortname : 'id',
-					toolbarfilter : true,
-					viewrecords : true,
-					sortorder : "asc",
-					gridComplete : function() {
-						var ids = jQuery("#jqgrid").jqGrid('getDataIDs');
-						for (var i = 0; i < ids.length; i++) {							
-							var cl = ids[i];
-							be = "<button class='btn btn-xs btn-default' data-original-title='Edit Row' onclick=\"jQuery('#jqgrid').editRow('" + cl + "');\"><i class='fa fa-pencil'></i></button>";
-							se = "<button class='btn btn-xs btn-default' data-original-title='Save Row' onclick=\"jQuery('#jqgrid').saveRow('" + cl + "');\"><i class='fa fa-save'></i></button>";
-							ca = "<button class='btn btn-xs btn-default' data-original-title='Cancel' onclick=\"jQuery('#jqgrid').restoreRow('" + cl + "');\"><i class='fa fa-times'></i></button>";
-							//ce = "<button class='btn btn-xs btn-default' onclick=\"jQuery('#jqgrid').restoreRow('"+cl+"');\"><i class='fa fa-times'></i></button>";
-							//jQuery("#jqgrid").jqGrid('setRowData',ids[i],{act:be+se+ce});
-							jQuery("#jqgrid").jqGrid('setRowData', ids[i], {
-								act : be + se + ca
+					Dropzone.options.myDrop = {
+						init: function () {
+							this.on("complete", function () {
+								if (this.filesQueue.length == 0 && this.filesProcessing.length == 0) {
+									// File finished uploading, and there aren't any left in the queue.
+								}
 							});
 						}
-					},
-					editurl : "approveUser",
-					deleteurl: "deleteUser",
-					caption : "Autorizar Usuarios",
-					multiselect : true,
-					autowidth : true,
-				});
-				jQuery("#jqgrid").jqGrid('navGrid', "#pjqgrid", {
-					edit : false,
-					add : false,
-					del : true
-				});
-				jQuery("#jqgrid").jqGrid('inlineNav', "#pjqgrid");
-				/* Add tooltips */
-				$('.navtable .ui-pg-button').tooltip({
-					container : 'body'
-				});
-
-				jQuery("#m1").click(function() {
-					var s;
-					console.log("Se activó");
-					s = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
-					alert(s);
-				});
-				jQuery("#m1s").click(function() {
-					console.log("Se activó");
-					jQuery("#jqgrid").jqGrid('setSelection', "13");
-				});			
-
-				// remove classes
-				$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
-				$(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
-				$(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
-				$(".ui-jqgrid-pager").removeClass("ui-state-default");
-				$(".ui-jqgrid").removeClass("ui-widget-content");
-
-				// add classes
-				$(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
-				$(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
-
-				$(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
-				$(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
-				$(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
-				$(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
-				$(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
-				$(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
-				$(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
-				$(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
-
-				$(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
-
-				$(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
-
-				$(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
-
-				$(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
-				$(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");				
-
-					/* BASIC ;*/
-						var responsiveHelper_dt_basic = undefined;
-						var responsiveHelper_datatable_fixed_column = undefined;
-						var responsiveHelper_datatable_col_reorder = undefined;
-						var responsiveHelper_datatable_tabletools = undefined;
-						
-						var breakpointDefinition = {
-							tablet : 1024,
-							phone : 480
-						};
-			
-						$('#dt_basic').dataTable({
-							"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-								"t"+
-								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-							"autoWidth" : true,
-					        "oLanguage": {
-							    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-							},
-							"preDrawCallback" : function() {
-								// Initialize the responsive datatables helper once.
-								if (!responsiveHelper_dt_basic) {
-									responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
-								}
-							},
-							"rowCallback" : function(nRow) {
-								responsiveHelper_dt_basic.createExpandIcon(nRow);
-							},
-							"drawCallback" : function(oSettings) {
-								responsiveHelper_dt_basic.respond();
-							}
-						});
-			
-					/* END BASIC */
-					
-					/* PROJECTS*/
-					function format ( d ) {
-				    // `d` is the original data object for the row
-				    return '<table cellpadding="5" cellspacing="0" border="0" class="table table-hover table-condensed">'+
-				        '<tr>'+
-				            '<td style="width:100px">Project Title:</td>'+
-				            '<td>'+d.name+'</td>'+
-				        '</tr>'+
-				        '<tr>'+
-				            '<td>Deadline:</td>'+
-				            '<td>'+d.ends+'</td>'+
-				        '</tr>'+
-				        '<tr>'+
-				            '<td>Extra info:</td>'+
-				            '<td>And any further details here (images etc)...</td>'+
-				        '</tr>'+
-				        '<tr>'+
-				            '<td>Comments:</td>'+
-				            '<td>'+d.comments+'</td>'+
-				        '</tr>'+
-				        '<tr>'+
-				            '<td>Action:</td>'+
-				            '<td>'+d.action+'</td>'+
-				        '</tr>'+
-				    '</table>';
-				}
-
-				// clears the variable if left blank
-			    var table = $('#example').DataTable( {
-			    	"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-						"t"+
-						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-			        "ajax": "data/dataList.json",
-			        "bDestroy": true,
-			        "iDisplayLength": 15,
-			        "oLanguage": {
-					    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-					},
-			        "columns": [
-			            {
-			                "class":          'details-control',
-			                "orderable":      false,
-			                "data":           null,
-			                "defaultContent": ''
-			            },
-			            { "data": "name" },
-			            { "data": "est" },
-			            { "data": "contacts" },
-			            { "data": "status" },
-			            { "data": "target-actual" },
-			            { "data": "starts" },
-			            { "data": "ends" },
-			            { "data": "tracker" },
-			        ],
-			        "order": [[1, 'asc']],
-			        "fnDrawCallback": function( oSettings ) {
-				       runAllCharts()
-				    }
-			    } );
-
-			     
-			    // Add event listener for opening and closing details
-			    $('#example tbody').on('click', 'td.details-control', function () {
-			        var tr = $(this).closest('tr');
-			        var row = table.row( tr );
-			 
-			        if ( row.child.isShown() ) {
-			            // This row is already open - close it
-			            row.child.hide();
-			            tr.removeClass('shown');
-			        }
-			        else {
-			            // Open this row
-			            row.child( format(row.data()) ).show();
-			            tr.addClass('shown');
-			        }
-			    });
-					
-					/* COLUMN FILTER  */
-				    var otable = $('#datatable_fixed_column').DataTable({
-				    	//"bFilter": false,
-				    	//"bInfo": false,
-				    	//"bLengthChange": false
-				    	//"bAutoWidth": false,
-				    	//"bPaginate": false,
-				    	//"bStateSave": true // saves sort state using localStorage
-						"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
-								"t"+
-								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-						"autoWidth" : true,
-						"oLanguage": {
-							"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-						},
-						"preDrawCallback" : function() {
-							// Initialize the responsive datatables helper once.
-							if (!responsiveHelper_datatable_fixed_column) {
-								responsiveHelper_datatable_fixed_column = new ResponsiveDatatablesHelper($('#datatable_fixed_column'), breakpointDefinition);
-							}
-						},
-						"rowCallback" : function(nRow) {
-							responsiveHelper_datatable_fixed_column.createExpandIcon(nRow);
-						},
-						"drawCallback" : function(oSettings) {
-							responsiveHelper_datatable_fixed_column.respond();
-						}		
-					
-				    });
-				    
-				    // custom toolbar
-				    $("div.toolbar").html('<div class="text-right"><img src="img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
-				    	   
-				    // Apply the filter
-				    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
-				    	
-				        otable
-				            .column( $(this).parent().index()+':visible' )
-				            .search( this.value )
-				            .draw();
-				            
-				    } );
-				    /* END COLUMN FILTER */  
-
-					/*
-					 * PAGE RELATED SCRIPTS
-					 */
-					"use strict";
-				
-					var date = new Date();
-					var d = date.getDate();
-					var m = date.getMonth();
-					var y = date.getFullYear();
-				
-					var hdr = {
-						left: 'title',
-						center: 'month,agendaWeek,agendaDay',
-						right: 'prev,today,next'
-					};
-					$(".nav ul li").on("click", function(){
-						alert("keep trying");
-/*					$(".nav").find(".active").removeClass("active");
-					$(this).parent().addClass("active");*/
-					});				
-					var initDrag = function (e) {
-						// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-						// it doesn't need to have a start or end
-				
-						var eventObject = {
-							title: $.trim(e.children().text()), // use the element's text as the event title
-							description: $.trim(e.children('span').attr('data-description')),
-							icon: $.trim(e.children('span').attr('data-icon')),
-							className: $.trim(e.children('span').attr('class')) // use the element's children as the event class
-						};
-						// store the Event Object in the DOM element so we can get to it later
-						e.data('eventObject', eventObject);
-				
-						// make the event draggable using jQuery UI
-						e.draggable({
-							zIndex: 999,
-							revert: true, // will cause the event to go back to its
-							revertDuration: 0 //  original position after the drag
-						});
 					};
 
-			    var addEvent = function (title, priority, description, icon) {
-			        title = title.length === 0 ? "Untitled Event" : title;
-			        description = description.length === 0 ? "No Description" : description;
-			        icon = icon.length === 0 ? " " : icon;
-			        priority = priority.length === 0 ? "label label-default" : priority;
-			
-			        var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
-			            icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
-			
-			        $("#event-container").effect("highlight", 800);
-			
-			        initDrag(html);
-			    };
-			
-			    /* initialize the external events
-				 -----------------------------------------------------------------*/
-			
-			    $('#external-events > li').each(function () {
-			        initDrag($(this));
-			    });
-			
-			    $('#add-event').click(function () {
-			        var title = $('#title').val(),
-			            priority = $('input:radio[name=priority]:checked').val(),
-			            description = $('#description').val(),
-			            icon = $('input:radio[name=iconselect]:checked').val();
-			
-			        addEvent(title, priority, description, icon);
-			    });
-			
-			    /* initialize the calendar
-				 -----------------------------------------------------------------*/
-			
-			    $('#calendar').fullCalendar({
-			
-			        header: hdr,
-			        editable: true,
-			        droppable: true, // this allows things to be dropped onto the calendar !!!
-			
-			        drop: function (date, allDay) { // this function is called when something is dropped
-			
-			            // retrieve the dropped element's stored Event Object
-			            var originalEventObject = $(this).data('eventObject');
-			
-			            // we need to copy it, so that multiple events don't have a reference to the same object
-			            var copiedEventObject = $.extend({}, originalEventObject);
-			
-			            // assign it the date that was reported
-			            copiedEventObject.start = date;
-			            copiedEventObject.allDay = allDay;
-			
-			            // render the event on the calendar
-			            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-			            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-			
-			            // is the "remove after drop" checkbox checked?
-			            if ($('#drop-remove').is(':checked')) {
-			                // if so, remove the element from the "Draggable Events" list
-			                $(this).remove();
-			            }
-			
-			        },
-			
-			        select: function (start, end, allDay) {
-			            var title = prompt('Event Title:');
-			            if (title) {
-			                calendar.fullCalendar('renderEvent', {
-			                        title: title,
-			                        start: start,
-			                        end: end,
-			                        allDay: allDay
-			                    }, true // make the event "stick"
-			                );
-			            }
-			            calendar.fullCalendar('unselect');
-			        },
-			
-			        events: [{
-			            title: 'All Day Event',
-			            start: new Date(y, m, 1),
-			            description: 'long description',
-			            className: ["event", "bg-color-greenLight"],
-			            icon: 'fa-check'
-			        }, {
-			            title: 'Long Event',
-			            start: new Date(y, m, d - 5),
-			            end: new Date(y, m, d - 2),
-			            className: ["event", "bg-color-red"],
-			            icon: 'fa-lock'
-			        }, {
-			            id: 999,
-			            title: 'Repeating Event',
-			            start: new Date(y, m, d - 3, 16, 0),
-			            allDay: false,
-			            className: ["event", "bg-color-blue"],
-			            icon: 'fa-clock-o'
-			        }, {
-			            id: 999,
-			            title: 'Repeating Event',
-			            start: new Date(y, m, d + 4, 16, 0),
-			            allDay: false,
-			            className: ["event", "bg-color-blue"],
-			            icon: 'fa-clock-o'
-			        }, {
-			            title: 'Meeting',
-			            start: new Date(y, m, d, 10, 30),
-			            allDay: false,
-			            className: ["event", "bg-color-darken"]
-			        }, {
-			            title: 'Lunch',
-			            start: new Date(y, m, d, 12, 0),
-			            end: new Date(y, m, d, 14, 0),
-			            allDay: false,
-			            className: ["event", "bg-color-darken"]
-			        }, {
-			            title: 'Birthday Party',
-			            start: new Date(y, m, d + 1, 19, 0),
-			            end: new Date(y, m, d + 1, 22, 30),
-			            allDay: false,
-			            className: ["event", "bg-color-darken"]
-			        }, {
-			            title: 'Smartadmin Open Day',
-			            start: new Date(y, m, 28),
-			            end: new Date(y, m, 29),
-			            className: ["event", "bg-color-darken"]
-			        }],
-			
-			        eventRender: function (event, element, icon) {
-			            if (!event.description == "") {
-			                element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description +
-			                    "</span>");
-			            }
-			            if (!event.icon == "") {
-			                element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon +
-			                    " '></i>");
-			            }
-			        },
-			
-			        windowResize: function (event, ui) {
-			            $('#calendar').fullCalendar('render');
-			        }
-			    });
-			
-			    /* hide default buttons */
-			    $('.fc-right, .fc-center').hide();
+					try {
+						scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+						scheduler.init('scheduler_here', new Date(), "month");
+						scheduler.locale.labels.year_tab = "Year";
+						scheduler.config.year_y = 3; //3 months in a column
+						scheduler.locale.labels.timeline_tab = "Timeline";
 
-			
-				$('#calendar-buttons #btn-prev').click(function () {
-				    $('.fc-prev-button').click();
-				    return false;
-				});
-				
-				$('#calendar-buttons #btn-next').click(function () {
-				    $('.fc-next-button').click();
-				    return false;
-				});
-				
-				$('#calendar-buttons #btn-today').click(function () {
-				    $('.fc-today-button').click();
-				    return false;
-				});
-				
-				$('#mt').click(function () {
-				    $('#calendar').fullCalendar('changeView', 'month');
-				});
-				
-				$('#ag').click(function () {
-				    $('#calendar').fullCalendar('changeView', 'agendaWeek');
-				});
-				
-				$('#td').click(function () {
-				    $('#calendar').fullCalendar('changeView', 'agendaDay');
-				});						
+						var eventos = new Array();
 
-					$(".js-status-update a").click(function() {
-						var selText = $(this).text();
-						var $this = $(this);
-						$this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
-						$this.parents('.dropdown-menu').find('li').removeClass('active');
-						$this.parent().addClass('active');
-					});
-
-					/*
-					* TODO: add a way to add more todo's to list
-					*/
-
-					// initialize sortable
-					$(function() {
-						$("#sortable1, #sortable2").sortable({
-							handle : '.handle',
-							connectWith : ".todo",
-							update : countTasks
-						}).disableSelection();
-					});
-
-					// check and uncheck
-					$('.todo .checkbox > input[type="checkbox"]').click(function() {
-						var $this = $(this).parent().parent().parent();
-
-						if ($(this).prop('checked')) {
-							$this.addClass("complete");
-
-							// remove this if you want to undo a check list once checked
-							//$(this).attr("disabled", true);
-							$(this).parent().hide();
-
-							// once clicked - add class, copy to memory then remove and add to sortable3
-							$this.slideUp(500, function() {
-								$this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
-								$this.remove();
-								countTasks();
-							});
-						} else {
-							// insert undo code here...
-						}
-
+						{ { #each events} }
+						eventos.push({
+							id: {{eventNumber }},
+					text: "Ticket No.: " + "{{text}}".split(";")[0] + "\n" + "Titulo: " +
+					"{{text}}".split(";")[1] + "\n" + "Estado: " + "{{text}}".split(";")[2] + "\n" +
+					"Prioridad: " + "{{text}}".split(";")[3] + "\n" + "Avance: " + "{{text}}".split(";")[4] + "%",
+					start_date: "{{formatDate start_date 'YYYY-MM-DD HH.mm' }}",
+					end_date: "{{formatDate end_date 'YYYY-MM-DD HH.mm' }}",
+					rec_type: "{{rec_type}}",
+					rec_pattern: "{{rec_pattern}}",
+					event_length: 	"{{event_length}}",				
 					})
-					// count tasks
-					function countTasks() {
+				{
+					{
+						/each}}
 
-						$('.todo-group-title').each(function() {
-							var $this = $(this);
-							$this.find(".num-of-tasks").text($this.next().find("li").size());
-						});
+						scheduler.parse(JSON.stringify(eventos), "json");//takes the name and format of the data source				
 
+						var dp = new dataProcessor("/calendar/save");
+						dp.init(scheduler);
+						dp.setTransactionMode("POST", false);
+					}catch (e) {
+						console.log(e);
 					}
 
-				/* BASIC ;*/
-					var responsiveHelper_dt_basic = undefined;
-					var responsiveHelper_datatable_fixed_column = undefined;
-					var responsiveHelper_datatable_col_reorder = undefined;
-					var responsiveHelper_datatable_tabletools = undefined;
-					
-					var breakpointDefinition = {
-						tablet : 1024,
-						phone : 480
-					};
+					/*			$("#input-ficons-4").fileinput({
+									uploadUrl: "/file-upload-batch/2",
+									previewFileIcon: '<i class="fa fa-file"></i>',
+									allowedPreviewTypes: null, // disable preview of standard types
+									allowedPreviewMimeTypes: ['image/jpeg', 'text/javascript'], // allow content to be shown only for certain mime types 
+									previewFileIconSettings: {
+										'docx': '<i class="fa fa-file-word-o text-primary"></i>',
+										'xls': '<i class="fa fa-file-excel-o text-success"></i>',
+										'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+										'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+										'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+										'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+									}
+								});*/
 
-				/* END BASIC */
-				/* COLUMN FILTER  *//*
-			    var otable = $('#datatable_fixed_column').DataTable({
-			    	//"bFilter": false,
-			    	//"bInfo": false,
-			    	//"bLengthChange": false
-			    	//"bAutoWidth": false,
-			    	//"bPaginate": false,
-			    	//"bStateSave": true // saves sort state using localStorage
-					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
-							"t"+
-							"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-					"autoWidth" : true,
-					"oLanguage": {
-						"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-					},
-					"preDrawCallback" : function() {
-						// Initialize the responsive datatables helper once.
-						if (!responsiveHelper_datatable_fixed_column) {
-							responsiveHelper_datatable_fixed_column = new ResponsiveDatatablesHelper($('#datatable_fixed_column'), breakpointDefinition);
-						}
-					},
-					"rowCallback" : function(nRow) {
-						responsiveHelper_datatable_fixed_column.createExpandIcon(nRow);
-					},
-					"drawCallback" : function(oSettings) {
-						responsiveHelper_datatable_fixed_column.respond();
-					}		
-				
-			    });*/
-			    
-			    // custom toolbar
-			    $("div.toolbar").html('<div class="text-right"><img src="/img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
-			    	   
-			    // Apply the filter
-			    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
-			    	
-			        otable
-			            .column( $(this).parent().index()+':visible' )
-			            .search( this.value )
-			            .draw();
-			            
-			    } );
-			    /* END COLUMN FILTER */  
-
-					/*
-					* RUN PAGE GRAPHS
-					*/
-
-					/* TAB 1: UPDATING CHART */
-					// For the demo we use generated data, but normally it would be coming from the server
-
-					var data = [], totalPoints = 200, $UpdatingChartColors = $("#updating-chart").css('color');
-
-					function getRandomData() {
-						if (data.length > 0)
-							data = data.slice(1);
-
-						// do a random walk
-						while (data.length < totalPoints) {
-							var prev = data.length > 0 ? data[data.length - 1] : 50;
-							var y = prev + Math.random() * 10 - 5;
-							if (y < 0)
-								y = 0;
-							if (y > 100)
-								y = 100;
-							data.push(y);
-						}
-
-						// zip the generated y values with the x values
-						var res = [];
-						for (var i = 0; i < data.length; ++i)
-							res.push([i, data[i]])
-						return res;
-					}
-
-					// setup control widget
-					var updateInterval = 1500;
-					$("#updating-chart").val(updateInterval).change(function() {
-
-						var v = $(this).val();
-						if (v && !isNaN(+v)) {
-							updateInterval = +v;
-							$(this).val("" + updateInterval);
-						}
-
-					});
-
-					// setup plot
-					var options = {
-						yaxis : {
-							min : 0,
-							max : 100
-						},
-						xaxis : {
-							min : 0,
-							max : 100
-						},
-						colors : [$UpdatingChartColors],
-						series : {
-							lines : {
-								lineWidth : 1,
-								fill : true,
-								fillColor : {
-									colors : [{
-										opacity : 0.4
-									}, {
-										opacity : 0
-									}]
-								},
-								steps : false
-
-							}
-						}
-					};
-
-					var plot = $.plot($("#updating-chart"), [getRandomData()], options);
-
-					/* live switch */
-					$('input[type="checkbox"]#start_interval').click(function() {
-						if ($(this).prop('checked')) {
-							$on = true;
-							updateInterval = 1500;
-							update();
+					$('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');
+					$('.tree').find('li:has(ul)').addClass('parent_li').attr('role', 'treeitem').find(' > span').attr('title', 'Expandir').on('click', function (e) {
+						var children = $(this).parent('li.parent_li').find(' > ul > li');
+						if (children.is(':visible')) {
+							children.hide('fast');
+							$(this).attr('title', 'Expand this branch').find(' > i').removeClass().addClass('fa fa-lg fa-plus-circle');
 						} else {
-							clearInterval(updateInterval);
-							$on = false;
+							children.show('fast');
+							$(this).attr('title', 'Collapse this branch').find(' > i').removeClass().addClass('fa fa-lg fa-minus-circle');
+						}
+						e.stopPropagation();
+					});
+
+					var $checkoutForm = $('#checkout-form').validate({
+						// Rules for form validation
+						rules: {
+							fname: {
+								required: true
+							},
+							lname: {
+								required: true
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							phone: {
+								required: true
+							},
+							country: {
+								required: true
+							},
+							city: {
+								required: true
+							},
+							code: {
+								required: true,
+								digits: true
+							},
+							address: {
+								required: true
+							},
+							name: {
+								required: true
+							},
+							card: {
+								required: true,
+								creditcard: true
+							},
+							cvv: {
+								required: true,
+								digits: true
+							},
+							month: {
+								required: true
+							},
+							year: {
+								required: true,
+								digits: true
+							}
+						},
+
+
+						// Messages for form validation
+						messages: {
+							fname: {
+								required: 'Please enter your first name'
+							},
+							lname: {
+								required: 'Please enter your last name'
+							},
+							email: {
+								required: 'Please enter your email address',
+								email: 'Please enter a VALID email address'
+							},
+							phone: {
+								required: 'Please enter your phone number'
+							},
+							country: {
+								required: 'Please select your country'
+							},
+							city: {
+								required: 'Please enter your city'
+							},
+							code: {
+								required: 'Please enter code',
+								digits: 'Digits only please'
+							},
+							address: {
+								required: 'Please enter your full address'
+							},
+							name: {
+								required: 'Please enter name on your card'
+							},
+							card: {
+								required: 'Please enter your card number'
+							},
+							cvv: {
+								required: 'Enter CVV2',
+								digits: 'Digits only'
+							},
+							month: {
+								required: 'Select month'
+							},
+							year: {
+								required: 'Enter year',
+								digits: 'Digits only please'
+							}
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
 						}
 					});
 
-					function update() {
-						if ($on == true) {
-							plot.setData([getRandomData()]);
-							plot.draw();
-							setTimeout(update, updateInterval);
+					var $registerForm = $("#smart-form-register").validate({
 
-						} else {
-							clearInterval(updateInterval)
+						// Rules for form validation
+						rules: {
+							username: {
+								required: true
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							password: {
+								required: true,
+								minlength: 3,
+								maxlength: 20
+							},
+							passwordConfirm: {
+								required: true,
+								minlength: 3,
+								maxlength: 20,
+								equalTo: '#password'
+							},
+							firstname: {
+								required: true
+							},
+							lastname: {
+								required: true
+							},
+							gender: {
+								required: true
+							},
+							terms: {
+								required: true
+							}
+						},
+
+						// Messages for form validation
+						messages: {
+							login: {
+								required: 'Please enter your login'
+							},
+							email: {
+								required: 'Please enter your email address',
+								email: 'Please enter a VALID email address'
+							},
+							password: {
+								required: 'Please enter your password'
+							},
+							passwordConfirm: {
+								required: 'Please enter your password one more time',
+								equalTo: 'Please enter the same password as above'
+							},
+							firstname: {
+								required: 'Please select your first name'
+							},
+							lastname: {
+								required: 'Please select your last name'
+							},
+							gender: {
+								required: 'Please select your gender'
+							},
+							terms: {
+								required: 'You must agree with Terms and Conditions'
+							}
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
 						}
-
-					}
-
-					var $on = false;
-
-					/*end updating chart*/
-
-					/* TAB 2: Social Network  */
-
-					$(function() {
-						// jQuery Flot Chart
-						var twitter = [[1, 27], [2, 34], [3, 51], [4, 48], [5, 55], [6, 65], [7, 61], [8, 70], [9, 65], [10, 75], [11, 57], [12, 59], [13, 62]], facebook = [[1, 25], [2, 31], [3, 45], [4, 37], [5, 38], [6, 40], [7, 47], [8, 55], [9, 43], [10, 50], [11, 47], [12, 39], [13, 47]], data = [{
-							label : "Twitter",
-							data : twitter,
-							lines : {
-								show : true,
-								lineWidth : 1,
-								fill : true,
-								fillColor : {
-									colors : [{
-										opacity : 0.1
-									}, {
-										opacity : 0.13
-									}]
-								}
-							},
-							points : {
-								show : true
-							}
-						}, {
-							label : "Facebook",
-							data : facebook,
-							lines : {
-								show : true,
-								lineWidth : 1,
-								fill : true,
-								fillColor : {
-									colors : [{
-										opacity : 0.1
-									}, {
-										opacity : 0.13
-									}]
-								}
-							},
-							points : {
-								show : true
-							}
-						}];
-
-						var options = {
-							grid : {
-								hoverable : true
-							},
-							colors : ["#568A89", "#3276B1"],
-							tooltip : true,
-							tooltipOpts : {
-								//content : "Value <b>$x</b> Value <span>$y</span>",
-								defaultTheme : false
-							},
-							xaxis : {
-								ticks : [[1, "JAN"], [2, "FEB"], [3, "MAR"], [4, "APR"], [5, "MAY"], [6, "JUN"], [7, "JUL"], [8, "AUG"], [9, "SEP"], [10, "OCT"], [11, "NOV"], [12, "DEC"], [13, "JAN+1"]]
-							},
-							yaxes : {
-
-							}
-						};
-
-						var plot3 = $.plot($("#statsChart"), data, options);
 					});
 
-					// END TAB 2
-
-					// TAB THREE GRAPH //
-					/* TAB 3: Revenew  */
-
-					$(function() {
-
-						var trgt = [[1354586000000, 153], [1364587000000, 658], [1374588000000, 198], [1384589000000, 663], [1394590000000, 801], [1404591000000, 1080], [1414592000000, 353], [1424593000000, 749], [1434594000000, 523], [1444595000000, 258], [1454596000000, 688], [1464597000000, 364]], prft = [[1354586000000, 53], [1364587000000, 65], [1374588000000, 98], [1384589000000, 83], [1394590000000, 980], [1404591000000, 808], [1414592000000, 720], [1424593000000, 674], [1434594000000, 23], [1444595000000, 79], [1454596000000, 88], [1464597000000, 36]], sgnups = [[1354586000000, 647], [1364587000000, 435], [1374588000000, 784], [1384589000000, 346], [1394590000000, 487], [1404591000000, 463], [1414592000000, 479], [1424593000000, 236], [1434594000000, 843], [1444595000000, 657], [1454596000000, 241], [1464597000000, 341]], toggles = $("#rev-toggles"), target = $("#flotcontainer");
-
-						var data = [{
-							label : "Target Profit",
-							data : trgt,
-							bars : {
-								show : true,
-								align : "center",
-								barWidth : 30 * 30 * 60 * 1000 * 80
-							}
-						}, {
-							label : "Actual Profit",
-							data : prft,
-							color : '#3276B1',
-							lines : {
-								show : true,
-								lineWidth : 3
+					var $reviewForm = $("#review-form").validate({
+						// Rules for form validation
+						rules: {
+							name: {
+								required: true
 							},
-							points : {
-								show : true
-							}
-						}, {
-							label : "Actual Signups",
-							data : sgnups,
-							color : '#71843F',
-							lines : {
-								show : true,
-								lineWidth : 1
+							email: {
+								required: true,
+								email: true
 							},
-							points : {
-								show : true
+							review: {
+								required: true,
+								minlength: 20
+							},
+							quality: {
+								required: true
+							},
+							reliability: {
+								required: true
+							},
+							overall: {
+								required: true
 							}
+						},
+
+						// Messages for form validation
+						messages: {
+							name: {
+								required: 'Please enter your name'
+							},
+							email: {
+								required: 'Please enter your email address',
+								email: '<i class="fa fa-warning"></i><strong>Please enter a VALID email addres</strong>'
+							},
+							review: {
+								required: 'Please enter your review'
+							},
+							quality: {
+								required: 'Please rate quality of the product'
+							},
+							reliability: {
+								required: 'Please rate reliability of the product'
+							},
+							overall: {
+								required: 'Please rate the product'
+							}
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+
+					var $commentForm = $("#comment-form").validate({
+						// Rules for form validation
+						rules: {
+							name: {
+								required: true
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							url: {
+								url: true
+							},
+							comment: {
+								required: true
+							}
+						},
+
+						// Messages for form validation
+						messages: {
+							name: {
+								required: 'Enter your name',
+							},
+							email: {
+								required: 'Enter your email address',
+								email: 'Enter a VALID email'
+							},
+							url: {
+								email: 'Enter a VALID url'
+							},
+							comment: {
+								required: 'Please enter your comment'
+							}
+						},
+
+						// Ajax form submition
+						submitHandler: function (form) {
+							$(form).ajaxSubmit({
+								success: function () {
+									$("#comment-form").addClass('submited');
+								}
+							});
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+
+					var $contactForm = $("#contact-form").validate({
+						// Rules for form validation
+						rules: {
+							name: {
+								required: true
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							message: {
+								required: true,
+								minlength: 10
+							}
+						},
+
+						// Messages for form validation
+						messages: {
+							name: {
+								required: 'Please enter your name',
+							},
+							email: {
+								required: 'Please enter your email address',
+								email: 'Please enter a VALID email address'
+							},
+							message: {
+								required: 'Please enter your message'
+							}
+						},
+
+						// Ajax form submition
+						submitHandler: function (form) {
+							$(form).ajaxSubmit({
+								success: function () {
+									$("#contact-form").addClass('submited');
+								}
+							});
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+
+					var $loginForm = $("#login-form").validate({
+						// Rules for form validation
+						rules: {
+							email: {
+								required: true,
+								email: true
+							},
+							password: {
+								required: true,
+								minlength: 3,
+								maxlength: 20
+							}
+						},
+
+						// Messages for form validation
+						messages: {
+							email: {
+								required: 'Please enter your email address',
+								email: 'Please enter a VALID email address'
+							},
+							password: {
+								required: 'Please enter your password'
+							}
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+
+					var $orderForm = $("#order-form").validate({
+						// Rules for form validation
+						rules: {
+							name: {
+								required: true
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							phone: {
+								required: true
+							},
+							interested: {
+								required: true
+							},
+							budget: {
+								required: true
+							}
+						},
+
+						// Messages for form validation
+						messages: {
+							name: {
+								required: 'Please enter your name'
+							},
+							email: {
+								required: 'Please enter your email address',
+								email: 'Please enter a VALID email address'
+							},
+							phone: {
+								required: 'Please enter your phone number'
+							},
+							interested: {
+								required: 'Please select interested service'
+							},
+							budget: {
+								required: 'Please select your budget'
+							}
+						},
+
+						// Do not change code below
+						errorPlacement: function (error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+
+					// START AND FINISH DATE
+					$('#startdate').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#finishdate').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#lastupdate').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#lastupdate').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#finishdate').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#startdate').datepicker('option', 'maxDate', selectedDate);
+						}
+					});
+
+					$('#deadline').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#deadline').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#setdeadline').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#setdeadline').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#start_date').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#start_date').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#end_date').datepicker({
+						dateFormat: 'dd.mm.yy',
+						prevText: '<i class="fa fa-chevron-left"></i>',
+						nextText: '<i class="fa fa-chevron-right"></i>',
+						onSelect: function (selectedDate) {
+							$('#end_date').datepicker('option', 'minDate', selectedDate);
+						}
+					});
+
+					$('#tags').editable({
+						inputclass: 'input-large',
+						select2: {
+							tags: ['html', 'javascript', 'css', 'ajax'],
+							tokenSeparators: [",", " "]
+						}
+					});
+
+					var randomScalingFactor = function () {
+						return Math.round(Math.random() * 100);
+						//return 0;
+					};
+					var barChartData = {
+						labels: ["January", "February", "March", "April", "May", "June", "July"],
+						datasets: [{
+							label: 'Dataset 1',
+							backgroundColor: "rgba(220,220,220,0.5)",
+							data: [100, randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+						}, {
+							label: 'Dataset 2',
+							backgroundColor: "rgba(151,187,205,0.5)",
+							data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+						}, {
+							label: 'Dataset 3',
+							backgroundColor: "rgba(151,187,205,0.5)",
+							data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
 						}]
 
-						var options = {
-							grid : {
-								hoverable : true
-							},
-							tooltip : true,
-							tooltipOpts : {
-								//content: '%x - %y',
-								//dateFormat: '%b %y',
-								defaultTheme : false
-							},
-							xaxis : {
-								mode : "time"
-							},
-							yaxes : {
-								tickFormatter : function(val, axis) {
-									return "$" + val;
-								},
-								max : 1200
-							}
-
-						};
-
-						plot2 = null;
-
-						function plotNow() {
-							var d = [];
-							toggles.find(':checkbox').each(function() {
-								if ($(this).is(':checked')) {
-									d.push(data[$(this).attr("name").substr(4, 1)]);
-								}
-							});
-							if (d.length > 0) {
-								if (plot2) {
-									plot2.setData(d);
-									plot2.draw();
-								} else {
-									plot2 = $.plot(target, d, options);
-								}
-							}
-
-						};
-
-						toggles.find(':checkbox').on('change', function() {
-							plotNow();
-						});
-						plotNow()
-
-					});
-
-					/*
-					 * VECTOR MAP
-					 */
-
-					data_array = {
-						"US" : 4977,
-						"AU" : 4873,
-						"IN" : 3671,
-						"BR" : 2476,
-						"TR" : 1476,
-						"CN" : 146,
-						"CA" : 134,
-						"BD" : 100
 					};
 
-					$('#vector-map').vectorMap({
-						map : 'world_mill_en',
-						backgroundColor : '#fff',
-						regionStyle : {
-							initial : {
-								fill : '#c4c4c4'
+					var RadarConfig = {
+						type: 'radar',
+						data: {
+							labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+							datasets: [{
+								label: "My First dataset",
+								backgroundColor: "rgba(220,220,220,0.2)",
+								pointBackgroundColor: "rgba(220,220,220,1)",
+								data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+							}, {
+								label: "My Second dataset",
+								backgroundColor: "rgba(151,187,205,0.2)",
+								pointBackgroundColor: "rgba(151,187,205,1)",
+								hoverPointBackgroundColor: "#fff",
+								pointHighlightStroke: "rgba(151,187,205,1)",
+								data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+							},]
+						},
+						options: {
+							legend: {
+								position: 'top',
 							},
-							hover : {
-								"fill-opacity" : 1
-							}
-						},
-						series : {
-							regions : [{
-								values : data_array,
-								scale : ['#85a8b6', '#4d7686'],
-								normalizeFunction : 'polynomial'
-							}]
-						},
-						onRegionLabelShow : function(e, el, code) {
-							if ( typeof data_array[code] == 'undefined') {
-								e.preventDefault();
-							} else {
-								var countrylbl = data_array[code];
-								el.html(el.html() + ': ' + countrylbl + ' visits');
+
+							scale: {
+								reverse: false,
+								ticks: {
+									beginAtZero: true
+								}
 							}
 						}
-					});
+					};
 
-					/*
-					 * FULL CALENDAR JS
-					 */
 
-					if ($("#calendar").length) {
-						var date = new Date();
-						var d = date.getDate();
-						var m = date.getMonth();
-						var y = date.getFullYear();
-
-						var calendar = $('#calendar').fullCalendar({
-
-							editable : true,
-							draggable : true,
-							selectable : false,
-							selectHelper : true,
-							unselectAuto : false,
-							disableResizing : false,
-							height: "auto",
-
-							header : {
-								left : 'title', //,today
-								center : 'prev, next, today',
-								right : 'month, agendaWeek, agenDay' //month, agendaDay,
-							},
-
-							select : function(start, end, allDay) {
-								var title = prompt('Event Title:');
-								if (title) {
-									calendar.fullCalendar('renderEvent', {
-										title : title,
-										start : start,
-										end : end,
-										allDay : allDay
-									}, true // make the event "stick"
-									);
-								}
-								calendar.fullCalendar('unselect');
-							},
-
-							events : [{
-								title : 'All Day Event',
-								start : new Date(y, m, 1),
-								description : 'long description',
-								className : ["event", "bg-color-greenLight"],
-								icon : 'fa-check'
-							}, {
-								title : 'Long Event',
-								start : new Date(y, m, d - 5),
-								end : new Date(y, m, d - 2),
-								className : ["event", "bg-color-red"],
-								icon : 'fa-lock'
-							}, {
-								id : 999,
-								title : 'Repeating Event',
-								start : new Date(y, m, d - 3, 16, 0),
-								allDay : false,
-								className : ["event", "bg-color-blue"],
-								icon : 'fa-clock-o'
-							}, {
-								id : 999,
-								title : 'Repeating Event',
-								start : new Date(y, m, d + 4, 16, 0),
-								allDay : false,
-								className : ["event", "bg-color-blue"],
-								icon : 'fa-clock-o'
-							}, {
-								title : 'Meeting',
-								start : new Date(y, m, d, 10, 30),
-								allDay : false,
-								className : ["event", "bg-color-darken"]
-							}, {
-								title : 'Lunch',
-								start : new Date(y, m, d, 12, 0),
-								end : new Date(y, m, d, 14, 0),
-								allDay : false,
-								className : ["event", "bg-color-darken"]
-							}, {
-								title : 'Birthday Party',
-								start : new Date(y, m, d + 1, 19, 0),
-								end : new Date(y, m, d + 1, 22, 30),
-								allDay : false,
-								className : ["event", "bg-color-darken"]
-							}, {
-								title : 'Smartadmin Open Day',
-								start : new Date(y, m, 28),
-								end : new Date(y, m, 29),
-								className : ["event", "bg-color-darken"]
+					var DoughtnutConfig = {
+						type: 'doughnut',
+						data: {
+							datasets: [{
+								data: [
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+								],
+								backgroundColor: [
+									"#F7464A",
+									"#46BFBD",
+									"#FDB45C",
+									"#949FB1",
+									"#4D5360",
+								],
+								label: 'Dataset 1'
 							}],
-
-
-							eventRender : function(event, element, icon) {
-								if (!event.description == "") {
-									element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description + "</span>");
-								}
-								if (!event.icon == "") {
-									element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon + " '></i>");
-								}
+							labels: [
+								"Red",
+								"Green",
+								"Yellow",
+								"Grey",
+								"Dark Grey"
+							]
+						},
+						options: {
+							responsive: true,
+							legend: {
+								position: 'top',
+							}
+						}
+					};
+					window.onload = function () {
+						//window.myLine = new Chart(document.getElementById("lineChart"), LineConfig);
+						window.myBar = new Chart(document.getElementById("barChart"), {
+							type: 'bar',
+							data: barChartData,
+							options: {
+								responsive: true,
 							}
 						});
-
+						window.myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
+						window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);/*
+        			window.myPolarArea = Chart.PolarArea(document.getElementById("polarChart"), PolarConfig);
+        			window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);*/
 					};
 
-					/* hide default buttons */
-					$('.fc-toolbar .fc-right, .fc-toolbar .fc-center').hide();
-
-					// calendar prev
-					$('#calendar-buttons #btn-prev').click(function() {
-						$('.fc-prev-button').click();
-						return false;
-					});
-
-					// calendar next
-					$('#calendar-buttons #btn-next').click(function() {
-						$('.fc-next-button').click();
-						return false;
-					});
-
-					// calendar today
-					$('#calendar-buttons #btn-today').click(function() {
-						$('.fc-button-today').click();
-						return false;
-					});
-
-					// calendar month
-					$('#mt').click(function() {
-						$('#calendar').fullCalendar('changeView', 'month');
-					});
-
-					// calendar agenda week
-					$('#ag').click(function() {
-						$('#calendar').fullCalendar('changeView', 'agendaWeek');
-					});
-
-					// calendar agenda day
-					$('#td').click(function() {
-						$('#calendar').fullCalendar('changeView', 'agendaDay');
-					});
-
-					/*
-					 * CHAT
-					 */
-
-					$.filter_input = $('#filter-chat-list');
-					$.chat_users_container = $('#chat-container > .chat-list-body')
-					$.chat_users = $('#chat-users')
-					$.chat_list_btn = $('#chat-container > .chat-list-open-close');
-					$.chat_body = $('#chat-body');
-
-					/*
-					* LIST FILTER (CHAT)
-					*/
-
-					// custom css expression for a case-insensitive contains()
-					jQuery.expr[':'].Contains = function(a, i, m) {
-						return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-					};
-
-					function listFilter(list) {// header is any element, list is an unordered list
-						// create and add the filter form to the header
-
-						$.filter_input.change(function() {
-							var filter = $(this).val();
-							if (filter) {
-								// this finds all links in a list that contain the input,
-								// and hide the ones not containing the input while showing the ones that do
-								$.chat_users.find("a:not(:Contains(" + filter + "))").parent().slideUp();
-								$.chat_users.find("a:Contains(" + filter + ")").parent().slideDown();
-							} else {
-								$.chat_users.find("li").slideDown();
-							}
-							return false;
-						}).keyup(function() {
-							// fire the above change event after every letter
-							$(this).change();
-
-						});
-
-					}
-
-					// on dom ready
-					listFilter($.chat_users);
-
-					// open chat list
-					$.chat_list_btn.click(function() {
-						$(this).parent('#chat-container').toggleClass('open');
+					var jqgrid_data = [];
+					{ { #each users} }
+					jqgrid_data.push({
+						company: "{{company_id.companyName}}",
+						tipo: "{{userType}}",
+						usrname: "{{username}}",
+						name: "{{name}}",
+						lastname: "{{lastname}}",
+						email: "{{{email}}}",
+						created: "{{formatDate createdOn 'DD/MM/YYYY'}}"
 					})
+					{
+						{
+							/each}}
 
-					$.chat_body.animate({
-						scrollTop : $.chat_body[0].scrollHeight
-					}, 500);
+							jQuery("#jqgrid").jqGrid({
+								data: jqgrid_data,
+								datatype: "local",
+								height: 'auto',
+								colNames: ['Compañía', 'Tipo de Usuario', 'Username', 'Nombre', 'Apellido', 'Email', 'Fecha'],
+								colModel: [{
+									name: 'company',
+									index: 'company'
+								}, {
+									name: 'tipo',
+									index: 'tipo',
+									editable: true
+								}, {
+									name: 'usrname',
+									index: 'usrname',
+									editable: true
+								}, {
+									name: 'name',
+									index: 'name',
+									editable: true
+								}, {
+									name: 'lastname',
+									index: 'lastname',
+									editable: true
+								}, {
+									name: 'email',
+									index: 'email',
+									editable: true
+								}, {
+									name: 'created',
+									index: 'created',
+									sortable: false,
+									editable: true
+								}],
+								rowNum: 10,
+								rowList: [10, 20, 30],
+								pager: '#pjqgrid',
+								sortname: 'id',
+								toolbarfilter: true,
+								viewrecords: true,
+								sortorder: "asc",
+								gridComplete: function () {
+									var ids = jQuery("#jqgrid").jqGrid('getDataIDs');
+									for (var i = 0; i < ids.length; i++) {
+										var cl = ids[i];
+										be = "<button class='btn btn-xs btn-default' data-original-title='Edit Row' onclick=\"jQuery('#jqgrid').editRow('" + cl + "');\"><i class='fa fa-pencil'></i></button>";
+										se = "<button class='btn btn-xs btn-default' data-original-title='Save Row' onclick=\"jQuery('#jqgrid').saveRow('" + cl + "');\"><i class='fa fa-save'></i></button>";
+										ca = "<button class='btn btn-xs btn-default' data-original-title='Cancel' onclick=\"jQuery('#jqgrid').restoreRow('" + cl + "');\"><i class='fa fa-times'></i></button>";
+										//ce = "<button class='btn btn-xs btn-default' onclick=\"jQuery('#jqgrid').restoreRow('"+cl+"');\"><i class='fa fa-times'></i></button>";
+										//jQuery("#jqgrid").jqGrid('setRowData',ids[i],{act:be+se+ce});
+										jQuery("#jqgrid").jqGrid('setRowData', ids[i], {
+											act: be + se + ca
+										});
+									}
+								},
+								editurl: "/admin/usersApproval/approveUser",
+								deleteurl: "/admin/usersApproval/deleteUser",
+								caption: "Autorizar Usuarios",
+								multiselect: true,
+								autowidth: true,
+							});
+							jQuery("#jqgrid").jqGrid('navGrid', "#pjqgrid", {
+								edit: false,
+								add: false,
+								del: true
+							});
+							jQuery("#jqgrid").jqGrid('inlineNav', "#pjqgrid");
+							/* Add tooltips */
+							$('.navtable .ui-pg-button').tooltip({
+								container: 'body'
+							});
 
-				});
+							jQuery("#m1").click(function () {
+								var s;
+								console.log("Se activó");
+								s = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
+								alert(s);
+							});
+							jQuery("#m1s").click(function () {
+								console.log("Se activó");
+								jQuery("#jqgrid").jqGrid('setSelection', "13");
+							});
 
-			</script>
-	<!-- Your GOOGLE ANALYTICS CODE Below -->
-	<script type="text/javascript">
+							// remove classes
+							$(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+							$(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+							$(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+							$(".ui-jqgrid-pager").removeClass("ui-state-default");
+							$(".ui-jqgrid").removeClass("ui-widget-content");
+
+							// add classes
+							$(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+							$(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+
+							$(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+							$(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+							$(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+							$(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+							$(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+							$(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+							$(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+							$(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+							$(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+							$(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+							$(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+							$(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+							$(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+							$(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+							$(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+							$(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+
+							/* BASIC ;*/
+							var responsiveHelper_dt_basic = undefined;
+							var responsiveHelper_datatable_fixed_column = undefined;
+							var responsiveHelper_datatable_col_reorder = undefined;
+							var responsiveHelper_datatable_tabletools = undefined;
+
+							var breakpointDefinition = {
+								tablet: 1024,
+								phone: 480
+							};
+
+							$('#dt_basic').dataTable({
+								"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+								"t" +
+								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+								"autoWidth": true,
+								"oLanguage": {
+									"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+								},
+								"preDrawCallback": function () {
+									// Initialize the responsive datatables helper once.
+									if (!responsiveHelper_dt_basic) {
+										responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+									}
+								},
+								"rowCallback": function (nRow) {
+									responsiveHelper_dt_basic.createExpandIcon(nRow);
+								},
+								"drawCallback": function (oSettings) {
+									responsiveHelper_dt_basic.respond();
+								}
+							});
+
+							/* END BASIC */
+
+							/* PROJECTS*/
+							function format(d) {
+								// `d` is the original data object for the row
+
+								return '<table cellpadding="5" cellspacing="0" border="0" class="table table-hover table-condensed">' +
+									'<tr>' +
+									'<td style="width:100px">Titulo Ticket:</td>' +
+									'<td>' + d.title + '</td>' +
+									'</tr>' +
+									'<tr>' +
+									'<td>Fecha límite:</td>' +
+									'<td>' + d.deadline + '</td>' +
+									'</tr>' +
+									'<tr>' +
+									'<td>Descripción:</td>' +
+									'<td>' + d.description + '</td>' +
+									'</tr>' +
+									'<tr>' +
+									'<td>Categorías:</td>' +
+									d.categories +
+									'</tr>' +
+									'<tr>' +
+									'<td>Action:</td>' +
+									'<td>' + d.action + '</td>' +
+									'</tr>' +
+									'</table>';
+							}
+
+							// clears the variable if left blank
+							var table = $('#example').DataTable({
+								"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+								"t" +
+								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+								"ajax": '/data/dataList2.json',
+								"bDestroy": true,
+								"iDisplayLength": 15,
+								"oLanguage": {
+									"sSearch": '<span class="input-group-addon" style="height: 34px;" ><i class="glyphicon glyphicon-search"></i></span>'
+								},
+								"columns": [
+									{
+										"class": 'details-control',
+										"orderable": false,
+										"data": null,
+										"defaultContent": ''
+									},
+									{ "data": "title" },
+									{ "data": "advance" },
+									{ "data": "contacts" },
+									{ "data": "status" },
+									{ "data": "target-actual" },
+									{ "data": "start_date" },
+									{ "data": "end_date" },
+									{ "data": "tracker" },
+								],
+								"order": [[1, 'asc']],
+								"fnDrawCallback": function (oSettings) {
+									runAllCharts()
+								}
+							});
+
+
+							// Add event listener for opening and closing details
+							$('#example tbody').on('click', 'td.details-control', function () {
+								var tr = $(this).closest('tr');
+								var row = table.row(tr);
+
+								if (row.child.isShown()) {
+									// This row is already open - close it
+									row.child.hide();
+									tr.removeClass('shown');
+								}
+								else {
+									// Open this row
+									row.child(format(row.data())).show();
+									tr.addClass('shown');
+								}
+							});
+
+							/* COLUMN FILTER  */
+							var otable = $('#datatable_fixed_column').DataTable({
+
+								"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>" +
+								"t" +
+								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+								"autoWidth": true,
+								"oLanguage": {
+									"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+								},
+								"preDrawCallback": function () {
+									// Initialize the responsive datatables helper once.
+									if (!responsiveHelper_datatable_fixed_column) {
+										responsiveHelper_datatable_fixed_column = new ResponsiveDatatablesHelper($('#datatable_fixed_column'), breakpointDefinition);
+									}
+								},
+								"rowCallback": function (nRow) {
+									responsiveHelper_datatable_fixed_column.createExpandIcon(nRow);
+								},
+								"drawCallback": function (oSettings) {
+									responsiveHelper_datatable_fixed_column.respond();
+								}
+
+							});
+
+							// custom toolbar
+							$("div.toolbar").html('<div class="text-right"><img src="img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+
+							// Apply the filter
+							$("#datatable_fixed_column thead th input[type=text]").on('keyup change', function () {
+
+								otable
+									.column($(this).parent().index() + ':visible')
+									.search(this.value)
+									.draw();
+
+							});
+							/* END COLUMN FILTER */
+
+							/*
+							 * PAGE RELATED SCRIPTS
+							 */
+							"use strict";
+
+							var date = new Date();
+							var d = date.getDate();
+							var m = date.getMonth();
+							var y = date.getFullYear();
+
+							var hdr = {
+								left: 'title',
+								center: 'month,agendaWeek,agendaDay',
+								right: 'prev,today,next'
+							};
+							$(".nav ul li").on("click", function () {
+								alert("keep trying");
+								/*					$(".nav").find(".active").removeClass("active");
+													$(this).parent().addClass("active");*/
+							});
+							var initDrag = function (e) {
+								// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+								// it doesn't need to have a start or end
+
+								var eventObject = {
+									title: $.trim(e.children().text()), // use the element's text as the event title
+									description: $.trim(e.children('span').attr('data-description')),
+									icon: $.trim(e.children('span').attr('data-icon')),
+									className: $.trim(e.children('span').attr('class')) // use the element's children as the event class
+								};
+								// store the Event Object in the DOM element so we can get to it later
+								e.data('eventObject', eventObject);
+
+								// make the event draggable using jQuery UI
+								e.draggable({
+									zIndex: 999,
+									revert: true, // will cause the event to go back to its
+									revertDuration: 0 //  original position after the drag
+								});
+							};
+
+							var addEvent = function (title, priority, description, icon) {
+								title = title.length === 0 ? "Untitled Event" : title;
+								description = description.length === 0 ? "No Description" : description;
+								icon = icon.length === 0 ? " " : icon;
+								priority = priority.length === 0 ? "label label-default" : priority;
+
+								var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
+									icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+
+								$("#event-container").effect("highlight", 800);
+
+								initDrag(html);
+							};
+
+							/* initialize the external events
+							 -----------------------------------------------------------------*/
+
+							$('#external-events > li').each(function () {
+								initDrag($(this));
+							});
+
+							$('#add-event').click(function () {
+								var title = $('#title').val(),
+									priority = $('input:radio[name=priority]:checked').val(),
+									description = $('#description').val(),
+									icon = $('input:radio[name=iconselect]:checked').val();
+
+								addEvent(title, priority, description, icon);
+							});
+
+							/* initialize the calendar
+							 -----------------------------------------------------------------*/
+
+							$('#calendar').fullCalendar({
+
+								header: hdr,
+								editable: true,
+								droppable: true, // this allows things to be dropped onto the calendar !!!
+
+								drop: function (date, allDay) { // this function is called when something is dropped
+
+									// retrieve the dropped element's stored Event Object
+									var originalEventObject = $(this).data('eventObject');
+
+									// we need to copy it, so that multiple events don't have a reference to the same object
+									var copiedEventObject = $.extend({}, originalEventObject);
+
+									// assign it the date that was reported
+									copiedEventObject.start = date;
+									copiedEventObject.allDay = allDay;
+
+									// render the event on the calendar
+									// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+									$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+									// is the "remove after drop" checkbox checked?
+									if ($('#drop-remove').is(':checked')) {
+										// if so, remove the element from the "Draggable Events" list
+										$(this).remove();
+									}
+
+								},
+
+								select: function (start, end, allDay) {
+									var title = prompt('Event Title:');
+									if (title) {
+										calendar.fullCalendar('renderEvent', {
+											title: title,
+											start: start,
+											end: end,
+											allDay: allDay
+										}, true // make the event "stick"
+										);
+									}
+									calendar.fullCalendar('unselect');
+								},
+
+								events: [{
+									title: 'All Day Event',
+									start: new Date(y, m, 1),
+									description: 'long description',
+									className: ["event", "bg-color-greenLight"],
+									icon: 'fa-check'
+								}, {
+									title: 'Long Event',
+									start: new Date(y, m, d - 5),
+									end: new Date(y, m, d - 2),
+									className: ["event", "bg-color-red"],
+									icon: 'fa-lock'
+								}, {
+									id: 999,
+									title: 'Repeating Event',
+									start: new Date(y, m, d - 3, 16, 0),
+									allDay: false,
+									className: ["event", "bg-color-blue"],
+									icon: 'fa-clock-o'
+								}, {
+									id: 999,
+									title: 'Repeating Event',
+									start: new Date(y, m, d + 4, 16, 0),
+									allDay: false,
+									className: ["event", "bg-color-blue"],
+									icon: 'fa-clock-o'
+								}, {
+									title: 'Meeting',
+									start: new Date(y, m, d, 10, 30),
+									allDay: false,
+									className: ["event", "bg-color-darken"]
+								}, {
+									title: 'Lunch',
+									start: new Date(y, m, d, 12, 0),
+									end: new Date(y, m, d, 14, 0),
+									allDay: false,
+									className: ["event", "bg-color-darken"]
+								}, {
+									title: 'Birthday Party',
+									start: new Date(y, m, d + 1, 19, 0),
+									end: new Date(y, m, d + 1, 22, 30),
+									allDay: false,
+									className: ["event", "bg-color-darken"]
+								}, {
+									title: 'Smartadmin Open Day',
+									start: new Date(y, m, 28),
+									end: new Date(y, m, 29),
+									className: ["event", "bg-color-darken"]
+								}],
+
+								eventRender: function (event, element, icon) {
+									if (!event.description == "") {
+										element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description +
+											"</span>");
+									}
+									if (!event.icon == "") {
+										element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon +
+											" '></i>");
+									}
+								},
+
+								windowResize: function (event, ui) {
+									$('#calendar').fullCalendar('render');
+								}
+							});
+
+							/* hide default buttons */
+							$('.fc-right, .fc-center').hide();
+
+							$('#calendar-buttons #btn-prev').click(function () {
+								$('.fc-prev-button').click();
+								return false;
+							});
+
+							$('#calendar-buttons #btn-next').click(function () {
+								$('.fc-next-button').click();
+								return false;
+							});
+
+							$('#calendar-buttons #btn-today').click(function () {
+								$('.fc-today-button').click();
+								return false;
+							});
+
+							$('#mt').click(function () {
+								$('#calendar').fullCalendar('changeView', 'month');
+							});
+
+							$('#ag').click(function () {
+								$('#calendar').fullCalendar('changeView', 'agendaWeek');
+							});
+
+							$('#td').click(function () {
+								$('#calendar').fullCalendar('changeView', 'agendaDay');
+							});
+
+							$(".js-status-update a").click(function () {
+								var selText = $(this).text();
+								var $this = $(this);
+								$this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+								$this.parents('.dropdown-menu').find('li').removeClass('active');
+								$this.parent().addClass('active');
+							});
+
+							// initialize sortable
+							$(function () {
+								$("#sortable1, #sortable2").sortable({
+									handle: '.handle',
+									connectWith: ".todo",
+									update: countTasks
+								}).disableSelection();
+							});
+
+							// check and uncheck
+							$('.todo .checkbox > input[type="checkbox"]').click(function () {
+								var $this = $(this).parent().parent().parent();
+
+								if ($(this).prop('checked')) {
+									$this.addClass("complete");
+
+									// remove this if you want to undo a check list once checked
+									//$(this).attr("disabled", true);
+									$(this).parent().hide();
+
+									// once clicked - add class, copy to memory then remove and add to sortable3
+									$this.slideUp(500, function () {
+										$this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
+										$this.remove();
+										countTasks();
+									});
+								} else {
+									// insert undo code here...
+								}
+
+							})
+							// count tasks
+							function countTasks() {
+
+								$('.todo-group-title').each(function () {
+									var $this = $(this);
+									$this.find(".num-of-tasks").text($this.next().find("li").size());
+								});
+
+							}
+
+							/* BASIC ;*/
+							var responsiveHelper_dt_basic = undefined;
+							var responsiveHelper_datatable_fixed_column = undefined;
+							var responsiveHelper_datatable_col_reorder = undefined;
+							var responsiveHelper_datatable_tabletools = undefined;
+
+							var breakpointDefinition = {
+								tablet: 1024,
+								phone: 480
+							};
+
+							// custom toolbar
+							$("div.toolbar").html('<div class="text-right"><img src="/img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+
+							// Apply the filter
+							$("#datatable_fixed_column thead th input[type=text]").on('keyup change', function () {
+
+								otable
+									.column($(this).parent().index() + ':visible')
+									.search(this.value)
+									.draw();
+
+							});
+							/* END COLUMN FILTER */
+
+							/*
+							* RUN PAGE GRAPHS
+							*/
+
+							/* TAB 1: UPDATING CHART */
+							// For the demo we use generated data, but normally it would be coming from the server
+
+							var data = [], totalPoints = 200, $UpdatingChartColors = $("#updating-chart").css('color');
+
+							function getRandomData() {
+								if (data.length > 0)
+									data = data.slice(1);
+
+								// do a random walk
+								while (data.length < totalPoints) {
+									var prev = data.length > 0 ? data[data.length - 1] : 50;
+									var y = prev + Math.random() * 10 - 5;
+									if (y < 0)
+										y = 0;
+									if (y > 100)
+										y = 100;
+									data.push(y);
+								}
+
+								// zip the generated y values with the x values
+								var res = [];
+								for (var i = 0; i < data.length; ++i)
+									res.push([i, data[i]])
+								return res;
+							}
+
+							// setup control widget
+							var updateInterval = 1500;
+							$("#updating-chart").val(updateInterval).change(function () {
+
+								var v = $(this).val();
+								if (v && !isNaN(+v)) {
+									updateInterval = +v;
+									$(this).val("" + updateInterval);
+								}
+
+							});
+
+							// setup plot
+							var options = {
+								yaxis: {
+									min: 0,
+									max: 100
+								},
+								xaxis: {
+									min: 0,
+									max: 100
+								},
+								colors: [$UpdatingChartColors],
+								series: {
+									lines: {
+										lineWidth: 1,
+										fill: true,
+										fillColor: {
+											colors: [{
+												opacity: 0.4
+											}, {
+												opacity: 0
+											}]
+										},
+										steps: false
+
+									}
+								}
+							};
+
+							var plot = $.plot($("#updating-chart"), [getRandomData()], options);
+
+							/* live switch */
+							$('input[type="checkbox"]#start_interval').click(function () {
+								if ($(this).prop('checked')) {
+									$on = true;
+									updateInterval = 1500;
+									update();
+								} else {
+									clearInterval(updateInterval);
+									$on = false;
+								}
+							});
+
+							function update() {
+								if ($on == true) {
+									plot.setData([getRandomData()]);
+									plot.draw();
+									setTimeout(update, updateInterval);
+
+								} else {
+									clearInterval(updateInterval)
+								}
+
+							}
+
+							var $on = false;
+
+							/*end updating chart*/
+
+							/* TAB 2: Social Network  */
+
+							$(function () {
+								// jQuery Flot Chart
+								var twitter = [[1, 27], [2, 34], [3, 51], [4, 48], [5, 55], [6, 65], [7, 61], [8, 70], [9, 65], [10, 75], [11, 57], [12, 59], [13, 62]], facebook = [[1, 25], [2, 31], [3, 45], [4, 37], [5, 38], [6, 40], [7, 47], [8, 55], [9, 43], [10, 50], [11, 47], [12, 39], [13, 47]], data = [{
+									label: "Twitter",
+									data: twitter,
+									lines: {
+										show: true,
+										lineWidth: 1,
+										fill: true,
+										fillColor: {
+											colors: [{
+												opacity: 0.1
+											}, {
+												opacity: 0.13
+											}]
+										}
+									},
+									points: {
+										show: true
+									}
+								}, {
+									label: "Facebook",
+									data: facebook,
+									lines: {
+										show: true,
+										lineWidth: 1,
+										fill: true,
+										fillColor: {
+											colors: [{
+												opacity: 0.1
+											}, {
+												opacity: 0.13
+											}]
+										}
+									},
+									points: {
+										show: true
+									}
+								}];
+
+								var options = {
+									grid: {
+										hoverable: true
+									},
+									colors: ["#568A89", "#3276B1"],
+									tooltip: true,
+									tooltipOpts: {
+										//content : "Value <b>$x</b> Value <span>$y</span>",
+										defaultTheme: false
+									},
+									xaxis: {
+										ticks: [[1, "JAN"], [2, "FEB"], [3, "MAR"], [4, "APR"], [5, "MAY"], [6, "JUN"], [7, "JUL"], [8, "AUG"], [9, "SEP"], [10, "OCT"], [11, "NOV"], [12, "DEC"], [13, "JAN+1"]]
+									},
+									yaxes: {
+
+									}
+								};
+
+								var plot3 = $.plot($("#statsChart"), data, options);
+							});
+
+							// END TAB 2
+
+							// TAB THREE GRAPH //
+							/* TAB 3: Revenew  */
+
+							$(function () {
+
+								var trgt = [[1354586000000, 153], [1364587000000, 658], [1374588000000, 198], [1384589000000, 663], [1394590000000, 801], [1404591000000, 1080], [1414592000000, 353], [1424593000000, 749], [1434594000000, 523], [1444595000000, 258], [1454596000000, 688], [1464597000000, 364]], prft = [[1354586000000, 53], [1364587000000, 65], [1374588000000, 98], [1384589000000, 83], [1394590000000, 980], [1404591000000, 808], [1414592000000, 720], [1424593000000, 674], [1434594000000, 23], [1444595000000, 79], [1454596000000, 88], [1464597000000, 36]], sgnups = [[1354586000000, 647], [1364587000000, 435], [1374588000000, 784], [1384589000000, 346], [1394590000000, 487], [1404591000000, 463], [1414592000000, 479], [1424593000000, 236], [1434594000000, 843], [1444595000000, 657], [1454596000000, 241], [1464597000000, 341]], toggles = $("#rev-toggles"), target = $("#flotcontainer");
+
+								var data = [{
+									label: "Target Profit",
+									data: trgt,
+									bars: {
+										show: true,
+										align: "center",
+										barWidth: 30 * 30 * 60 * 1000 * 80
+									}
+								}, {
+									label: "Actual Profit",
+									data: prft,
+									color: '#3276B1',
+									lines: {
+										show: true,
+										lineWidth: 3
+									},
+									points: {
+										show: true
+									}
+								}, {
+									label: "Actual Signups",
+									data: sgnups,
+									color: '#71843F',
+									lines: {
+										show: true,
+										lineWidth: 1
+									},
+									points: {
+										show: true
+									}
+								}]
+
+								var options = {
+									grid: {
+										hoverable: true
+									},
+									tooltip: true,
+									tooltipOpts: {
+										//content: '%x - %y',
+										//dateFormat: '%b %y',
+										defaultTheme: false
+									},
+									xaxis: {
+										mode: "time"
+									},
+									yaxes: {
+										tickFormatter: function (val, axis) {
+											return "$" + val;
+										},
+										max: 1200
+									}
+
+								};
+
+								plot2 = null;
+
+								function plotNow() {
+									var d = [];
+									toggles.find(':checkbox').each(function () {
+										if ($(this).is(':checked')) {
+											d.push(data[$(this).attr("name").substr(4, 1)]);
+										}
+									});
+									if (d.length > 0) {
+										if (plot2) {
+											plot2.setData(d);
+											plot2.draw();
+										} else {
+											plot2 = $.plot(target, d, options);
+										}
+									}
+
+								};
+
+								toggles.find(':checkbox').on('change', function () {
+									plotNow();
+								});
+								plotNow()
+
+							});
+
+							/*
+							 * VECTOR MAP
+							 */
+
+							data_array = {
+								"US": 4977,
+								"AU": 4873,
+								"IN": 3671,
+								"BR": 2476,
+								"TR": 1476,
+								"CN": 146,
+								"CA": 134,
+								"BD": 100
+							};
+
+							$('#vector-map').vectorMap({
+								map: 'world_mill_en',
+								backgroundColor: '#fff',
+								regionStyle: {
+									initial: {
+										fill: '#c4c4c4'
+									},
+									hover: {
+										"fill-opacity": 1
+									}
+								},
+								series: {
+									regions: [{
+										values: data_array,
+										scale: ['#85a8b6', '#4d7686'],
+										normalizeFunction: 'polynomial'
+									}]
+								},
+								onRegionLabelShow: function (e, el, code) {
+									if (typeof data_array[code] == 'undefined') {
+										e.preventDefault();
+									} else {
+										var countrylbl = data_array[code];
+										el.html(el.html() + ': ' + countrylbl + ' visits');
+									}
+								}
+							});
+
+							/*
+							 * FULL CALENDAR JS
+							 */
+
+							if ($("#calendar").length) {
+								var date = new Date();
+								var d = date.getDate();
+								var m = date.getMonth();
+								var y = date.getFullYear();
+
+								var calendar = $('#calendar').fullCalendar({
+
+									editable: true,
+									draggable: true,
+									selectable: false,
+									selectHelper: true,
+									unselectAuto: false,
+									disableResizing: false,
+									height: "auto",
+
+									header: {
+										left: 'title', //,today
+										center: 'prev, next, today',
+										right: 'month, agendaWeek, agenDay' //month, agendaDay,
+									},
+
+									select: function (start, end, allDay) {
+										var title = prompt('Event Title:');
+										if (title) {
+											calendar.fullCalendar('renderEvent', {
+												title: title,
+												start: start,
+												end: end,
+												allDay: allDay
+											}, true // make the event "stick"
+											);
+										}
+										calendar.fullCalendar('unselect');
+									},
+
+									events: [{
+										title: 'All Day Event',
+										start: new Date(y, m, 1),
+										description: 'long description',
+										className: ["event", "bg-color-greenLight"],
+										icon: 'fa-check'
+									}, {
+										title: 'Long Event',
+										start: new Date(y, m, d - 5),
+										end: new Date(y, m, d - 2),
+										className: ["event", "bg-color-red"],
+										icon: 'fa-lock'
+									}, {
+										id: 999,
+										title: 'Repeating Event',
+										start: new Date(y, m, d - 3, 16, 0),
+										allDay: false,
+										className: ["event", "bg-color-blue"],
+										icon: 'fa-clock-o'
+									}, {
+										id: 999,
+										title: 'Repeating Event',
+										start: new Date(y, m, d + 4, 16, 0),
+										allDay: false,
+										className: ["event", "bg-color-blue"],
+										icon: 'fa-clock-o'
+									}, {
+										title: 'Meeting',
+										start: new Date(y, m, d, 10, 30),
+										allDay: false,
+										className: ["event", "bg-color-darken"]
+									}, {
+										title: 'Lunch',
+										start: new Date(y, m, d, 12, 0),
+										end: new Date(y, m, d, 14, 0),
+										allDay: false,
+										className: ["event", "bg-color-darken"]
+									}, {
+										title: 'Birthday Party',
+										start: new Date(y, m, d + 1, 19, 0),
+										end: new Date(y, m, d + 1, 22, 30),
+										allDay: false,
+										className: ["event", "bg-color-darken"]
+									}, {
+										title: 'Smartadmin Open Day',
+										start: new Date(y, m, 28),
+										end: new Date(y, m, 29),
+										className: ["event", "bg-color-darken"]
+									}],
+
+
+									eventRender: function (event, element, icon) {
+										if (!event.description == "") {
+											element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description + "</span>");
+										}
+										if (!event.icon == "") {
+											element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon + " '></i>");
+										}
+									}
+								});
+
+							};
+
+							/* hide default buttons */
+							$('.fc-toolbar .fc-right, .fc-toolbar .fc-center').hide();
+
+							// calendar prev
+							$('#calendar-buttons #btn-prev').click(function () {
+								$('.fc-prev-button').click();
+								return false;
+							});
+
+							// calendar next
+							$('#calendar-buttons #btn-next').click(function () {
+								$('.fc-next-button').click();
+								return false;
+							});
+
+							// calendar today
+							$('#calendar-buttons #btn-today').click(function () {
+								$('.fc-button-today').click();
+								return false;
+							});
+
+							// calendar month
+							$('#mt').click(function () {
+								$('#calendar').fullCalendar('changeView', 'month');
+							});
+
+							// calendar agenda week
+							$('#ag').click(function () {
+								$('#calendar').fullCalendar('changeView', 'agendaWeek');
+							});
+
+							// calendar agenda day
+							$('#td').click(function () {
+								$('#calendar').fullCalendar('changeView', 'agendaDay');
+							});
+
+							/*
+							 * CHAT
+							 */
+
+							$.filter_input = $('#filter-chat-list');
+							$.chat_users_container = $('#chat-container > .chat-list-body')
+							$.chat_users = $('#chat-users')
+							$.chat_list_btn = $('#chat-container > .chat-list-open-close');
+							$.chat_body = $('#chat-body');
+
+							/*
+							* LIST FILTER (CHAT)
+							*/
+
+							// custom css expression for a case-insensitive contains()
+							jQuery.expr[':'].Contains = function (a, i, m) {
+								return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+							};
+
+							function listFilter(list) {// header is any element, list is an unordered list
+								// create and add the filter form to the header
+
+								$.filter_input.change(function () {
+									var filter = $(this).val();
+									if (filter) {
+										// this finds all links in a list that contain the input,
+										// and hide the ones not containing the input while showing the ones that do
+										$.chat_users.find("a:not(:Contains(" + filter + "))").parent().slideUp();
+										$.chat_users.find("a:Contains(" + filter + ")").parent().slideDown();
+									} else {
+										$.chat_users.find("li").slideDown();
+									}
+									return false;
+								}).keyup(function () {
+									// fire the above change event after every letter
+									$(this).change();
+
+								});
+
+							}
+
+							// on dom ready
+							listFilter($.chat_users);
+
+							// open chat list
+							$.chat_list_btn.click(function () {
+								$(this).parent('#chat-container').toggleClass('open');
+							})
+
+							$.chat_body.animate({
+								scrollTop: $.chat_body[0].scrollHeight
+							}, 500);
+
+						});
+
+	</script>
+<!-- Your GOOGLE ANALYTICS CODE Below -->
+<script type="text/javascript">
 				var _gaq = _gaq || [];
 				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
 				_gaq.push(['_trackPageview']);
 
-				(function() {
+				(function () {
 					var ga = document.createElement('script');
 					ga.type = 'text/javascript';
 					ga.async = true;
@@ -2183,15 +2212,15 @@
 					s.parentNode.insertBefore(ga, s);
 				})();
 
-			</script>
+	</script>
 
-	<script>
-			$(".nav ul li").on("click", function(){
-				alert("keep trying");
-			$(".nav").find(".active").removeClass("active");
-			$(this).parent().addClass("active");
-			});
-			</script>
+<script>
+				$(".nav ul li").on("click", function () {
+					alert("keep trying");
+					$(".nav").find(".active").removeClass("active");
+					$(this).parent().addClass("active");
+				});
+	</script>
 </body>
 
 </html>

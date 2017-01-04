@@ -21,6 +21,7 @@ const oauth = require('./mvc/controllers/oauth');
 const tickets = require('./mvc/controllers/tickets');
 const stores = require('./mvc/controllers/stores');
 const assets = require('./mvc/controllers/assets');
+const calendar = require('./mvc/controllers/calendar');
 
 // Models
 const User = require('./mvc/models/user');
@@ -238,6 +239,7 @@ app.use('/admin', admin);
 app.use('/tickets', tickets);
 app.use('/stores', stores);
 app.use('/assets', assets);
+app.use('/calendar', calendar);
 app.use('/oauth', oauth);
 
 //Not found pages

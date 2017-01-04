@@ -16,6 +16,7 @@ const City = require('../models/city');
 const Company = require('../models/company');
 const Record = require('../models/record');
 const Asset = require('../models/asset');
+const Event = require('../models/event');
 
 //Config
 const Mailer = require('../../config/mailer');
@@ -78,8 +79,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			ticketNumber: req.query.ticketNumber,
 			title: body.title,
 			ticketType: req.query.ticketType,
-			startdate: new Date(),
-			lastupdate: new Date(),
+			deadline: new Date(body.deadline.split('.')[2], body.deadline.split('.')[1], body.deadline.split('.')[0]),
 			store_id: body.store,
 			priority: body.priority,
 			contacts: contacts,
@@ -89,18 +89,43 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			created_by: req.user.id,
 			modified_by: req.user.id
 		}
-
 		var newTicket = new Ticket(params);
-		Ticket.createTicket(newTicket, (err, ticket) => {
-			if (err) {
-				console.log(err);
-				req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
-				res.redirect('/tickets/new/failed?ticketType=' + req.query.ticketType);
-			} else {
-				(user.userRole === "storeAdmin") ? storeAdminSW = true : storeAdminSW = false;
-				res.redirect('/tickets/new/success?ticketType=' + req.query.ticketType);
-			}
+		var ticket_promise = new Promise((resolve, reject) => {
+			Ticket.createTicket(newTicket, (err, ticket) => {
+				if (err)
+					reject(err)
+				else
+					resolve(ticket)
+			});
 		});
+		ticket_promise.then(ticket => {			
+			new Event({
+				eventNumber: Math.floor(Math.random() * (99999 - 1 + 1)) + 1,
+				text:
+				ticket.ticketNumber + ";" +
+				ticket.title + ";" +
+				Validations.getLabelESP(ticket.status) + ";" +
+				Validations.getPriorityESP(ticket.priority) + ";" +
+				ticket.advance,
+				start_date: new Date(),
+				end_date: new Date(),
+				ticket_id: ticket.id,
+				created_by: req.user
+			}).save((err, event) => {
+				if (err) console.log(err);
+				else {
+					//console.log('result Event: ' + event)
+					(user.userRole === "storeAdmin") ? storeAdminSW = true : storeAdminSW = false;
+					res.redirect('/tickets/new/success?ticketType=' + req.query.ticketType);
+				}
+			});
+		});
+
+		ticket_promise.catch(err => {
+			console.log(err);
+			req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
+			res.redirect('/tickets/new/failed?ticketType=' + req.query.ticketType);
+		})
 	})
 });
 
@@ -113,11 +138,9 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 			categories.push(value);
 		}
 
-		if (name.indexOf('contacts_')!==-1) {
-			//let contact = new User{}
-			contacts.push(name.split('_')[1])			
+		if (name.indexOf('contacts_') !== -1) {
+			contacts.push(name.split('_')[1])
 		}
-		console.log('contacts: '+contacts);
 	});
 	form.parse(req, function (err, fields, files) {
 		let body = fields, ticketID = body.ticket_id,
@@ -131,19 +154,36 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 				description: body.description,
 				categories: categories,
 				lastupdate: new Date(),
-				deadline: Validations.setDates(body.setdeadline),
 				contacts: contacts,
 				modified_by: req.user.id,
-				track: body.trackTkt
+				track: body.trackTkt,
+				start_date: new Date(body.start_date.slice(-4),body.start_date.slice(-7, -5),body.start_date.slice(-10, -8)).setHours(0),
+				end_date: new Date(body.end_date.slice(-4),body.end_date.slice(-7, -5),body.end_date.slice(-10, -8)).setHours(23),
+				deadline: Validations.setDates(body.setdeadline),
 			};
 
 		Ticket.findOneAndUpdate({ _id: ticketID }, { $set: params }, { new: true }, (err, ticket) => {
-			if (err) {
-				console.log(err);
-			} else {
-				req.flash("success_msg", "El ticket fue actualizado.");
-				res.redirect('/tickets/' + ticket.ticketType + '/list');
-			}
+			Event.update({ ticket_id: ticket.id }, { $set: { start_date: ticket.start_date, end_date: ticket.end_date } }, (err, event) => {
+				if (err) {
+					console.log(err);
+				} else {
+					if (ticket.track === 'checked') {
+						User.find({ _id: { $in: ticket.contacts } }, (err, users) => {
+							console.log('recipents: ' + Validations.recipents(users));
+							Mailer.mailOptions.to = Validations.recipents(users);
+							Mailer.mailOptions.subject = "Notificaciones FDG - Actualización de Ticket No." + ticket.ticketNumber;
+							Mailer.mailOptions.template = "ticket";
+							Mailer.mailOptions.context = {
+								ticketID: ticket.id,
+								ticketNumber: ticket.ticketNumber
+							};
+							Mailer.sendEmail();
+						})
+					}
+					req.flash("success_msg", "El ticket No. " + ticket.ticketNumber + " fue actualizado exitosamente.");
+					res.redirect('/tickets/' + ticket.ticketType + '/list');
+				}
+			})
 		});
 	});
 });
@@ -194,8 +234,8 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 						'target-actual': "<span style='margin-top:5px' class='sparkline display-inline' data-sparkline-type='compositebar' data-sparkline-height='18px' data-sparkline-barcolor='#aafaaf' data-sparkline-line-width='2.5' data-sparkline-line-val='[47,9,9,8,3,2,2,5,6,7,4,1,5,7,6]' data-sparkline-bar-val='[47,9,9,8,3,2,2,5,6,7,9,9,5,7,6]'></span>",
 						actual: "<span class='sparkline text-align-center' data-sparkline-type='line' data-sparkline-width='100%' data-sparkline-height='25px'>20,-35,70</span>",
 						tracker: "<span class='onoffswitch'><input type='checkbox' name='start_interval' class='onoffswitch-checkbox'" + tkts[t].track + " disabled id='st" + t2 + "'><label class='onoffswitch-label' for='st" + t2 + "'><span class='onoffswitch-inner' data-swchon-text='ON' data-swchoff-text='OFF'></span><span class='onoffswitch-switch'></span></label></span>",
-						startdate: dateFormat(tkts[t].startdate, "dd/mm/yyyy"),
-						lastupdate: dateFormat(tkts[t].lastupdate, "dd/mm/yyyy HH:MM"),
+						start_date: dateFormat(tkts[t].start_date, "dd/mm/yyyy"),
+						end_date: dateFormat(tkts[t].end_date, "dd/mm/yyyy"),
 						deadline: dateFormat(tkts[t].deadline, "dd/mm/yyyy"),
 						description: tkts[t].description,
 						categories: Validations.getCategories(tkts[t].categories),
@@ -230,7 +270,7 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 			.then(tks2 => Company.populate(tks2, { path: "store_id.company_id" }))
 			.then(tks3 => City.populate(tks3, { path: "store_id.city_id" }))
 			.then(result => {
-				console.log('ticket: ' + result);
+				//console.log('ticket: ' + result);
 				var tkts = new Array();
 				for (let item in result) {
 					let validation = result[item].store_id;
@@ -248,26 +288,34 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 router.get('/ticket_details', Validations.ensureAuthenticated, (req, res) => {
 	let ticketID = req.query.ID;
 	Ticket.findOne({ _id: ticketID }).populate('store_id').populate('asset_id').exec((err, ticket) => {
-		City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
-			User.find({ userRole: 'systemAdmin' }, (err, admins) => {
-				User.find({ company_id: ticket.store_id.company_id }, null, {sort:{userRole:1}}, (err, employees) => {
-					Record.find({ ticket_id: ticketID }).populate('adminRepresentative').populate('custRepresentative').exec((err, records) => {
-						Asset.find({ store_id: ticket.store_id.id }, (err, assets) => {
-							if (err) console.log(err);
-							let checkclass = 'default', checktext = 'Seguir', checksymbol = "", checks = new Array();
+		if (err || ticket == null) {
+			req.flash('error_msg', 'Error cargando el ticket. Inténtelo de nuevo más tarde.')
+			res.redirect('/');
+		} else
+			City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
+				if (err || city == null) {
+					req.flash('error_msg', 'Error cargando el ticket. Inténtelo de nuevo más tarde.')
+					res.redirect('/');
+				} else
+					User.find({ userRole: 'systemAdmin' }, (err, admins) => {
+						User.find({ company_id: ticket.store_id.company_id }, null, { sort: { userRole: 1 } }, (err, employees) => {
+							Record.find({ ticket_id: ticketID }).populate('adminRepresentative').populate('custRepresentative').exec((err, records) => {
+								Asset.find({ store_id: ticket.store_id.id }, (err, assets) => {
+									if (err) console.log(err);
+									let checkclass = 'default', checktext = 'Seguir', checksymbol = "", checks = new Array();
 
-							if (ticket.track === 'checked') {
-								checkclass = 'warning';
-								checktext = 'Siguiendo';
-								checksymbol = "Check mark symbol "
-							}
-							let recordNumber = Validations.numberGenerator("record"), representative = req.user;
-							res.render('1-admin/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
-						})
+									if (ticket.track === 'checked') {
+										checkclass = 'warning';
+										checktext = 'Siguiendo';
+										checksymbol = "Check mark symbol "
+									}
+									let recordNumber = Validations.numberGenerator("record"), representative = req.user;
+									res.render('1-admin/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
+								})
+							});
+						});
 					});
-				});
-			});
-		})
+			})
 	});
 });
 

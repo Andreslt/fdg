@@ -112,7 +112,7 @@
 										<div class="row">
 											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ciudad:</label>
 											<label class="select col col-4" style="margin-right: 20px;width: 220px;">
-											<select name="city" required style="width: 212px; margin-right: 10px;padding-left: 10px;">												
+											<select name="city" required style="width: 230px; margin-right: 10px;padding-left: 10px;">												
 												<option value="0" selected="" disabled="">Seleccionar ciudad</option>
 												{{#each cities}}
 													<option value="{{id}}">{{city}}</option>
@@ -138,6 +138,17 @@
 													</select> <i></i> </label>
 											</section>
 
+										</div>
+										<div class="row">
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Deadline:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" name="deadline" id="deadline" placeholder="Fecha máxima para ticket" style="text-align: center;">
+													</label>
+												<div class="note">
+													Por favor escoja la fecha máxima para la realización de este ticket (Opcional).
+												</div>
+											</section>
 										</div>
 										<section>
 											<label class="col-md-2 control-label">Descripción:</label>

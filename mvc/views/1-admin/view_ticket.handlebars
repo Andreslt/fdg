@@ -138,6 +138,14 @@
 
 										</div>
 										<div class="row">
+											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Deadline:</label>
+											<section class="col col-3">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+														<input type="text" disabled name="deadline" id="deadline" value='{{formatDate ticket.deadline "DD/MM/YYYY"}}' style="text-align: center;">
+													</label>
+											</section>
+										</div>										
+{{!--										<div class="row">
 											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Creación:</label>
 											<section class="col col-3">
 												<label class="input"> <i class="icon-append fa fa-calendar"></i>
@@ -165,7 +173,7 @@
 													Fecha de terminación <strong>estimada</strong> del ticket.
 												</div>
 											</section>
-										</div>
+										</div>--}}
 										<section>
 											<label class="col-md-2 control-label">Descripción:</label>
 											<label class="textarea"> <i class="icon-append fa fa-comment" style="margin-top: 20px;"></i> 										
@@ -288,7 +296,7 @@
 																		</select> <i></i> </label>
 																		</section>
 																	</div>
-																	<div class="row">
+																	<div class="row" style="height: 30px">
 																		<label class="col-md-1 control-label" style="width: 60px;">Prioridad:</label>
 																		<section class="col col-lg-4">
 																			<label class="select" style="text-align: center;">
@@ -305,7 +313,44 @@
 																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
 																				<input type="text" name="setdeadline" id="setdeadline" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
 																			</label>
+																		</section>																	
 																	</div>
+																	<div class="row" style="height: 20px">
+																		<label class="col-md-1 control-label" style="width: 90px;">Fecha Inicio:</label>
+																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="start_date" id="start_date" style="text-align: center;" value="{{formatDate ticket.start_date "DD.MM.YYYY"}}">
+																			</label>
+																		</section>
+																		<label class="col-md-1 control-label" style="margin-left: 20px;width: 70px;">Fecha Fin:</label>
+																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="end_date" id="end_date" style="text-align: center;" value="{{formatDate ticket.end_date "DD.MM.YYYY"}}">
+																			</label>
+																		</section>																			
+																	</div>
+																	<div class="row" style="height: 5px">
+																		<section class="col col-lg-4" style="padding-left: 0px; font-size: 11px">
+																			<div>
+																			<p><strong> Creado en:</strong> {{formatDate ticket.startdate "DD/MM/YYYY - HH:mm"}}</p>
+																			<p><strong>Ultima edición:</strong> {{formatDate ticket.lastupdate "DD/MM/YYYY - HH:mm"}}</p>
+																			</div>
+																		</section>
+																	</div>																		
+{{!--																	<div class="row">
+																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Fecha Fin:</label>
+																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="end_date" id="end_date" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
+																			</label>
+																		</section>
+																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Fecha Fin:</label>
+																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																				<input type="text" name="end_date" id="end_date" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
+																			</label>
+																		</section>
+																	</div>	--}}																																		
 																</div>
 																<div class="tab-pane" id="tab-r2">
 																	<div class="tab-content">
@@ -466,7 +511,7 @@
 																									<span><i class="fa fa-lg fa-plus-circle"></i> Contactos: </span>
 																									<ul>
 																										<li>
-																											<span><i class="fa fa-lg fa-plus-circle"></i> Administratores</span>
+																											<span><i class="fa fa-lg fa-plus-circle"></i> Administradores</span>
 																											<ul id="administrators">
 																												{{#each admins}}
 																												<li style="display:none">

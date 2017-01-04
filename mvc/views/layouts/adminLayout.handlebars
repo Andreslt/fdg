@@ -48,9 +48,6 @@
 	<link rel="apple-touch-startup-image" href="/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 	<link rel="apple-touch-startup-image" href="/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 
-
-
-
 </head>
 
 <body class="smart-style-1">
@@ -60,67 +57,7 @@
 			<!-- PLACE YOUR LOGO HERE -->
 			<span id="logo"> <img src="https://s3-us-west-2.amazonaws.com/fdg-ingenieria/images/Logo_+01_247x53.png" alt="SmartAdmin"> </span>
 			<!-- END LOGO PLACEHOLDER -->
-
-			<!-- Note: The activity badge color changes when clicked and resets the number to 0
-					 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-			<!--<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>-->
-
-			<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-			<!--			<div class="ajax-dropdown">
-
-				<div class="btn-group btn-group-justified" data-toggle="buttons">
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/mail.html">
-							Msgs (14) </label>
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/notifications.html">
-							notify (3) </label>
-					<label class="btn btn-default">
-							<input type="radio" name="activity" id="/ajax/notify/tasks.html">
-							Tasks (4) </label>
-				</div>
-
-				<div class="ajax-notifications custom-scroll">
-
-					<div class="alert alert-transparent">
-						<h4>Click a button to show messages here</h4>
-						This blank page message helps protect your privacy, or you can show the first message here automatically.
-					</div>
-
-					<i class="fa fa-lock fa-4x fa-border"></i>
-
-				</div>
-				<span> Ultima actualización: 12/12/2013 9:43AM
-						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
-							<i class="fa fa-refresh"></i>
-						</button> </span>
-			</div>-->
 		</div>
-
-		<!-- #PROJECTS: projects dropdown -->
-		<!--		<div class="project-context hidden-xs">
-
-			<span class="label">Projects:</span>
-			<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-			<ul class="dropdown-menu">
-				<li>
-					<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">Notes on pipeline upgradee</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);">Assesment Report for merchant account</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-				</li>
-			</ul>
-
-		</div>-->
-		<!-- end projects dropdown -->
 
 		<!-- pulled right: nav area -->
 		<div class="pull-right">
@@ -206,18 +143,7 @@
 		<nav>
 			<ul>
 				<li class="active">
-					<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Inicio</span></a>
-					<ul>
-						<!--								<li class="active">
-									<a href="/home" title="Home"><i class="fa fa-lg fa-fw fa-home"></i>Home</a>
-								</li>	-->
-						<li class="">
-							<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i>Dashboard</a>
-						</li>
-						<li class="">
-							<a href="/account" title="Cuenta"><i class="fa fa-lg fa-fw fa-user"></i>Cuenta</a>
-						</li>
-					</ul>
+					<a href="/dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Dashboard</span></a>
 				</li>
 				<li class="">
 					<a href="#" title="Mantenimientos"><i class="fa fa-lg fa-fw fa-gears"></i> <span class="menu-item-parent">Mantenimientos</span></a>
@@ -226,13 +152,13 @@
 							<a href="#" title="Tickets Preventivos"><i class="fa fa-lg fa-fw fa-calendar-o"></i>Preventivo</a>
 							<ul>
 								<li>
-									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>Agendar Ticket</a>
+									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Agendar Ticket</a>
 								</li>
 								<li class="active">
-									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-align-left"></i>Ver Tickets</a>
+									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
 								</li>
 								<li class="">
-									<a href="/admin/calendar" title="Calendario"><i class="fa fa-lg fa-fw fa-calendar"></i>Cronograma</a>
+									<a href="/calendar" title="Calendario"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Cronograma</a>
 								</li>								
 							</ul>
 						</li>
@@ -240,10 +166,10 @@
 							<a href="#" title="Tickets Correctivos"><i class="fa fa-lg fa-fw fa-exclamation-triangle"></i>Correctivo</a>
 							<ul>
 								<li>
-									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-tags"></i>Crear Ticket</a>
+									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Crear Ticket</a>
 								</li>
 								<li>
-									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-reorder"></i>Ver Tickets</a>
+									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
 								</li>
 							</ul>
 						</li>
@@ -285,17 +211,9 @@
 						</li>
 					</ul>
 				</li>
-				<!--						<li class="">
-							<a href="#" title="Reportes"><i class="fa fa-lg fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
-							<ul>
-								<li>
-									<a href="/newReport" title="Tickets by Cities"><i class="fa fa-lg fa-plus-square-o"></i>Crear Reporte</a>
-								</li>								
-								<li>
-									<a href="/reports" title="All Tickets"><i class="fa fa-lg fa-file-text-o"></i>Ver Reportes</a>
-								</li>						
-							</ul>
-						</li>	-->
+				<li>					
+					<a href="/admin/account/edit?username={{user.username}}"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Cuenta</span></a>
+				</li>						
 				<li class="">
 					<a href="/users/logout" title="Cerrar Sesión"><i class="fa fa-lg fa-fw fa-external-link"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
 				</li>
@@ -415,6 +333,7 @@
 	<script>
 				var userCompany = "{{userEdit.company_id.companyName}}"
 				var userStore = "{{userEdit.store_id.storeName}}"
+				var username = "{{user.username}}"
 				var userCity = "{{userEdit.city_id.city}}"
 				var storeAdmin = "{{selectedUserType.storeAdmin}}"
 				var storeEmp = "{{selectedUserType.storeEmp}}"
@@ -597,16 +516,20 @@
 				{{#each events}}
 					eventos.push({
 						id: {{eventNumber}},
-						text: "{{text}}",
+						text: "Ticket No.: "+ "{{text}}".split(";")[0]+"\n"+ "Titulo: " + 
+						"{{text}}".split(";")[1]+"\n"+ "Estado: " +"{{text}}".split(";")[2] +"\n"+
+						"Prioridad: "+ "{{text}}".split(";")[3]+"\n" + "Avance: "+ "{{text}}".split(";")[4]+"%",
 						start_date: "{{formatDate start_date 'YYYY-MM-DD HH.mm' }}",
-						end_date: "{{formatDate end_date 'YYYY-MM-DD HH.mm' }}"						
+						end_date: "{{formatDate end_date 'YYYY-MM-DD HH.mm' }}"	,
+						rec_type: "{{rec_type}}",						
+						rec_pattern: "{{rec_pattern}}",
+						event_length: 	"{{event_length}}",				
 					})
 				{{/each}}
 
-				console.log('eventos: '+JSON.stringify(eventos));
 				scheduler.parse(JSON.stringify(eventos), "json");//takes the name and format of the data source				
 
-				var dp = new dataProcessor("/admin/scheduleSave?cityID="+"{{events.[0].city_id.id}}");
+				var dp = new dataProcessor("/calendar/save");
         		dp.init(scheduler);
         		dp.setTransactionMode("POST", false);
 			}catch (e) {
@@ -1087,7 +1010,25 @@
 				onSelect : function(selectedDate) {
 					$('#setdeadline').datepicker('option', 'minDate', selectedDate);
 				}
-			});							
+			});
+
+			$('#start_date').datepicker({
+				dateFormat : 'dd.mm.yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#start_date').datepicker('option', 'minDate', selectedDate);
+				}
+			});		
+
+			$('#end_date').datepicker({
+				dateFormat : 'dd.mm.yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#end_date').datepicker('option', 'minDate', selectedDate);
+				}
+			});													
 
 		    $('#tags').editable({
 		        inputclass: 'input-large',
@@ -1375,8 +1316,8 @@
 				            '<td>'+d.title+'</td>'+
 				        '</tr>'+
 				        '<tr>'+
-				            '<td>Actualizado en:</td>'+
-				            '<td>'+d.lastupdate+'</td>'+
+				            '<td>Fecha límite:</td>'+
+				            '<td>'+d.deadline+'</td>'+
 				        '</tr>'+
 				        '<tr>'+
 				            '<td>Descripción:</td>'+
@@ -1416,8 +1357,8 @@
 			            { "data": "contacts" },
 			            { "data": "status" },
 			            { "data": "target-actual"},
-			            { "data": "startdate" },
-						{ "data": "deadline" },
+			            { "data": "start_date" },
+						{ "data": "end_date" },
 			            { "data": "tracker" },
 			        ],
 			        "order": [[1, 'asc']],

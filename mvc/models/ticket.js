@@ -78,27 +78,34 @@ var TicketSchema = mongoose.Schema({
             type: String
         }
     }],
-    startdate: {
+    start_date: {
         type: Date,
-        default: Date.now,
+        default: new Date(),
         required: true
     },
-    finishdate: {
-        type: Date
-    },  
-    lastupdate: {
+    end_date: {
         type: Date,
-        default: Date.now,
+        default: new Date(),
         required: true        
-    },  
+    },
     deadline: {
         type: Date
+    },
+    created_on: {
+        type: Date,
+        default: new Date(),
+        required: true
     },
     created_by: {
         type: ObjectId,
         ref: "Users",
         required: true
     },
+    modified_on: {
+        type: Date,
+        default: new Date(),
+        required: true
+    },    
     modified_by: {
         type: ObjectId,
         ref: "Users",

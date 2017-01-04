@@ -2,23 +2,18 @@
 $(document).ready(function () {
 
     getContacts();
-    notificationStatus();    
+    notificationStatus();
 
-    $('.notifyOption').on('click', function(){
+    $('.notifyOption').on('click', function () {
         var reportID = $(this).closest('td').parent().find(".recordNumber").text();
         var target = $(this).text().split(' ');
-        $('#'+reportID).show();
-        $('#note_text_'+reportID).text(target[target.length-1]);
+        $('#' + reportID).show();
+        $('#note_text_' + reportID).text(target[target.length - 1]);
         $.ajax({
             method: "POST",
-            url: "/admin/reports/notify?reportID="+reportID+"&target="+target
+            url: "/admin/reports/notify?reportID=" + reportID + "&target=" + target
         });
     });
-
-/*    $('.recordNumber').hover(function(e){
-        alert($(this).attr('id'));
-    })
-*/
 
     $('.view-ticket').on('click', function () {
         $('#edit-ticket-id').val($(this).data('id'));
@@ -281,7 +276,6 @@ $(document).ready(function () {
     }
 
     function getContacts() {
-        //return $('<input class="contacts" checked name="contacts_{{id}}" type="checkbox" name="checkbox-inline">')
         if (window.location.pathname === '/tickets/ticket_details') {
             $.ajax({
                 type: "POST",
@@ -289,44 +283,34 @@ $(document).ready(function () {
                 success: function (contacts) {
                     var list = "";
                     for (let i = 0; i < contacts.length; i++) {
-                        $('input#contacts_'+contacts[i]._id).prop('checked', true);
-/*                        $('.contacts_admin').each(function(elem){
-                            console.log('elem:'+elem);
-                        })*/
-                        //console.log('admins ' + i + ': ' + admins[i]._id);
-
-/*                        if (i == 0)
-                            list = '<li style="display:none">' + '<span> <label class="checkbox inline-block">' +
-                                '<input class="contacts" name="contacts_' + admins[i]._id + '" type="checkbox" name="checkbox-inline">' +
-                                '<i></i>' + admins[i].name + " " + admins[i].lastname + '</label> </span></li>'
-                        else
-                            list += '<li style="display:none">' + '<span> <label class="checkbox inline-block">' +
-                                '<input class="contacts" name="contacts_' + admins[i]._id + '" type="checkbox" name="checkbox-inline">' +
-                                '<i></i>' + admins[i].name + " " + admins[i].lastname + '</label> </span></li>'*/
+                        $('input#contacts_' + contacts[i]._id).prop('checked', true);
                     }
-                    /*return $('<li style="display:none">' + '<span> <label class="checkbox inline-block">' +
-                                '<input class="contacts" name="contacts_' + admins[0]._id + '" type="checkbox" name="checkbox-inline">' +
-                                '<i></i>' + admins[0].name + " " + admins[0].lastname + '</label> </span></li>')*/
-                    //return $('<input class="contacts" checked name="contacts_{{id}}" type="checkbox" name="checkbox-inline">')
                 }
             })
         }
     }
-
-    function notificationStatus(){
+    function notificationStatus() {
         if (window.location.pathname === '/tickets/ticket_details') {
-            $('.notification_note').each(function(){
+            $('.notification_note').each(function () {
                 $this = $(this)[0].id;
-                var record = $('#notified_to_'+$this).val();                
-                if(record!=="" && record!=null){
-                    $('#note_text_'+$this).text(record);
-                    $('#note_text_'+$this).show();
-                }else
-                    $('#'+$this).hide()
+                var record = $('#notified_to_' + $this).val();
+                if (record !== "" && record != null) {
+                    $('#note_text_' + $this).text(record);
+                    $('#note_text_' + $this).show();
+                } else
+                    $('#' + $this).hide()
             });
         }
     }
 
     $("#storeEmp").prop('checked', storeEmp);
     $("#storeAdmin").prop('checked', storeAdmin);
+
+    $(window).on('load', function () {
+        $('#ticketlink').on('click', function () {
+            alert('se hundió en ticket')
+        })
+    });
+
 });
+

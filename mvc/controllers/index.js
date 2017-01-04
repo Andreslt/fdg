@@ -33,7 +33,7 @@ router.get('/home', Validations.ensureAuthenticated, (req, res) => {
 });
 
 /* ---> INICIO <--- */
-// 1. Dashboard
+// Dashboard
 router.get('/dashboard', Validations.ensureAuthenticated, (req, res) => {
 	if (req.user.userRole === 'systemAdmin') {
 		res.redirect('/admin/dashboard');
@@ -41,15 +41,8 @@ router.get('/dashboard', Validations.ensureAuthenticated, (req, res) => {
 		res.redirect('/users/dashboard');
 	}
 });
-// 2. Calendario
-router.get('/calendar', Validations.ensureAuthenticated, (req, res) => {
-	if (req.user.userRole === 'systemAdmin') {
-		res.redirect('/admin/calendar');
-	} else {
-		res.redirect('/users/calendar');
-	}
-});
-// 3. Cuenta
+
+// Cuenta
 router.get('/account', Validations.ensureAuthenticated, (req, res) => {
 	if (req.user.userRole === 'systemAdmin') {
 		res.redirect('/admin/account');

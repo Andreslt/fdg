@@ -14,7 +14,6 @@ var Store = require("../models/store");
 var Ticket = require("../models/ticket");
 var City = require('../models/city');
 var Record = require('../models/record');
-var Event = require('../models/event');
 var Asset = require('../models/asset');
 var AssetRef = require('../models/assetReference');
 
@@ -58,7 +57,7 @@ router.get('/account/edit', Validations.ensureAuthenticated, Validations.systemA
 						userDates.aprobMonth = 99;
 						userDates.aprobDay = 99;
 					}
-					res.render('1-admin/account_edit', { layout: 'userLayout', user, userDates, companies, cities, stores });
+					res.render('1-admin/account_edit', { layout: 'adminLayout', user, userDates, companies, cities, stores });
 				});
 			});
 		});
@@ -66,68 +65,6 @@ router.get('/account/edit', Validations.ensureAuthenticated, Validations.systemA
 });
 
 //* Maintenances *//
-
-router.get('/calendar', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW;
-	res.render('1-admin/list_calendar_cities', { layout: 'adminLayout', storeAdminSW });
-});
-
-router.get('/calendar/:city', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let city = req.params.city, storeAdminSW;
-	City.findOne({ city: city }, (err, city_id) => {
-		Store.find({ city_id: city_id.id }, (err, stores) => {
-			let companiesArray = new Array();
-			stores.forEach(function (elem) {
-				companiesArray.push(elem.company_id);
-			});
-			Company.find({ _id: { $in: companiesArray } }, (err, companies) => {
-				res.render('1-admin/list_calendar_companies', { layout: 'adminLayout', storeAdminSW, companies, city });
-			});
-		});
-	});
-});
-
-router.get('/calendar/:city/:company', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let city_params = req.params.city, company_params = req.params.company, storeAdminSW;
-	City.findOne({ city: city_params }, (err, city) => {
-		Company.findOne({ companyName: company_params }, (err, company) => {
-			Store.find({ city_id: city, company_id: company }, (err, stores) => {
-				let storesArray = new Array();
-				stores.forEach(function (elem) {
-					storesArray.push(elem.id);
-				});
-				Ticket.find({ store_id: { $in: storesArray } }, (err, tickets) => {
-					let ticketsArray = new Array();
-					tickets.forEach(function (elem) {
-						ticketsArray.push(elem.id);
-					});
-					Event.find({ ticket_id: { $in: ticketsArray } }).populate('city_id').exec((err, eventos) => {
-						let events = eventos.filter((elem) => {
-							return elem.city_id.city === city_params
-						});
-						if (err) console.log(err);
-						res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
-					});
-				});
-			});
-		});
-	});
-/*	Event.find({}).populate('city_id').exec((err, eventos) => {
-		let events = eventos.filter((elem) => {
-			return elem.city_id.city.toUpperCase() === city
-		});
-		if (err) console.log(err);
-		res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
-	});*/
-});
-
-router.get('/scheduleNew', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW;
-	Event.find({}).populate('ticket_id').populate('created_by').exec((err, events) => {
-		console.log(events);
-		res.render('1-admin/new_schedule', { layout: 'adminLayout', storeAdminSW, events });
-	});
-});
 
 /*router.post('/scheduleSave', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 		let user = req.user, storeAdminSW;
@@ -461,24 +398,24 @@ router.post('/reports/notify', Validations.ensureAuthenticated, Validations.syst
 				let recipents = new Array();
 				for (var u = 0; u < users.length; u++) {
 					var sw = false;
-					console.log('target: ' + target);
+					//console.log('target: ' + target);
 					if (target === "administradores") {
 						if (users[u].userRole === "systemAdmin") {
 							sw = true;
-							console.log('administradores: ' + users[u].username);
+							//console.log('administradores: ' + users[u].username);
 						}
 					} else if (target === "usuarios") {
 						if (users[u].userRole !== "systemAdmin") {
 							sw = true;
-							console.log('usuarios: ' + users[u].username);
+							//console.log('usuarios: ' + users[u].username);
 						}
 					} else if (target === "contactos") {
 						sw = true;
-						console.log('contactos: ' + users[u].username);
+						//console.log('contactos: ' + users[u].username);
 					}
 					if (sw) recipents.push(users[u].email);
 				}
-				console.log('recipents:' + recipents);
+				//console.log('recipents:' + recipents);
 				mailer.mailOptions.to = recipents;
 				mailer.mailOptions.subject = "Notificaciones FDG - Nueva Acta No." + record.recordNumber;
 				mailer.mailOptions.template = "record";
@@ -492,7 +429,7 @@ router.post('/reports/notify', Validations.ensureAuthenticated, Validations.syst
 	});
 });
 
-function getLabel(status) {
+/*function getLabel(status) {
 	if (status === "Pendiente") {
 		return "info";
 	} else if (status === "Asignado") {
@@ -547,6 +484,6 @@ function formatAMPM(date) {
 	minutes = minutes < 10 ? '0' + minutes : minutes;
 	var strTime = hours + ':' + minutes + ' ' + ampm;
 	return strTime;
-}
+}*/
 
 module.exports = router;	
