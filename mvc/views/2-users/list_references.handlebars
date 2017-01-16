@@ -18,17 +18,6 @@
                 <span class="ribbon-button-alignment pull-right">
                     <a href="/assets/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Activo</span></a>
                 </span> 	
-				<!-- You can also add more buttons to the
-				ribbon for further usability
-
-				Example below:
-
-				<span class="ribbon-button-alignment pull-right">
-				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
-				</span> -->
-
 			</div>
 			<!-- END RIBBON -->
 
@@ -39,9 +28,9 @@
 					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
 						<h1 class="page-title txt-color-blueDark">
 							<i class="fa fa-table fa-fw "></i> 
-								Activos 
+								Referencias 
 							<span>> 
-                                Todos
+                                Todas
 							</span>
 						</h1>
 					</div>
@@ -60,7 +49,7 @@
 							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-									<h2>Activos</h2>
+									<h2>Referencias</h2>
 				
 								</header>
 				
@@ -81,27 +70,25 @@
 					
 									        <thead>
 									            <tr>
-								                    <th data-class="expand">No. Activo</th>
-								                    <th>Nombre</th>
+								                    <th data-class="expand">No. Referencia</th>
+								                    <th>Descripción</th>
 								                    <th data-hide="phone">Modelo</th>
 								                    <th data-hide="phone">Marca</th>
 								                    <th data-hide="phone,tablet">Tipo</th>
-													<th data-hide="phone,tablet">Tienda</th>
 								                    <th data-hide="phone,tablet">Fecha de creación</th>
 									            </tr>
 									        </thead>
 				
 									        <tbody>
                                                 
-                                                {{#each assets}}
+                                                {{#each assetRefs}}
 												<tr>
-                                                    <td><a class="edit-store" href="/assets/asset_details?ID={{id}}">
+                                                    <td><a class="edit-store" href="/assets/assetRefs/ref_details?ID={{id}}">
 													{{number}}</a></td>
-                                                    <td> {{name}}</td>													
-                                                    <td> {{reference_id.model}}</td>
-                                                    <td> {{reference_id.brand}}</td>
-                                                    <td> {{reference_id.type}}</td>
-													<td><a href="/stores/store_details?ID={{store_id.id}}"> {{store_id.storeName}}</a></td>
+                                                    <td> {{description}}</td>													
+                                                    <td> {{model}}</td>
+                                                    <td> {{brand}}</td>
+                                                    <td> {{type}}</td>
                                                     <td> {{formatDate created_on "DD/MM/YYYY HH:mm"}}</td>
 													</tr>
                                                 {{/each}}

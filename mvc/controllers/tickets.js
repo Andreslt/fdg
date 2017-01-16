@@ -24,20 +24,25 @@ const Validations = require('../../config/validations');
 
 // Crear Ticket
 router.get('/:ticketType/new', Validations.ensureAuthenticated, (req, res) => {
-	let user = req.user, storeAdminSW, ticketType = req.params.ticketType;
-	if (req.user.userRole === 'systemAdmin') {
-		City.find({ city: { $ne: "Default city" } }, (err, cities) => {
+	let user = req.user, storeAdminSW, ticketType = req.params.ticketType, params = {}, route, layout;
+	var cities = getTicket_Params('city', user), stores = getTicket_Params('store', user), assets = getTicket_Params('asset', user);
+	City.find(cities, (err, cities) => {
+		if (err) console.log(err)
+		Store.find(stores, (err, stores) => {
 			if (err) console.log(err)
-			Store.find({ storeName: { $ne: "Default store" } }, (err, stores) => {
-				Asset.find({}, (err, assets) => {
-					if (err) console.log(err)
-					res.render('1-admin/new_ticket', { layout: 'adminLayout', storeAdminSW, stores, cities, ticketType, ticketNumber: Validations.numberGenerator(ticketType), assets });
-				});
+			Asset.find(assets, (err, assets) => {
+				if (err) console.log(err)
+				else if (user.userRole === "systemAdmin") {
+					route = '1-admin/new_ticket';
+					layout = 'adminLayout'
+				} else {
+					route = '2-users/new_ticket';
+					layout = 'userLayout'
+				}
+				res.render(route, { layout: layout, storeAdminSW, stores, cities, ticketType, ticketNumber: Validations.numberGenerator(ticketType), assets });
 			});
 		});
-	} else {
-		res.redirect('/users/newTicket');
-	}
+	});
 });
 
 router.get('/new/failed', Validations.ensureAuthenticated, (req, res) => {
@@ -89,6 +94,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			created_by: req.user.id,
 			modified_by: req.user.id
 		}
+
 		var newTicket = new Ticket(params);
 		var ticket_promise = new Promise((resolve, reject) => {
 			Ticket.createTicket(newTicket, (err, ticket) => {
@@ -98,7 +104,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 					resolve(ticket)
 			});
 		});
-		ticket_promise.then(ticket => {			
+		ticket_promise.then(ticket => {
 			new Event({
 				eventNumber: Math.floor(Math.random() * (99999 - 1 + 1)) + 1,
 				text:
@@ -114,7 +120,6 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			}).save((err, event) => {
 				if (err) console.log(err);
 				else {
-					//console.log('result Event: ' + event)
 					(user.userRole === "storeAdmin") ? storeAdminSW = true : storeAdminSW = false;
 					res.redirect('/tickets/new/success?ticketType=' + req.query.ticketType);
 				}
@@ -122,7 +127,6 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 		});
 
 		ticket_promise.catch(err => {
-			console.log(err);
 			req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
 			res.redirect('/tickets/new/failed?ticketType=' + req.query.ticketType);
 		})
@@ -147,29 +151,27 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 
 			params = {
 				priority: body.setpriority,
-				advance: body.setadvance,
-				status: body.setstatus,
 				asset_id: body.getasset,
 				title: body.title,
 				description: body.description,
 				categories: categories,
 				lastupdate: new Date(),
+				start_date: new Date(body.start_date.split('.')[2],body.start_date.split('.')[1],body.start_date.split('.')[0]),
+				end_date: new Date(body.end_date.split('.')[2],body.end_date.split('.')[1],body.end_date.split('.')[0]),
 				contacts: contacts,
 				modified_by: req.user.id,
 				track: body.trackTkt,
-				start_date: new Date(body.start_date.slice(-4),body.start_date.slice(-7, -5),body.start_date.slice(-10, -8)).setHours(0),
-				end_date: new Date(body.end_date.slice(-4),body.end_date.slice(-7, -5),body.end_date.slice(-10, -8)).setHours(23),
 				deadline: Validations.setDates(body.setdeadline),
 			};
-
+			console.log('start_date: '+params.start_date);
+			console.log('end_date: '+params.end_date);
 		Ticket.findOneAndUpdate({ _id: ticketID }, { $set: params }, { new: true }, (err, ticket) => {
 			Event.update({ ticket_id: ticket.id }, { $set: { start_date: ticket.start_date, end_date: ticket.end_date } }, (err, event) => {
 				if (err) {
-					console.log(err);
+					console.log('tickets/save (post): '+err);
 				} else {
 					if (ticket.track === 'checked') {
 						User.find({ _id: { $in: ticket.contacts } }, (err, users) => {
-							console.log('recipents: ' + Validations.recipents(users));
 							Mailer.mailOptions.to = Validations.recipents(users);
 							Mailer.mailOptions.subject = "Notificaciones FDG - Actualización de Ticket No." + ticket.ticketNumber;
 							Mailer.mailOptions.template = "ticket";
@@ -204,7 +206,6 @@ router.post('/ticket_delete', Validations.ensureAuthenticated, (req, res) => {
 
 	deleteTicket.then(ticket => {
 		Record.remove({ ticket_id: ticket.id }, (err, result) => {
-			console.log(result);
 			req.flash('success_msg', 'El ticket No. ' + ticket.ticketNumber + ' ha sido eliminado exitosamente');
 			res.redirect('/tickets/' + ticket.ticketType + '/list');
 		});
@@ -218,16 +219,36 @@ router.post('/ticket_delete', Validations.ensureAuthenticated, (req, res) => {
 
 // Ver tickets
 router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
-	let user = req.user, storeAdminSW, ticketType = req.params.ticketType;
-	if (user.userRole === 'systemAdmin') {
+	let user = req.user, storeAdminSW, ticketType = req.params.ticketType, params = {};
+
+	var setparams = new Promise((resolve, reject) => {
+		var swError = false;
+		params.ticketType = ticketType;
+		if (user.userRole === 'systemAdmin') resolve(params); //CASE SYSTEM ADMIN - SEVERAL STORES
+		else if (user.userRole === 'storeAdmin') { //CASE STORE ADMIN - SEVERAL STORES
+			Store.findById(user.store_id, (err, store) => {
+				var company = store.company_id;
+				Store.find({ company_id: company }, { _id: 1 }, (err, stores) => {
+					if (err) {
+						reject(err, params);
+					} else {
+						params.store_id = { $in: stores }
+						resolve(params);
+					}
+				});
+			});
+		} else if (user.userRole === 'storeEmployee') params.store_id = store_id //CASE STORE EMPLOYEE  - UNIQUE STORE
+	})
+
+	setparams.then(params => {
 		var obj = { data: [] }, userImage;
-		Ticket.find({ ticketType: ticketType }).populate('contacts').exec((err, tkts) => {
+		Ticket.find(params).populate('store_id').populate('contacts').exec((err, tkts) => {
 			if (err) console.log(err);
 			for (let t = 0; t < tkts.length; t++) {
 				let t2 = t + 1;
 				obj.data.push(
 					{
-						title: tkts[t].title + "<br><small class='text-muted'><i>#Ticket: " + tkts[t].ticketNumber + "<i></small>",
+						title: tkts[t].store_id.storeName + " - " + tkts[t].title + "<br><small class='text-muted'><i>#Ticket: " + tkts[t].ticketNumber + "<i></small>",
 						advance: "<td><div class='progress progress-xs' data-progressbar-value=" + tkts[t].advance + "><div class='progress-bar'></div></div></td>",
 						contacts: Validations.getContactInfo(tkts[t].contacts),
 						status: "<span style='text-align: center;' class='label label-" + Validations.getLabel(tkts[t].status) + "'>" + Validations.getLabelESP(tkts[t].status) + "</span>",
@@ -254,34 +275,7 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 				}
 			});
 		});
-	} else {
-		var gteYear, gteMonth, ltYear, ltMonth;
-		if (req.query.target) {
-			gteYear = new Date().getFullYear();
-			gteMonth = new Date().getMonth();
-		} else {
-			gteYear = new Date(1990, 8, 10).getFullYear();
-			gteMonth = new Date(1990, 8, 10).getMonth();
-		}
-		ltYear = new Date().getFullYear();
-		ltMonth = new Date().getMonth() + 1;
-		Ticket.find({ ticketType: ticketType, $or: [{ startdate: { "$gte": new Date(gteYear, gteMonth, 1), "$lt": new Date(ltYear, ltMonth, 0) } }, { lastupdate: { "$gte": new Date(gteYear, gteMonth, 1), "$lt": new Date(ltYear, ltMonth, 0) } }] })
-			.then(tks1 => Store.populate(tks1, { path: "store_id" }))
-			.then(tks2 => Company.populate(tks2, { path: "store_id.company_id" }))
-			.then(tks3 => City.populate(tks3, { path: "store_id.city_id" }))
-			.then(result => {
-				//console.log('ticket: ' + result);
-				var tkts = new Array();
-				for (let item in result) {
-					let validation = result[item].store_id;
-					console.log(validation);
-					if (validation.company_id._id.toString() === user.company_id.toString())
-						tkts.push(result[item]);
-				}
-				(user.userRole === "storeAdmin") ? storeAdminSW = true : storeAdminSW = false;
-				res.render('2-users/list_tickets', { layout: 'userLayout', storeAdminSW, tkts });
-			});
-	}
+	});
 });
 
 // Ticket Details
@@ -309,8 +303,13 @@ router.get('/ticket_details', Validations.ensureAuthenticated, (req, res) => {
 										checktext = 'Siguiendo';
 										checksymbol = "Check mark symbol "
 									}
+
 									let recordNumber = Validations.numberGenerator("record"), representative = req.user;
-									res.render('1-admin/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
+									if (req.user.userRole === 'systemAdmin') {
+										res.render('1-admin/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
+									} else {
+										res.render('2-users/view_ticket', { layout: 'adminLayout', admins, employees, representative, recordNumber, ticket, records, city, assets, checkclass, checktext, checksymbol });
+									}
 								})
 							});
 						});
@@ -319,6 +318,65 @@ router.get('/ticket_details', Validations.ensureAuthenticated, (req, res) => {
 	});
 });
 
+function getTicket_Params(type, user) {
+	var params = {};
+
+	if (user.userRole === "systemAdmin") {
+		if (type === 'city')
+			return params = { city: { $ne: "Default city" } }
+		else if (type === 'store')
+			return params = { storeName: { $ne: "Default store" } }
+		else if (type === 'asset')
+			return params = { assets: {} }
+	} else if (user.userRole === "storeAdmin") {
+		Company.findById(user.company_id, (err, company) => {
+			if (err) console.log(err)
+			else {
+				if (type === 'city') {
+					Store.find({ company_id: company.id }, { city_id: 1 }, (err, cities) => {
+						params = { _id: { $in: cities } }						
+						return params;
+					});
+				} else if (type === 'store') {
+					Store.find({ company_id: company.id }, { _id: 1 }, (err, stores) => {						
+						params = { _id: { $in: stores } }
+						return params;
+					});
+				} else if (type === 'asset') {
+					Store.find({ company_id: company.id }, { _id: 1 }, (err, stores) => {
+						Asset.find({ store_id: stores.id }, (err, assets) => {
+							params = { _id: { $in: assets } }
+							return params;
+						});
+					});
+				}
+			}
+		})
+	} else if (user.userRole === "storeEmployee") {
+		Store.findOne({ _id: user.store_id }, (err, store) => {
+			if (err) console.log(err)
+			else {
+				if (type === 'city')
+					City.findById(store.city_id, { _id: 1 }, (err, city) => {
+						if (err) console.log(err)
+						return params.city_id = city
+					});
+				else if (type === 'store')
+					Store.findById(store.id, { _id: 1 }, (err, store) => {
+						if (err) console.log(err)
+						return params.id = store
+					});
+				else if (type === 'asset')
+					Store.findById(store.id, (err, store) => {
+						Asset.find({ store_id: store.id }, { _id: 1 }, (err, assets) => {
+							if (err) console.log(err)
+							return params.id = assets
+						})
+					});
+			}
+		});
+	}
+};
 
 
 module.exports = router;

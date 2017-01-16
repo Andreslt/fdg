@@ -12,7 +12,7 @@
 
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
-					<li>Admin</li><li>Clientes</li>
+					<li>{{user.username}}</li><li>Ciudades en operación</li>
 				</ol>
 
 			</div>
@@ -25,21 +25,21 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<h1 class="page-title txt-color-blueDark">
 						<i class="fa-fw fa fa-puzzle-piece"></i> 
-						Clientes <span>>
-						Seleccionar Cliente </span></h1>
+						Ciudades <span>>
+						Seleccionar </span></h1>
 				</div>
 			</div>
 
 			<!-- row -->
 			<div class="row">
+
 				<!-- SuperBox -->
 				<div class="superbox col-sm-12">
-					{{#each companies}}
-						<div class="superbox-list">														
-							<a href="/admin/customers/companies/{{companyName}}"><img src="{{image}}" data-img="#" alt="{{companyName}}" title="{{companyName}}" class="superbox-img"></a>
-						</div>
+					{{#each cities}}			
+					<div class="superbox-list2">
+						<a href="/calendar/{{city}}/{{../company.companyName}}"><img src="{{image}}" data-img="img/superbox/superbox-full-1.jpg" alt="{{city}}" title="{{city}}" class="superbox-img2"></a>
+					</div>
 					{{/each}}
-
 					<div class="superbox-float"></div>
 				</div>
 				<!-- /SuperBox -->

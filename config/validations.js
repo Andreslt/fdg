@@ -7,7 +7,7 @@ module.exports.ensureAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		return next();
 	} else {
-		res.render('login', { layout: 'auth' });
+		res.render('0-Auth/login', { layout: 'auth' });
 	}
 }
 
@@ -30,7 +30,7 @@ module.exports.systemAdmin = (req, res, next) => {
 		console.log("HELLO ADMIN!");
 		return next();
 	} else {
-		res.render('adminAccess_only', { layout: 'accessDenied' });
+		res.render('0-Auth/adminAccess_only', { layout: 'accessDenied' });
 		console.log("GO AWAY IMPOSTOR!");
 	}
 }

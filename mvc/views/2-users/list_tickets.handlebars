@@ -1,254 +1,153 @@
 <!-- MAIN PANEL -->
 <div role="main">
-		<!-- RIBBON --> 
+
+	<!-- RIBBON -->
 	<div id="ribbon">
 
 		<span class="ribbon-button-alignment"> 
-			<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-				<i class="fa fa-refresh"></i>
-			</span> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
 		</span>
 
 		<!-- breadcrumb -->
 		<ol class="breadcrumb">
-            <li><a href="/home">Inicio</a></li><li>Todos los tickets</li>			
+			<li>Dashboard</li>
+			<li>Tickets</li>
 		</ol>
-		<!-- end breadcrumb -->
-		<span class="ribbon-button-alignment pull-right">
-			<a href="/tickets/{{ticket.ticketType}}/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
-		</span> 		
-	</div>
-			<!-- END RIBBON -->
-<!-- MAIN CONTENT -->
-<div id="content">
+        <!-- end breadcrumb -->
+        <span class="ribbon-button-alignment pull-right">
+                    <a href="/tickets/{{ticketType}}/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Ticket</span></a>
+        </span>
 
-<!--	<div class="row">
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-			<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> Tickets <span>> todos los tickets de {{companyName}}</span></h1>
+	</div>
+	<!-- END RIBBON -->
+
+
+
+	<!-- MAIN CONTENT -->
+	<div id="content">
+
+		<!-- row -->
+		<div class="row">
+
+			<!-- col -->
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark">
+
+					<!-- PAGE HEADER -->
+					<i class="fa-fw fa fa-puzzle-piece"></i> Todos los Tickets
+					<span>>  
+								{{ticketESP ticketType}}
+							</span>
+				</h1>
+			</div>
+			<!-- end col -->
 		</div>
-	</div>-->
+		<!-- end row -->
 
-<div class="row hidden-mobile">
-	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-		<h1 class="page-title txt-color-blueDark">
-			<i class="fa-fw fa fa-puzzle-piece"></i> 
-			Tickets <span>>
-			{{tkts.[0].store_id.company_id.companyName}} </span></h1>
-	</div>
-</div>	
-				<!-- widget grid -->
-				<section id="widget-grid" class="">
+		<!--
+					The ID "widget-grid" will start to initialize all widgets below 
+					You do not need to use widgets if you dont want to. Simply remove 
+					the <section></section> and you can use wells or panels instead 
+					-->
 
-					<!-- row -->
-					<div class="row">
-						
-						<!-- NEW WIDGET START -->
-						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
-								<header>
-									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-									<h2>Ver tickets </h2>
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
 
-								</header>
+			<!-- row -->
+			<div class="row">
 
-								<!-- widget div-->
-								<div>
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget well" id="wid-id-0">
 
-									</div>
-									<!-- end widget edit box -->
+						<header>
+							<span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+							<h2>Tickets </h2>
+						</header>
 
-									<!-- widget content -->
-									<div class="widget-body no-padding">
+						<!-- widget div-->
+						<div>
 
-										<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
-					
-									        <thead>
-												<tr>
-													<th class="hasinput" style="width:13%">
-														<input type="text" class="form-control" placeholder="Ticket No." />
-													</th>
-													<th class="hasinput" style="width:16%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Titulo" type="text">
-														</div>	
-													</th>
-													<th class="hasinput" style="width:13%">
-														<input type="text" class="form-control" placeholder="Ciudad" />
-													</th>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Tienda" />
-													</th>
-													<th class="hasinput" style="width:13%">
-														<input type="text" class="form-control" placeholder="Prioridad" />
-													</th>													
-													<th class="hasinput icon-addon" style="width:91%;">
-														<input id="dateselect_filter" type="text" placeholder="Actualizado en" class="form-control datepicker" data-dateformat="dd/mm/yy">
-														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip"></label>
-													</th>												
-													<th class="hasinput" style="width:12%">
-														<input type="text" class="form-control" placeholder="Estado" />
-													</th>													
-												</tr>
-									            <tr>
-								                    <th data-class="expand">Ticket No.</th>
-								                    <th>Titulo de Ticket</th>
-								                    <th data-hide="phone">Ciudad</th>
-								                    <th data-hide="phone">Tienda</th>
-								                    <th data-hide="phone,tablet">Grado Prioridad</th>
-								                    <th data-hide="phone,tablet">Ultima Actualización</th>
-													<th>Estado</th>
-									            </tr>
-									        </thead>
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+								<input class="form-control" type="text">
+							</div>
+							<!-- end widget edit box -->
 
-											<tbody>
-												{{#each tkts}}
-												<tr>
-													<td align="center">{{ticketNumber}}</td>
-													<td align="center">{{title}}</td>
-													<td align="center">{{store_id.city_id.city}}</td>
-													<td align="center">{{store_id.storeName}}</td>
-													<td align="center">{{priority}}</td>
-													<td align="center">{{formatDate lastupdate "YYYY/MM/DD - HH:mm"}}</td>
-													<td><button class="btn btn-{{statusTag status}} center-block padding-5 label view-ticket" data-toggle="modal" 
-														data-target="#TicketInfoModal"
-														data-id ="{{id}}"
-														data-number = "{{ticketNumber}}"
-														data-title = "{{title}}"
-														data-description = "{{description}}"
-														data-store = "{{store_id.storeName}}"
-														data-city = "{{store_id.city_id.city}}"
-														data-status = "{{status}}"
-														data-openning = "{{formatDate startdate "DD/MM/YYYY hh:mm"}}"
-														data-lastupdate = "{{formatDate lastupdate "DD/MM/YYYY hh:mm"}}"
-													>
-														{{status}}
-													</button></td>
-												</tr>
-												{{/each}}
-											</tbody>
-																
-										</table>
+							<!-- widget content -->
+							<div class="widget-body no-padding">
 
-									</div>
-									<!-- end widget content -->
-
-								</div>
-								<!-- end widget div -->
+								<table id="example" class="display projects-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Ticket</th>
+											<th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Avance</th>
+											<th>Contactos</th>
+											<th>Estado</th>
+											<th><i class="fa fa-circle txt-color-darken font-xs"></i> Target/ <i class="fa fa-circle text-danger font-xs"></i>												Actual</th>
+											<th><i class="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Inicio</th>
+											<th><i class="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Fin Est.</th>
+											<th>Tracker</th>
+										</tr>
+									</thead>
+								</table>
 
 							</div>
-							<!-- end widget -->
+							<!-- end widget content -->
 
-						</article>
-						<!-- WIDGET END -->
-						
-					</div>
-
-					<!-- end row -->
-
-					<!-- row -->
-
-					<div class="row">
-
-						<!-- a blank row to get started -->
-						<div class="col-sm-12">
-							<!-- your contents here -->
 						</div>
-							
+						<!-- end widget div -->
+
 					</div>
+					<!-- end widget -->
 
-					<!-- end row -->
+				</article>
+				<!-- WIDGET END -->
 
-				</section>
-				<!-- end widget grid -->
-</div>
-<!-- END MAIN CONTENT -->
-				<!-- Ticket Info Modal -->
-				<form method ="post" action="/tickets/edit">
-					<div class="modal fade" id="TicketInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								
-									<input type="hidden" id="edit-ticket-id" name="ticketId">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-											&times;
-										</button>
-										<h4 class="modal-title" id="myModalLabel">Detalle de Ticket</h4>
-									</div>
-									<div class="modal-body">
-										<!--Ticket No. ---<o>--- Titulo del Ticket-->
-										<div class="row">
-											<div class = "col-md-4">
-												<div class="form-group">
-													<label for="edit-ticket-number"><small><b>Ticket No.:</b></small></label>
-													<input type="text" class="form-control" placeholder="Ticket No." required name="ticketNum" id="edit-ticket-number" disabled align="center"/>
-												</div>
-											</div>
-											<div class = "col-md-8">
-												<div class="form-group">
-													<label for="edit-ticket-title"><small><b>Título:</b></small></label>
-													<input type="text" class="form-control" placeholder="Titulo del Ticket" required name="ticketTitle" id="edit-ticket-title" disabled/>
-												</div>
-											</div>	
-										</div>
-										<!--Fecha Inicio ---<o>--- Last Update-->
-										<div class="row">
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="openningDate"><small><b>Fecha Creación:</b></small></label>
-													<input type="text" class="form-control" placeholder="Fecha de Creación" required name="openningDate" id="openningDate" disabled/>
-												</div>										
-											</div>										
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="lastUpdate"><small><b>Ultima Modificación:</b></small></label>
-													<input type="text" class="form-control" placeholder="Ultima Modificación" required name="lastUpdate" id="lastUpdate" disabled/>
-												</div>
-											</div>
-										</div>
-										<!--Tienda ---<o>--- Ciudad-->
-										<div class="row">
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="edit-ticket-city"><small><b>Ciudad:</b></small></label>
-													<input type="text" class="form-control" placeholder="Ciudad" required name="ticketCity" id="edit-ticket-city" disabled/>
-												</div>										
-											</div>										
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="edit-ticket-store"><small><b>Tienda:</b></small></label>
-													<input type="text" class="form-control" placeholder="Tienda" required name="ticketStore" id="edit-ticket-store" disabled/>
-												</div>
-											</div>
-										</div>
-										<!--Descripción-->
-										<div class = "row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label for="edit-ticket-description"><small><b>Descripción:</b></small></label>
-													<textarea class="form-control" placeholder="Descripción" rows="2" name="ticketDesc" id="edit-ticket-description"></textarea>
-												</div>
-											</div>
-										</div>													
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">
-											Cerrar
-										</button>
-										<button id= "submitModal" type="submit" class="btn btn-primary">
-											Editar
-										</button>
-									</div>
-									
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-				</form>
+			</div>
+
+			<!-- end row -->
+
+			<!-- row -->
+
+			<div class="row">
+
+				<!-- a blank row to get started -->
+				<div class="col-sm-12">
+					<!-- your contents here -->
+				</div>
+
+			</div>
+
+			<!-- end row -->
+
+		</section>
+		<!-- end widget grid -->
+	</div>
 </div>
 <!-- END MAIN PANEL -->
+<form method ="post" action="/tickets/ticket_delete">
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<input id="delete-ticket-id" name="ticketid">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Confirmar Eliminación</h4>
+				</div>
+				<div class="modal-body">
+					<p>Estás seguro de eliminar este ticket? Una vez eliminado no podrás recuperarlo nuevamente.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button id="modalButton" class="btn btn-danger btn-ok" type="submit">Eliminar Modal</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

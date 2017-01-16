@@ -12,11 +12,11 @@
 
                 <!-- breadcrumb -->
                 <ol class="breadcrumb">
-                    <li><a href="/home">Inicio</a></li><li>Todas las tiendas</li>			
+                    <li><a href="/home">Inicio</a></li><li>Ver tiendas</li>			
                 </ol>
                 <!-- end breadcrumb -->
                 <span class="ribbon-button-alignment pull-right">
-                    <a href="/newStore"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Tienda</span></a>
+                    <a href="/stores/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Tienda</span></a>
                 </span> 	
 				<!-- You can also add more buttons to the
 				ribbon for further usability
@@ -41,7 +41,7 @@
 							<i class="fa fa-table fa-fw "></i> 
 								Tiendas 
 							<span>> 
-                                {{companyName}}
+                                Todas
 							</span>
 						</h1>
 					</div>
@@ -93,32 +93,10 @@
 										<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
 					
 									        <thead>
-												<tr>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Nombre" />
-													</th>
-													<th class="hasinput" style="width:18%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Ciudad" type="text">
-														</div>	
-													</th>
-													<th class="hasinput" style="width:16%">
-														<input type="text" class="form-control" placeholder="Telefono" />
-													</th>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Email" />
-													</th>
-													<th class="hasinput icon-addon">
-														<input id="dateselect_filter" type="text" placeholder="Fecha Creación" class="form-control datepicker" data-dateformat="dd/mm/yy">
-														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Encargado Tienda"></label>
-													</th>
-													<th class="hasinput" style="width:16%">
-														<input type="text" class="form-control" placeholder="Encargado Tienda" />
-													</th>
-												</tr>
 									            <tr>
 								                    <th data-class="expand">Nombre de Tienda</th>
-								                    <th>Ciudad</th>
+								                    <th>Compañía</th>
+													<th>Ciudad</th>
 								                    <th data-hide="phone">Telefono</th>
 								                    <th data-hide="phone">Email</th>
 								                    <th data-hide="phone,tablet">Fecha Creación</th>
@@ -130,22 +108,14 @@
                                                 
                                                 {{#each stores}}
 												<tr>
-                                                    <td><a class="edit-store" data-toggle="modal" data-target="#storeEditModal"
-													data-id="{{id}}" 
-													data-name="{{storeName}}" 
-													data-city="{{city_id.id}}"
-													data-address="{{address}}"
-													data-phone="{{formatPhone phone}}"
-													data-email="{{email}}"
-													data-representative="{{representative.id}}"
-													data-startdate="{{formatDate startdate "DD/MM/YYYY"}}"
-													data-users = "{{../users}}"
-													> {{storeName}}</a></td>
-                                                    <td> {{city_id.city}}</td>
+                                                    <td><a class="edit-store" href="/stores/store_details?ID={{id}}">
+													{{storeName}}</a></td>
+													<td> {{company_id.companyName}}</td>
+                                                    <td> {{city_id.city}}</td>													
                                                     <td> {{formatPhone phone}}</td>
                                                     <td> {{email}}</td>
-                                                    <td>{{formatDate startdate "DD/MM/YYYY"}}</td>
-                                                    <td>{{representative.username}}</td>
+                                                    <td>{{formatDate created_on "DD/MM/YYYY HH:mm"}}</td>
+                                                    <td>{{representative.name}} {{representative.lastname}}</td>
 													</tr>
                                                 {{/each}}
                                                 

@@ -15,12 +15,31 @@ const Event = require('../models/event');
 const Validations = require('../../config/validations');
 
 router.get('/', Validations.ensureAuthenticated, (req, res) => {
-    let user = req.user, storeAdminSW;
-    res.render('1-admin/list_calendar_cities', { layout: 'adminLayout', storeAdminSW });
+    let user = req.user, storeAdminSW, route, layout;
+    if (user.userRole === "systemAdmin") {
+        route = '1-admin/list_calendar_cities';
+        layout = 'adminLayout'
+        res.render(route, { layout: layout, storeAdminSW });
+    } else {
+        route = '2-users/list_calendar_cities';
+        layout = 'userLayout'
+        Store.find({company_id: req.user.company_id}, {city_id:1, _id:0}, (err, storeCities)=>{
+            var lascities = new Array();
+            for(var item =0; item<storeCities.length; item++){
+                lascities.push(storeCities[item].city_id);
+            }
+            City.find({_id: {$in: lascities}}, (err, cities)=>{
+                Company.findOne({_id: req.user.company_id}, (err, company)=>{
+                    console.log('company: '+company);
+                    res.render(route, { layout: layout, storeAdminSW, cities, company });
+                })                
+            });            
+        });
+    }    
 });
 
-router.get('/:city', Validations.ensureAuthenticated, (req, res) => {
-    let city = req.params.city, storeAdminSW;
+router.get('/:city', Validations.systemAdmin, Validations.ensureAuthenticated, (req, res) => {
+    let city = req.params.city, storeAdminSW, route, layout;
     City.findOne({ city: city }, (err, city_id) => {
         Store.find({ city_id: city_id.id }, (err, stores) => {
             let companiesArray = new Array();
@@ -28,14 +47,22 @@ router.get('/:city', Validations.ensureAuthenticated, (req, res) => {
                 companiesArray.push(elem.company_id);
             });
             Company.find({ _id: { $in: companiesArray } }, (err, companies) => {
-                res.render('1-admin/list_calendar_companies', { layout: 'adminLayout', storeAdminSW, companies, city });
+                if (err) console.log(err)
+                else if (req.user.userRole === "systemAdmin") {
+                    route = '1-admin/list_calendar_companies';
+                    layout = 'adminLayout'
+                } else {
+                    route = '2-users/list_calendar_companies';
+                    layout = 'userLayout'
+                }
+                res.render(route, { layout: layout, storeAdminSW, companies, city });
             });
         });
     });
 });
 
 router.get('/:city/:company', Validations.ensureAuthenticated, (req, res) => {
-    let city_params = req.params.city, company_params = req.params.company, storeAdminSW/*, store_params={}*/;
+    let city_params = req.params.city, company_params = req.params.company, storeAdminSW, route, layout;
     City.findOne({ city: city_params }, (err, city) => {
         Company.findOne({ companyName: company_params }, (err, company) => {
             Store.find({ city_id: city, company_id: company }, (err, stores) => {
@@ -50,7 +77,14 @@ router.get('/:city/:company', Validations.ensureAuthenticated, (req, res) => {
                     });
                     Event.find({ ticket_id: { $in: ticketsArray } }).exec((err, events) => {
                         if (err) console.log(err);
-                        res.render('1-admin/list_calendar_city', { layout: 'adminLayout', storeAdminSW, events });
+                        else if (req.user.userRole === "systemAdmin") {
+                            route = '1-admin/list_calendar_city';
+                            layout = 'adminLayout'
+                        } else {
+                            route = '2-users/list_calendar_city';
+                            layout = 'userLayout'
+                        }
+                        res.render(route, { layout: layout, storeAdminSW, events });
                     });
                 });
             });
@@ -59,9 +93,17 @@ router.get('/:city/:company', Validations.ensureAuthenticated, (req, res) => {
 });
 
 router.get('/newEvent', Validations.ensureAuthenticated, (req, res) => {
-    let user = req.user, storeAdminSW;
+    let user = req.user, storeAdminSW, route, layout;
     Event.find({}).populate('ticket_id').populate('created_by').exec((err, events) => {
-        res.render('1-admin/new_schedule', { layout: 'adminLayout', storeAdminSW, events });
+        if (err) console.log(err);
+        else if (user.userRole === "systemAdmin") {
+            route = '1-admin/new_schedule';
+            layout = 'adminLayout'
+        } else {
+            route = '2-users/new_schedule';
+            layout = 'userLayout'
+        }
+        res.render(route, { layout: layout, storeAdminSW, events });
     });
 });
 
@@ -86,13 +128,13 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
         })
         data.text = newdata.slice(0, newdata.length - 1);
         Event.findOneAndUpdate({ eventNumber: sid }, { $set: data }, { new: true }, (err, event) => {
-            if (err || event==null) {
+            if (err || event == null) {
                 req.flash('err_msg', 'No se pudo modificar el evento. Recargue la página e inténtelo nuevamente.');
                 res.redirect('/calendar');
             } else {
-            console.log('event: '+event);
+                console.log('event: ' + event);
                 Ticket.update({ _id: event.ticket_id }, { $set: { start_date: event.start_date, end_date: event.end_date } }, (err, ticket) => {
-                    if (err || ticket==null) {
+                    if (err || ticket == null) {
                         req.flash('err_msg', 'No se pudo modificar el evento. Recargue la página e inténtelo nuevamente.');
                         res.redirect('/calendar');
                     }

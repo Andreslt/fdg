@@ -55,19 +55,6 @@
 				
 							<!-- Widget ID (each widget will need unique ID)-->
 							<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
-								<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-				
-								data-widget-colorbutton="false"
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true"
-								data-widget-sortable="false"
-				
-								-->
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 									<h2>Todos los usuarios</h2>
@@ -90,38 +77,11 @@
 										<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
 					
 									        <thead>
-												<tr>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Nombre" />
-													</th>
-													<th class="hasinput" style="width:15%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Compañía" type="text">
-														</div>	
-													</th>													
-													<th class="hasinput" style="width:18%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Ciudad" type="text">
-														</div>	
-													</th>
-													<th class="hasinput" style="width:16%">
-														<input type="text" class="form-control" placeholder="Telefono" />
-													</th>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Email" />
-													</th>
-													<th class="hasinput" style="width:16%">
-														<input type="text" class="form-control" placeholder="Encargado Tienda" />
-													</th>                                                    
-													<th class="hasinput icon-addon">
-														<input id="dateselect_filter" type="text" placeholder="Fecha Creación" class="form-control datepicker" data-dateformat="dd/mm/yy">
-														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Encargado Tienda"></label>
-													</th>
-												</tr>
 									            <tr>
 								                    <th data-class="expand">Username</th>
 													<th data-class="expand">Compañía</th>
 								                    <th>Nombre</th>
+													<th>E-mail</th>
 								                    <th data-hide="phone">Ciudad</th>
 								                    <th data-hide="phone">Tienda</th>								                    
 								                    <th data-hide="phone,tablet">Posición</th>
@@ -148,6 +108,7 @@
 													> {{username}}</a></td>
 													<td> {{company_id.companyName}}</td>
                                                     <td> {{name}} {{lastname}}</td>
+													<td> {{email}}</td>
                                                     <td> {{city_id.city}}</td>
                                                     <td> {{store_id.storeName}}</td>                                                    
                                                     <td> {{position}}</td>

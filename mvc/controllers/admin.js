@@ -64,76 +64,6 @@ router.get('/account/edit', Validations.ensureAuthenticated, Validations.systemA
 	});
 });
 
-//* Maintenances *//
-
-/*router.post('/scheduleSave', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-		let user = req.user, storeAdminSW;
-		var data = req.body;
-		var mode = data["!nativeeditor_status"];
-		var sid = data.id;
-		var tid = sid, dataJSON;
-
-		data.eventNumber= sid;		
-		data.modified_by = user.id;
-		dataJSON = JSON.stringify(data);
-
-		console.log('id: '+data.id);
-		console.log('text: '+data.text);
-		console.log('data: '+dataJSON);
-		console.log('mode: '+mode);
-		console.log('sid: '+sid);
-		console.log('tid: '+tid);
-		console.log('cityID: '+req.query.cityID);
-
-		delete data.id;
-		delete data.gr_id;
-		delete data["!nativeeditor_status"];
-
-
-		function update_response(err, result) {
-			if (err)
-				mode = "error";
-			else if (mode == "inserted")
-				tid = data._id;
-
-			res.setHeader("Content-Type", "text/xml");
-			res.send("<data><action type='" + mode + "' sid='" + sid + "' tid='" + tid + "'/></data>");
-		}
-
-		if (mode == "updated"){			
-			Event.findOneAndUpdate({eventNumber: sid}, {$set: data}, update_response);
-		}else if (mode == "inserted"){
-			data.created_by = user.id;
-			data.city_id =  req.query.cityID;
-			console.log('data: '+data);
-			var Evento =new Event(data, update_response)
-			console.log('Evento: '+Evento);
-			Evento.save((err, result)=>{
-				if (err) console.log(err);
-				console.log(result);
-			});
-		}else if (mode == "deleted")
-			Event.removeById(sid, update_response);
-		else
-			res.send("Not supported operation");
-});*/
-
-/*router.get('/scheduled_cities', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW;
-	res.render('1-admin/list_schedule_cities', { layout: 'adminLayout', storeAdminSW });
-});*/
-
-/*router.get('/scheduled_cities/selected', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let user = req.user, storeAdminSW, city = req.query.city;
-	Event.find({}).populate('city_id').exec((err, eventos)=>{
-		let events = eventos.filter((elem)=>{
-			return elem.city_id.city.toUpperCase() === city
-		});
-		if(err) console.log(err);
-		res.render('1-admin/list_schedule_city', { layout: 'adminLayout', storeAdminSW,events});
-	});
-});*/
-
 // New ticket
 router.get('/newTicket', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.user, storeAdminSW;
@@ -305,90 +235,6 @@ router.get('/reports', Validations.ensureAuthenticated, (req, res) => {
 	res.render('1-admin/list_reports', { layout: 'adminLayout', storeAdminSW });
 });
 
-/*router.get('/reports/view', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
-	let recordNumber = req.query.recordNumber,
-		request = require('request');
-
-	var searchRecord = new Promise((resolve, reject) => {
-		Record.findOne({ recordNumber: recordNumber })
-			.populate('ticket_id').exec((err, record) => {
-				if (err || record == null) { reject(err) }
-				else resolve(record);
-			});
-	});
-	searchRecord.then(record => {
-		Ticket.findOne({ _id: record.ticket_id }).populate('store_id').exec((err, ticket) => {
-			if (err) { res.sendStatus(404); console.log('Entró al error') }
-			City.findOne({ _id: ticket.store_id.city_id }, (err, city) => {
-				if (err) res.sendStatus(404);
-				Company.findOne({ _id: ticket.store_id.company_id }, (err, company) => {
-					if (err) res.sendStatus(404);
-					User.findOne({ _id: record.custRepresentative }, (err, custRepresentative) => {
-						if (err) res.sendStatus(404);
-						User.findOne({ _id: record.adminRepresentative }, (err, adminRepresentative) => {
-							Asset.findOne({_id: ticket.asset_id}, (err, asset)=>{
-								AssetRef.findOne({_id: asset.reference_id}, (err, assetRef)=>{
-									if (err) res.sendStatus(404);
-									else {
-										var data = {
-											template: {
-												shortid: "BJbxYsgbe",
-											},
-											data: {
-												city: city.city,
-												day: record.createdOn.getDate(),
-												month: getSpanishMonth(record.createdOn.getMonth()),
-												year: record.createdOn.getFullYear(),
-												company: company.companyName,
-												customerName: custRepresentative.name + " " + custRepresentative.lastname,
-												adminRepresentative: adminRepresentative.name + " " + adminRepresentative.lastname,
-												asset: asset.number,
-												reference: assetRef.number,
-												capacity: assetRef.capacity,
-												units: assetRef.capacity_unit,
-												brand: assetRef.brand,
-												type: assetRef.type,
-												refrigerant: assetRef.refrigerant,
-												assetLocation: city.city,
-												time: formatAMPM(record.createdOn),
-												customerReq: record.customerReq,
-												currentState: record.currentState,
-												correctiveActions: record.correctiveActions,
-												suggestions: record.suggestions,
-												giverName: adminRepresentative.name + " " + adminRepresentative.lastname,
-												giverID: adminRepresentative.localId,
-												giverPosition: adminRepresentative.position,
-												receiverName: custRepresentative.name + " " + custRepresentative.lastname,
-												receiverID: custRepresentative.localId,
-												receiverPosition: custRepresentative.position
-											},
-											options: {
-												preview: true
-											}
-										};
-										var options = {
-											uri: "https://andreslt.jsreportonline.net/api/report",
-											headers: {
-												Authorization: "Basic " + new Buffer(config.jsReportUser + ":" + config.jsReportPassword).toString("base64")
-											},
-											method: 'POST',
-											json: data
-										};
-										request(options).pipe(res);
-									}
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-	searchRecord.catch(err => {
-		res.sendStatus(404);
-	});
-});*/
-
 router.post('/reports/notify', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let reportID = req.query.reportID, target = req.query.target.split(',');
 	target = target[target.length - 1];
@@ -398,24 +244,22 @@ router.post('/reports/notify', Validations.ensureAuthenticated, Validations.syst
 				let recipents = new Array();
 				for (var u = 0; u < users.length; u++) {
 					var sw = false;
-					//console.log('target: ' + target);
 					if (target === "administradores") {
 						if (users[u].userRole === "systemAdmin") {
 							sw = true;
-							//console.log('administradores: ' + users[u].username);
 						}
 					} else if (target === "usuarios") {
 						if (users[u].userRole !== "systemAdmin") {
 							sw = true;
-							//console.log('usuarios: ' + users[u].username);
+							
 						}
 					} else if (target === "contactos") {
 						sw = true;
-						//console.log('contactos: ' + users[u].username);
+						
 					}
 					if (sw) recipents.push(users[u].email);
 				}
-				//console.log('recipents:' + recipents);
+				
 				mailer.mailOptions.to = recipents;
 				mailer.mailOptions.subject = "Notificaciones FDG - Nueva Acta No." + record.recordNumber;
 				mailer.mailOptions.template = "record";
@@ -428,62 +272,5 @@ router.post('/reports/notify', Validations.ensureAuthenticated, Validations.syst
 		});
 	});
 });
-
-/*function getLabel(status) {
-	if (status === "Pendiente") {
-		return "info";
-	} else if (status === "Asignado") {
-		return "warning";
-	} else if (status === "Finalizado") {
-		return "success"
-	} else return "danger";
-}
-
-function getContactInfo(contacts) {
-	let contactInfo = "<div class='project-members'>", status;
-	for (let i = 0; i < contacts.length; i++) {
-		(contacts[i].userRole === "storeAdmin") ? status = "online" : status = "busy";
-		contactInfo = contactInfo + "<a href='javascript:void(0)'>" +
-			"<img src='http://res.cloudinary.com/pluriza/image/upload/c_fill,h_25,w_22/"
-			+ contacts[i].image + "'class='" + status + "' alt=" + contacts[i].username + " title='" + contacts[i].username + "'></a>";
-	}
-	contactInfo = contactInfo + "</div>";
-	return contactInfo;
-}
-
-function getCategories(categories) {
-	if (categories != null) {
-		let categoryList = '<td>';
-
-		for (let i = 0; i < categories.length; i++) {
-			categoryList = categoryList + '<span class="label label-default">' + categories[i] + '</span>';
-		}
-		categoryList = categoryList + '</td>';
-		return categoryList;
-	} else return ""
-}
-
-function setDates(date) {
-	if (date != null)
-		return date.slice(-4) + "/" + date.slice(-7, -5) + "/" + date.slice(-10, -8);
-	else
-		return "";
-}
-
-function getSpanishMonth(date) {
-	let dateArray = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-	return dateArray[date - 1]
-}
-
-function formatAMPM(date) {
-	var hours = date.getHours();
-	var minutes = date.getMinutes();
-	var ampm = hours >= 12 ? 'pm' : 'am';
-	hours = hours % 12;
-	hours = hours ? hours : 12; // the hour '0' should be '12'
-	minutes = minutes < 10 ? '0' + minutes : minutes;
-	var strTime = hours + ':' + minutes + ' ' + ampm;
-	return strTime;
-}*/
 
 module.exports = router;	

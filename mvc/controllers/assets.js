@@ -24,45 +24,71 @@ const Validations = require('../../config/validations');
 const imageUp = require('../../config/imagesUpload');
 
 router.get('/', Validations.ensureAuthenticated, (req, res) => {
-    let target = { storeName: { $ne: 'Default store' } };
+    let target = {}, route, layout;
 
-    if (req.user.userRole !== 'systemAdmin') target.store_id = req.user.store_id
-    Asset.find(target).populate('reference_id').populate('store_id').exec((err, assets) => {
-        (req.user.userRole === 'systemAdmin') ? res.render('1-admin/list_assets', { layout: 'adminLayout', assets }) :
-            res.render('2-users/list_assets', { layout: 'userLayout', assets });
+    if (req.user.userRole !== 'systemAdmin') target.company_id = {company_id: req.user.company_id};
+
+    Store.find(target.company_id , {_id:1}, (err, stores) => {
+         if (err) console.log(err)
+         target.store_id=stores;
+         console.log('stores: '+ target.store_id);
+        Asset.find({store_id: {$in: target.store_id} }).populate('reference_id').populate('store_id').exec((err, assets) => {
+            if (err) console.log(err)
+            else if (req.user.userRole === "systemAdmin") {
+                route = '1-admin/list_assets';
+                layout = 'adminLayout'
+            } else {
+                route = '2-users/list_assets';
+                layout = 'userLayout'
+            }
+            res.render(route, { layout: layout, assets });
+        });
     });
 });
 
 router.get('/asset_details', Validations.ensureAuthenticated, (req, res) => {
-    let target = { storeName: { $ne: 'Default store' } };
+    let target = { storeName: { $ne: 'Default store' } }, route, layout;
 
     if (req.user.userRole !== 'systemAdmin') target.store_id = req.user.store_id
     Asset.findOne({ _id: req.query.ID }, (err, asset) => {
-        Ticket.find({store_id: asset.store_id}, (err, tkts) => {
+        Ticket.find({ store_id: asset.store_id }, (err, tkts) => {
             AssetRef.find({}, (err, assetRefs) => {
                 Store.find(target, (err, stores) => {
-                    (req.user.userRole === 'systemAdmin') ? res.render('1-admin/view_asset', { layout: 'adminLayout', asset, assetRefs, stores, tkts }) :
-                        res.render('2-users/view_asset', { layout: 'userLayout', asset, assetRefs, stores, tkts });
+                    if (err) console.log(err)
+                    else if (req.user.userRole === "systemAdmin") {
+                        route = '1-admin/view_asset';
+                        layout = 'adminLayout'
+                    } else {
+                        route = '2-users/view_asset';
+                        layout = 'userLayout'
+                    }
+
+                    res.render(route, { layout: layout, asset, assetRefs, stores, tkts });
                 });
             });
         });
-    }).limit(10).sort({'lastupdate': -1});
+    }).limit(10).sort({ 'lastupdate': -1 });
 });
 
 router.get('/new', Validations.ensureAuthenticated, (req, res) => {
     let assetNum = Validations.numberGenerator('Asset'),
         refNum = Validations.numberGenerator('ref_Asset'),
         LRef = Validations.numberGenerator('local_Asset'),
-        f = { storeName: { $ne: 'Default store' } };
+        f = { storeName: { $ne: 'Default store' } }, route, layout;
 
-    if (req.user.userRole !== 'systemAdmin') f.id = req.user.store_id;
+    if (req.user.userRole !== 'systemAdmin') f.company_id = req.user.company_id;
 
     AssetRef.find({}, (err, assetRefs) => {
         Store.find(f, (err, stores) => {
-            if (err) console.log(err);
-            else
-            (req.user.userRole === 'systemAdmin') ? res.render('1-admin/new_asset', { layout: 'adminLayout', assetRefs, assetNum, stores, LRef, refNum }) :
-                    res.render('2-users/new_asset', { layout: 'userLayout', assetRefs, assetNum, stores, LRef, refNum });
+            if (err) console.log(err)
+            else if (req.user.userRole === "systemAdmin") {
+                route = '1-admin/new_asset';
+                layout = 'adminLayout'
+            } else {
+                route = '2-users/new_asset';
+                layout = 'userLayout'
+            }
+            res.render(route, { layout: layout, assetRefs, assetNum, stores, LRef, refNum });
         });
     })
 });
@@ -86,11 +112,9 @@ router.post('/asset/new', Validations.ensureAuthenticated, (req, res) => {
         }
         new Asset(newAsset).save((err, result) => {
             if (err) {
-                console.log('err: ' + err);
                 req.flash('error_msg', 'El activo no pudo ser creado. Inténtelo de nuevo más tarde.')
             } else {
                 if (files.file2.name != "") imageUp.uploadFile(files.file2.path, newAsset.images.url);
-                console.log('result: ' + result);
                 req.flash('success_msg', 'Activo No. ' + fields.asset_number + ' creado exitosamente.');
                 res.redirect('/assets');
 
@@ -132,9 +156,17 @@ router.post('/save', (req, res) => {
 });
 
 router.get('/assetRefs', Validations.ensureAuthenticated, (req, res) => {
+    var route, layout;
     AssetRef.find({}, (err, assetRefs) => {
-        (req.user.userRole === 'systemAdmin') ? res.render('1-admin/list_references', { layout: 'adminLayout', assetRefs }) :
-            res.render('2-users/list_references', { layout: 'userLayout', assetRefs });
+        if (err) console.log(err)
+        else if (req.user.userRole === "systemAdmin") {
+            route = '1-admin/list_references';
+            layout = 'adminLayout'
+        } else {
+            route = '2-users/list_references';
+            layout = 'userLayout'
+        }
+        res.render(route, { layout: layout, assetRefs });
     });
 });
 
@@ -144,7 +176,6 @@ router.get('/assetRefs/ref_details', Validations.ensureAuthenticated, (req, res)
 
 router.post('/ref/new', Validations.ensureAuthenticated, (req, res) => {
     var body = req.body;
-    console.log('body.ref_number: ' + body.ref_number);
     new AssetRef({
         number: body.ref_number,
         description: body.ref_description,
@@ -176,7 +207,6 @@ router.post('/deleteImage', (req, res) => {
 
 router.post('/getlocalnum/:store', (req, res) => {
     Asset.find({ store_id: req.params.store }, (err, assets) => {
-        console.log('no. Assets: ' + assets.length);
         res.json(assets.length);
     });
 });

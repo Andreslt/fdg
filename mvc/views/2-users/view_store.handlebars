@@ -1,87 +1,219 @@
-				<form method ="post" action="/store/edit">
+<!-- MAIN PANEL -->
+<div role="main">
 
-								
-									<input type="hidden" id="edit-store-id" name="storeID">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li><a href="/dashboard">Inicio</a></li>
+            <li><a href="/stores">Ver tiendas</a></li>
+            <li>Detalles de Tienda</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <span class="ribbon-button-alignment pull-right">
+                    <a href="/stores/new"><span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-lg fa-plus-square-o"></i> Crear Tienda</span></a>
+        </span>
+        <!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+    </div>
+    <!-- END RIBBON -->
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                <h1 class="page-title txt-color-blueDark">
+                    <i class="fa fa-table fa-fw "></i> Tienda
+                    <span>> 
+                                {{store.storeName}}
+							</span>
+                </h1>
+            </div>
+        </div>
+
+
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+
+            <header>
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2>Detalles de Tienda</h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <form id="order-form" class="smart-form" method="POST" action="/stores/save">
+                        <header style="height: 30px;">
+                            <div class="col-lg-8">
+                                Información de Tienda {{store.company_id.companyName}}
+                            </div>
+                            <div class="col-lg-3" style="padding-left:70px">
+                                Tickets: <a href="#ticketsModal" data-toggle="modal">{{tickNum}}</a>|
+                                Empleados: <a href="#employeesModal" data-toggle="modal">{{empNum}}</a>|
+                                Activos: <a href="#assetsModal" data-toggle="modal">{{asstNum}}</a>
+                            </div>                            
+                        </header>
+
+                        <fieldset>
+                            <input type="hidden" name="storeID" value="{{store.id}}">
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label for="name">Nombre</label>
+                                    <label class="input"> <i class="icon-append fa fa-institution"></i>                                                        
+														<input type="text" name="storeName" required placeholder="Ingrese el nombre de la tienda" value="{{store.storeName}}">
+													</label>
+                                </section>
+                                <section class="col col-6">
+                                    <label for="name">Ciudad</label>
+                                    <label class="select">
+														<select name="city_id" required id="store_city">
+															<option value="0" selected="" disabled="">Seleccione la ciudad de la tienda</option>
+                                                            {{#each cities}}
+                                                                <option value="{{id}}">{{city}}</option>
+                                                            {{/each}}
+														</select> <i></i> </label>
+                                </section>
+                            </div>
+
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label for="name">Correo Electrónico</label>
+                                    <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+														<input type="email" name="email" required placeholder="Ingrese el correo electrónico de la tienda" value="{{store.email}}">
+													</label>
+                                </section>
+                                <section class="col col-6">
+                                    <label for="name">Teléfono</label>
+                                    <label class="input"> <i class="icon-append fa fa-phone"></i>
+														<input type="tel" name="phone" placeholder="Ingrese el teléfono de la tienda" data-mask="(999) 999-9999" value="{{store.phone}}">
+													</label>
+                                </section>
+                            </div>
+
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label for="name">Dirección</label>
+                                    <label class="input"> <i class="icon-append fa fa-exchange"></i>
+														<input type="address" name="address" required placeholder="Ingrese la dirección de la tienda" value="{{store.address}}">
+													</label>
+                                </section>
+                                <section class="col col-6">
+                                    <label for="name">Representante</label>
+                                    <label class="select">
+														<select name="representative" required id="store_representative">
+															<option value="0" selected="" disabled="">Seleccione al representante de la tienda</option>
+                                                            {{#each employees}}
+                                                                <option value="{{id}}">{{username}} - {{name}} {{lastname}}</option>
+                                                            {{/each}}
+														</select> <i></i> </label>
+                                </section>
+                            </div>
+                        </fieldset>
+                        <footer>
+                            <button type="submit" class="btn btn-primary">
+									    Guardar
+							</button>
+                            <a href="#deleteModal" data-toggle="modal"><span class="btn btn-danger">
+                                        Eliminar
+                            </span></a>
+                            <a href="/stores"><span class="btn btn-default">
+                                        Cancelar
+                            </span></a>
+                        </footer>
+                    </form>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
+
+<!-- deleteModal -->
+<div class="modal fade" id="deleteModal">
+    <form action="/stores/delete" method="POST">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <input type="hidden" id="delete-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 											&times;
 										</button>
-										<h4 class="modal-title" id="myModalLabel">Información de Tienda</h4>
-									</div>
-									<div>
-										
-									</div>
-									<div >
-										<!--Ticket No. ---<o>--- Titulo del Ticket-->
-										<div class="row">
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="storeNameModal"><small><b>Nombre de tienda:</b></small></label>
-													<input type="text" class="form-control" placeholder="Nombre de la tienda" required name="storeNameModal" id="edit-store-name" align="center"/>
-												</div>
-											</div>
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="city_idModal"><small><b>Ciudad:</b></small></label>
-													<section class="col col-3">
-														<label required class="select" style="width: 290px;">
-															<select class="select2" name="city_idModal" id ="edit-store-city" style ="height: 32px !important;" required>
-																{{#each cities}}
-																	<option value="{{id}}">{{city}}</option>
-																{{/each}}
-															</select> <i></i> </label>
-													</section>
-												</div>
-											</div>	
-										</div>
-										<!--Fecha Inicio ---<o>--- Last Update-->
-										<div class="row">
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="addressModal"><small><b>Dirección:</b></small></label>
-													<input type="text" class="form-control" placeholder="Dirección de Tienda" required name="addressModal" id="edit-store-address"/>
-												</div>										
-											</div>										
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="phoneModal"><small><b>Teléfono:</b></small></label>
-													<input type="text" class="form-control" placeholder="Teléfono de Tienda" data-mask="(999)999-9999" required name="phoneModal" id="edit-store-phone" />
-												</div>
-											</div>
-										</div>
-										<!--Tienda ---<o>--- Ciudad-->
-										<div class="row">
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="emailModal"><small><b>E-mail:</b></small></label>
-													<input type="email" class="form-control" placeholder="Correo Electrónico de Tienda" required name="email" id="edit-store-email" />
-												</div>										
-											</div>										
-											<div class = "col-md-6">
-												<div class="form-group">
-													<label for="representativeModal"><small><b>Encargado de Tienda:</b></small></label>
-													<section class="col col-3">
-														<label class="select" style="width: 290px;">
-															<select class="select2" name="representativeModal" id="edit-store-representative" style ="height: 32px !important;">															
-																{{#each users}}
-																	<option value="{{id}}">{{name}} {{lastname}} - {{username}}</option>
-																{{/each}}
-															</select> <i></i> </label>
-													</section>												
-												</div>												
-											</div>
-										</div>
-										<div>
-										<p><small>Tienda creada el: <input type="text" name="startdateModal" id="edit-store-startdate" disabled style="border: 0"/></small></p>
-										</div>											
-									</div>
-									<div>
-						<!-- NEW WIDGET START -->
-						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
-								<!-- widget options:
+                <h4 class="modal-title" id="myModalLabel">Eliminar Tienda</h4>
+            </div>
+            <div class="modal-body">
+                <p> Esta seguro de eliminar esta tienda?<br></p>
+                <small><strong>Nota: </strong> Al hacerlo tambien se eliminarán los tickets, activos y empleados asociados a ésta.</small> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+				    Cerrar
+				</button>
+                <button type="submit" class="btn btn-danger">
+				    Eliminar
+				</button>                                 
+            </div>            
+        </div>
+    </div>
+    </form>
+</div>
+
+<!-- ticketsModal -->
+<div class="modal fade" id="ticketsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <input type="hidden" id="edit-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+                <h4 class="modal-title" id="myModalLabel">Empleados de Tienda</h4>
+            </div>
+            <div class="modal-body">
+                <!-- NEW WIDGET START -->
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                        <!-- widget options:
 								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 				
 								data-widget-colorbutton="false"
@@ -94,62 +226,262 @@
 								data-widget-sortable="false"
 				
 								-->
-								<header>
-									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-									<h2>Empleados de la tienda</h2>
-				
-								</header>
-				
-								<!-- widget div-->
-								<div>
-				
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-				
-									</div>
-									<!-- end widget edit box -->
-				
-									<!-- widget content -->
-									<div class="widget-body no-padding">
-				
-										<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
-											<thead>			                
-												<tr>
-													<th data-hide="username">Username</th>
-													<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Nombre</th>
-													<th data-hide="city"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Ciudad</th>						
-												</tr>
-											</thead>
-											<tbody>
-												{{#each users}}
-													<tr>
-														<td>{{username}}</td>
-														<td>{{name}} {{lastname}}</td>
-														<td>{{city_id.city}}</td>
-													</tr>
-												{{/each}}
-											</tbody>
-										</table>
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Tickets de la tienda</h2>
 
-									</div>
-									<!-- end widget content -->
-				
-								</div>
-								<!-- end widget div -->
-				
-							</div>
-							<!-- end widget -->				
-						</article>
-						<!-- WIDGET END -->										
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-hide="ticket">Ticket No.</th>
+                                            <th data-class="expand"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Tipo</th>
+                                            <th data-hide="priority"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Prioridad</th>
+                                            <th data-hide="state"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each tickets}}
+                                        <tr>
+                                            <td><a href="/tickets/ticket_details?ID={{id}}">{{ticketNumber}}</a></td>
+                                            <td>{{ticketType}}</td>
+                                            <td>{{priority}}</td>
+                                            <td>{{status}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
 											Cerrar
 										</button>
-										<button id= "submitModal" type="submit" class="btn btn-primary">
-											Editar
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- employeesModal -->
+<div class="modal fade" id="employeesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <input type="hidden" id="edit-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
 										</button>
-									</div>
-									
-				</form>
+                <h4 class="modal-title" id="myModalLabel">Empleados de Tienda</h4>
+            </div>
+            <div class="modal-body">
+                <!-- NEW WIDGET START -->
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                        <!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Empleados de la tienda</h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-hide="username">Username</th>
+                                            <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Nombre</th>
+                                            <th data-hide="email"><i class="fa fa-fw  text-muted hidden-md hidden-sm hidden-xs"></i> @ Email</th>
+                                            <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Teléfono</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each employees}}
+                                        <tr>
+                                            <td>{{username}}</td>
+                                            <td>{{name}} {{lastname}}</td>
+                                            <td>{{email}}</td>
+                                            <td>{{formatPhone phone}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- assetsModal -->
+<div class="modal fade" id="assetsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <input type="hidden" id="edit-store-id" name="storeID">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+                <h4 class="modal-title" id="myModalLabel">Empleados de Tienda</h4>
+            </div>
+            <div class="modal-body">
+                <!-- NEW WIDGET START -->
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                        <!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Activos de la tienda</h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-hide="username">No. Activo</th>
+                                            <th data-class="expand"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Nombre</th>
+                                            <th data-hide="email"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Modelo</th>
+                                            <th data-hide="phone"><i class="fa fa-fw text-muted hidden-md hidden-sm hidden-xs"></i> Marca</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each assets}}
+                                        <tr>
+                                            <td><a href="/assets/asset_details?ID={{id}}">{{number}}</a></td>
+                                            <td>{{reference_id.name}}</td>
+                                            <td>{{reference_id.model}}</td>
+                                            <td>{{reference_id.brand}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+											Cerrar
+										</button>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<script>
+    var storeCity = "{{store.city_id.id}}"
+    var storeRep = "{{store.representative.id}}"    
+    console.log('storeID: '+storeID);
+    console.log('storeCity: '+storeCity);
+    console.log('storeRep: '+storeRep);
+
+</script>

@@ -87,650 +87,608 @@
 										</div>
 									</header>
 
-									<fieldset>
-										<input type="hidden" name="ticket_id" value="{{ticket.id}}">
-										<input type="hidden" name="getpriority" value="{{priority}}">
-										<input type="hidden" id="trackTkt" name="trackTkt" value="{{ticket.track}}">
-										<div class="row">
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ticket No.:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-slack"></i>
-														<input type="text" id="ticketNumber" name="ticketNumber" placeholder="Numero de Ticket" disabled style="font-size:14px;text-align: center;" value="{{ticket.ticketNumber}}">
-													</label>
-											</section>
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Titulo:</label>
-											<section class="col col-4">
-												<label class="input"> <i class="icon-append fa fa-briefcase"></i>
-														<input type="text" id="title" name="title" placeholder="Ingrese o modifique el título del ticket" style="text-align: center;" value="{{ticket.title}}">
-													</label>
-											</section>
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Prioridad:</label>
-											<section class="col col-2">
-												<label class="input"> <i class="icon-append fa fa-asterisk"></i>
-														<input type="text" id="getpriority" name="getpriority" placeholder="Nivel de Prioridad" disabled style="text-align: center;" value="{{priorityESP ticket.priority}}">
-													</label>
-											</section>
-										</div>
-										<div class="row">
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ciudad:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-university"></i>
-														<input type="text" id="city" name="city" placeholder="Ciudad" disabled style="text-align: center;" value="{{city.city}}">
-													</label>
-											</section>
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Tienda:</label>
-											<section class="col col-4">
-												<label class="input"> <i class="icon-append fa fa-building"></i>
-														<input type="text" id="store" name="store" placeholder="Tienda" disabled style="text-align: center;" value="{{ticket.store_id.storeName}}">
-													</label>
-											</section>
+<fieldset>	
+	<input type="hidden" name="ticket_id" value="{{ticket.id}}">
+	<input type="hidden" name="getpriority" value="{{priority}}">
+	<input type="hidden" id="trackTkt" name="trackTkt" value="{{ticket.track}}">
+			<div class="row">
+				<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ticket No.:</label>
+		<section class="col col-3">
+			<label class="input"> <i class="icon-append fa fa-slack"></i>
+																<input type="text" id="ticketNumber" name="ticketNumber" placeholder="Numero de Ticket" disabled style="font-size:14px;text-align: center;" value="{{ticket.ticketNumber}}">
+		</label>
+		</section>
+		<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Titulo:</label>
+		<section class="col col-4">
+			<label class="input"> <i class="icon-append fa fa-briefcase"></i>
+																<input type="text" id="title" name="title" placeholder="Ingrese o modifique el título del ticket" style="text-align: center;" value="{{ticket.title}}">
+		</label>
+		</section>
+		<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Prioridad:</label>
+		<section class="col col-2">
+			<label class="input"> <i class="icon-append fa fa-asterisk"></i>
+																<input type="text" id="getpriority" name="getpriority" placeholder="Nivel de Prioridad" disabled style="text-align: center;" value="{{priorityESP ticket.priority}}">
+		</label>
+		</section>
+		</div>
+		<div class="row">
+			<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Ciudad:</label>
+		<section class="col col-3">
+			<label class="input"> <i class="icon-append fa fa-university"></i>
+																<input type="text" id="city" name="city" placeholder="Ciudad" disabled style="text-align: center;" value="{{city.city}}">
+		</label>
+		</section>
+		<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Tienda:</label>
+		<section class="col col-4">
+			<label class="input"> <i class="icon-append fa fa-building"></i>
+																<input type="text" id="store" name="store" placeholder="Tienda" disabled style="text-align: center;" value="{{ticket.store_id.storeName}}">
+		</label>
+		</section>
 
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 55px;">Activo:</label>
-											<section class="col col-lg-2" style="width: 170px;padding: 0;">
-												<label class="select">
-													<select name="getasset" id="getasset" style= "padding-left: 15px;">
-														<option value="0" selected="" disabled="">Seleccionar Activo</option>
-														{{#each assets}}
-														<option value="{{id}}">{{number}} - {{name}}</option>
-														{{/each}}
-													</select> <i></i> </label>
-											</section>
+		<label class="col-md-1 control-label" style="margin-left: 20px;width: 55px;">Activo:</label>
+		<section class="col col-lg-2" style="width: 170px;padding: 0;">
+		<label class="select">
+															<select name="getasset" id="getasset" style= "padding-left: 15px;">
+		<option value="0" selected="" disabled="">Seleccionar Activo</option>
+		{{#each assets}}
+		<option value="{{id}}">{{number}} - {{name}}</option>
+		{{/each}}
+		</select> <i></i> </label>
+		</section>
 
-										</div>
-										<div class="row">
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Deadline:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-calendar"></i>
-														<input type="text" disabled name="deadline" id="deadline" value='{{formatDate ticket.deadline "DD/MM/YYYY"}}' style="text-align: center;">
-													</label>
-											</section>
-										</div>										
-{{!--										<div class="row">
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Creación:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-calendar"></i>
-														<input type="text" name="startdate" id="startdate" disabled placeholder="Fecha de Creación" style="text-align: center;" value="{{formatDate ticket.startdate "DD.MM.YYYY H:mm"}}">
-													</label>
-												<div class="note">
-													Fecha de creación del ticket.
-												</div>
-											</section>
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 70px;">Actualización:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-calendar"></i>
-														<input type="text" name="lastupdate" id="lastupdate" disabled placeholder="Fecha de última modificación" style="text-align: center;" value="{{formatDate ticket.lastupdate "DD.MM.YYYY H:mm"}}">
-													</label>
-												<div class="note">
-													Fecha de última actualización del ticket.
-												</div>
-											</section>
-											<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Terminación:</label>
-											<section class="col col-3">
-												<label class="input"> <i class="icon-append fa fa-calendar"></i>
-														<input type="text" name="deadline" id="deadline" disabled placeholder="Fecha de estimada de terminación" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
-													</label>
-												<div class="note">
-													Fecha de terminación <strong>estimada</strong> del ticket.
-												</div>
-											</section>
-										</div>--}}
-										<section>
-											<label class="col-md-2 control-label">Descripción:</label>
-											<label class="textarea"> <i class="icon-append fa fa-comment" style="margin-top: 20px;"></i> 										
-													<textarea rows="3" id="description" name="description" placeholder="Ingrese la descripción del Ticket con el detalle del inconveniente que presenta.">{{ticket.description}}</textarea> 
-												</label>
-										</section>
-										<section class="col col-8">
-											<div class="form-group">
-												<label>Categorías Mantenimiento Correctivo:</label>
-												<select id="categories" name="categories" multiple style="width:100%" class="select2">
-														<optgroup label="Electrico">
-															<option value="EL_CO">Cortocircuito</option>
-															<option value="EL_OT">Otro problema electrico</option>
-														</optgroup>
-														<optgroup label="Mecánico">
-															<option value="MEC_DO">Doblez</option>
-															<option value="MEC_OT">Otro problema mecánico</option>
-														</optgroup>
-														<optgroup label="Físico">
-															<option value="FI_RA">Rayón</option>
-															<option value="FI_OT">Otro problema físico</option>
-														</optgroup>
-														<optgroup label="Térmico">
-															<option value="TE_SO">Sobrecalentamiento</option>
-															<option value="TE_OT">Otro problema térmico</option>
-														</optgroup>
-													</select>
+		</div>
+		<div class="row">
+			<label class="col-md-1 control-label" style="margin-left: 20px;width: 60px;">Deadline:</label>
+		<section class="col col-3">
+			<label class="input"> <i class="icon-append fa fa-calendar"></i>
+																<input type="text" disabled name="deadline" id="deadline" value='{{formatDate ticket.deadline "DD/MM/YYYY"}}' style="text-align: center;">
+		</label>
+		</section>
+		</div>
 
-												<div class="note">
-													<strong>Nota:</strong> seleccionar las categorías consideradas como orígenes del problema.
-												</div>
-											</div>
-										</section>
-										<section class="col col-4">
-											<label>Adjuntar Archivo (Opcional):</label>
-											<label for="file" class="input input-file">
-                                                   <div class="button"><input type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</div><input type="text" placeholder="Nombre del archivo" readonly="">
-                                            </label>											
-{{!--											<div class="input input-file">
-												<span class="button"><input id="file2" type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</span>
-												<input type="text" placeholder="Nombre archivo" readonly="">
-											</div>--}}
-										</section>
-									</fieldset>
+		<section>
+			<label class="col-md-2 control-label">Descripción:</label>
+			<label class="textarea"> <i class="icon-append fa fa-comment" style="margin-top: 20px;"></i>
+		<textarea rows="3" id="description" name="description" placeholder="Ingrese la descripción del Ticket con el detalle del inconveniente que presenta.">{{ticket.description}}</textarea>
+		</label>
+		</section>
+	<section class="col col-8">
+		<div class="form-group">
+			<label>Categorías Mantenimiento Correctivo:</label>
+			<select id="categories" name="categories" multiple style="width:100%" class="select2">
+	<optgroup label="Electrico">
+		<option value="EL_CO">Cortocircuito</option>
+		<option value="EL_OT">Otro problema electrico</option>
+	</optgroup>
+	<optgroup label="Mecánico">
+		<option value="MEC_DO">Doblez</option>
+		<option value="MEC_OT">Otro problema mecánico</option>
+	</optgroup>
+	<optgroup label="Físico">
+		<option value="FI_RA">Rayón</option>
+		<option value="FI_OT">Otro problema físico</option>
+	</optgroup>
+	<optgroup label="Térmico">
+		<option value="TE_SO">Sobrecalentamiento</option>
+		<option value="TE_OT">Otro problema térmico</option>
+	</optgroup>
+	</select>
 
-									<fieldset>
-										<div class="col-md-12 col-lg-12">
-											<!-- Widget ID (each widget will need unique ID)-->
-											<div class="jarviswidget" id="wid-id-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
-												data-widget-custombutton="false" data-widget-sortable="false">
-												<header style="background-color:currentColor">
-													<h2 style="color: white">Administrar Ticket </h2>
-													<div class="widget-toolbar hidden-phone">
-														<div class="smart-form" style="padding-right: 10px;padding-left: 10px;">
-															<label class="toggle" style="padding-right: 0px; color:white">
-																<input type="checkbox" id="demo-switch-to-pills" name="checkbox-toggle">
-																Switch Navs / Pills</label>
+	<div class="note">
+		<strong>Nota:</strong> seleccionar las categorías consideradas como orígenes del problema.
+	</div>
+	</div>
+	</section>
+	<section class="col col-4">
+		<label>Adjuntar Archivo (Opcional):</label>
+		<label for="file" class="input input-file">
+													<div class="button"><input type="file" name="file2" onchange="this.parentNode.nextSibling.value = this.value">Buscar</div><input type="text" placeholder="Nombre del archivo" readonly="">
+	</label>
+	</section>
+</fieldset>
+
+<fieldset>
+	<div class="col-md-12 col-lg-12">
+		<!-- Widget ID (each widget will need unique ID)-->
+		<div class="jarviswidget" id="wid-id-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false" data-widget-sortable="false">
+			<header style="background-color:currentColor">
+		<h2 style="color: white">Administrar Ticket </h2>
+		<div class="widget-toolbar hidden-phone">
+			<div class="smart-form" style="padding-right: 10px;padding-left: 10px;">
+		<label class="toggle" style="padding-right: 0px; color:white">
+		<input type="checkbox" id="demo-switch-to-pills" name="checkbox-toggle"> Switch Navs / Pills</label>
+		</div>
+		</div>
+		</header>
+
+<!-- widget div-->
+<div style="padding-left: 0px; padding-right: 0px; margin-left: 14px; margin-right: 0px; width: 97%; display: block;">
+
+<!-- widget edit box -->
+<div class="jarviswidget-editbox">
+	<!-- This area used as dropdown edit box -->
+
+</div>
+<!-- end widget edit box -->
+
+<!-- widget content -->
+<div class="widget-body">
+
+	<div class="tabs-left">
+		<ul class="nav nav-tabs tabs-left" id="demo-pill-nav">
+			<li class="active">
+				<a href="#tab-r1" data-toggle="tab">Parametrizar </a>
+			</li>
+			<li>
+				<a href="#tab-r2" data-toggle="tab">Seguimiento</a>
+			</li>
+			<li>
+				<a href="#tab-r3" data-toggle="tab">Asignar</a>
+			</li>
+			<li>
+				<a href="#tab-r4" data-toggle="tab">Eliminar</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab-r1">
+				<div class="row" style="height: 50px;">
+					<label class="col-md-1 control-label" style="margin-left: 0px;width: 60px;">Cambiar Estado:</label>
+					<section class="col col-lg-4">
+						<label class="select">
+						<select name="setstatus" id="setstatus" style= "padding-left: 90px;">
+							<option value="0" selected="" disabled="">Estado del Ticket</option>
+							<option value="pending">PENDIENTE</option>
+							<option value="asigned">ASIGNADO</option>
+							<option value="finished">FINALIZADO</option>
+							<option value="canceled">CANCELADO</option>
+						</select> <i></i> </label>
+					</section>
+					<label class="col-md-1 control-label" style="margin-left: 55px;width: 60px;">Avance del ticket:</label>
+					<section class="col col-lg-4">
+						<select name="setadvance" id="setadvance" style= "padding-left: 90px;">
+							<option value="-1" selected="" disabled="">% Avance</option>
+							<option value="0">0% - Fase 0</option>
+							<option value="10">10% - Fase 1</option>
+							<option value="20">20% - Fase 2</option>
+							<option value="30">30% - Fase 3</option>
+							<option value="40">40% - Fase 4</option>
+							<option value="50">50% - Fase 5</option>
+							<option value="60">60% - Fase 6</option>
+							<option value="70">70% - Fase 7</option>
+							<option value="80">80% - Fase 8</option>
+							<option value="90">90% - Fase 9</option>
+							<option value="100">100% - Fase 10</option>
+						</select> <i></i> </label>
+					</section>
+				</div>
+				<div class="row" style="height: 30px">
+					<label class="col-md-1 control-label" style="width: 60px;">Prioridad:</label>
+					<section class="col col-lg-4">
+						<label class="select" style="text-align: center;">
+						<select name="setpriority" id="setpriority" style="padding-left: 110px; text-align: center;">
+						<option value="" selected="" disabled="">Establezca el nivel de prioridad</option>
+						<option value="vHigh">MUY ALTA</option>
+						<option value="high">ALTA</option>
+						<option value="medium">MEDIA</option>
+						<option value="low">BAJA</option>
+						</select> <i></i> </label>
+					</section>
+					<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Deadline:</label>
+					<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+						<label class="input"> <i class="icon-append fa fa-calendar"></i>
+								<input type="text" name="setdeadline" id="setdeadline" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
+						</label>
+					</section>
+				</div>
+				<div class="row" style="height: 20px">
+					<label class="col-md-1 control-label" style="width: 90px;">Fecha Inicio:</label>
+						<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+							<label class="input"> <i class="icon-append fa fa-calendar"></i>
+									<input type="text" name="start_date" id="start_date" style="text-align: center;" value="{{formatDate ticket.start_date "DD.MM.YYYY"}}">
+							</label>
+						</section>
+					<label class="col-md-1 control-label" style="margin-left: 20px;width: 70px;">Fecha Fin:</label>
+						<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
+							<label class="input"> <i class="icon-append fa fa-calendar"></i>
+								<input type="text" name="end_date" id="end_date" style="text-align: center;" value="{{formatDate ticket.end_date "DD.MM.YYYY"}}">
+							</label>
+						</section>
+				</div>
+				<div class="row" style="height: 5px">
+					<section class="col col-lg-4" style="padding-left: 0px; font-size: 11px">
+						<div>
+							<p><strong> Creado en:</strong> {{formatDate ticket.startdate "DD/MM/YYYY - HH:mm"}}</p>
+							<p><strong>Ultima edición:</strong> {{formatDate ticket.lastupdate "DD/MM/YYYY - HH:mm"}}</p>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="tab-pane" id="tab-r2">
+				<div class="tab-content">
+					<div class="tab-pane active" id="hb1">
+						<div class="tabbable tabs-below">
+							<ul class="nav nav-tabs" style="height: 45px;">
+								<li class="active pull-right">
+									<a data-toggle="tab" href="#acts">Actas</a>
+								</li>
+								<li class="pull-right">
+									<a data-toggle="tab" href="#history">Historial</a>
+								</li>
+							</ul>
+							<div class="tab-content padding-10">
+								<div class="tab-pane active" id="acts">
+									<div class="row">
+										<div class="jarviswidget jarviswidget-color-greenDark" id="wid-id-18" data-widget-colorbutton="false" data-widget-editbutton="false">
+											<header style="width: 805px; margin-left: 25px; background-color:currentColor">
+												<h2 style="color: white"><strong>Actas</strong> del Ticket</h2>
+											</header>
+
+											<div style="width: 780px; padding-right: 12px;">
+												<div class="jarviswidget-editbox">
+													<input class="form-control" type="text">
+													<span class="note"><i class="fa fa-check text-success"></i> Change title to update and save instantly!</span>
+
+												</div>
+												<div class="widget-body no-padding" style="width: 805px;">
+													<div class="widget-body-toolbar">
+															<div style="padding-top: 10px;">
+																<div class="col-12">
+																	<span id="follow_tk" class="btn btn-labeled btn-{{checkclass}}" style="padding-left: 5px; margin-left: 20px;">
+																		<i class="glyphicon glyphicon-bookmark"></i> <span class="hidden-mobile" style="padding-right: 5px;">{{checktext}}</span>{{#if_Comp ticket.track 'checked'}}<i id="chcksign" class='fa fa-check' style="margin-right:8px">{{/if_Comp}}</i>
+																	</span>
+																	<span class="btn btn-success" style="padding-left: 5px; float:right; margin-right:20px" data-toggle="modal" data-target="#recordModal">
+																	<i class="fa fa-plus"></i> <span class="hidden-mobile" style="padding-right: 10px;" >Nueva Acta</span>
+																	</span>
+																</div>
 														</div>
 													</div>
-												</header>
 
-												<!-- widget div-->
-												<div style="padding-left: 0px; padding-right: 0px; margin-left: 14px; margin-right: 0px; width: 97%; display: block;">
+													<div class="custom-scroll table-responsive" style="height:160px; overflow-y: scroll;">
 
-													<!-- widget edit box -->
-													<div class="jarviswidget-editbox">
-														<!-- This area used as dropdown edit box -->
 
+														<table class="table table-bordered">
+															<thead>
+																<tr>
+																	<th><i class="fa fa-key text-warning"></i> Numero de acta</th>
+																	<th>Representante</th>
+																	<th>Cliente</th>
+																	<th>Fecha</th>
+																	<th>Acciones</th>
+																</tr>
+															</thead>
+															<tbody>
+																{{#each records}}
+																<tr>
+																	<input type="hidden" id="notified_to_{{recordNumber}}" value="{{notified}}">
+																	<td class="recordNumber" align="center"><a target="_blank" href="/reports/view?recordNumber={{recordNumber}}">{{recordNumber}}</a></td>
+																	<td align="center">{{adminRepresentative.username}} - {{adminRepresentative.name}} {{adminRepresentative.lastname}}</td>
+																	<td align="center">{{custRepresentative.username}} - {{custRepresentative.name}} {{custRepresentative.lastname}}</td>
+																	<td align="center">{{formatDate createdOn "DD/MM/YYYY HH:mm"}}</td>
+																	<td align="center">
+																		<div class="btn-group">
+																			<button class="btn btn-primary btn-xs dropdown-toggle notifyButton" data-toggle="dropdown" aria-expanded="false">
+																																																Notificar <span class="caret"></span>
+																																														</button>
+																			<ul class="dropdown-menu">
+																				<li>
+																					<a class="notifyOption">Sólo a administradores</a>
+																				</li>
+																				<li>
+																					<a class="notifyOption">Sólo a usuarios</a>
+																				</li>
+																				<li class="divider"></li>
+																				<li>
+																					<a class="notifyOption">Todos los contactos</a>
+																				</li>
+																			</ul>
+																		</div>
+																		<p id="{{recordNumber}}" class="notification_note" style="font-size:xx-small">Se notificó a: <strong id="note_text_{{recordNumber}}"></strong></p>
+																	</td>
+																</tr>
+																{{/each}}
+															</tbody>
+														</table>
 													</div>
-													<!-- end widget edit box -->
-
-													<!-- widget content -->
-													<div class="widget-body">
-
-														<div class="tabs-left">
-															<ul class="nav nav-tabs tabs-left" id="demo-pill-nav">
-																<li class="active">
-																	<a href="#tab-r1" data-toggle="tab">Parametrizar </a>
-																</li>
-																<li>
-																	<a href="#tab-r2" data-toggle="tab">Seguimiento</a>
-																</li>
-																<li>
-																	<a href="#tab-r3" data-toggle="tab">Asignar</a>
-																</li>
-																<li>
-																	<a href="#tab-r4" data-toggle="tab">Eliminar</a>
-																</li>
-															</ul>
-															<div class="tab-content">
-																<div class="tab-pane active" id="tab-r1">
-																	<div class="row" style="height: 50px;">
-																		<label class="col-md-1 control-label" style="margin-left: 0px;width: 60px;">Cambiar Estado:</label>
-																		<section class="col col-lg-4">
-																			<label class="select">
-																		<select name="setstatus" id="setstatus" style= "padding-left: 90px;">
-																			<option value="0" selected="" disabled="">Estado del Ticket</option>
-																			<option value="pending">PENDIENTE</option>
-																			<option value="asigned">ASIGNADO</option>
-																			<option value="finished">FINALIZADO</option>
-																			<option value="canceled">CANCELADO</option>
-																		</select> <i></i> </label>
-																		</section>
-																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 60px;">Avance del ticket:</label>
-																		<section class="col col-lg-4">
-																			<label class="select">
-																		<select name="setadvance" id="setadvance" style= "padding-left: 90px;">
-																			<option value="-1" selected="" disabled="">% Avance</option>
-																			<option value="0">0% - Fase 0</option>
-																			<option value="10">10% - Fase 1</option>
-																			<option value="20">20% - Fase 2</option>
-																			<option value="30">30% - Fase 3</option>
-																			<option value="40">40% - Fase 4</option>
-																			<option value="50">50% - Fase 5</option>
-																			<option value="60">60% - Fase 6</option>
-																			<option value="70">70% - Fase 7</option>
-																			<option value="80">80% - Fase 8</option>
-																			<option value="90">90% - Fase 9</option>
-																			<option value="100">100% - Fase 10</option>
-																		</select> <i></i> </label>
-																		</section>
-																	</div>
-																	<div class="row" style="height: 30px">
-																		<label class="col-md-1 control-label" style="width: 60px;">Prioridad:</label>
-																		<section class="col col-lg-4">
-																			<label class="select" style="text-align: center;">
-																			<select name="setpriority" id="setpriority" style= "padding-left: 110px; text-align: center;">
-																				<option value="" selected="" disabled="">Establezca el nivel de prioridad</option>
-																				<option value="vHigh">MUY ALTA</option>
-																				<option value="high">ALTA</option>
-																				<option value="medium">MEDIA</option>
-																				<option value="low">BAJA</option>                                                              
-																			</select> <i></i> </label>
-																		</section>
-																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Deadline:</label>
-																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
-																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
-																				<input type="text" name="setdeadline" id="setdeadline" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
-																			</label>
-																		</section>																	
-																	</div>
-																	<div class="row" style="height: 20px">
-																		<label class="col-md-1 control-label" style="width: 90px;">Fecha Inicio:</label>
-																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
-																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
-																				<input type="text" name="start_date" id="start_date" style="text-align: center;" value="{{formatDate ticket.start_date "DD.MM.YYYY"}}">
-																			</label>
-																		</section>
-																		<label class="col-md-1 control-label" style="margin-left: 20px;width: 70px;">Fecha Fin:</label>
-																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
-																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
-																				<input type="text" name="end_date" id="end_date" style="text-align: center;" value="{{formatDate ticket.end_date "DD.MM.YYYY"}}">
-																			</label>
-																		</section>																			
-																	</div>
-																	<div class="row" style="height: 5px">
-																		<section class="col col-lg-4" style="padding-left: 0px; font-size: 11px">
-																			<div>
-																			<p><strong> Creado en:</strong> {{formatDate ticket.startdate "DD/MM/YYYY - HH:mm"}}</p>
-																			<p><strong>Ultima edición:</strong> {{formatDate ticket.lastupdate "DD/MM/YYYY - HH:mm"}}</p>
-																			</div>
-																		</section>
-																	</div>																		
-{{!--																	<div class="row">
-																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Fecha Fin:</label>
-																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
-																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
-																				<input type="text" name="end_date" id="end_date" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
-																			</label>
-																		</section>
-																		<label class="col-md-1 control-label" style="margin-left: 55px;width: 70px;">Fecha Fin:</label>
-																		<section class="col col-lg-4" style="padding-left: 5px; width: 289px;">
-																			<label class="input"> <i class="icon-append fa fa-calendar"></i>
-																				<input type="text" name="end_date" id="end_date" placeholder="Fecha Estimada de cierre" style="text-align: center;" value="{{formatDate ticket.deadline "DD.MM.YYYY"}}">
-																			</label>
-																		</section>
-																	</div>	--}}																																		
-																</div>
-																<div class="tab-pane" id="tab-r2">
-																	<div class="tab-content">
-																		<div class="tab-pane active" id="hb1">
-
-																			<div class="tabbable tabs-below">
-																				<ul class="nav nav-tabs" style="height: 45px;">
-																					<li class="active pull-right">
-																						<a data-toggle="tab" href="#acts">Actas</a>
-																					</li>
-																					<li class="pull-right">
-																						<a data-toggle="tab" href="#history">Historial</a>
-																					</li>
-																				</ul>
-																				<div class="tab-content padding-10">
-																					<div class="tab-pane active" id="acts">
-																						<div class="row">
-																							<!-- Widget ID (each widget will need unique ID)-->
-																							<div class="jarviswidget jarviswidget-color-greenDark" id="wid-id-18" data-widget-colorbutton="false" data-widget-editbutton="false">
-																								<header style="width: 805px; margin-left: 25px; background-color:currentColor">
-																									<h2 style="color: white"><strong>Actas</strong> del Ticket</h2>
-
-																								</header>
-
-																								<!-- widget div-->
-																								<div style="width: 780px; padding-right: 12px;">
-
-																									<!-- widget edit box -->
-																									<div class="jarviswidget-editbox">
-																										<!-- This area used as dropdown edit box -->
-																										<input class="form-control" type="text">
-																										<span class="note"><i class="fa fa-check text-success"></i> Change title to update and save instantly!</span>
-
-																									</div>
-																									<!-- end widget edit box -->
-
-																									<!-- widget content -->
-																									<div class="widget-body no-padding" style="width: 805px;">
-																										<div class="widget-body-toolbar">																											
-																											<div style="padding-top: 10px;">
-																												<div class="col-12">
-																													<span id="follow_tk" class="btn btn-labeled btn-{{checkclass}}" style="padding-left: 5px; margin-left: 20px;">
-																														<i class="glyphicon glyphicon-bookmark"></i> <span class="hidden-mobile" style="padding-right: 5px;">{{checktext}}</span>{{#if_Comp ticket.track 'checked'}}<i id="chcksign" class='fa fa-check' style="margin-right:8px">{{/if_Comp}}</i>
-																													</span>
-																													<span class="btn btn-success" style="padding-left: 5px; float:right; margin-right:20px" data-toggle="modal" data-target="#recordModal">
-																														<i class="fa fa-plus"></i> <span class="hidden-mobile" style="padding-right: 10px;" >Nueva Acta</span>
-																													</span>
-																												</div>
-																											</div>
-																										</div>
-
-																										<div class="custom-scroll table-responsive" style="height:160px; overflow-y: scroll;">
-
-
-																											<table class="table table-bordered">
-																												<thead>
-																													<tr>
-																														<th><i class="fa fa-key text-warning"></i> Numero de acta</th>
-																														<th>Representante</th>
-																														<th>Cliente</th>
-																														<th>Fecha</th>
-																														<th>Acciones</th>																														
-																													</tr>
-																												</thead>
-																												<tbody>
-																													{{#each records}}
-																													<tr>
-																														<input type="hidden" id="notified_to_{{recordNumber}}" value="{{notified}}">
-																														<td class="recordNumber" align="center"><a target="_blank" href="/reports/view?recordNumber={{recordNumber}}">{{recordNumber}}</a></td>
-																														<td align="center">{{adminRepresentative.username}} - {{adminRepresentative.name}} {{adminRepresentative.lastname}}</td>
-																														<td align="center">{{custRepresentative.username}} - {{custRepresentative.name}} {{custRepresentative.lastname}}</td>
-																														<td align="center">{{formatDate createdOn "DD/MM/YYYY HH:mm"}}</td>
-																														<td align="center">
-																															<div class="btn-group">
-																																<button class="btn btn-primary btn-xs dropdown-toggle notifyButton" 
-																																data-toggle="dropdown" aria-expanded="false">
-																																		Notificar <span class="caret"></span>
-																																</button>
-																																<ul class="dropdown-menu">
-																																	<li>
-																																		<a class="notifyOption">Sólo a administradores</a>
-																																	</li>
-																																	<li>
-																																		<a class="notifyOption">Sólo a usuarios</a>
-																																	</li>
-																																	<li class="divider"></li>
-																																	<li>
-																																		<a class="notifyOption">Todos los contactos</a>
-																																	</li>
-																																</ul>
-																															</div>
-																															<p id="{{recordNumber}}" class="notification_note" style="font-size:xx-small">Se notificó a: <strong id="note_text_{{recordNumber}}"></strong></p>
-																														</td>
-																													</tr>
-																													{{/each}}
-																												</tbody>
-																											</table>
-																										</div>
-																									</div>
-																									<!-- end widget content -->
-
-																								</div>
-																								<!-- end widget div -->
-
-																							</div>
-																							<!-- end widget -->
-																						</div>
-																					</div>
-																					<div class="tab-pane" id="history">
-																						<p>
-																							HISTORIAL Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
-																							velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer
-																							twee.
-																						</p>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="tab-pane" id="tab-r3">
-																	<div class="row">
-																		<article class="col-sm-12 col-md-6 col-lg-5">
-																			<div style="padding-top: 20px " align="justify">
-																				<p> <strong>Contactos del ticket.</strong><br><br> Los contactos son todos aquellos usuarios activos de la
-																					plataforma que pueden relacionarse con un ticket para realizar un seguimiento y gestión al mismo.<br>																					Cada vez que un ticket es creado, el usuario creador se registra como contacto del ticket. De forma
-																					predeterminada, el sistema también registra como contactos a los administradores de la tienda a la que
-																					pertenece el usuario, así como también a todos los usuarios administradores del sistema.
-																				</p>
-																			</div>
-																		</article>
-																		<article class="col-sm-12 col-md-6 col-lg-6">
-
-																			<!-- Widget ID (each widget will need unique ID)-->
-																			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-1" data-widget-editbutton="false">
-
-																				<header style="width: 399px; margin-top: 0px;">
-																					<span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
-																					<h2 style="color: white;">Asignar Contactos </h2>
-																				</header>
-
-																				<!-- widget div-->
-																				<div style="padding-left: 40px; padding-right: 0px; margin-left: 14px; margin-right: -14; width: 359px;">
-
-																					<!-- widget edit box -->
-																					<div class="jarviswidget-editbox">
-																						<!-- This area used as dropdown edit box -->
-
-																					</div>
-																					<!-- end widget edit box -->
-
-																					<!-- widget content -->
-																					<div class="widget-body">
-
-																						<div class="tree smart-form">
-																							<ul>
-																								<li>
-																									<span><i class="fa fa-lg fa-plus-circle"></i> Contactos: </span>
-																									<ul>
-																										<li>
-																											<span><i class="fa fa-lg fa-plus-circle"></i> Administradores</span>
-																											<ul id="administrators">
-																												{{#each admins}}
-																												<li style="display:none">
-																													<span> <label class="checkbox inline-block">
-																															<input class="contacts_admin" id="contacts_{{id}}" name="contacts_{{id}}" type="checkbox" name="checkbox-inline">
-																															<i></i>{{name}} {{lastname}}</label> </span>
-																												</li>
-																												{{/each}}
-																											</ul>
-																										</li>
-																										<li>
-																											<span><i class="fa fa-lg fa-plus-circle"></i> Usuarios</span>
-																											<ul>
-																												{{#each employees}}
-																												<li style="display:none">
-																													<span> <label class="checkbox inline-block">
-																															<input class="contacts" id="contacts_{{id}}" name="contacts_{{id}}" type="checkbox" name="checkbox-inline">
-																															<i></i>{{name}} {{lastname}} - <small>Cargo: {{position}}</small></label> </span>
-																												</li>
-																												{{/each}}
-																											</ul>
-																										</li>
-																									</ul>
-																								</li>
-																							</ul>
-																						</div>
-
-																					</div>
-																					<!-- end widget content -->
-
-																				</div>
-																				<!-- end widget div -->
-
-																			</div>
-																			<!-- end widget -->
-
-																		</article>
-																	</div>
-																</div>
-																<div class="tab-pane" id="tab-r4">
-																	<h2>Eliminar Ticket</h2><br>
-																	<p>Atención! Esta acción no puede volverse atrás.</p><br>
-																	<div class="row">
-																		<div class="col col-lg-5 col-md-6">
-																			<label for="ticketNum">Numero de Ticket: <strong>{{ticket.ticketNumber}}</strong></label>
-																			<input id="textValidation" style="text-align: center;" maxlength="5" class="form-control disablecopypaste" id="ticketNum">
-																			<small>Ingrese los ultimos 5 caracteres del número del ticket para eliminarlo.</small>
-																		</div>
-																		<div class="col col-lg-1 col-md-1">
-																			<a href="#" data-toggle="modal" data-target="#deleteModal" data-ticketid="{{ticket.id}}"><span class="button deleteticket_button" type="submit" name="eliminar"> Eliminar</span></a>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<!-- end widget content -->
-
 												</div>
-												<!-- end widget div -->
-
 											</div>
-											<!-- end widget -->
-									</fieldset>
-									<footer>
-										<button type="submit" class="btn btn-primary">
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="history">
+									<div class="tab-pane" id="l1">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="width: 95%;">
+												<div class="well well-sm">											
+													<div class="smart-timeline">
+														<ul class="">
+															{{#each tkts}}
+															<li>
+																<div class="smart-timeline-icon">
+																	<i class="fa fa-file-text"></i>
+																</div>
+																<div class="smart-timeline-time">
+																	<small>{{modified_on}}</small>
+																</div>
+																<div class="smart-timeline-content">
+																	<p>
+																		<strong>{{title}} [<a href="javascript:void(0);"><i>Go to my calendar</i></a>]</strong>
+																	</p>
+
+																	<div class="well well-sm display-inline">
+																		<p>Will you be able to attend the meeting - <strong> 10:00 am</strong> tomorrow?</p>
+																		<button class="btn btn-xs btn-default">Confirm Attendance</button>
+																	</div>
+																</div>
+															</li>
+															{{/each}}
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<div class="tab-pane" id="tab-r3">
+	<div class="row">
+		<article class="col-sm-12 col-md-6 col-lg-5">
+			<div style="padding-top: 20px " align="justify">
+<p> <strong>Contactos del ticket.</strong><br><br> Los contactos son todos aquellos usuarios activos de la plataforma que pueden
+	relacionarse con un ticket para realizar un seguimiento y gestión al mismo.<br> Cada vez que un ticket es creado, el usuario
+	creador se registra como contacto del ticket. De forma predeterminada, el sistema también registra como contactos a los
+	administradores de la tienda a la que pertenece el usuario, así como también a todos los usuarios administradores del sistema.
+</p>
+</div>
+</article>
+<article class="col-sm-12 col-md-6 col-lg-6">
+
+	<!-- Widget ID (each widget will need unique ID)-->
+	<div class="jarviswidget jarviswidget-color-blue" id="wid-id-1" data-widget-editbutton="false">
+
+		<header style="width: 399px; margin-top: 0px;">
+<span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
+<h2 style="color: white;">Asignar Contactos </h2>
+</header>
+
+<!-- widget div-->
+<div style="padding-left: 40px; padding-right: 0px; margin-left: 14px; margin-right: -14; width: 359px;">
+
+<!-- widget edit box -->
+<div class="jarviswidget-editbox">
+	<!-- This area used as dropdown edit box -->
+
+</div>
+<!-- end widget edit box -->
+
+<!-- widget content -->
+<div class="widget-body">
+
+	<div class="tree smart-form">
+		<ul>
+			<li>
+				<span><i class="fa fa-lg fa-plus-circle"></i> Contactos: </span>
+				<ul>
+					<li>
+						<span><i class="fa fa-lg fa-plus-circle"></i> Administradores</span>
+						<ul id="administrators">
+							{{#each admins}}
+							<li style="display:none">
+								<span> <label class="checkbox inline-block">
+								<input class="contacts_admin" id="contacts_{{id}}" name="contacts_{{id}}" type="checkbox" name="checkbox-inline">
+								<i></i>{{username}} - {{name}} {{lastname}}</label> </span>
+							</li>
+							{{/each}}
+						</ul>
+					</li>
+					<li>
+						<span><i class="fa fa-lg fa-plus-circle"></i> Usuarios</span>
+						<ul>
+								{{#each employees}}
+							<li style="display:none">
+								<span> <label class="checkbox inline-block">
+									<input class="contacts" id="contacts_{{id}}" name="contacts_{{id}}" type="checkbox" name="checkbox-inline">
+									<i></i>{{username}} - {{name}} {{lastname}}<br><small>Cargo: {{position}}</small></label> 
+								</span>
+							</li>
+							{{/each}}
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+</div>
+
+</div>
+
+</article>
+</div>
+</div>
+<div class="tab-pane" id="tab-r4">
+	<h2>Eliminar Ticket</h2><br>
+	<p>Atención! Esta acción no puede volverse atrás.</p><br>
+	<div class="row">
+		<div class="col col-lg-5 col-md-6">
+			<label for="ticketNum">Numero de Ticket: <strong>{{ticket.ticketNumber}}</strong></label>
+			<input id="textValidation" style="text-align: center;" maxlength="5" class="form-control disablecopypaste" id="ticketNum">
+<small>Ingrese los ultimos 5 caracteres del número del ticket para eliminarlo.</small>
+</div>
+<div class="col col-lg-1 col-md-1">
+	<a href="#" data-toggle="modal" data-target="#deleteModal" data-ticketid="{{ticket.id}}"><span class="button deleteticket_button" type="submit" name="eliminar"> Eliminar</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+<!-- end widget -->
+</fieldset>
+<footer>
+	<button type="submit" class="btn btn-primary">
 												Guardar
 											</button>
-									</footer>
-								</form>
+</footer>
+</form>
 
-								</div>
-								<!-- end widget content -->
+</div>
+<!-- end widget content -->
 
-							</div>
-							<!-- end widget div -->
+</div>
+<!-- end widget div -->
 
-						</div>
-						<!-- end widget -->
+</div>
+<!-- end widget -->
 
-				</article>
-				<!-- END COL -->
-				</div>
+</article>
+<!-- END COL -->
+</div>
 
-				<!-- END ROW -->
+<!-- END ROW -->
 
-				</section>
-				<!-- end widget grid -->
+</section>
+<!-- end widget grid -->
 
-			</div>
-			<!-- END MAIN CONTENT -->
-			<!-- Record Info Modal -->
-			<form method="post" action="/admin/newRecord">
-				<div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<input type="hidden" name="ticket_id" value="{{ticket.id}}">
-							<input type="hidden" id="edit-record-id" name="recordId">							
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+</div>
+<!-- END MAIN CONTENT -->
+<!-- Record Info Modal -->
+<form method="post" action="/admin/newRecord">
+	<div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<input type="hidden" name="ticket_id" value="{{ticket.id}}">
+				<input type="hidden" id="edit-record-id" name="recordId">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 											&times;
 										</button>
-								<h4 class="modal-title" id="myModalLabel">Detalle del Acta Correctiva</h4>
-							</div>
-							<div class="modal-body">
-								<!--Acta No.-->
-								<div class="row">
-									<div class="col-lg-12" style="padding-left:15px;">
-										<div class="col-md-3">
-											<div class="form-group">
-												<label for="edit-record-number"><small><b>Acta No.:</b></small></label>
-												<input style="padding: 5px;" type="text" class="form-control" placeholder="Acta No." required="true"
-													name="recordNum" id="edit-record-number" disabled value="{{recordNumber}}" align="center" />
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label for="edit-asset-number"><small><b>Equipo:</b></small></label>
-												<input type="text" class="form-control" placeholder="Equipo" name="assetNum" id="edit-asset-number" disabled align="center"
-												value="{{ticket.asset_id.number}}"/>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<label for="edit-adminRepresentative"><small><b>Representante:</b></small></label>
-											<input type="text" class="form-control" placeholder="Representante" name="adminRepresentative" id="edit-adminRepresentative"
-												disabled value="{{representative.username}} - {{representative.name}} {{representative.lastname}}" align="center"
-											/>
-										</div>
-										<div class="col-md-3">
-											<div class="row">
-												<label for="edit-custRepresentative"><small style="padding-left: 15px;"><b>Cliente:</b></small></label>
-											</div>
-											<div class="row">
-												<section class="col col-lg-12">
-													<label class="select" style="width:260px">
-											<select name="custRepresentative" id="custRepresentative" style="display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;line-height: 1.42857143; color: #555;">
-												<option value="0" selected="" disabled="">Seleccionar usuario que atendió visita</option>
-												{{#each employees}}
-													<option value="{{_id}}">{{username}} - {{name}} {{lastname}}</option>
-												{{/each}}
-											</select> <i></i> </label></section>
-											</div>
-										</div>
-									</div>
-									<!--Requerimiento del cliente-->
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="openningDate"><small><b>Requerimiento del cliente:</b></small></label>
-											<textarea class="form-control" name="customerReq" placeholder="Ingrese el requerimiento del cliente" rows="1"></textarea>
-										</div>
-									</div>
-									<!--Situación Encontrada-->
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="openningDate"><small><b>Situación Encontrada:</b></small></label>
-											<textarea class="form-control" name="currentState" placeholder="Ingrese la situación encontrada" rows="3"></textarea>
-										</div>
-									</div>
-									<!--Acciones Correctivas-->
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="openningDate"><small><b>Acciones Correctivas:</b></small></label>
-											<textarea class="form-control" name="correctiveActions" placeholder="Ingrese las acciones correctivas" rows="2"></textarea>
-										</div>
-									</div>
-									<!--Sugerencias-->
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="openningDate"><small><b>Sugerencias:</b></small></label>
-											<textarea class="form-control" name="suggestions" placeholder="Ingrese las sugerencias" rows="3"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">
+					<h4 class="modal-title" id="myModalLabel">Detalle del Acta Correctiva</h4>
+				</div>
+				<div class="modal-body">
+					<!--Acta No.-->
+					<div class="row">
+						<div class="col-lg-12" style="padding-left:15px;">
+<div class="col-md-3">
+	<div class="form-group">
+		<label for="edit-record-number"><small><b>Acta No.:</b></small></label>
+		<input style="padding: 5px;" type="text" class="form-control" placeholder="Acta No." required="true" name="recordNum" id="edit-record-number" disabled
+value="{{recordNumber}}" align="center" />
+</div>
+</div>
+<div class="col-md-3">
+	<div class="form-group">
+		<label for="edit-asset-number"><small><b>Equipo:</b></small></label>
+		<input type="text" class="form-control" placeholder="Equipo" name="assetNum" id="edit-asset-number" disabled align="center"
+			value="{{ticket.asset_id.number}}" />
+	</div>
+</div>
+<div class="col-md-3">
+	<label for="edit-adminRepresentative"><small><b>Representante:</b></small></label>
+	<input type="text" class="form-control" placeholder="Representante" name="adminRepresentative" id="edit-adminRepresentative"
+		disabled value="{{representative.username}} - {{representative.name}} {{representative.lastname}}" align="center" />
+</div>
+<div class="col-md-3">
+	<div class="row">
+		<label for="edit-custRepresentative"><small style="padding-left: 15px;"><b>Cliente:</b></small>
+</label>
+</div>
+<div class="row">
+	<section class="col col-lg-12">
+		<label class="select" style="width:260px">
+<select name="custRepresentative" id="custRepresentative" style="display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;line-height: 1.42857143; color: #555;">
+<option value="0" selected="" disabled="">Seleccionar usuario que atendió visita</option>
+{{#each employees}}
+<option value="{{_id}}">{{username}} - {{name}} {{lastname}}</option>
+{{/each}}
+</select> <i></i> </label>
+</section>
+</div>
+</div>
+</div>
+<!--Requerimiento del cliente-->
+<div class="col-md-12">
+	<div class="form-group">
+		<label for="openningDate"><small><b>Requerimiento del cliente:</b></small></label>
+		<textarea class="form-control" name="customerReq" placeholder="Ingrese el requerimiento del cliente" rows="1"></textarea>
+	</div>
+</div>
+<!--Situación Encontrada-->
+<div class="col-md-12">
+	<div class="form-group">
+		<label for="openningDate"><small><b>Situación Encontrada:</b></small></label>
+		<textarea class="form-control" name="currentState" placeholder="Ingrese la situación encontrada" rows="3"></textarea>
+	</div>
+</div>
+<!--Acciones Correctivas-->
+<div class="col-md-12">
+	<div class="form-group">
+		<label for="openningDate"><small><b>Acciones Correctivas:</b></small></label>
+		<textarea class="form-control" name="correctiveActions" placeholder="Ingrese las acciones correctivas" rows="2"></textarea>
+	</div>
+</div>
+<!--Sugerencias-->
+<div class="col-md-12">
+	<div class="form-group">
+		<label for="openningDate"><small><b>Sugerencias:</b></small></label>
+		<textarea class="form-control" name="suggestions" placeholder="Ingrese las sugerencias" rows="3"></textarea>
+	</div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">
 											Cerrar
 										</button>
-								<button id="submitModal" type="submit" class="btn btn-primary">
+	<button id="submitModal" type="submit" class="btn btn-primary">
 											Guardar
 										</button>
-							</div>
+</div>
 
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-			</form>
+</div>
+</div>
+</div>
+</form>
 
-			<form action="/tickets/ticket_delete" method="POST">
-				<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-sm">
-						<div class="modal-content">
-							<input type="hidden" name="delete_ticket_id" value="{{ticket.id}}">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+<form action="/tickets/ticket_delete" method="POST">
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<input type="hidden" name="delete_ticket_id" value="{{ticket.id}}">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 											&times;
 										</button>
-								<h4 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h4>
-							</div>
-							<div class="modal-body">
-								<div>
-									<p>Al eliminar este ticket también eliminará todas las actas e historial del mismo.<br><br> ¿Desea continuar?
-									</p>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">
-											Cancelar
-										</button>
-								<button id="submitModal" type="submit" class="btn btn-danger">
-											Eliminar
-										</button>
-							</div>
-						</div>
+					<h4 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<p>Al eliminar este ticket también eliminará todas las actas e historial del mismo.<br><br> ¿Desea continuar?
+						</p>
 					</div>
 				</div>
-			</form>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+											Cancelar
+										</button>
+					<button id="submitModal" type="submit" class="btn btn-danger">
+											Eliminar
+										</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- END MAIN PANEL -->
+</form>
+</div>
+<!-- END MAIN PANEL -->

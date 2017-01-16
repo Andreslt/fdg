@@ -93,34 +93,6 @@
 										<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
 					
 									        <thead>
-												<tr>
-													<th class="hasinput" style="width:20%">														
-														<input type="text" class="form-control" placeholder="Nombre" />
-													</th>
-													<th class="hasinput" style="width:10%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Compañía" type="text">
-														</div>	
-													</th>													
-													<th class="hasinput" style="width:12%">
-														<div class="input-group">
-															<input class="form-control" placeholder="Ciudad" type="text">
-														</div>	
-													</th>
-													<th class="hasinput" style="width:11%">
-														<input type="text" class="form-control" placeholder="Telefono" />
-													</th>
-													<th class="hasinput" style="width:17%">
-														<input type="text" class="form-control" placeholder="Email" />
-													</th>
-													<th class="hasinput icon-addon">
-														<input id="dateselect_filter" type="text" placeholder="Fecha Creación" class="form-control datepicker" data-dateformat="dd/mm/yy">
-														<label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15" rel="tooltip" title="" data-original-title="Encargado Tienda"></label>
-													</th>
-													<th class="hasinput" style="width:11%">
-														<input type="text" class="form-control" placeholder="Encargado Tienda" />
-													</th>
-												</tr>
 									            <tr>
 								                    <th data-class="expand">Nombre de Tienda</th>
 								                    <th>Compañía</th>
@@ -142,7 +114,7 @@
                                                     <td> {{city_id.city}}</td>													
                                                     <td> {{formatPhone phone}}</td>
                                                     <td> {{email}}</td>
-                                                    <td>{{formatDate startdate "DD/MM/YYYY HH:mm"}}</td>
+                                                    <td>{{formatDate created_on "DD/MM/YYYY HH:mm"}}</td>
                                                     <td>{{representative.name}} {{representative.lastname}}</td>
 													</tr>
                                                 {{/each}}

@@ -240,7 +240,6 @@ router.get('/tickets', validations.ensureAuthenticated, validations.approvedUser
 		var tkts = new Array();
 			for(let item in result){
 				let validation = result[item].store_id;
-				console.log(validation);
 				if (validation.company_id._id.toString() === user.company_id.toString())
 					tkts.push(result[item]);
 			}
@@ -273,11 +272,10 @@ router.post('/newStore', validations.ensureAuthenticated, validations.approvedUs
 		let newstore = new store(body);
 		newstore.representative=user, newstore.company_id=user.company_id;
 		newstore.phone = body.phone.substring(1,4)+body.phone.substring(5,8)+body.phone.substring(9,13);
-		console.log("Creación de objeto:"+ newstore);
+
 		newstore.save((err)=>{
 			if(err){
 					req.flash('error_msg', 'La tienda no pudo ser creada. El E-mail ya existe en la base de datos.');
-					console.log("Tienda no se pudo crear. Error: "+err.info);
 					return res.redirect('/users/stores');		
 			}else
 				req.flash('success_msg', 'Tienda creada exitosamente');
@@ -286,7 +284,6 @@ router.post('/newStore', validations.ensureAuthenticated, validations.approvedUs
 		});
 	}else{
 				req.flash('error_msg', 'La tienda no pudo ser creada. Todos los campos son requeridos.');
-				console.log("Tienda no se pudo crear. Todos los campos son requeridos.");
 				return res.redirect('/users/newStore');		
 	}
 });
@@ -453,27 +450,6 @@ router.get('/storeAdmin/:company/tickets/all', ensureAuthenticated, ApprovedUser
 	});*/
 //});
 
-/*router.get('/storeAdmin/:company/:city/tickets', ensureAuthenticated, ApprovedUserFunction, function(req, res){
-	let storeAdminSW = true, companyName = req.params.company, cityName = req.params.city;
-		console.log(cityName);
-		tickets.find({})
-		.then(tks1 => store.populate(tks1, {path: "store_id"}))
-		.then(tks2 => company.populate(tks2, {path: "store_id.company_id"}))
-		.then(tks3 => city.populate(tks3, {path: "store_id.city_id"}))
-		.then(result=>{
-		var tkts = new Array();
-			for(let item in result){
-				let validation = result[item].store_id;
-				//let lacity = result[item].store_id.city_id.city;
-				if (validation.company_id.companyName === companyName && validation.city_id.city  === cityName)
-					tkts.push(result[item]);
-			}
-			console.log(tkts);
-			res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, cityName, tkts});
-		});*/
-/*		console.log(city);
-	res.render('2-storeAdmin/tickets_into_city', {storeAdminSW, companyName, city});*/
-//});
 
 /*
 ------------------------------------------------------------------------------------------
@@ -536,7 +512,6 @@ router.post('/register', function(req, res){
 						newUser = new User.storeEmployee(usrParams);
 				}
 		}
-		console.log(newUser);
 		User.createUser(newUser, function(err, user){
 
 			if(err) throw err;

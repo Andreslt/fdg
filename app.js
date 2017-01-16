@@ -280,17 +280,3 @@ app.use(formidable({
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
 });
-
-/*
-var server = app.listen(app.get('port'), function(){
-	console.log('Server started on port '+app.get('port'));
-});
-
-var jsreport = require('jsreport')({
-  express: { app :reportingApp, server: server },
-  appPath: "/reporting"
-});
-
-jsreport.init().catch(function (e) {
-  console.error(e);
-});*/
