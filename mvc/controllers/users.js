@@ -32,7 +32,7 @@ const imageUp = require('../../config/imagesUpload');
 // Register
 router.get('/register', function(req, res){
 	company.find({companyName: {$ne: 'Default company'}},(err, companies)=>{
-		res.render('register', {layout: 'auth', login: true, companies});
+		res.render('0-Auth/register', {layout: 'auth', login: true, companies});
 	});
 });
 
