@@ -151,9 +151,11 @@
 						<li class="open">
 							<a href="#" title="Tickets Preventivos"><i class="fa fa-lg fa-fw fa-calendar-o"></i>Preventivo</a>
 							<ul>
+								{{#if_Comp user.userRole 'storeEmployee'}}
 								<li>
 									<a href="/tickets/preventive/new" title="Agendar ticket"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Agendar Ticket</a>
 								</li>
+								{{/if_Comp}}
 								<li class="active">
 									<a href="/tickets/preventive/list" title="Ver tickets preventivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
 								</li>
@@ -165,9 +167,11 @@
 						<li class="open">
 							<a href="#" title="Tickets Correctivos"><i class="fa fa-lg fa-fw fa-exclamation-triangle"></i>Correctivo</a>
 							<ul>
+								{{#if_Comp user.userRole 'storeEmployee'}}
 								<li>
 									<a href="/tickets/corrective/new" title="Nuevo Ticket Correctivo"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Crear Ticket</a>
 								</li>
+								{{/if_Comp}}
 								<li>
 									<a href="/tickets/corrective/list" title="Ver Tickets Correctivos"><i class="fa fa-lg fa-fw fa-minus-square-o"></i>Ver Tickets</a>
 								</li>
@@ -175,6 +179,7 @@
 						</li>
 					</ul>
 				</li>
+				{{#if_Comp user.userRole 'storeAdmin'}}
 				<li class="">
 					<a href="#" title="Tiendas"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Tiendas</span></a>
 					<ul>
@@ -200,6 +205,7 @@
 								</li>														
 							</ul>
 						</li>	
+						{{/if_Comp}}
 				<li>					
 					<a href="/users/account/edit?username={{user.username}}"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Cuenta</span></a>
 				</li>						
@@ -226,9 +232,7 @@
 				<div class="alert alert-success">{{success_msg}}</div>
 				{{/if}} {{#if error_msg}}
 				<div class="alert alert-danger">{{error_msg}}</div>
-				{{/if}} {{!-- {{#if errors}} {{#each errors}}
-				<div class="alert alert-danger">{{msg}}</div>
-				{{/each}} {{/if}} --}}
+				{{/if}}
 			</div>
 		</div>
 
@@ -524,21 +528,6 @@
 			}catch (e) {
 					console.log(e);
 				}
-
-/*			$("#input-ficons-4").fileinput({
-				uploadUrl: "/file-upload-batch/2",
-				previewFileIcon: '<i class="fa fa-file"></i>',
-				allowedPreviewTypes: null, // disable preview of standard types
-				allowedPreviewMimeTypes: ['image/jpeg', 'text/javascript'], // allow content to be shown only for certain mime types 
-				previewFileIconSettings: {
-					'docx': '<i class="fa fa-file-word-o text-primary"></i>',
-					'xls': '<i class="fa fa-file-excel-o text-success"></i>',
-					'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
-					'pptx': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
-					'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
-					'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
-				}
-			});*/
 
 			$('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');
 			$('.tree').find('li:has(ul)').addClass('parent_li').attr('role', 'treeitem').find(' > span').attr('title', 'Expandir').on('click', function(e) {

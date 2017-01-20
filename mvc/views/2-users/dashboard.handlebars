@@ -18,7 +18,7 @@
 				</div>			
 			</div>
 			<!-- END RIBBON -->
-
+			{{#if_Comp user.userRole 'storeAdmin'}}
 			<!-- MAIN CONTENT -->
 			<div id="content">
 				<section id="widget-grid" class="">
@@ -265,6 +265,10 @@
 
 			</div>
 			<!-- END MAIN CONTENT -->
-
+			{{/if_Comp}}
+			<h1 style="margin: 20px; color:brown">Bienvenido a FDG - Ingeniería y Servicios.</h1>
+			<p style="margin: 20px">Hemos dispuesto esta solución para permitirnos una gestión más eficiente y eficaz a sus solicitudes.<br>
+				Explore las posibilidades que brinda esta herramienta y conozca el potencial de una gestión de activos a otro nivel.
+			</p>			
 		</div>
 		<!-- END MAIN PANEL -->

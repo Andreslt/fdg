@@ -212,6 +212,8 @@ router.get('/usersApproved', Validations.ensureAuthenticated, Validations.system
 // Edit User
 router.post('/editUser', Validations.ensureAuthenticated, Validations.systemAdmin, (req, res) => {
 	let user = req.body;
+	Store.findOne({_id: user.store_id},(err, store)=>{
+		user.city_id = store.city_id;
 	User.findOneAndUpdate({ _id: user.userID }, { $set: user }, { new: true }, (err, result) => {
 		if (err) {
 			req.flash('error', 'El usuario no pudo ser actualizado. Por favor inténtelo de nuevo más tarde.');
@@ -220,6 +222,7 @@ router.post('/editUser', Validations.ensureAuthenticated, Validations.systemAdmi
 			req.flash('success_msg', 'El usuario ha sido actualizado exitosamente.');
 			res.redirect('/admin/usersApproved');
 		}
+	});
 	});
 });
 

@@ -18,6 +18,7 @@ var AssetRef = require('../models/assetReference');
 var Promise = require('promise');
 var Record = require('../models/record');
 var config = require('../../config/config');
+var imageUp = require('../../config/imagesUpload');
 
 /* ---> GENERAL <--- */
 // Go Home
