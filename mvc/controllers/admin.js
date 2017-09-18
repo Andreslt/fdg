@@ -185,7 +185,17 @@ router.post('/usersApproval/approveUser/:username', Validations.ensureAuthentica
 	let user = req.user, storeAdminSW, username = req.params.username;
 	User.findOneAndUpdate({ username: username }, { $set: { userApproval: true, approvedOn: new Date() } }, { new: true }, (err, user) => {
 		if (err) console.log(err)
-		res.redirect('/admin/list_users_to_approve');
+		req.flash('success_msg', 'Usuario aprobado');
+		mailer.mailOptions.to = user.email;
+		mailer.mailOptions.subject = "Bienvenido a FDG";
+		mailer.mailOptions.template = "register";
+		mailer.mailOptions.context = {
+			name: user.name,
+			lastname: user.lastname
+		};
+		// console.log('-mailer.mailOptions-> ', JSON.stringify(mailer.mailOptions,null,2));
+		mailer.sendEmail();
+		res.redirect('/admin/usersApproved');
 	});
 });
 
@@ -204,6 +214,8 @@ router.get('/usersApproved', Validations.ensureAuthenticated, Validations.system
 		.populate('company_id').populate('city_id').populate('store_id').exec((err, users) => {
 			if (err) throw err
 			Store.find({ storeName: { $ne: 'Default store' } }).populate('city_id').sort({ city_id: -1 }).exec((err, stores) => {
+				// console.log('-users -> ', JSON.stringify(users,null,2));
+				// console.log('-stores -> ', JSON.stringify(stores,null,2));
 				res.render('1-admin/list_users_approved', { layout: 'adminLayout', storeAdminSW, users, stores });
 			});
 		});

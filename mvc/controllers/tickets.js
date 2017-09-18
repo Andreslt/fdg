@@ -53,7 +53,7 @@ router.get('/new/failed', Validations.ensureAuthenticated, (req, res) => {
 
 router.get('/new/success', Validations.ensureAuthenticated, (req, res) => {
 	let ticketType = req.query.ticketType;
-	console.log('redirected well.'+ticketType)
+	// console.log('redirected well.'+ticketType)
 	req.flash('success_msg', 'Ticket creado con éxito.');
 	res.redirect('/tickets/' + ticketType + '/list');
 });
@@ -85,7 +85,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			ticketNumber: req.query.ticketNumber,
 			title: body.title,
 			ticketType: req.query.ticketType,
-			deadline: new Date(body.deadline.split('.')[2], body.deadline.split('.')[1], body.deadline.split('.')[0]),			
+			deadline: new Date(body.deadline.split('.')[2], body.deadline.split('.')[1], body.deadline.split('.')[0]),
 			priority: body.priority,
 			contacts: contacts,
 			description: body.description,
@@ -94,14 +94,14 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			created_by: req.user.id,
 			modified_by: req.user.id
 		}
-
-		if(req.user.userRole!='storeEmployee'){
+		console.log('-req.user.store_id->, ', JSON.stringify(req.user,null,2));
+		if (req.user.userRole != 'storeEmployee') {
 			params.store_id = body.store;
-		}else{
+		} else {
 			params.store_id = req.user.store_id;
 		}
 
-		console.log('params: '+JSON.stringify(params));
+		// console.log('params: '+JSON.stringify(params));
 
 		var newTicket = new Ticket(params);
 		var ticket_promise = new Promise((resolve, reject) => {
@@ -128,7 +128,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 			}).save((err, event) => {
 				if (err) console.log(err);
 				else {
-					console.log('event saved: '+JSON.stringify(event));
+					// console.log('event saved: '+JSON.stringify(event));
 					(user.userRole === "storeAdmin") ? storeAdminSW = true : storeAdminSW = false;
 					res.redirect('/tickets/new/success?ticketType=' + req.query.ticketType);
 				}
@@ -136,7 +136,7 @@ router.post('/new', Validations.ensureAuthenticated, (req, res) => {
 		});
 
 		ticket_promise.catch(err => {
-			console.log('error: '+err);
+			console.log('error: ' + err);
 			req.flash('error_msg', 'Ha habido un problema al crear el ticket.');
 			res.redirect('/tickets/new/failed?ticketType=' + req.query.ticketType);
 		})
@@ -166,19 +166,19 @@ router.post('/save', Validations.ensureAuthenticated, (req, res) => {
 				description: body.description,
 				categories: categories,
 				lastupdate: new Date(),
-				start_date: new Date(body.start_date.split('.')[2],body.start_date.split('.')[1],body.start_date.split('.')[0]),
-				end_date: new Date(body.end_date.split('.')[2],body.end_date.split('.')[1],body.end_date.split('.')[0]),
+				start_date: new Date(body.start_date.split('.')[2], body.start_date.split('.')[1], body.start_date.split('.')[0]),
+				end_date: new Date(body.end_date.split('.')[2], body.end_date.split('.')[1], body.end_date.split('.')[0]),
 				contacts: contacts,
 				modified_by: req.user.id,
 				track: body.trackTkt,
 				deadline: Validations.setDates(body.setdeadline),
 			};
-			console.log('start_date: '+params.start_date);
-			console.log('end_date: '+params.end_date);
+		// console.log('start_date: '+params.start_date);
+		// console.log('end_date: '+params.end_date);
 		Ticket.findOneAndUpdate({ _id: ticketID }, { $set: params }, { new: true }, (err, ticket) => {
 			Event.update({ ticket_id: ticket.id }, { $set: { start_date: ticket.start_date, end_date: ticket.end_date } }, (err, event) => {
 				if (err) {
-					console.log('tickets/save (post): '+err);
+					// console.log('tickets/save (post): '+err);
 				} else {
 					if (ticket.track === 'checked') {
 						User.find({ _id: { $in: ticket.contacts } }, (err, users) => {
@@ -236,21 +236,19 @@ router.get('/:ticketType/list', Validations.ensureAuthenticated, (req, res) => {
 		params.ticketType = ticketType;
 		if (user.userRole === 'systemAdmin') resolve(params); //CASE SYSTEM ADMIN - SEVERAL STORES
 		else if (user.userRole === 'storeAdmin') { //CASE STORE ADMIN - SEVERAL STORES
-			Store.findById(user.store_id, (err, store) => {
-				var company = store.company_id;
-				Store.find({ company_id: company }, { _id: 1 }, (err, stores) => {
-					if (err) {
-						reject(err, params);
-					} else {
-						params.store_id = { $in: stores }
-						resolve(params);
-					}
-				});
+			var company = user.company_id;
+			Store.find({ company_id: company }, { _id: 1 }, (err, stores) => {
+				if (err) {
+					reject(err, params);
+				} else {
+					params.store_id = { $in: stores }
+					resolve(params);
+				}
 			});
-		} else if (user.userRole === 'storeEmployee'){
+		} else if (user.userRole === 'storeEmployee') {
 			params.store_id = req.user.store_id //CASE STORE EMPLOYEE  - UNIQUE STORE
 			resolve(params);
-		} 
+		}
 	})
 
 	setparams.then(params => {
@@ -392,9 +390,9 @@ router.get('/ticket_details', Validations.ensureAuthenticated, (req, res) => {
 };*/
 
 function getTicket_Params(type, user) {
-	var params={}, role = user.userRole;
+	var params = {}, role = user.userRole;
 	return params;		//FUNCION MODIFICADA PORQUE LOS STORE ADMINS NO DEBERIAN PODER HACER tickets
-						// Y LOS STORE EMPLOYEES SOLO LO HACEN EN LA TIENDA EN QUE SE ENCUENTRAN REGISTRADOS.
+	// Y LOS STORE EMPLOYEES SOLO LO HACEN EN LA TIENDA EN QUE SE ENCUENTRAN REGISTRADOS.
 }
 
 module.exports = router;
